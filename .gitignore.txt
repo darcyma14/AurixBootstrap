@@ -1,0 +1,21 @@
+# Eclipse / Aurix Studio 설정 무시
+.ads/
+.settings/
+.project
+.cproject
+
+# 빌드 산출물 무시
+FreeRTOS_V10_4_6/
+*.elf
+*.hex
+*.map
+*.bin
+*.src
+*.d
+*.o
+
+# 기타 무시
+*.log
+*.user
+*.lst
+*.bak
