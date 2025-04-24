@@ -5,7 +5,7 @@
 .cproject
 
 # 빌드 산출물 무시
-FreeRTOS_V10_4_6/
+Rel_Appl_freeRTOS_10_4_6/
 *.elf
 *.hex
 *.map
