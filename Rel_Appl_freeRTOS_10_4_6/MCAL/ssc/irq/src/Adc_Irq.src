@@ -1,0 +1,462 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler v1.1r8 Build 22011964"
+	.compiler_invocation	"ctc -f cc5772a --dep-file=MCAL/ssc/irq/src/Adc_Irq.d -c99 --fp-model=3cflnrSTz -D__CPU__=tc23x -D__CPU_TC23X__ --core=tc1.6.x --fp-model=+float -D__CPU__=tc23x -D_APP_KIT_BOARD_ -D_FREE_TASKING_C_COMPILER_=1 -D_TASKING_C_TRICORE_=1 -D_McalModified_ -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\APP -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\APP\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\BSW -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\BSW\\\\ecum -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\BSW\\\\ecum\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\BSW\\\\integration_general -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\BSW\\\\integration_general\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\FreeRTOS_V10_4_6 -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\FreeRTOS_V10_4_6\\\\Source -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\FreeRTOS_V10_4_6\\\\Source\\\\Portable -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\FreeRTOS_V10_4_6\\\\Source\\\\Portable\\\\Tasking -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\FreeRTOS_V10_4_6\\\\Source\\\\Portable\\\\Tasking\\\\Tricore_TC23X_Demo -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\FreeRTOS_V10_4_6\\\\Source\\\\include -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\cfg -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\cfg\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\Lin -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\Lin\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\Pwm -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\Pwm\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\adc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\adc\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\can -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\can\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\dio -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\dio\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\flsloader -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\flsloader\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\general -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\general\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\general\\\\tricore -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\general\\\\tricore\\\\compiler -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\general\\\\tricore\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\general\\\\tricore\\\\inc\\\\tc23x -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\gpt -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\gpt\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\icu -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\icu\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\irq -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\irq\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\mcu -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\mcu\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\port -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\port\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\spi -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\spi\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\tricore_general -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\tricore_general\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\uart -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\uart\\\\inc -g2 -w544 -w557 -t4 --language=+volatile -N0 -O0 -Y0 -Z0 --compact-max-size=200 --misrac-version=2004 -o MCAL/ssc/irq/src/Adc_Irq.src ../MCAL/ssc/irq/src/Adc_Irq.c"
+	.compiler_name		"ctc"
+	;source	'../MCAL/ssc/irq/src/Adc_Irq.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.inttab0.intvec.024',code
+	.sect	'.text.inttab0.intvec.024'
+	movh.a	a14,#@his(ADC0SR1_ISR)
+	lea	a14,[a14]@los(ADC0SR1_ISR)
+	ji	a14
+	.sdecl	'.text.CPU0.Private.DEFAULT_CODE_ROM',code,cluster('ADC0SR1_ISR')
+	.sect	'.text.CPU0.Private.DEFAULT_CODE_ROM'
+	.align	2
+	
+	.global	ADC0SR1_ISR
+; Function ADC0SR1_ISR
+.L3:
+ADC0SR1_ISR:	.type	func
+	svlcx
+.L30:
+	enable
+.L31:
+	mov	d4,#0
+	call	Adc_IsrSrn1AdcRS1
+.L32:
+	rslcx
+	rfe
+.L20:
+	
+__ADC0SR1_ISR_function_end:
+	.size	ADC0SR1_ISR,__ADC0SR1_ISR_function_end-ADC0SR1_ISR
+.L14:
+	; End of function
+	
+	.sdecl	'.text.inttab0.intvec.0c9',code
+	.sect	'.text.inttab0.intvec.0c9'
+	movh.a	a14,#@his(ADC1SR1_ISR)
+	lea	a14,[a14]@los(ADC1SR1_ISR)
+	ji	a14
+	.sdecl	'.text.CPU0.Private.DEFAULT_CODE_ROM',code,cluster('ADC1SR1_ISR')
+	.sect	'.text.CPU0.Private.DEFAULT_CODE_ROM'
+	.align	2
+	
+	.global	ADC1SR1_ISR
+; Function ADC1SR1_ISR
+.L5:
+ADC1SR1_ISR:	.type	func
+	svlcx
+.L37:
+	enable
+.L38:
+	mov	d4,#1
+	call	Adc_IsrSrn1AdcRS1
+.L39:
+	rslcx
+	rfe
+.L21:
+	
+__ADC1SR1_ISR_function_end:
+	.size	ADC1SR1_ISR,__ADC1SR1_ISR_function_end-ADC1SR1_ISR
+.L19:
+	; End of function
+	
+	.calls	'ADC0SR1_ISR','Adc_IsrSrn1AdcRS1'
+	.calls	'ADC1SR1_ISR','Adc_IsrSrn1AdcRS1'
+	.calls	'ADC0SR1_ISR','',0
+	.extern	Adc_IsrSrn1AdcRS1
+	.calls	'ADC1SR1_ISR','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L7:
+	.word	1989
+	.half	3
+	.word	.L8
+	.byte	4
+.L6:
+	.byte	1
+	.byte	'../MCAL/ssc/irq/src/Adc_Irq.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Havana\\workspace\\AURIX\\CliDemo\\Rel_Appl_freeRTOS_10_4_6\\',0,12,1
+	.word	.L9
+	.byte	2
+	.byte	'__enable',0,1,1,1,1,3
+	.byte	'unsigned char',0,1,8,4
+	.byte	'Adc_IsrSrn1AdcRS1',0,1,230,12,13,1,1,1,1,5
+	.byte	'AdcKernel',0,1,230,12,37
+	.word	199
+	.byte	0,6,1,7
+	.word	263
+	.byte	8
+	.byte	'__codeptr',0,2,1,1
+	.word	265
+	.byte	8
+	.byte	'uint8',0,3,90,29
+	.word	199
+	.byte	3
+	.byte	'unsigned short int',0,2,7,8
+	.byte	'uint16',0,3,92,29
+	.word	302
+	.byte	3
+	.byte	'unsigned long int',0,4,7,8
+	.byte	'uint32',0,3,94,29
+	.word	339
+	.byte	8
+	.byte	'Adc_ChannelType',0,1,220,2,15
+	.word	199
+	.byte	8
+	.byte	'Adc_GroupType',0,1,226,2,16
+	.word	302
+	.byte	8
+	.byte	'Adc_ValueGroupType',0,1,240,2,16
+	.word	302
+	.byte	8
+	.byte	'Adc_PrescaleType',0,1,137,3,16
+	.word	339
+	.byte	8
+	.byte	'Adc_TriggerSourceType',0,1,193,3,15
+	.word	199
+	.byte	8
+	.byte	'Adc_GroupConvModeType',0,1,201,3,15
+	.word	199
+	.byte	8
+	.byte	'Adc_GroupPriorityType',0,1,208,3,15
+	.word	199
+	.byte	8
+	.byte	'Adc_GroupDefType',0,1,251,3,25
+	.word	199
+	.byte	8
+	.byte	'Adc_StreamNumSampleType',0,1,128,4,15
+	.word	199
+	.byte	8
+	.byte	'Adc_StreamBufferModeType',0,1,141,4,15
+	.word	199
+	.byte	8
+	.byte	'Adc_TriggSrcArbLevelType',0,1,172,4,16
+	.word	339
+	.byte	9
+	.byte	'Adc_TriggSrcData',0,1,198,4,16,4,10
+	.byte	'GrpId',0
+	.word	302
+	.byte	2,2,35,0,10
+	.byte	'GrpPriority',0
+	.word	199
+	.byte	1,2,35,2,10
+	.byte	'IsrDoNothing',0
+	.word	199
+	.byte	1,2,35,3,0,8
+	.byte	'Adc_TriggSrcDataType',0,1,216,4,2
+	.word	697
+	.byte	11,16
+	.word	199
+	.byte	12,15,0,11,16
+	.word	199
+	.byte	12,15,0,9
+	.byte	'Adc_GroupData',0,1,225,4,16,32,10
+	.byte	'GrpChannels',0
+	.word	809
+	.byte	16,2,35,0,10
+	.byte	'GrpChannelRes',0
+	.word	818
+	.byte	16,2,35,16,0,8
+	.byte	'Adc_GroupDataType',0,1,243,4,2
+	.word	827
+	.byte	13,1,1,7
+	.word	919
+	.byte	8
+	.byte	'Adc_NotifFctPtrType',0,1,253,5,16
+	.word	922
+	.byte	11,8
+	.word	339
+	.byte	12,1,0,9
+	.byte	'Adc_HwUnitCfgType',0,1,131,6,16,20,10
+	.byte	'ArbitrationLength',0
+	.word	339
+	.byte	4,2,35,0,10
+	.byte	'TriggSrcArbLevel',0
+	.word	339
+	.byte	4,2,35,4,10
+	.byte	'KernelInputClass',0
+	.word	956
+	.byte	8,2,35,8,10
+	.byte	'SyncConvMode',0
+	.word	199
+	.byte	1,2,35,16,10
+	.byte	'SlaveReady',0
+	.word	199
+	.byte	1,2,35,17,10
+	.byte	'DmaChannel',0
+	.word	199
+	.byte	1,2,35,18,0,8
+	.byte	'Adc_HwUnitCfgType',0,1,167,6,2
+	.word	965
+	.byte	14
+	.word	199
+	.byte	7
+	.word	1158
+	.byte	9
+	.byte	'Adc_GroupCfgType',0,1,170,6,16,16,10
+	.byte	'NotifFctPtr',0
+	.word	927
+	.byte	4,2,35,0,10
+	.byte	'GroupDefinition',0
+	.word	1163
+	.byte	4,2,35,4,10
+	.byte	'IntChMask',0
+	.word	302
+	.byte	2,2,35,8,10
+	.byte	'TriggSrc',0
+	.word	199
+	.byte	1,2,35,10,10
+	.byte	'GrpRequestSrc',0
+	.word	199
+	.byte	1,2,35,11,10
+	.byte	'ConvMode',0
+	.word	199
+	.byte	1,2,35,12,10
+	.byte	'NumSamples',0
+	.word	199
+	.byte	1,2,35,13,10
+	.byte	'StreamBufferMode',0
+	.word	199
+	.byte	1,2,35,14,0,8
+	.byte	'Adc_GroupCfgType',0,1,245,6,3
+	.word	1168
+	.byte	7
+	.word	919
+	.byte	9
+	.byte	'Adc_ChannelCfgType',0,1,252,6,17,28,10
+	.byte	'AdcChConfigValue',0
+	.word	339
+	.byte	4,2,35,0,10
+	.byte	'AdcChResAccumulation',0
+	.word	339
+	.byte	4,2,35,4,10
+	.byte	'AdcIsChLimitChkEnabled',0
+	.word	339
+	.byte	4,2,35,8,10
+	.byte	'AdcLimitChkRange',0
+	.word	339
+	.byte	4,2,35,12,10
+	.byte	'AdcLimitChkBnd',0
+	.word	339
+	.byte	4,2,35,16,10
+	.byte	'AdcChBndSelxValue',0
+	.word	339
+	.byte	4,2,35,20,10
+	.byte	'AdcSyncChannel',0
+	.word	199
+	.byte	1,2,35,24,0,8
+	.byte	'Adc_ChannelCfgType',0,1,148,7,3
+	.word	1393
+	.byte	14
+	.word	965
+	.byte	7
+	.word	1636
+	.byte	14
+	.word	1393
+	.byte	7
+	.word	1646
+	.byte	14
+	.word	1168
+	.byte	7
+	.word	1656
+	.byte	9
+	.byte	'Adc_KernelConfigType',0,1,151,7,17,16,10
+	.byte	'HwCfgPtr',0
+	.word	1641
+	.byte	4,2,35,0,10
+	.byte	'ChCfgPtr',0
+	.word	1651
+	.byte	4,2,35,4,10
+	.byte	'GrpCfgPtr',0
+	.word	1661
+	.byte	4,2,35,8,10
+	.byte	'TotCfgGrps',0
+	.word	199
+	.byte	1,2,35,12,0,8
+	.byte	'Adc_KernelConfigType',0,1,171,7,3
+	.word	1666
+	.byte	9
+	.byte	'Adc_GlobalCfgType',0,1,174,7,17,28,10
+	.byte	'ClkPrescale',0
+	.word	339
+	.byte	4,2,35,0,10
+	.byte	'GlobInputClass',0
+	.word	956
+	.byte	8,2,35,4,10
+	.byte	'PostCalEnable',0
+	.word	339
+	.byte	4,2,35,12,10
+	.byte	'LowPowerSupply',0
+	.word	339
+	.byte	4,2,35,16,10
+	.byte	'RefPrechargeCtrl',0
+	.word	339
+	.byte	4,2,35,20,10
+	.byte	'OperationMode',0
+	.word	199
+	.byte	1,2,35,24,0,8
+	.byte	'Adc_GlobalCfgType',0,1,232,7,3
+	.word	1799
+	.byte	0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L8:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,46,0,3,8,54,15,39,12,63,12,60,12,0,0,3,36,0,3,8,11,15
+	.byte	62,15,0,0,4,46,1,3,8,58,15,59,15,57,15,54,15,39,12,63,12,60,12,0,0,5,5,0,3,8,58,15,59,15,57,15,73,19,0
+	.byte	0,6,21,0,54,15,0,0,7,15,0,73,19,0,0,8,22,0,3,8,58,15,59,15,57,15,73,19,0,0,9,19,1,3,8,58,15,59,15,57,15
+	.byte	11,15,0,0,10,13,0,3,8,73,19,11,15,56,9,0,0,11,1,1,11,15,73,19,0,0,12,33,0,47,15,0,0,13,21,0,54,15,39,12
+	.byte	0,0,14,38,0,73,19,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L9:
+	.word	.L23-.L22
+.L22:
+	.half	3
+	.word	.L25-.L24
+.L24:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1
+	.byte	'C:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\adc\\\\inc',0
+	.byte	'C:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\general\\\\tricore\\\\inc',0,0
+	.byte	'Adc.h',0,1,0,0
+	.byte	'../MCAL/ssc/irq/src/Adc_Irq.c',0,0,0,0
+	.byte	'Platform_Types.h',0,2,0,0,0
+.L25:
+.L23:
+	.sdecl	'.debug_info',debug,cluster('ADC0SR1_ISR')
+	.sect	'.debug_info'
+.L10:
+	.word	233
+	.half	3
+	.word	.L11
+	.byte	4,1
+	.byte	'../MCAL/ssc/irq/src/Adc_Irq.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Havana\\workspace\\AURIX\\CliDemo\\Rel_Appl_freeRTOS_10_4_6\\',0,12,1
+	.word	.L13,.L12
+	.byte	2
+	.word	.L6
+	.byte	3
+	.byte	'ADC0SR1_ISR',0,1,138,1,1,1,1,1
+	.word	.L3,.L20,.L2
+	.byte	4
+	.word	.L3,.L20
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('ADC0SR1_ISR')
+	.sect	'.debug_abbrev'
+.L11:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('ADC0SR1_ISR')
+	.sect	'.debug_line'
+.L12:
+	.word	.L27-.L26
+.L26:
+	.half	3
+	.word	.L29-.L28
+.L28:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../MCAL/ssc/irq/src/Adc_Irq.c',0,0,0,0,0
+.L29:
+	.byte	5,1,7,0,5,2
+	.word	.L3
+	.byte	3,137,1,1,5,3,9
+	.half	.L30-.L3
+	.byte	3,7,1,5,21,9
+	.half	.L31-.L30
+	.byte	3,5,1,5,1,9
+	.half	.L32-.L31
+	.byte	3,2,1,9
+	.half	.L14-.L32
+	.byte	0,1,1
+.L27:
+	.sdecl	'.debug_ranges',debug,cluster('ADC0SR1_ISR')
+	.sect	'.debug_ranges'
+.L13:
+	.word	-1,.L3,0,.L14-.L3,0,0
+	.sdecl	'.debug_info',debug,cluster('ADC1SR1_ISR')
+	.sect	'.debug_info'
+.L15:
+	.word	233
+	.half	3
+	.word	.L16
+	.byte	4,1
+	.byte	'../MCAL/ssc/irq/src/Adc_Irq.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Havana\\workspace\\AURIX\\CliDemo\\Rel_Appl_freeRTOS_10_4_6\\',0,12,1
+	.word	.L18,.L17
+	.byte	2
+	.word	.L6
+	.byte	3
+	.byte	'ADC1SR1_ISR',0,1,218,1,1,1,1,1
+	.word	.L5,.L21,.L4
+	.byte	4
+	.word	.L5,.L21
+	.byte	0,0
+	.sdecl	'.debug_abbrev',debug,cluster('ADC1SR1_ISR')
+	.sect	'.debug_abbrev'
+.L16:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,11,0,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('ADC1SR1_ISR')
+	.sect	'.debug_line'
+.L17:
+	.word	.L34-.L33
+.L33:
+	.half	3
+	.word	.L36-.L35
+.L35:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../MCAL/ssc/irq/src/Adc_Irq.c',0,0,0,0,0
+.L36:
+	.byte	5,1,7,0,5,2
+	.word	.L5
+	.byte	3,217,1,1,5,3,9
+	.half	.L37-.L5
+	.byte	3,7,1,5,21,9
+	.half	.L38-.L37
+	.byte	3,5,1,5,1,9
+	.half	.L39-.L38
+	.byte	3,2,1,9
+	.half	.L19-.L39
+	.byte	0,1,1
+.L34:
+	.sdecl	'.debug_ranges',debug,cluster('ADC1SR1_ISR')
+	.sect	'.debug_ranges'
+.L18:
+	.word	-1,.L5,0,.L19-.L5,0,0
+	.sdecl	'.debug_loc',debug,cluster('ADC0SR1_ISR')
+	.sect	'.debug_loc'
+.L2:
+	.word	-1,.L3,0,.L20-.L3
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('ADC1SR1_ISR')
+	.sect	'.debug_loc'
+.L4:
+	.word	-1,.L5,0,.L21-.L5
+	.half	2
+	.byte	138,0
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L40:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,26,8,27,8,30,8,29,8,28,8,16,8,17,8,24,8,25,8,31,8,32,8,33,8,34,8,35,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('ADC0SR1_ISR')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L40,.L3,.L20-.L3
+	.sdecl	'.debug_frame',debug,cluster('ADC1SR1_ISR')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L40,.L5,.L21-.L5
+	; Module end

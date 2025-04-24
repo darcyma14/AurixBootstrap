@@ -1,0 +1,5149 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler v1.1r8 Build 22011964"
+	.compiler_invocation	"ctc -f cc12360a --dep-file=MCAL/ssc/dio/src/Dio.d -c99 --fp-model=3cflnrSTz -D__CPU__=tc23x -D__CPU_TC23X__ --core=tc1.6.x --fp-model=+float -D__CPU__=tc23x -D_APP_KIT_BOARD_ -D_FREE_TASKING_C_COMPILER_=1 -D_TASKING_C_TRICORE_=1 -D_McalModified_ -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\APP -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\APP\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\BSW -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\BSW\\\\ecum -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\BSW\\\\ecum\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\BSW\\\\integration_general -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\BSW\\\\integration_general\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\FreeRTOS_V10_4_6 -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\FreeRTOS_V10_4_6\\\\Source -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\FreeRTOS_V10_4_6\\\\Source\\\\Portable -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\FreeRTOS_V10_4_6\\\\Source\\\\Portable\\\\Tasking -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\FreeRTOS_V10_4_6\\\\Source\\\\Portable\\\\Tasking\\\\Tricore_TC23X_Demo -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\FreeRTOS_V10_4_6\\\\Source\\\\include -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\cfg -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\cfg\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\Lin -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\Lin\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\Pwm -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\Pwm\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\adc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\adc\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\can -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\can\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\dio -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\dio\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\flsloader -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\flsloader\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\general -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\general\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\general\\\\tricore -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\general\\\\tricore\\\\compiler -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\general\\\\tricore\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\general\\\\tricore\\\\inc\\\\tc23x -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\gpt -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\gpt\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\icu -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\icu\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\irq -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\irq\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\mcu -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\mcu\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\port -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\port\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\spi -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\spi\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\tricore_general -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\tricore_general\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\uart -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\uart\\\\inc -g2 -w544 -w557 -t4 --language=+volatile -N0 -O0 -Y0 -Z0 --compact-max-size=200 --misrac-version=2004 -o MCAL/ssc/dio/src/Dio.src ../MCAL/ssc/dio/src/Dio.c"
+	.compiler_name		"ctc"
+	;source	'../MCAL/ssc/dio/src/Dio.c'
+
+	
+$TC16X
+	
+	.sdecl	'.text.CPU0.Private.DEFAULT_CODE_ROM',code,cluster('Dio_lCheckChannelId')
+	.sect	'.text.CPU0.Private.DEFAULT_CODE_ROM'
+	.align	2
+	
+	.global	Dio_lCheckChannelId
+; Function Dio_lCheckChannelId
+.L99:
+Dio_lCheckChannelId:	.type	func
+	mov	e8,d4,d5
+.L530:
+	mov	d10,#1
+.L365:
+	mov	d11,#0
+.L366:
+	mov	d0,#655
+.L367:
+	jge.u	d0,d8,.L2
+.L368:
+	mov	d10,#0
+.L531:
+	j	.L3
+.L2:
+	mov	d4,d8
+.L364:
+	call	Dio_lGetPortNumber
+.L369:
+	mov	d12,d2
+.L371:
+	mov	d4,d8
+.L372:
+	call	Dio_lGetPinNumber
+.L370:
+	mov	d8,d2
+.L373:
+	mov	d1,d12
+.L235:
+	mov	d15,#31
+.L532:
+	jge.u	d15,d12,.L4
+.L243:
+	mov	d0,#1
+.L533:
+	add	d15,d1,#-32
+.L534:
+	sh	d0,d0,d15
+.L535:
+	mov	d15,#774
+.L374:
+	and	d0,d15
+.L536:
+	j	.L5
+.L5:
+	j	.L6
+.L4:
+	mov	d15,#1
+.L537:
+	sh	d15,d15,d1
+.L538:
+	mov.u	d0,#60421
+	addih	d0,d0,#240
+.L375:
+	and	d0,d15
+.L539:
+	j	.L7
+.L7:
+.L6:
+	j	.L8
+.L8:
+	mov	d1,#1
+.L540:
+	sh	d1,d1,d8
+.L541:
+	mul	d15,d12,#2
+.L542:
+	movh.a	a15,#@his(Dio_kMaskUndefinedPortPins)
+	lea	a15,[a15]@los(Dio_kMaskUndefinedPortPins)
+.L543:
+	addsc.a	a15,a15,d15,#0
+	ld.hu	d15,[a15]0
+.L377:
+	and	d1,d15
+.L544:
+	j	.L9
+.L9:
+	jeq	d0,#0,.L10
+.L240:
+	jne	d1,#0,.L11
+.L10:
+	mov	d10,#0
+.L545:
+	j	.L12
+.L11:
+	mov	d0,#0
+.L376:
+	j	.L13
+.L14:
+	mov	d15,#31
+.L546:
+	jge.u	d15,d0,.L15
+.L264:
+	mov	d15,#1
+.L547:
+	add	d1,d0,#-32
+.L548:
+	sh	d15,d15,d1
+.L549:
+	mov	d1,#774
+.L379:
+	and	d15,d1
+.L550:
+	j	.L16
+.L16:
+	j	.L17
+.L15:
+	mov	d15,#1
+.L551:
+	sh	d1,d15,d0
+.L552:
+	mov.u	d15,#60421
+	addih	d15,d15,#240
+.L380:
+	and	d15,d1
+.L553:
+	j	.L18
+.L18:
+.L17:
+	j	.L19
+.L19:
+	jeq	d15,#0,.L20
+.L262:
+	add	d11,#1
+.L20:
+	add	d0,#1
+.L13:
+	jge.u	d12,d0,.L14
+.L554:
+	add	d11,#-1
+.L269:
+	mov	d15,#31
+.L555:
+	jlt.u	d15,d12,.L21
+.L278:
+	mov	d5,#0
+.L381:
+	j	.L22
+.L22:
+	j	.L23
+.L21:
+	mov	d15,#1
+.L556:
+	add	d0,d12,#-32
+.L378:
+	sh	d15,d15,d0
+.L557:
+	mov	d5,#768
+.L382:
+	and	d5,d15
+.L558:
+	j	.L24
+.L24:
+.L23:
+	j	.L25
+.L25:
+	movh.a	a15,#@his(Dio_kConfigPtr)
+	lea	a15,[a15]@los(Dio_kConfigPtr)
+	ld.a	a15,[a15]
+.L559:
+	ld.a	a15,[a15]
+.L560:
+	mul	d15,d11,#8
+	addsc.a	a15,a15,d15,#0
+.L561:
+	ld.w	d15,[a15]
+.L562:
+	jne	d15,#0,.L26
+.L563:
+	mov	d10,#0
+.L564:
+	j	.L27
+.L26:
+	mov	d4,d9
+.L274:
+	call	Dio_lCheckAnalogChannel
+.L275:
+	jne	d2,#0,.L28
+.L565:
+	mov	d10,#0
+.L566:
+	j	.L29
+.L28:
+	movh.a	a15,#@his(Dio_kConfigPtr)
+	lea	a15,[a15]@los(Dio_kConfigPtr)
+	ld.a	a15,[a15]
+.L567:
+	ld.a	a15,[a15]
+.L568:
+	mul	d15,d11,#8
+	addsc.a	a15,a15,d15,#0
+.L569:
+	ld.w	d15,[a15]4
+.L570:
+	mov	d0,#1
+.L571:
+	sh	d0,d0,d8
+.L572:
+	and	d15,d0
+.L573:
+	jne	d15,#0,.L30
+.L574:
+	mov	d10,#0
+.L575:
+	j	.L31
+.L30:
+.L31:
+.L29:
+.L27:
+.L12:
+.L3:
+	jne	d10,#0,.L32
+.L576:
+	mov	d4,#120
+.L577:
+	mov	d5,#0
+.L578:
+	mov	d7,#10
+.L383:
+	mov	d6,d9
+.L384:
+	call	Det_ReportError
+.L32:
+	mov	d2,d10
+.L385:
+	j	.L33
+.L33:
+	ret
+.L223:
+	
+__Dio_lCheckChannelId_function_end:
+	.size	Dio_lCheckChannelId,__Dio_lCheckChannelId_function_end-Dio_lCheckChannelId
+.L160:
+	; End of function
+	
+	.sdecl	'.text.CPU0.Private.DEFAULT_CODE_ROM',code,cluster('Dio_lCheckPortId')
+	.sect	'.text.CPU0.Private.DEFAULT_CODE_ROM'
+	.align	2
+	
+	.global	Dio_lCheckPortId
+; Function Dio_lCheckPortId
+.L101:
+Dio_lCheckPortId:	.type	func
+	mov	d8,d4
+.L387:
+	mov	d9,#1
+.L388:
+	mov	d2,#0
+.L324:
+	mov	d15,#31
+.L618:
+	jge.u	d15,d5,.L34
+.L328:
+	mov	d0,#1
+.L619:
+	add	d1,d5,#-32
+.L620:
+	sh	d0,d0,d1
+.L621:
+	mov	d1,#774
+.L389:
+	and	d0,d1
+.L622:
+	j	.L35
+.L35:
+	j	.L36
+.L34:
+	mov	d15,#1
+.L623:
+	sh	d15,d15,d5
+.L624:
+	mov.u	d0,#60421
+	addih	d0,d0,#240
+.L390:
+	and	d0,d15
+.L625:
+	j	.L37
+.L37:
+.L36:
+	j	.L38
+.L38:
+	jne	d0,#0,.L39
+.L325:
+	mov	d9,#0
+.L626:
+	j	.L40
+.L39:
+	mov	d0,#0
+.L391:
+	j	.L41
+.L42:
+	mov	d15,#31
+.L627:
+	jge.u	d15,d0,.L43
+.L336:
+	mov	d15,#1
+.L628:
+	add	d1,d0,#-32
+.L629:
+	sh	d15,d15,d1
+.L630:
+	mov	d1,#774
+.L393:
+	and	d15,d1
+.L631:
+	j	.L44
+.L44:
+	j	.L45
+.L43:
+	mov	d15,#1
+.L632:
+	sh	d1,d15,d0
+.L633:
+	mov.u	d15,#60421
+	addih	d15,d15,#240
+.L394:
+	and	d15,d1
+.L634:
+	j	.L46
+.L46:
+.L45:
+	j	.L47
+.L47:
+	jeq	d15,#0,.L48
+.L334:
+	add	d2,#1
+.L48:
+	add	d0,#1
+.L41:
+	jge.u	d5,d0,.L42
+.L635:
+	add	d2,#-1
+.L340:
+	mov	d15,#31
+.L636:
+	jlt.u	d15,d5,.L49
+.L346:
+	mov	d5,#0
+.L386:
+	j	.L50
+.L50:
+	j	.L51
+.L49:
+	mov	d15,#1
+.L637:
+	add	d0,d5,#-32
+.L392:
+	sh	d15,d15,d0
+.L638:
+	mov	d5,#768
+.L395:
+	and	d5,d15
+.L639:
+	j	.L52
+.L52:
+.L51:
+	j	.L53
+.L53:
+	movh.a	a15,#@his(Dio_kConfigPtr)
+	lea	a15,[a15]@los(Dio_kConfigPtr)
+	ld.a	a15,[a15]
+.L640:
+	ld.a	a15,[a15]
+.L641:
+	mul	d15,d2,#8
+	addsc.a	a15,a15,d15,#0
+.L642:
+	ld.w	d15,[a15]
+.L643:
+	jne	d15,#0,.L54
+.L644:
+	mov	d9,#0
+.L645:
+	j	.L55
+.L54:
+	mov	d4,d8
+.L343:
+	call	Dio_lCheckAnalogPort
+.L344:
+	jne	d2,#0,.L56
+.L646:
+	mov	d9,#0
+.L647:
+	j	.L57
+.L56:
+.L57:
+.L55:
+.L40:
+	jne	d9,#0,.L58
+.L648:
+	mov	d4,#120
+.L649:
+	mov	d5,#0
+.L650:
+	mov	d7,#20
+	mov	d6,d8
+.L396:
+	call	Det_ReportError
+.L58:
+	mov	d2,d9
+.L397:
+	j	.L59
+.L59:
+	ret
+.L316:
+	
+__Dio_lCheckPortId_function_end:
+	.size	Dio_lCheckPortId,__Dio_lCheckPortId_function_end-Dio_lCheckPortId
+.L170:
+	; End of function
+	
+	.sdecl	'.text.CPU0.Private.DEFAULT_CODE_ROM',code,cluster('Dio_lCheckGroupId')
+	.sect	'.text.CPU0.Private.DEFAULT_CODE_ROM'
+	.align	2
+	
+	.global	Dio_lCheckGroupId
+; Function Dio_lCheckGroupId
+.L103:
+Dio_lCheckGroupId:	.type	func
+	mov	d8,d4
+.L399:
+	mov.aa	a15,a4
+.L400:
+	mov	d9,#0
+.L402:
+	jz.a	a15,.L60
+.L583:
+	mov.aa	a4,a15
+	call	Dio_lCheckChGrpValue
+.L398:
+	mov	d9,d2
+.L404:
+	jeq	d9,#0,.L61
+.L584:
+	ld.bu	d0,[a15]3
+.L295:
+	mov	d15,#31
+.L585:
+	jlt.u	d15,d0,.L62
+.L300:
+	mov	d0,#0
+.L405:
+	j	.L63
+.L63:
+	j	.L64
+.L62:
+	mov	d1,#1
+.L586:
+	add	d0,d0,#-32
+.L587:
+	sh	d0,d1,d0
+.L588:
+	mov	d15,#768
+.L406:
+	and	d0,d15
+.L589:
+	j	.L65
+.L65:
+.L64:
+	j	.L66
+.L66:
+	ld.bu	d1,[a15]3
+.L306:
+	mov	d15,#31
+.L590:
+	jge.u	d15,d1,.L67
+.L310:
+	mov	d15,#1
+.L591:
+	add	d1,d1,#-32
+.L592:
+	sh	d15,d15,d1
+.L593:
+	mov	d1,#774
+.L408:
+	and	d15,d1
+.L594:
+	j	.L68
+.L68:
+	j	.L69
+.L67:
+	mov	d15,#1
+.L595:
+	sh	d1,d15,d1
+.L596:
+	mov.u	d15,#60421
+	addih	d15,d15,#240
+.L409:
+	and	d15,d1
+.L597:
+	j	.L70
+.L70:
+.L69:
+	j	.L71
+.L71:
+	jne	d8,#5,.L72
+.L298:
+	jne	d0,#0,.L73
+.L72:
+	jne	d15,#0,.L74
+.L73:
+	mov	d9,#0
+.L403:
+	j	.L75
+.L74:
+	ld.hu	d15,[a15]0
+.L410:
+	jne	d15,#0,.L76
+.L598:
+	mov	d9,#0
+.L411:
+	j	.L77
+.L76:
+	ld.hu	d0,[a15]0
+.L407:
+	ld.bu	d15,[a15]3
+.L599:
+	mul	d15,d15,#2
+.L600:
+	movh.a	a2,#@his(Dio_kMaskUndefinedPortPins)
+	lea	a2,[a2]@los(Dio_kMaskUndefinedPortPins)
+.L601:
+	addsc.a	a2,a2,d15,#0
+	ld.hu	d15,[a2]0
+.L602:
+	mov	d1,#-1
+	xor	d15,d1
+.L603:
+	and	d0,d15
+.L604:
+	jeq	d0,#0,.L78
+.L605:
+	mov	d9,#0
+.L412:
+	j	.L79
+.L78:
+	ld.bu	d0,[a15]2
+.L606:
+	ld.bu	d15,[a15]3
+.L607:
+	movh.a	a15,#@his(Dio_kMSPortPin)
+.L401:
+	lea	a15,[a15]@los(Dio_kMSPortPin)
+.L608:
+	addsc.a	a15,a15,d15,#0
+	ld.bu	d15,[a15]
+.L609:
+	jge.u	d15,d0,.L80
+.L610:
+	mov	d9,#0
+.L413:
+	j	.L81
+.L80:
+.L81:
+.L79:
+.L77:
+.L75:
+.L61:
+.L60:
+	jne	d9,#0,.L82
+.L611:
+	mov	d4,#120
+.L612:
+	mov	d5,#0
+.L613:
+	mov	d7,#31
+	mov	d6,d8
+.L414:
+	call	Det_ReportError
+.L82:
+	mov	d2,d9
+.L415:
+	j	.L83
+.L83:
+	ret
+.L289:
+	
+__Dio_lCheckGroupId_function_end:
+	.size	Dio_lCheckGroupId,__Dio_lCheckGroupId_function_end-Dio_lCheckGroupId
+.L165:
+	; End of function
+	
+	.sdecl	'.text.CPU0.Private.DEFAULT_CODE_ROM',code,cluster('Dio_ReadChannelGroup')
+	.sect	'.text.CPU0.Private.DEFAULT_CODE_ROM'
+	.align	2
+	
+	.global	Dio_ReadChannelGroup
+; Function Dio_ReadChannelGroup
+.L105:
+Dio_ReadChannelGroup:	.type	func
+	mov.aa	a15,a4
+.L417:
+	mov	d8,#0
+.L418:
+	mov	d4,#4
+	mov.aa	a4,a15
+	call	Dio_lErrorCheckChannelGroupDet
+.L416:
+	jne	d2,#1,.L84
+.L510:
+	ld.bu	d4,[a15]3
+	call	Dio_lGetPortAdr
+.L419:
+	ld.w	d15,[a2]36
+.L511:
+	ld.hu	d0,[a15]0
+.L512:
+	and	d15,d0
+.L513:
+	extr.u	d8,d15,#0,#16
+.L514:
+	ld.bu	d15,[a15]2
+.L515:
+	rsub	d15,#0
+	sha	d8,d8,d15
+.L84:
+	mov	d2,d8
+.L420:
+	j	.L85
+.L85:
+	ret
+.L212:
+	
+__Dio_ReadChannelGroup_function_end:
+	.size	Dio_ReadChannelGroup,__Dio_ReadChannelGroup_function_end-Dio_ReadChannelGroup
+.L150:
+	; End of function
+	
+	.sdecl	'.text.CPU0.Private.DEFAULT_CODE_ROM',code,cluster('Dio_WriteChannelGroup')
+	.sect	'.text.CPU0.Private.DEFAULT_CODE_ROM'
+	.align	2
+	
+	.global	Dio_WriteChannelGroup
+; Function Dio_WriteChannelGroup
+.L107:
+Dio_WriteChannelGroup:	.type	func
+	mov.aa	a15,a4
+.L423:
+	mov	d8,d4
+.L424:
+	mov	d4,#5
+.L422:
+	mov.aa	a4,a15
+	call	Dio_lErrorCheckChannelGroupDet
+.L421:
+	jne	d2,#1,.L86
+.L520:
+	ld.bu	d15,[a15]2
+.L521:
+	sh	d8,d8,d15
+.L425:
+	ld.hu	d15,[a15]0
+.L426:
+	and	d8,d15
+.L522:
+	mov	d15,#-1
+	xor	d15,d8
+.L523:
+	ld.hu	d0,[a15]0
+.L427:
+	and	d15,d0
+.L524:
+	sh	d15,d15,#16
+.L428:
+	or	d8,d15
+.L525:
+	ld.bu	d4,[a15]3
+	call	Dio_lGetPortAdr
+.L429:
+	st.w	[a2]4,d8
+.L86:
+	ret
+.L217:
+	
+__Dio_WriteChannelGroup_function_end:
+	.size	Dio_WriteChannelGroup,__Dio_WriteChannelGroup_function_end-Dio_WriteChannelGroup
+.L155:
+	; End of function
+	
+	.sdecl	'.text.CPU0.Private.DEFAULT_CODE_ROM',code,cluster('Dio_ReadChannel')
+	.sect	'.text.CPU0.Private.DEFAULT_CODE_ROM'
+	.align	2
+	
+	.global	Dio_ReadChannel
+; Function Dio_ReadChannel
+.L109:
+Dio_ReadChannel:	.type	func
+	mov	d15,d4
+.L431:
+	mov	d9,#0
+.L433:
+	mov	d5,#0
+	mov	d4,d15
+	call	Dio_lErrorCheckChannelDet
+.L430:
+	jne	d2,#1,.L87
+.L484:
+	mov	d4,d15
+.L434:
+	call	Dio_lGetPortNumber
+.L435:
+	mov	d4,d2
+	call	Dio_lGetPortAdr
+.L436:
+	mov.aa	a15,a2
+.L438:
+	mov	d8,#1
+.L485:
+	mov	d4,d15
+.L439:
+	call	Dio_lGetPinNumber
+.L437:
+	sh	d8,d8,d2
+.L440:
+	ld.w	d15,[a15]36
+.L432:
+	and	d8,d15
+.L441:
+	jeq	d8,#0,.L88
+.L486:
+	mov	d9,#1
+.L88:
+.L87:
+	mov	d2,d9
+.L442:
+	j	.L89
+.L89:
+	ret
+.L191:
+	
+__Dio_ReadChannel_function_end:
+	.size	Dio_ReadChannel,__Dio_ReadChannel_function_end-Dio_ReadChannel
+.L130:
+	; End of function
+	
+	.sdecl	'.text.CPU0.Private.DEFAULT_CODE_ROM',code,cluster('Dio_WriteChannel')
+	.sect	'.text.CPU0.Private.DEFAULT_CODE_ROM'
+	.align	2
+	
+	.global	Dio_WriteChannel
+; Function Dio_WriteChannel
+.L111:
+Dio_WriteChannel:	.type	func
+	mov	d9,d4
+.L445:
+	mov	d15,d5
+.L446:
+	movh	d8,#1
+.L447:
+	mov	d5,#1
+.L444:
+	mov	d4,d9
+	call	Dio_lErrorCheckChannelDet
+.L443:
+	jne	d2,#1,.L90
+.L491:
+	jeq	d15,#0,.L91
+.L492:
+	mov	d8,#1
+.L91:
+	mov	d4,d9
+.L449:
+	call	Dio_lGetPortNumber
+.L450:
+	mov	d4,d2
+	call	Dio_lGetPortAdr
+.L451:
+	mov.aa	a15,a2
+.L453:
+	mov	d4,d9
+.L454:
+	call	Dio_lGetPinNumber
+.L452:
+	sh	d8,d8,d2
+.L448:
+	st.w	[a15]4,d8
+.L90:
+	ret
+.L199:
+	
+__Dio_WriteChannel_function_end:
+	.size	Dio_WriteChannel,__Dio_WriteChannel_function_end-Dio_WriteChannel
+.L135:
+	; End of function
+	
+	.sdecl	'.text.CPU0.Private.DEFAULT_CODE_ROM',code,cluster('Dio_ReadPort')
+	.sect	'.text.CPU0.Private.DEFAULT_CODE_ROM'
+	.align	2
+	
+	.global	Dio_ReadPort
+; Function Dio_ReadPort
+.L113:
+Dio_ReadPort:	.type	func
+	mov	d9,d4
+.L456:
+	mov	d8,#0
+.L457:
+	mov	d5,#2
+	mov	d4,d9
+	call	Dio_lErrorCheckPortDet
+.L455:
+	jne	d2,#1,.L92
+.L497:
+	mov	d4,d9
+.L459:
+	call	Dio_lGetPortAdr
+.L460:
+	ld.w	d15,[a2]36
+.L498:
+	extr.u	d8,d15,#0,#16
+.L458:
+	mul	d15,d9,#2
+.L499:
+	movh.a	a15,#@his(Dio_kMaskUndefinedPortPins)
+	lea	a15,[a15]@los(Dio_kMaskUndefinedPortPins)
+.L500:
+	addsc.a	a15,a15,d15,#0
+	ld.hu	d15,[a15]0
+.L461:
+	and	d8,d15
+.L92:
+	mov	d2,d8
+.L462:
+	j	.L93
+.L93:
+	ret
+.L204:
+	
+__Dio_ReadPort_function_end:
+	.size	Dio_ReadPort,__Dio_ReadPort_function_end-Dio_ReadPort
+.L140:
+	; End of function
+	
+	.sdecl	'.text.CPU0.Private.DEFAULT_CODE_ROM',code,cluster('Dio_WritePort')
+	.sect	'.text.CPU0.Private.DEFAULT_CODE_ROM'
+	.align	2
+	
+	.global	Dio_WritePort
+; Function Dio_WritePort
+.L115:
+Dio_WritePort:	.type	func
+	mov	d15,d4
+.L465:
+	mov	d8,d5
+.L466:
+	mov	d5,#3
+.L463:
+	mov	d4,d15
+	call	Dio_lErrorCheckPortDet
+.L464:
+	jne	d2,#1,.L94
+.L505:
+	mov	d4,d15
+.L467:
+	call	Dio_lGetPortAdr
+.L468:
+	st.w	[a2],d8
+.L94:
+	ret
+.L208:
+	
+__Dio_WritePort_function_end:
+	.size	Dio_WritePort,__Dio_WritePort_function_end-Dio_WritePort
+.L145:
+	; End of function
+	
+	.sdecl	'.text.CPU0.Private.DEFAULT_CODE_ROM',code,cluster('Dio_lGetPortNumber')
+	.sect	'.text.CPU0.Private.DEFAULT_CODE_ROM'
+	.align	2
+	
+	.global	Dio_lGetPortNumber
+; Function Dio_lGetPortNumber
+.L117:
+Dio_lGetPortNumber:	.type	func
+	mov	d15,#4080
+.L655:
+	and	d4,d15
+.L469:
+	sha	d2,d4,#-4
+.L470:
+	j	.L95
+.L95:
+	ret
+.L352:
+	
+__Dio_lGetPortNumber_function_end:
+	.size	Dio_lGetPortNumber,__Dio_lGetPortNumber_function_end-Dio_lGetPortNumber
+.L175:
+	; End of function
+	
+	.sdecl	'.text.CPU0.Private.DEFAULT_CODE_ROM',code,cluster('Dio_lGetPortAdr')
+	.sect	'.text.CPU0.Private.DEFAULT_CODE_ROM'
+	.align	2
+	
+	.global	Dio_lGetPortAdr
+; Function Dio_lGetPortAdr
+.L119:
+Dio_lGetPortAdr:	.type	func
+	mul	d15,d4,#205
+.L660:
+	sha	d15,d15,#-11
+.L472:
+	sha	d0,d15,#4
+.L661:
+	extr.u	d0,d0,#0,#8
+.L662:
+	sha	d1,d15,#3
+.L663:
+	sha	d15,#1
+.L473:
+	add	d1,d15
+.L664:
+	sub	d4,d1
+.L471:
+	add	d0,d4
+.L665:
+	mov	d15,#256
+	mul	d0,d15
+	mov.a	a15,d0
+	movh.a	a3,#61444
+	add.a	a3,a15
+	lea	a2,[a3]-24576
+.L474:
+	j	.L96
+.L96:
+	ret
+.L355:
+	
+__Dio_lGetPortAdr_function_end:
+	.size	Dio_lGetPortAdr,__Dio_lGetPortAdr_function_end-Dio_lGetPortAdr
+.L180:
+	; End of function
+	
+	.sdecl	'.text.CPU0.Private.DEFAULT_CODE_ROM',code,cluster('Dio_lGetPinNumber')
+	.sect	'.text.CPU0.Private.DEFAULT_CODE_ROM'
+	.align	2
+	
+	.global	Dio_lGetPinNumber
+; Function Dio_lGetPinNumber
+.L121:
+Dio_lGetPinNumber:	.type	func
+	and	d2,d4,#15
+.L475:
+	j	.L97
+.L97:
+	ret
+.L359:
+	
+__Dio_lGetPinNumber_function_end:
+	.size	Dio_lGetPinNumber,__Dio_lGetPinNumber_function_end-Dio_lGetPinNumber
+.L185:
+	; End of function
+	
+	.sdecl	'.rodata.CPU0.Private.DEFAULT_CONST_8BIT',data,rom,cluster('Dio_kMSPortPin')
+	.sect	'.rodata.CPU0.Private.DEFAULT_CONST_8BIT'
+Dio_kMSPortPin:	.type	object
+	.size	Dio_kMSPortPin,42
+	.byte	12
+	.space	1
+	.byte	8
+	.space	7
+	.byte	6,12
+	.space	1
+	.byte	3,8,8
+	.space	4
+	.byte	14,7,4,1
+	.space	9
+	.byte	12,3
+	.space	5
+	.byte	11,11
+	.sdecl	'.rodata.CPU0.Private.DEFAULT_CONST_16BIT',data,rom,cluster('Dio_kMaskUndefinedPortPins')
+	.sect	'.rodata.CPU0.Private.DEFAULT_CONST_16BIT'
+	.align	4
+Dio_kMaskUndefinedPortPins:	.type	object
+	.size	Dio_kMaskUndefinedPortPins,84
+	.half	5119
+	.space	2
+	.half	511
+	.space	14
+	.half	110,8012
+	.space	2
+	.half	15,511,511
+	.space	8
+	.half	32717,252,31,2
+	.space	18
+	.half	8191,15
+	.space	10
+	.half	4095,4095
+	.calls	'Dio_lCheckChannelId','Dio_lGetPortNumber'
+	.calls	'Dio_lCheckChannelId','Dio_lGetPinNumber'
+	.calls	'Dio_lCheckChannelId','Dio_lCheckAnalogChannel'
+	.calls	'Dio_lCheckChannelId','Det_ReportError'
+	.calls	'Dio_lCheckPortId','Dio_lCheckAnalogPort'
+	.calls	'Dio_lCheckPortId','Det_ReportError'
+	.calls	'Dio_lCheckGroupId','Dio_lCheckChGrpValue'
+	.calls	'Dio_lCheckGroupId','Det_ReportError'
+	.calls	'Dio_ReadChannelGroup','Dio_lErrorCheckChannelGroupDet'
+	.calls	'Dio_ReadChannelGroup','Dio_lGetPortAdr'
+	.calls	'Dio_WriteChannelGroup','Dio_lErrorCheckChannelGroupDet'
+	.calls	'Dio_WriteChannelGroup','Dio_lGetPortAdr'
+	.calls	'Dio_ReadChannel','Dio_lErrorCheckChannelDet'
+	.calls	'Dio_ReadChannel','Dio_lGetPortNumber'
+	.calls	'Dio_ReadChannel','Dio_lGetPortAdr'
+	.calls	'Dio_ReadChannel','Dio_lGetPinNumber'
+	.calls	'Dio_WriteChannel','Dio_lErrorCheckChannelDet'
+	.calls	'Dio_WriteChannel','Dio_lGetPortNumber'
+	.calls	'Dio_WriteChannel','Dio_lGetPortAdr'
+	.calls	'Dio_WriteChannel','Dio_lGetPinNumber'
+	.calls	'Dio_ReadPort','Dio_lErrorCheckPortDet'
+	.calls	'Dio_ReadPort','Dio_lGetPortAdr'
+	.calls	'Dio_WritePort','Dio_lErrorCheckPortDet'
+	.calls	'Dio_WritePort','Dio_lGetPortAdr'
+	.calls	'Dio_lCheckChannelId','',0
+	.calls	'Dio_lCheckPortId','',0
+	.calls	'Dio_lCheckGroupId','',0
+	.calls	'Dio_ReadChannelGroup','',0
+	.calls	'Dio_WriteChannelGroup','',0
+	.calls	'Dio_ReadChannel','',0
+	.calls	'Dio_WriteChannel','',0
+	.calls	'Dio_ReadPort','',0
+	.calls	'Dio_WritePort','',0
+	.calls	'Dio_lGetPortNumber','',0
+	.calls	'Dio_lGetPortAdr','',0
+	.extern	Det_ReportError
+	.extern	Dio_kConfigPtr
+	.extern	Dio_lErrorCheckChannelGroupDet
+	.extern	Dio_lErrorCheckChannelDet
+	.extern	Dio_lErrorCheckPortDet
+	.extern	Dio_lCheckChGrpValue
+	.extern	Dio_lCheckAnalogChannel
+	.extern	Dio_lCheckAnalogPort
+	.calls	'Dio_lGetPinNumber','',0
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L123:
+	.word	10062
+	.half	3
+	.word	.L124
+	.byte	4
+.L122:
+	.byte	1
+	.byte	'../MCAL/ssc/dio/src/Dio.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Havana\\workspace\\AURIX\\CliDemo\\Rel_Appl_freeRTOS_10_4_6\\',0,12,1
+	.word	.L125
+.L194:
+	.byte	2
+	.byte	'unsigned long int',0,4,7
+.L248:
+	.byte	3
+	.byte	'Dio_lIsPortAvailable31',0,3,1,210,8,25
+	.word	181
+	.byte	1,1
+.L249:
+	.byte	4
+	.byte	'Port',0,1,210,8,55
+	.word	181
+.L251:
+	.byte	5,0
+.L242:
+	.byte	3
+	.byte	'Dio_lIsPortAvailable40',0,3,1,243,8,25
+	.word	181
+	.byte	1,1
+.L244:
+	.byte	4
+	.byte	'Port',0,1,243,8,55
+	.word	181
+.L246:
+	.byte	5,0
+.L234:
+	.byte	3
+	.byte	'Dio_lIsPortAvailable',0,3,1,148,9,25
+	.word	181
+	.byte	1,1
+.L236:
+	.byte	4
+	.byte	'Port',0,1,148,9,53
+	.word	181
+.L238:
+	.byte	6,5,5,0,0
+.L277:
+	.byte	3
+	.byte	'Dio_lIsPortReadOnly31',0,3,1,181,9,25
+	.word	181
+	.byte	1,1
+.L279:
+	.byte	4
+	.byte	'Port',0,1,181,9,54
+	.word	181
+.L281:
+	.byte	5,0
+.L283:
+	.byte	3
+	.byte	'Dio_lIsPortReadOnly40',0,3,1,214,9,25
+	.word	181
+	.byte	1,1
+.L284:
+	.byte	4
+	.byte	'Port',0,1,214,9,54
+	.word	181
+.L286:
+	.byte	5,0
+.L268:
+	.byte	3
+	.byte	'Dio_lIsPortReadOnly',0,3,1,247,9,25
+	.word	181
+	.byte	1,1
+.L270:
+	.byte	4
+	.byte	'Port',0,1,247,9,52
+	.word	181
+.L272:
+	.byte	6,5,5,0,0
+.L192:
+	.byte	2
+	.byte	'unsigned short int',0,2,7
+.L190:
+	.byte	2
+	.byte	'unsigned char',0,1,8
+.L254:
+	.byte	3
+	.byte	'Dio_lIsPinAvailable',0,3,1,154,10,25
+	.word	507
+	.byte	1,1
+.L255:
+	.byte	4
+	.byte	'Port',0,1,154,10,52
+	.word	181
+.L257:
+	.byte	4
+	.byte	'Pin',0,1,154,10,64
+	.word	529
+.L259:
+	.byte	5,0,7
+	.byte	'Det_ReportError',0,2,99,13,1,1,1,1,4
+	.byte	'ModuleId',0,2,99,36
+	.word	507
+	.byte	4
+	.byte	'InstanceId',0,2,99,51
+	.word	529
+	.byte	4
+	.byte	'ApiId',0,2,99,68
+	.word	529
+	.byte	4
+	.byte	'ErrorId',0,2,99,80
+	.word	529
+	.byte	0,2
+	.byte	'unsigned int',0,4,7,2
+	.byte	'int',0,4,5,8
+	.byte	'_Ifx_P_OUT_Bits',0,3,231,2,16,4,9
+	.byte	'P0',0,1
+	.word	529
+	.byte	1,7,2,35,0,9
+	.byte	'P1',0,1
+	.word	529
+	.byte	1,6,2,35,0,9
+	.byte	'P2',0,1
+	.word	529
+	.byte	1,5,2,35,0,9
+	.byte	'P3',0,1
+	.word	529
+	.byte	1,4,2,35,0,9
+	.byte	'P4',0,1
+	.word	529
+	.byte	1,3,2,35,0,9
+	.byte	'P5',0,1
+	.word	529
+	.byte	1,2,2,35,0,9
+	.byte	'P6',0,1
+	.word	529
+	.byte	1,1,2,35,0,9
+	.byte	'P7',0,1
+	.word	529
+	.byte	1,0,2,35,0,9
+	.byte	'P8',0,1
+	.word	529
+	.byte	1,7,2,35,1,9
+	.byte	'P9',0,1
+	.word	529
+	.byte	1,6,2,35,1,9
+	.byte	'P10',0,1
+	.word	529
+	.byte	1,5,2,35,1,9
+	.byte	'P11',0,1
+	.word	529
+	.byte	1,4,2,35,1,9
+	.byte	'P12',0,1
+	.word	529
+	.byte	1,3,2,35,1,9
+	.byte	'P13',0,1
+	.word	529
+	.byte	1,2,2,35,1,9
+	.byte	'P14',0,1
+	.word	529
+	.byte	1,1,2,35,1,9
+	.byte	'P15',0,1
+	.word	529
+	.byte	1,0,2,35,1,9
+	.byte	'reserved_16',0,2
+	.word	507
+	.byte	16,0,2,35,2,0,10,3,239,4,9,4,11
+	.byte	'U',0
+	.word	698
+	.byte	4,2,35,0,11
+	.byte	'I',0
+	.word	714
+	.byte	4,2,35,0,11
+	.byte	'B',0
+	.word	721
+	.byte	4,2,35,0,0,8
+	.byte	'_Ifx_P_OMR_Bits',0,3,129,2,16,4,9
+	.byte	'PS0',0,1
+	.word	529
+	.byte	1,7,2,35,0,9
+	.byte	'PS1',0,1
+	.word	529
+	.byte	1,6,2,35,0,9
+	.byte	'PS2',0,1
+	.word	529
+	.byte	1,5,2,35,0,9
+	.byte	'PS3',0,1
+	.word	529
+	.byte	1,4,2,35,0,9
+	.byte	'PS4',0,1
+	.word	529
+	.byte	1,3,2,35,0,9
+	.byte	'PS5',0,1
+	.word	529
+	.byte	1,2,2,35,0,9
+	.byte	'PS6',0,1
+	.word	529
+	.byte	1,1,2,35,0,9
+	.byte	'PS7',0,1
+	.word	529
+	.byte	1,0,2,35,0,9
+	.byte	'PS8',0,1
+	.word	529
+	.byte	1,7,2,35,1,9
+	.byte	'PS9',0,1
+	.word	529
+	.byte	1,6,2,35,1,9
+	.byte	'PS10',0,1
+	.word	529
+	.byte	1,5,2,35,1,9
+	.byte	'PS11',0,1
+	.word	529
+	.byte	1,4,2,35,1,9
+	.byte	'PS12',0,1
+	.word	529
+	.byte	1,3,2,35,1,9
+	.byte	'PS13',0,1
+	.word	529
+	.byte	1,2,2,35,1,9
+	.byte	'PS14',0,1
+	.word	529
+	.byte	1,1,2,35,1,9
+	.byte	'PS15',0,1
+	.word	529
+	.byte	1,0,2,35,1,9
+	.byte	'PCL0',0,1
+	.word	529
+	.byte	1,7,2,35,2,9
+	.byte	'PCL1',0,1
+	.word	529
+	.byte	1,6,2,35,2,9
+	.byte	'PCL2',0,1
+	.word	529
+	.byte	1,5,2,35,2,9
+	.byte	'PCL3',0,1
+	.word	529
+	.byte	1,4,2,35,2,9
+	.byte	'PCL4',0,1
+	.word	529
+	.byte	1,3,2,35,2,9
+	.byte	'PCL5',0,1
+	.word	529
+	.byte	1,2,2,35,2,9
+	.byte	'PCL6',0,1
+	.word	529
+	.byte	1,1,2,35,2,9
+	.byte	'PCL7',0,1
+	.word	529
+	.byte	1,0,2,35,2,9
+	.byte	'PCL8',0,1
+	.word	529
+	.byte	1,7,2,35,3,9
+	.byte	'PCL9',0,1
+	.word	529
+	.byte	1,6,2,35,3,9
+	.byte	'PCL10',0,1
+	.word	529
+	.byte	1,5,2,35,3,9
+	.byte	'PCL11',0,1
+	.word	529
+	.byte	1,4,2,35,3,9
+	.byte	'PCL12',0,1
+	.word	529
+	.byte	1,3,2,35,3,9
+	.byte	'PCL13',0,1
+	.word	529
+	.byte	1,2,2,35,3,9
+	.byte	'PCL14',0,1
+	.word	529
+	.byte	1,1,2,35,3,9
+	.byte	'PCL15',0,1
+	.word	529
+	.byte	1,0,2,35,3,0,10,3,191,4,9,4,11
+	.byte	'U',0
+	.word	698
+	.byte	4,2,35,0,11
+	.byte	'I',0
+	.word	714
+	.byte	4,2,35,0,11
+	.byte	'B',0
+	.word	1037
+	.byte	4,2,35,0,0,8
+	.byte	'_Ifx_P_ID_Bits',0,3,110,16,4,9
+	.byte	'MODREV',0,1
+	.word	529
+	.byte	8,0,2,35,0,9
+	.byte	'MODTYPE',0,1
+	.word	529
+	.byte	8,0,2,35,1,9
+	.byte	'MODNUMBER',0,2
+	.word	507
+	.byte	16,0,2,35,2,0,10,3,231,3,9,4,11
+	.byte	'U',0
+	.word	698
+	.byte	4,2,35,0,11
+	.byte	'I',0
+	.word	714
+	.byte	4,2,35,0,11
+	.byte	'B',0
+	.word	1608
+	.byte	4,2,35,0,0,12,4
+	.word	529
+	.byte	13,3,0,8
+	.byte	'_Ifx_P_IOCR0_Bits',0,3,140,1,16,4,9
+	.byte	'reserved_0',0,1
+	.word	529
+	.byte	3,5,2,35,0,9
+	.byte	'PC0',0,1
+	.word	529
+	.byte	5,0,2,35,0,9
+	.byte	'reserved_8',0,1
+	.word	529
+	.byte	3,5,2,35,1,9
+	.byte	'PC1',0,1
+	.word	529
+	.byte	5,0,2,35,1,9
+	.byte	'reserved_16',0,1
+	.word	529
+	.byte	3,5,2,35,2,9
+	.byte	'PC2',0,1
+	.word	529
+	.byte	5,0,2,35,2,9
+	.byte	'reserved_24',0,1
+	.word	529
+	.byte	3,5,2,35,3,9
+	.byte	'PC3',0,1
+	.word	529
+	.byte	5,0,2,35,3,0,10,3,247,3,9,4,11
+	.byte	'U',0
+	.word	698
+	.byte	4,2,35,0,11
+	.byte	'I',0
+	.word	714
+	.byte	4,2,35,0,11
+	.byte	'B',0
+	.word	1736
+	.byte	4,2,35,0,0,8
+	.byte	'_Ifx_P_IOCR4_Bits',0,3,166,1,16,4,9
+	.byte	'reserved_0',0,1
+	.word	529
+	.byte	3,5,2,35,0,9
+	.byte	'PC4',0,1
+	.word	529
+	.byte	5,0,2,35,0,9
+	.byte	'reserved_8',0,1
+	.word	529
+	.byte	3,5,2,35,1,9
+	.byte	'PC5',0,1
+	.word	529
+	.byte	5,0,2,35,1,9
+	.byte	'reserved_16',0,1
+	.word	529
+	.byte	3,5,2,35,2,9
+	.byte	'PC6',0,1
+	.word	529
+	.byte	5,0,2,35,2,9
+	.byte	'reserved_24',0,1
+	.word	529
+	.byte	3,5,2,35,3,9
+	.byte	'PC7',0,1
+	.word	529
+	.byte	5,0,2,35,3,0,10,3,135,4,9,4,11
+	.byte	'U',0
+	.word	698
+	.byte	4,2,35,0,11
+	.byte	'I',0
+	.word	714
+	.byte	4,2,35,0,11
+	.byte	'B',0
+	.word	1951
+	.byte	4,2,35,0,0,8
+	.byte	'_Ifx_P_IOCR8_Bits',0,3,179,1,16,4,9
+	.byte	'reserved_0',0,1
+	.word	529
+	.byte	3,5,2,35,0,9
+	.byte	'PC8',0,1
+	.word	529
+	.byte	5,0,2,35,0,9
+	.byte	'reserved_8',0,1
+	.word	529
+	.byte	3,5,2,35,1,9
+	.byte	'PC9',0,1
+	.word	529
+	.byte	5,0,2,35,1,9
+	.byte	'reserved_16',0,1
+	.word	529
+	.byte	3,5,2,35,2,9
+	.byte	'PC10',0,1
+	.word	529
+	.byte	5,0,2,35,2,9
+	.byte	'reserved_24',0,1
+	.word	529
+	.byte	3,5,2,35,3,9
+	.byte	'PC11',0,1
+	.word	529
+	.byte	5,0,2,35,3,0,10,3,143,4,9,4,11
+	.byte	'U',0
+	.word	698
+	.byte	4,2,35,0,11
+	.byte	'I',0
+	.word	714
+	.byte	4,2,35,0,11
+	.byte	'B',0
+	.word	2166
+	.byte	4,2,35,0,0,8
+	.byte	'_Ifx_P_IOCR12_Bits',0,3,153,1,16,4,9
+	.byte	'reserved_0',0,1
+	.word	529
+	.byte	3,5,2,35,0,9
+	.byte	'PC12',0,1
+	.word	529
+	.byte	5,0,2,35,0,9
+	.byte	'reserved_8',0,1
+	.word	529
+	.byte	3,5,2,35,1,9
+	.byte	'PC13',0,1
+	.word	529
+	.byte	5,0,2,35,1,9
+	.byte	'reserved_16',0,1
+	.word	529
+	.byte	3,5,2,35,2,9
+	.byte	'PC14',0,1
+	.word	529
+	.byte	5,0,2,35,2,9
+	.byte	'reserved_24',0,1
+	.word	529
+	.byte	3,5,2,35,3,9
+	.byte	'PC15',0,1
+	.word	529
+	.byte	5,0,2,35,3,0,10,3,255,3,9,4,11
+	.byte	'U',0
+	.word	698
+	.byte	4,2,35,0,11
+	.byte	'I',0
+	.word	714
+	.byte	4,2,35,0,11
+	.byte	'B',0
+	.word	2383
+	.byte	4,2,35,0,0,8
+	.byte	'_Ifx_P_IN_Bits',0,3,118,16,4,9
+	.byte	'P0',0,1
+	.word	529
+	.byte	1,7,2,35,0,9
+	.byte	'P1',0,1
+	.word	529
+	.byte	1,6,2,35,0,9
+	.byte	'P2',0,1
+	.word	529
+	.byte	1,5,2,35,0,9
+	.byte	'P3',0,1
+	.word	529
+	.byte	1,4,2,35,0,9
+	.byte	'P4',0,1
+	.word	529
+	.byte	1,3,2,35,0,9
+	.byte	'P5',0,1
+	.word	529
+	.byte	1,2,2,35,0,9
+	.byte	'P6',0,1
+	.word	529
+	.byte	1,1,2,35,0,9
+	.byte	'P7',0,1
+	.word	529
+	.byte	1,0,2,35,0,9
+	.byte	'P8',0,1
+	.word	529
+	.byte	1,7,2,35,1,9
+	.byte	'P9',0,1
+	.word	529
+	.byte	1,6,2,35,1,9
+	.byte	'P10',0,1
+	.word	529
+	.byte	1,5,2,35,1,9
+	.byte	'P11',0,1
+	.word	529
+	.byte	1,4,2,35,1,9
+	.byte	'P12',0,1
+	.word	529
+	.byte	1,3,2,35,1,9
+	.byte	'P13',0,1
+	.word	529
+	.byte	1,2,2,35,1,9
+	.byte	'P14',0,1
+	.word	529
+	.byte	1,1,2,35,1,9
+	.byte	'P15',0,1
+	.word	529
+	.byte	1,0,2,35,1,9
+	.byte	'reserved_16',0,2
+	.word	507
+	.byte	16,0,2,35,2,0,10,3,239,3,9,4,11
+	.byte	'U',0
+	.word	698
+	.byte	4,2,35,0,11
+	.byte	'I',0
+	.word	714
+	.byte	4,2,35,0,11
+	.byte	'B',0
+	.word	2603
+	.byte	4,2,35,0,0,12,24
+	.word	529
+	.byte	13,23,0,8
+	.byte	'_Ifx_P_PDR0_Bits',0,3,160,3,16,4,9
+	.byte	'PD0',0,1
+	.word	529
+	.byte	3,5,2,35,0,9
+	.byte	'PL0',0,1
+	.word	529
+	.byte	1,4,2,35,0,9
+	.byte	'PD1',0,1
+	.word	529
+	.byte	3,1,2,35,0,9
+	.byte	'PL1',0,1
+	.word	529
+	.byte	1,0,2,35,0,9
+	.byte	'PD2',0,1
+	.word	529
+	.byte	3,5,2,35,1,9
+	.byte	'PL2',0,1
+	.word	529
+	.byte	1,4,2,35,1,9
+	.byte	'PD3',0,1
+	.word	529
+	.byte	3,1,2,35,1,9
+	.byte	'PL3',0,1
+	.word	529
+	.byte	1,0,2,35,1,9
+	.byte	'PD4',0,1
+	.word	529
+	.byte	3,5,2,35,2,9
+	.byte	'PL4',0,1
+	.word	529
+	.byte	1,4,2,35,2,9
+	.byte	'PD5',0,1
+	.word	529
+	.byte	3,1,2,35,2,9
+	.byte	'PL5',0,1
+	.word	529
+	.byte	1,0,2,35,2,9
+	.byte	'PD6',0,1
+	.word	529
+	.byte	3,5,2,35,3,9
+	.byte	'PL6',0,1
+	.word	529
+	.byte	1,4,2,35,3,9
+	.byte	'PD7',0,1
+	.word	529
+	.byte	3,1,2,35,3,9
+	.byte	'PL7',0,1
+	.word	529
+	.byte	1,0,2,35,3,0,10,3,135,5,9,4,11
+	.byte	'U',0
+	.word	698
+	.byte	4,2,35,0,11
+	.byte	'I',0
+	.word	714
+	.byte	4,2,35,0,11
+	.byte	'B',0
+	.word	2926
+	.byte	4,2,35,0,0,8
+	.byte	'_Ifx_P_PDR1_Bits',0,3,181,3,16,4,9
+	.byte	'PD8',0,1
+	.word	529
+	.byte	3,5,2,35,0,9
+	.byte	'PL8',0,1
+	.word	529
+	.byte	1,4,2,35,0,9
+	.byte	'PD9',0,1
+	.word	529
+	.byte	3,1,2,35,0,9
+	.byte	'PL9',0,1
+	.word	529
+	.byte	1,0,2,35,0,9
+	.byte	'PD10',0,1
+	.word	529
+	.byte	3,5,2,35,1,9
+	.byte	'PL10',0,1
+	.word	529
+	.byte	1,4,2,35,1,9
+	.byte	'PD11',0,1
+	.word	529
+	.byte	3,1,2,35,1,9
+	.byte	'PL11',0,1
+	.word	529
+	.byte	1,0,2,35,1,9
+	.byte	'PD12',0,1
+	.word	529
+	.byte	3,5,2,35,2,9
+	.byte	'PL12',0,1
+	.word	529
+	.byte	1,4,2,35,2,9
+	.byte	'PD13',0,1
+	.word	529
+	.byte	3,1,2,35,2,9
+	.byte	'PL13',0,1
+	.word	529
+	.byte	1,0,2,35,2,9
+	.byte	'PD14',0,1
+	.word	529
+	.byte	3,5,2,35,3,9
+	.byte	'PL14',0,1
+	.word	529
+	.byte	1,4,2,35,3,9
+	.byte	'PD15',0,1
+	.word	529
+	.byte	3,1,2,35,3,9
+	.byte	'PL15',0,1
+	.word	529
+	.byte	1,0,2,35,3,0,10,3,143,5,9,4,11
+	.byte	'U',0
+	.word	698
+	.byte	4,2,35,0,11
+	.byte	'I',0
+	.word	714
+	.byte	4,2,35,0,11
+	.byte	'B',0
+	.word	3230
+	.byte	4,2,35,0,0,12,8
+	.word	529
+	.byte	13,7,0,8
+	.byte	'_Ifx_P_ESR_Bits',0,3,88,16,4,9
+	.byte	'EN0',0,1
+	.word	529
+	.byte	1,7,2,35,0,9
+	.byte	'EN1',0,1
+	.word	529
+	.byte	1,6,2,35,0,9
+	.byte	'EN2',0,1
+	.word	529
+	.byte	1,5,2,35,0,9
+	.byte	'EN3',0,1
+	.word	529
+	.byte	1,4,2,35,0,9
+	.byte	'EN4',0,1
+	.word	529
+	.byte	1,3,2,35,0,9
+	.byte	'EN5',0,1
+	.word	529
+	.byte	1,2,2,35,0,9
+	.byte	'EN6',0,1
+	.word	529
+	.byte	1,1,2,35,0,9
+	.byte	'EN7',0,1
+	.word	529
+	.byte	1,0,2,35,0,9
+	.byte	'EN8',0,1
+	.word	529
+	.byte	1,7,2,35,1,9
+	.byte	'EN9',0,1
+	.word	529
+	.byte	1,6,2,35,1,9
+	.byte	'EN10',0,1
+	.word	529
+	.byte	1,5,2,35,1,9
+	.byte	'EN11',0,1
+	.word	529
+	.byte	1,4,2,35,1,9
+	.byte	'EN12',0,1
+	.word	529
+	.byte	1,3,2,35,1,9
+	.byte	'EN13',0,1
+	.word	529
+	.byte	1,2,2,35,1,9
+	.byte	'EN14',0,1
+	.word	529
+	.byte	1,1,2,35,1,9
+	.byte	'EN15',0,1
+	.word	529
+	.byte	1,0,2,35,1,9
+	.byte	'reserved_16',0,2
+	.word	507
+	.byte	16,0,2,35,2,0,10,3,223,3,9,4,11
+	.byte	'U',0
+	.word	698
+	.byte	4,2,35,0,11
+	.byte	'I',0
+	.word	714
+	.byte	4,2,35,0,11
+	.byte	'B',0
+	.word	3555
+	.byte	4,2,35,0,0,12,12
+	.word	529
+	.byte	13,11,0,8
+	.byte	'_Ifx_P_PDISC_Bits',0,3,138,3,16,4,9
+	.byte	'PDIS0',0,1
+	.word	529
+	.byte	1,7,2,35,0,9
+	.byte	'PDIS1',0,1
+	.word	529
+	.byte	1,6,2,35,0,9
+	.byte	'PDIS2',0,1
+	.word	529
+	.byte	1,5,2,35,0,9
+	.byte	'PDIS3',0,1
+	.word	529
+	.byte	1,4,2,35,0,9
+	.byte	'PDIS4',0,1
+	.word	529
+	.byte	1,3,2,35,0,9
+	.byte	'PDIS5',0,1
+	.word	529
+	.byte	1,2,2,35,0,9
+	.byte	'PDIS6',0,1
+	.word	529
+	.byte	1,1,2,35,0,9
+	.byte	'PDIS7',0,1
+	.word	529
+	.byte	1,0,2,35,0,9
+	.byte	'PDIS8',0,1
+	.word	529
+	.byte	1,7,2,35,1,9
+	.byte	'PDIS9',0,1
+	.word	529
+	.byte	1,6,2,35,1,9
+	.byte	'PDIS10',0,1
+	.word	529
+	.byte	1,5,2,35,1,9
+	.byte	'PDIS11',0,1
+	.word	529
+	.byte	1,4,2,35,1,9
+	.byte	'PDIS12',0,1
+	.word	529
+	.byte	1,3,2,35,1,9
+	.byte	'PDIS13',0,1
+	.word	529
+	.byte	1,2,2,35,1,9
+	.byte	'PDIS14',0,1
+	.word	529
+	.byte	1,1,2,35,1,9
+	.byte	'PDIS15',0,1
+	.word	529
+	.byte	1,0,2,35,1,9
+	.byte	'reserved_16',0,2
+	.word	507
+	.byte	16,0,2,35,2,0,10,3,255,4,9,4,11
+	.byte	'U',0
+	.word	698
+	.byte	4,2,35,0,11
+	.byte	'I',0
+	.word	714
+	.byte	4,2,35,0,11
+	.byte	'B',0
+	.word	3895
+	.byte	4,2,35,0,0,8
+	.byte	'_Ifx_P_PCSR_Bits',0,3,253,2,16,4,9
+	.byte	'reserved_0',0,1
+	.word	529
+	.byte	1,7,2,35,0,9
+	.byte	'SEL1',0,1
+	.word	529
+	.byte	1,6,2,35,0,9
+	.byte	'SEL2',0,1
+	.word	529
+	.byte	1,5,2,35,0,9
+	.byte	'reserved_3',0,2
+	.word	507
+	.byte	6,7,2,35,0,9
+	.byte	'SEL9',0,1
+	.word	529
+	.byte	1,6,2,35,1,9
+	.byte	'SEL10',0,1
+	.word	529
+	.byte	1,5,2,35,1,9
+	.byte	'reserved_11',0,4
+	.word	698
+	.byte	20,1,2,35,0,9
+	.byte	'LCK',0,1
+	.word	529
+	.byte	1,0,2,35,3,0,10,3,247,4,9,4,11
+	.byte	'U',0
+	.word	698
+	.byte	4,2,35,0,11
+	.byte	'I',0
+	.word	714
+	.byte	4,2,35,0,11
+	.byte	'B',0
+	.word	4261
+	.byte	4,2,35,0,0,8
+	.byte	'_Ifx_P_OMSR0_Bits',0,3,166,2,16,4,9
+	.byte	'PS0',0,1
+	.word	529
+	.byte	1,7,2,35,0,9
+	.byte	'PS1',0,1
+	.word	529
+	.byte	1,6,2,35,0,9
+	.byte	'PS2',0,1
+	.word	529
+	.byte	1,5,2,35,0,9
+	.byte	'PS3',0,1
+	.word	529
+	.byte	1,4,2,35,0,9
+	.byte	'reserved_4',0,4
+	.word	698
+	.byte	28,0,2,35,0,0,10,3,207,4,9,4,11
+	.byte	'U',0
+	.word	698
+	.byte	4,2,35,0,11
+	.byte	'I',0
+	.word	714
+	.byte	4,2,35,0,11
+	.byte	'B',0
+	.word	4472
+	.byte	4,2,35,0,0,8
+	.byte	'_Ifx_P_OMSR4_Bits',0,3,187,2,16,4,9
+	.byte	'reserved_0',0,1
+	.word	529
+	.byte	4,4,2,35,0,9
+	.byte	'PS4',0,1
+	.word	529
+	.byte	1,3,2,35,0,9
+	.byte	'PS5',0,1
+	.word	529
+	.byte	1,2,2,35,0,9
+	.byte	'PS6',0,1
+	.word	529
+	.byte	1,1,2,35,0,9
+	.byte	'PS7',0,1
+	.word	529
+	.byte	1,0,2,35,0,9
+	.byte	'reserved_8',0,4
+	.word	698
+	.byte	24,0,2,35,0,0,10,3,223,4,9,4,11
+	.byte	'U',0
+	.word	698
+	.byte	4,2,35,0,11
+	.byte	'I',0
+	.word	714
+	.byte	4,2,35,0,11
+	.byte	'B',0
+	.word	4619
+	.byte	4,2,35,0,0,8
+	.byte	'_Ifx_P_OMSR8_Bits',0,3,198,2,16,4,9
+	.byte	'reserved_0',0,1
+	.word	529
+	.byte	8,0,2,35,0,9
+	.byte	'PS8',0,1
+	.word	529
+	.byte	1,7,2,35,1,9
+	.byte	'PS9',0,1
+	.word	529
+	.byte	1,6,2,35,1,9
+	.byte	'PS10',0,1
+	.word	529
+	.byte	1,5,2,35,1,9
+	.byte	'PS11',0,1
+	.word	529
+	.byte	1,4,2,35,1,9
+	.byte	'reserved_12',0,4
+	.word	698
+	.byte	20,0,2,35,0,0,10,3,231,4,9,4,11
+	.byte	'U',0
+	.word	698
+	.byte	4,2,35,0,11
+	.byte	'I',0
+	.word	714
+	.byte	4,2,35,0,11
+	.byte	'B',0
+	.word	4788
+	.byte	4,2,35,0,0,8
+	.byte	'_Ifx_P_OMSR12_Bits',0,3,176,2,16,4,9
+	.byte	'reserved_0',0,2
+	.word	507
+	.byte	12,4,2,35,0,9
+	.byte	'PS12',0,1
+	.word	529
+	.byte	1,3,2,35,1,9
+	.byte	'PS13',0,1
+	.word	529
+	.byte	1,2,2,35,1,9
+	.byte	'PS14',0,1
+	.word	529
+	.byte	1,1,2,35,1,9
+	.byte	'PS15',0,1
+	.word	529
+	.byte	1,0,2,35,1,9
+	.byte	'reserved_16',0,2
+	.word	507
+	.byte	16,0,2,35,2,0,10,3,215,4,9,4,11
+	.byte	'U',0
+	.word	698
+	.byte	4,2,35,0,11
+	.byte	'I',0
+	.word	714
+	.byte	4,2,35,0,11
+	.byte	'B',0
+	.word	4960
+	.byte	4,2,35,0,0,8
+	.byte	'_Ifx_P_OMCR0_Bits',0,3,192,1,16,4,9
+	.byte	'reserved_0',0,2
+	.word	507
+	.byte	16,0,2,35,0,9
+	.byte	'PCL0',0,1
+	.word	529
+	.byte	1,7,2,35,2,9
+	.byte	'PCL1',0,1
+	.word	529
+	.byte	1,6,2,35,2,9
+	.byte	'PCL2',0,1
+	.word	529
+	.byte	1,5,2,35,2,9
+	.byte	'PCL3',0,1
+	.word	529
+	.byte	1,4,2,35,2,9
+	.byte	'reserved_20',0,2
+	.word	507
+	.byte	12,0,2,35,2,0,10,3,159,4,9,4,11
+	.byte	'U',0
+	.word	698
+	.byte	4,2,35,0,11
+	.byte	'I',0
+	.word	714
+	.byte	4,2,35,0,11
+	.byte	'B',0
+	.word	5135
+	.byte	4,2,35,0,0,8
+	.byte	'_Ifx_P_OMCR4_Bits',0,3,213,1,16,4,9
+	.byte	'reserved_0',0,4
+	.word	698
+	.byte	20,12,2,35,0,9
+	.byte	'PCL4',0,1
+	.word	529
+	.byte	1,3,2,35,2,9
+	.byte	'PCL5',0,1
+	.word	529
+	.byte	1,2,2,35,2,9
+	.byte	'PCL6',0,1
+	.word	529
+	.byte	1,1,2,35,2,9
+	.byte	'PCL7',0,1
+	.word	529
+	.byte	1,0,2,35,2,9
+	.byte	'reserved_24',0,1
+	.word	529
+	.byte	8,0,2,35,3,0,10,3,175,4,9,4,11
+	.byte	'U',0
+	.word	698
+	.byte	4,2,35,0,11
+	.byte	'I',0
+	.word	714
+	.byte	4,2,35,0,11
+	.byte	'B',0
+	.word	5309
+	.byte	4,2,35,0,0,8
+	.byte	'_Ifx_P_OMCR8_Bits',0,3,224,1,16,4,9
+	.byte	'reserved_0',0,4
+	.word	698
+	.byte	24,8,2,35,0,9
+	.byte	'PCL8',0,1
+	.word	529
+	.byte	1,7,2,35,3,9
+	.byte	'PCL9',0,1
+	.word	529
+	.byte	1,6,2,35,3,9
+	.byte	'PCL10',0,1
+	.word	529
+	.byte	1,5,2,35,3,9
+	.byte	'PCL11',0,1
+	.word	529
+	.byte	1,4,2,35,3,9
+	.byte	'reserved_28',0,1
+	.word	529
+	.byte	4,0,2,35,3,0,10,3,183,4,9,4,11
+	.byte	'U',0
+	.word	698
+	.byte	4,2,35,0,11
+	.byte	'I',0
+	.word	714
+	.byte	4,2,35,0,11
+	.byte	'B',0
+	.word	5483
+	.byte	4,2,35,0,0,8
+	.byte	'_Ifx_P_OMCR12_Bits',0,3,203,1,16,4,9
+	.byte	'reserved_0',0,4
+	.word	698
+	.byte	28,4,2,35,0,9
+	.byte	'PCL12',0,1
+	.word	529
+	.byte	1,3,2,35,3,9
+	.byte	'PCL13',0,1
+	.word	529
+	.byte	1,2,2,35,3,9
+	.byte	'PCL14',0,1
+	.word	529
+	.byte	1,1,2,35,3,9
+	.byte	'PCL15',0,1
+	.word	529
+	.byte	1,0,2,35,3,0,10,3,167,4,9,4,11
+	.byte	'U',0
+	.word	698
+	.byte	4,2,35,0,11
+	.byte	'I',0
+	.word	714
+	.byte	4,2,35,0,11
+	.byte	'B',0
+	.word	5659
+	.byte	4,2,35,0,0,8
+	.byte	'_Ifx_P_OMSR_Bits',0,3,209,2,16,4,9
+	.byte	'PS0',0,1
+	.word	529
+	.byte	1,7,2,35,0,9
+	.byte	'PS1',0,1
+	.word	529
+	.byte	1,6,2,35,0,9
+	.byte	'PS2',0,1
+	.word	529
+	.byte	1,5,2,35,0,9
+	.byte	'PS3',0,1
+	.word	529
+	.byte	1,4,2,35,0,9
+	.byte	'PS4',0,1
+	.word	529
+	.byte	1,3,2,35,0,9
+	.byte	'PS5',0,1
+	.word	529
+	.byte	1,2,2,35,0,9
+	.byte	'PS6',0,1
+	.word	529
+	.byte	1,1,2,35,0,9
+	.byte	'PS7',0,1
+	.word	529
+	.byte	1,0,2,35,0,9
+	.byte	'PS8',0,1
+	.word	529
+	.byte	1,7,2,35,1,9
+	.byte	'PS9',0,1
+	.word	529
+	.byte	1,6,2,35,1,9
+	.byte	'PS10',0,1
+	.word	529
+	.byte	1,5,2,35,1,9
+	.byte	'PS11',0,1
+	.word	529
+	.byte	1,4,2,35,1,9
+	.byte	'PS12',0,1
+	.word	529
+	.byte	1,3,2,35,1,9
+	.byte	'PS13',0,1
+	.word	529
+	.byte	1,2,2,35,1,9
+	.byte	'PS14',0,1
+	.word	529
+	.byte	1,1,2,35,1,9
+	.byte	'PS15',0,1
+	.word	529
+	.byte	1,0,2,35,1,9
+	.byte	'reserved_16',0,2
+	.word	507
+	.byte	16,0,2,35,2,0,10,3,199,4,9,4,11
+	.byte	'U',0
+	.word	698
+	.byte	4,2,35,0,11
+	.byte	'I',0
+	.word	714
+	.byte	4,2,35,0,11
+	.byte	'B',0
+	.word	5815
+	.byte	4,2,35,0,0,8
+	.byte	'_Ifx_P_OMCR_Bits',0,3,235,1,16,4,9
+	.byte	'reserved_0',0,2
+	.word	507
+	.byte	16,0,2,35,0,9
+	.byte	'PCL0',0,1
+	.word	529
+	.byte	1,7,2,35,2,9
+	.byte	'PCL1',0,1
+	.word	529
+	.byte	1,6,2,35,2,9
+	.byte	'PCL2',0,1
+	.word	529
+	.byte	1,5,2,35,2,9
+	.byte	'PCL3',0,1
+	.word	529
+	.byte	1,4,2,35,2,9
+	.byte	'PCL4',0,1
+	.word	529
+	.byte	1,3,2,35,2,9
+	.byte	'PCL5',0,1
+	.word	529
+	.byte	1,2,2,35,2,9
+	.byte	'PCL6',0,1
+	.word	529
+	.byte	1,1,2,35,2,9
+	.byte	'PCL7',0,1
+	.word	529
+	.byte	1,0,2,35,2,9
+	.byte	'PCL8',0,1
+	.word	529
+	.byte	1,7,2,35,3,9
+	.byte	'PCL9',0,1
+	.word	529
+	.byte	1,6,2,35,3,9
+	.byte	'PCL10',0,1
+	.word	529
+	.byte	1,5,2,35,3,9
+	.byte	'PCL11',0,1
+	.word	529
+	.byte	1,4,2,35,3,9
+	.byte	'PCL12',0,1
+	.word	529
+	.byte	1,3,2,35,3,9
+	.byte	'PCL13',0,1
+	.word	529
+	.byte	1,2,2,35,3,9
+	.byte	'PCL14',0,1
+	.word	529
+	.byte	1,1,2,35,3,9
+	.byte	'PCL15',0,1
+	.word	529
+	.byte	1,0,2,35,3,0,10,3,151,4,9,4,11
+	.byte	'U',0
+	.word	698
+	.byte	4,2,35,0,11
+	.byte	'I',0
+	.word	714
+	.byte	4,2,35,0,11
+	.byte	'B',0
+	.word	6148
+	.byte	4,2,35,0,0,12,96
+	.word	529
+	.byte	13,95,0,8
+	.byte	'_Ifx_P_ACCEN1_Bits',0,3,82,16,4,9
+	.byte	'reserved_0',0,4
+	.word	698
+	.byte	32,0,2,35,0,0,10,3,215,3,9,4,11
+	.byte	'U',0
+	.word	698
+	.byte	4,2,35,0,11
+	.byte	'I',0
+	.word	714
+	.byte	4,2,35,0,11
+	.byte	'B',0
+	.word	6505
+	.byte	4,2,35,0,0,8
+	.byte	'_Ifx_P_ACCEN0_Bits',0,3,45,16,4,9
+	.byte	'EN0',0,1
+	.word	529
+	.byte	1,7,2,35,0,9
+	.byte	'EN1',0,1
+	.word	529
+	.byte	1,6,2,35,0,9
+	.byte	'EN2',0,1
+	.word	529
+	.byte	1,5,2,35,0,9
+	.byte	'EN3',0,1
+	.word	529
+	.byte	1,4,2,35,0,9
+	.byte	'EN4',0,1
+	.word	529
+	.byte	1,3,2,35,0,9
+	.byte	'EN5',0,1
+	.word	529
+	.byte	1,2,2,35,0,9
+	.byte	'EN6',0,1
+	.word	529
+	.byte	1,1,2,35,0,9
+	.byte	'EN7',0,1
+	.word	529
+	.byte	1,0,2,35,0,9
+	.byte	'EN8',0,1
+	.word	529
+	.byte	1,7,2,35,1,9
+	.byte	'EN9',0,1
+	.word	529
+	.byte	1,6,2,35,1,9
+	.byte	'EN10',0,1
+	.word	529
+	.byte	1,5,2,35,1,9
+	.byte	'EN11',0,1
+	.word	529
+	.byte	1,4,2,35,1,9
+	.byte	'EN12',0,1
+	.word	529
+	.byte	1,3,2,35,1,9
+	.byte	'EN13',0,1
+	.word	529
+	.byte	1,2,2,35,1,9
+	.byte	'EN14',0,1
+	.word	529
+	.byte	1,1,2,35,1,9
+	.byte	'EN15',0,1
+	.word	529
+	.byte	1,0,2,35,1,9
+	.byte	'EN16',0,1
+	.word	529
+	.byte	1,7,2,35,2,9
+	.byte	'EN17',0,1
+	.word	529
+	.byte	1,6,2,35,2,9
+	.byte	'EN18',0,1
+	.word	529
+	.byte	1,5,2,35,2,9
+	.byte	'EN19',0,1
+	.word	529
+	.byte	1,4,2,35,2,9
+	.byte	'EN20',0,1
+	.word	529
+	.byte	1,3,2,35,2,9
+	.byte	'EN21',0,1
+	.word	529
+	.byte	1,2,2,35,2,9
+	.byte	'EN22',0,1
+	.word	529
+	.byte	1,1,2,35,2,9
+	.byte	'EN23',0,1
+	.word	529
+	.byte	1,0,2,35,2,9
+	.byte	'EN24',0,1
+	.word	529
+	.byte	1,7,2,35,3,9
+	.byte	'EN25',0,1
+	.word	529
+	.byte	1,6,2,35,3,9
+	.byte	'EN26',0,1
+	.word	529
+	.byte	1,5,2,35,3,9
+	.byte	'EN27',0,1
+	.word	529
+	.byte	1,4,2,35,3,9
+	.byte	'EN28',0,1
+	.word	529
+	.byte	1,3,2,35,3,9
+	.byte	'EN29',0,1
+	.word	529
+	.byte	1,2,2,35,3,9
+	.byte	'EN30',0,1
+	.word	529
+	.byte	1,1,2,35,3,9
+	.byte	'EN31',0,1
+	.word	529
+	.byte	1,0,2,35,3,0,10,3,207,3,9,4,11
+	.byte	'U',0
+	.word	698
+	.byte	4,2,35,0,11
+	.byte	'I',0
+	.word	714
+	.byte	4,2,35,0,11
+	.byte	'B',0
+	.word	6592
+	.byte	4,2,35,0,0,8
+	.byte	'_Ifx_P',0,3,159,5,25,128,2,11
+	.byte	'OUT',0
+	.word	997
+	.byte	4,2,35,0,11
+	.byte	'OMR',0
+	.word	1568
+	.byte	4,2,35,4,11
+	.byte	'ID',0
+	.word	1687
+	.byte	4,2,35,8,11
+	.byte	'reserved_C',0
+	.word	1727
+	.byte	4,2,35,12,11
+	.byte	'IOCR0',0
+	.word	1911
+	.byte	4,2,35,16,11
+	.byte	'IOCR4',0
+	.word	2126
+	.byte	4,2,35,20,11
+	.byte	'IOCR8',0
+	.word	2343
+	.byte	4,2,35,24,11
+	.byte	'IOCR12',0
+	.word	2563
+	.byte	4,2,35,28,11
+	.byte	'reserved_20',0
+	.word	1727
+	.byte	4,2,35,32,11
+	.byte	'IN',0
+	.word	2877
+	.byte	4,2,35,36,11
+	.byte	'reserved_28',0
+	.word	2917
+	.byte	24,2,35,40,11
+	.byte	'PDR0',0
+	.word	3190
+	.byte	4,2,35,64,11
+	.byte	'PDR1',0
+	.word	3506
+	.byte	4,2,35,68,11
+	.byte	'reserved_48',0
+	.word	3546
+	.byte	8,2,35,72,11
+	.byte	'ESR',0
+	.word	3846
+	.byte	4,2,35,80,11
+	.byte	'reserved_54',0
+	.word	3886
+	.byte	12,2,35,84,11
+	.byte	'PDISC',0
+	.word	4221
+	.byte	4,2,35,96,11
+	.byte	'PCSR',0
+	.word	4432
+	.byte	4,2,35,100,11
+	.byte	'reserved_64',0
+	.word	3546
+	.byte	8,2,35,104,11
+	.byte	'OMSR0',0
+	.word	4579
+	.byte	4,2,35,112,11
+	.byte	'OMSR4',0
+	.word	4748
+	.byte	4,2,35,116,11
+	.byte	'OMSR8',0
+	.word	4920
+	.byte	4,2,35,120,11
+	.byte	'OMSR12',0
+	.word	5095
+	.byte	4,2,35,124,11
+	.byte	'OMCR0',0
+	.word	5269
+	.byte	4,3,35,128,1,11
+	.byte	'OMCR4',0
+	.word	5443
+	.byte	4,3,35,132,1,11
+	.byte	'OMCR8',0
+	.word	5619
+	.byte	4,3,35,136,1,11
+	.byte	'OMCR12',0
+	.word	5775
+	.byte	4,3,35,140,1,11
+	.byte	'OMSR',0
+	.word	6108
+	.byte	4,3,35,144,1,11
+	.byte	'OMCR',0
+	.word	6456
+	.byte	4,3,35,148,1,11
+	.byte	'reserved_98',0
+	.word	6496
+	.byte	96,3,35,152,1,11
+	.byte	'ACCEN1',0
+	.word	6552
+	.byte	4,3,35,248,1,11
+	.byte	'ACCEN0',0
+	.word	7119
+	.byte	4,3,35,252,1,0,14
+	.word	7159
+.L197:
+	.byte	15
+	.word	7692
+	.byte	8
+	.byte	'Dio_ChannelGroupType',0,4,213,1,16,4,11
+	.byte	'mask',0
+	.word	507
+	.byte	2,2,35,0,11
+	.byte	'offset',0
+	.word	529
+	.byte	1,2,35,2,11
+	.byte	'port',0
+	.word	529
+	.byte	1,2,35,3,0,16
+	.word	7702
+.L213:
+	.byte	15
+	.word	7774
+	.byte	17
+	.byte	'Dio_lErrorCheckChannelGroupDet',0,5,114,14
+	.word	529
+	.byte	1,1,1,1,4
+	.byte	'ChannelGroupIdPtr',0,5,115,32
+	.word	7779
+	.byte	4
+	.byte	'ApiId',0,5,116,10
+	.word	529
+	.byte	0,17
+	.byte	'Dio_lErrorCheckChannelDet',0,5,120,14
+	.word	529
+	.byte	1,1,1,1,4
+	.byte	'ChannelId',0,5,121,20
+	.word	507
+	.byte	4
+	.byte	'ApiId',0,5,122,10
+	.word	529
+	.byte	0,17
+	.byte	'Dio_lErrorCheckPortDet',0,5,126,14
+	.word	529
+	.byte	1,1,1,1,4
+	.byte	'PortId',0,5,126,50
+	.word	529
+	.byte	4
+	.byte	'ApiId',0,5,126,64
+	.word	529
+	.byte	0,17
+	.byte	'Dio_lCheckChGrpValue',0,5,129,1,14
+	.word	529
+	.byte	1,1,1,1,4
+	.byte	'GroupIdPtr',0,5,129,1,63
+	.word	7779
+	.byte	0,17
+	.byte	'Dio_lCheckAnalogChannel',0,5,131,1,14
+	.word	529
+	.byte	1,1,1,1,4
+	.byte	'ApiId',0,5,131,1,44
+	.word	529
+	.byte	4
+	.byte	'PortReadOnly',0,5,131,1,58
+	.word	181
+	.byte	0,17
+	.byte	'Dio_lCheckAnalogPort',0,5,133,1,14
+	.word	529
+	.byte	1,1,1,1,4
+	.byte	'ApiId',0,5,133,1,41
+	.word	529
+	.byte	4
+	.byte	'PortReadOnly',0,5,133,1,55
+	.word	181
+	.byte	0,18
+	.word	202
+	.byte	19
+	.word	237
+	.byte	5,0,18
+	.word	253
+	.byte	19
+	.word	288
+	.byte	5,0,18
+	.word	304
+	.byte	19
+	.word	337
+	.byte	6,20
+	.word	202
+	.byte	19
+	.word	237
+	.byte	21
+	.word	251
+	.byte	0,5,20
+	.word	253
+	.byte	19
+	.word	288
+	.byte	21
+	.word	302
+	.byte	0,5,0,0,18
+	.word	356
+	.byte	19
+	.word	390
+	.byte	5,0,18
+	.word	406
+	.byte	19
+	.word	440
+	.byte	5,0,18
+	.word	456
+	.byte	19
+	.word	488
+	.byte	6,20
+	.word	356
+	.byte	19
+	.word	390
+	.byte	21
+	.word	404
+	.byte	0,5,20
+	.word	406
+	.byte	19
+	.word	440
+	.byte	21
+	.word	454
+	.byte	0,5,0,0,18
+	.word	546
+	.byte	19
+	.word	578
+	.byte	19
+	.word	592
+	.byte	5,0,22,1,15
+	.word	8365
+	.byte	23
+	.byte	'__codeptr',0,1,1,1
+	.word	8367
+	.byte	23
+	.byte	'uint8',0,6,90,29
+	.word	529
+	.byte	23
+	.byte	'uint16',0,6,92,29
+	.word	507
+	.byte	23
+	.byte	'uint32',0,6,94,29
+	.word	181
+	.byte	23
+	.byte	'Ifx_P_ACCEN0_Bits',0,3,79,3
+	.word	6592
+	.byte	23
+	.byte	'Ifx_P_ACCEN1_Bits',0,3,85,3
+	.word	6505
+	.byte	23
+	.byte	'Ifx_P_ESR_Bits',0,3,107,3
+	.word	3555
+	.byte	23
+	.byte	'Ifx_P_ID_Bits',0,3,115,3
+	.word	1608
+	.byte	23
+	.byte	'Ifx_P_IN_Bits',0,3,137,1,3
+	.word	2603
+	.byte	23
+	.byte	'Ifx_P_IOCR0_Bits',0,3,150,1,3
+	.word	1736
+	.byte	23
+	.byte	'Ifx_P_IOCR12_Bits',0,3,163,1,3
+	.word	2383
+	.byte	23
+	.byte	'Ifx_P_IOCR4_Bits',0,3,176,1,3
+	.word	1951
+	.byte	23
+	.byte	'Ifx_P_IOCR8_Bits',0,3,189,1,3
+	.word	2166
+	.byte	23
+	.byte	'Ifx_P_OMCR0_Bits',0,3,200,1,3
+	.word	5135
+	.byte	23
+	.byte	'Ifx_P_OMCR12_Bits',0,3,210,1,3
+	.word	5659
+	.byte	23
+	.byte	'Ifx_P_OMCR4_Bits',0,3,221,1,3
+	.word	5309
+	.byte	23
+	.byte	'Ifx_P_OMCR8_Bits',0,3,232,1,3
+	.word	5483
+	.byte	23
+	.byte	'Ifx_P_OMCR_Bits',0,3,254,1,3
+	.word	6148
+	.byte	23
+	.byte	'Ifx_P_OMR_Bits',0,3,163,2,3
+	.word	1037
+	.byte	23
+	.byte	'Ifx_P_OMSR0_Bits',0,3,173,2,3
+	.word	4472
+	.byte	23
+	.byte	'Ifx_P_OMSR12_Bits',0,3,184,2,3
+	.word	4960
+	.byte	23
+	.byte	'Ifx_P_OMSR4_Bits',0,3,195,2,3
+	.word	4619
+	.byte	23
+	.byte	'Ifx_P_OMSR8_Bits',0,3,206,2,3
+	.word	4788
+	.byte	23
+	.byte	'Ifx_P_OMSR_Bits',0,3,228,2,3
+	.word	5815
+	.byte	23
+	.byte	'Ifx_P_OUT_Bits',0,3,250,2,3
+	.word	721
+	.byte	23
+	.byte	'Ifx_P_PCSR_Bits',0,3,135,3,3
+	.word	4261
+	.byte	23
+	.byte	'Ifx_P_PDISC_Bits',0,3,157,3,3
+	.word	3895
+	.byte	23
+	.byte	'Ifx_P_PDR0_Bits',0,3,178,3,3
+	.word	2926
+	.byte	23
+	.byte	'Ifx_P_PDR1_Bits',0,3,199,3,3
+	.word	3230
+	.byte	23
+	.byte	'Ifx_P_ACCEN0',0,3,212,3,3
+	.word	7119
+	.byte	23
+	.byte	'Ifx_P_ACCEN1',0,3,220,3,3
+	.word	6552
+	.byte	23
+	.byte	'Ifx_P_ESR',0,3,228,3,3
+	.word	3846
+	.byte	23
+	.byte	'Ifx_P_ID',0,3,236,3,3
+	.word	1687
+	.byte	23
+	.byte	'Ifx_P_IN',0,3,244,3,3
+	.word	2877
+	.byte	23
+	.byte	'Ifx_P_IOCR0',0,3,252,3,3
+	.word	1911
+	.byte	23
+	.byte	'Ifx_P_IOCR12',0,3,132,4,3
+	.word	2563
+	.byte	23
+	.byte	'Ifx_P_IOCR4',0,3,140,4,3
+	.word	2126
+	.byte	23
+	.byte	'Ifx_P_IOCR8',0,3,148,4,3
+	.word	2343
+	.byte	23
+	.byte	'Ifx_P_OMCR',0,3,156,4,3
+	.word	6456
+	.byte	23
+	.byte	'Ifx_P_OMCR0',0,3,164,4,3
+	.word	5269
+	.byte	23
+	.byte	'Ifx_P_OMCR12',0,3,172,4,3
+	.word	5775
+	.byte	23
+	.byte	'Ifx_P_OMCR4',0,3,180,4,3
+	.word	5443
+	.byte	23
+	.byte	'Ifx_P_OMCR8',0,3,188,4,3
+	.word	5619
+	.byte	23
+	.byte	'Ifx_P_OMR',0,3,196,4,3
+	.word	1568
+	.byte	23
+	.byte	'Ifx_P_OMSR',0,3,204,4,3
+	.word	6108
+	.byte	23
+	.byte	'Ifx_P_OMSR0',0,3,212,4,3
+	.word	4579
+	.byte	23
+	.byte	'Ifx_P_OMSR12',0,3,220,4,3
+	.word	5095
+	.byte	23
+	.byte	'Ifx_P_OMSR4',0,3,228,4,3
+	.word	4748
+	.byte	23
+	.byte	'Ifx_P_OMSR8',0,3,236,4,3
+	.word	4920
+	.byte	23
+	.byte	'Ifx_P_OUT',0,3,244,4,3
+	.word	997
+	.byte	23
+	.byte	'Ifx_P_PCSR',0,3,252,4,3
+	.word	4432
+	.byte	23
+	.byte	'Ifx_P_PDISC',0,3,132,5,3
+	.word	4221
+	.byte	23
+	.byte	'Ifx_P_PDR0',0,3,140,5,3
+	.word	3190
+	.byte	23
+	.byte	'Ifx_P_PDR1',0,3,148,5,3
+	.word	3506
+	.byte	14
+	.word	7159
+	.byte	23
+	.byte	'Ifx_P',0,3,193,5,3
+	.word	9581
+	.byte	23
+	.byte	'Dio_LevelType',0,4,193,1,17
+	.word	529
+	.byte	23
+	.byte	'Dio_ChannelType',0,4,199,1,17
+	.word	507
+	.byte	23
+	.byte	'Dio_PortType',0,4,205,1,17
+	.word	529
+	.byte	23
+	.byte	'Dio_PortLevelType',0,4,208,1,17
+	.word	507
+	.byte	23
+	.byte	'Dio_ChannelGroupType',0,4,221,1,3
+	.word	7702
+	.byte	8
+	.byte	'Dio_PortChannelIdType',0,4,223,1,16,8,11
+	.byte	'Dio_PortIdConfig',0
+	.word	181
+	.byte	4,2,35,0,11
+	.byte	'Dio_ChannelConfig',0
+	.word	181
+	.byte	4,2,35,4,0,23
+	.byte	'Dio_PortChannelIdType',0,4,229,1,2
+	.word	9728
+	.byte	16
+	.word	9728
+	.byte	15
+	.word	9841
+	.byte	8
+	.byte	'Dio_ConfigType',0,4,231,1,16,12,11
+	.byte	'Dio_PortChannelConfigPtr',0
+	.word	9846
+	.byte	4,2,35,0,11
+	.byte	'Dio_ChannelGroupConfigPtr',0
+	.word	7779
+	.byte	4,2,35,4,11
+	.byte	'Dio_ChannelGroupConfigSize',0
+	.word	181
+	.byte	4,2,35,8,0,23
+	.byte	'Dio_ConfigType',0,4,135,2,2
+	.word	9851
+	.byte	16
+	.word	9851
+	.byte	15
+	.word	10002
+	.byte	24
+	.byte	'Dio_kConfigPtr',0,5,83,36
+	.word	10007
+	.byte	1,1,12,42
+	.word	529
+	.byte	13,41,0
+.L362:
+	.byte	16
+	.word	10037
+	.byte	12,84
+	.word	507
+	.byte	13,41,0
+.L363:
+	.byte	16
+	.word	10051
+	.byte	0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L124:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,36,0,3,8,11,15,62,15,0,0,3,46,1,3,8,32,13,58,15,59,15
+	.byte	57,15,73,19,54,15,39,12,0,0,4,5,0,3,8,58,15,59,15,57,15,73,19,0,0,5,11,0,0,0,6,11,1,0,0,7,46,1,3,8,58
+	.byte	15,59,15,57,15,54,15,39,12,63,12,60,12,0,0,8,19,1,3,8,58,15,59,15,57,15,11,15,0,0,9,13,0,3,8,11,15,73
+	.byte	19,13,15,12,15,56,9,0,0,10,23,1,58,15,59,15,57,15,11,15,0,0,11,13,0,3,8,73,19,11,15,56,9,0,0,12,1,1,11
+	.byte	15,73,19,0,0,13,33,0,47,15,0,0,14,53,0,73,19,0,0,15,15,0,73,19,0,0,16,38,0,73,19,0,0,17,46,1,3,8,58,15
+	.byte	59,15,57,15,73,19,54,15,39,12,63,12,60,12,0,0,18,46,1,49,19,0,0,19,5,0,49,19,0,0,20,29,1,49,19,0,0,21
+	.byte	11,0,49,19,0,0,22,21,0,54,15,0,0,23,22,0,3,8,58,15,59,15,57,15,73,19,0,0,24,52,0,3,8,58,15,59,15,57,15
+	.byte	73,19,63,12,60,12,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L125:
+	.word	.L477-.L476
+.L476:
+	.half	3
+	.word	.L479-.L478
+.L478:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1
+	.byte	'C:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\BSW\\\\integration_general\\\\inc',0
+	.byte	'C:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\general\\\\tricore\\\\inc\\\\tc23x',0
+	.byte	'C:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\dio\\\\inc',0
+	.byte	'C:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\general\\\\tricore\\\\inc',0,0
+	.byte	'../MCAL/ssc/dio/src/Dio.c',0,0,0,0
+	.byte	'Det.h',0,1,0,0
+	.byte	'IfxPort_regdef.h',0,2,0,0
+	.byte	'Dio.h',0,3,0,0
+	.byte	'Dio_Ver.h',0,3,0,0
+	.byte	'Platform_Types.h',0,4,0,0,0
+.L479:
+.L477:
+	.sdecl	'.debug_info',debug,cluster('Dio_ReadChannel')
+	.sect	'.debug_info'
+.L126:
+	.word	337
+	.half	3
+	.word	.L127
+	.byte	4,1
+	.byte	'../MCAL/ssc/dio/src/Dio.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Havana\\workspace\\AURIX\\CliDemo\\Rel_Appl_freeRTOS_10_4_6\\',0,12,1
+	.word	.L129,.L128
+	.byte	2
+	.word	.L122
+	.byte	3
+	.byte	'Dio_ReadChannel',0,1,213,6,15
+	.word	.L190
+	.byte	1,1,1
+	.word	.L109,.L191,.L108
+	.byte	4
+	.byte	'ChannelId',0,1,213,6,47
+	.word	.L192,.L193
+	.byte	5
+	.word	.L109,.L191
+	.byte	6
+	.byte	'PinPosition',0,1,215,6,17
+	.word	.L194,.L195
+	.byte	6
+	.byte	'RetVal',0,1,216,6,17
+	.word	.L190,.L196
+	.byte	6
+	.byte	'GetPortAddressPtr',0,1,217,6,10
+	.word	.L197,.L198
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dio_ReadChannel')
+	.sect	'.debug_abbrev'
+.L127:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dio_ReadChannel')
+	.sect	'.debug_line'
+.L128:
+	.word	.L481-.L480
+.L480:
+	.half	3
+	.word	.L483-.L482
+.L482:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../MCAL/ssc/dio/src/Dio.c',0,0,0,0,0
+.L483:
+	.byte	5,15,7,0,5,2
+	.word	.L109
+	.byte	3,212,6,1,5,10,9
+	.half	.L431-.L109
+	.byte	3,7,1,5,42,9
+	.half	.L433-.L431
+	.byte	3,4,1,5,3,9
+	.half	.L430-.L433
+	.byte	1,5,60,7,9
+	.half	.L484-.L430
+	.byte	3,7,1,5,59,9
+	.half	.L435-.L484
+	.byte	1,5,23,9
+	.half	.L436-.L435
+	.byte	1,5,20,9
+	.half	.L438-.L436
+	.byte	3,3,1,5,55,9
+	.half	.L485-.L438
+	.byte	1,5,34,9
+	.half	.L437-.L485
+	.byte	1,5,47,9
+	.half	.L440-.L437
+	.byte	3,3,1,5,23,9
+	.half	.L432-.L440
+	.byte	1,5,5,9
+	.half	.L441-.L432
+	.byte	1,5,14,7,9
+	.half	.L486-.L441
+	.byte	3,2,1,5,3,9
+	.half	.L87-.L486
+	.byte	3,3,1,5,1,9
+	.half	.L89-.L87
+	.byte	3,1,1,7,9
+	.half	.L130-.L89
+	.byte	0,1,1
+.L481:
+	.sdecl	'.debug_ranges',debug,cluster('Dio_ReadChannel')
+	.sect	'.debug_ranges'
+.L129:
+	.word	-1,.L109,0,.L130-.L109,0,0
+	.sdecl	'.debug_info',debug,cluster('Dio_WriteChannel')
+	.sect	'.debug_info'
+.L131:
+	.word	328
+	.half	3
+	.word	.L132
+	.byte	4,1
+	.byte	'../MCAL/ssc/dio/src/Dio.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Havana\\workspace\\AURIX\\CliDemo\\Rel_Appl_freeRTOS_10_4_6\\',0,12,1
+	.word	.L134,.L133
+	.byte	2
+	.word	.L122
+	.byte	3
+	.byte	'Dio_WriteChannel',0,1,153,7,6,1,1,1
+	.word	.L111,.L199,.L110
+	.byte	4
+	.byte	'ChannelId',0,1,153,7,39
+	.word	.L192,.L200
+	.byte	4
+	.byte	'Level',0,1,153,7,64
+	.word	.L190,.L201
+	.byte	5
+	.word	.L111,.L199
+	.byte	6
+	.byte	'GetPortAddressPtr',0,1,160,7,19
+	.word	.L197,.L202
+	.byte	6
+	.byte	'OmrVal',0,1,161,7,10
+	.word	.L194,.L203
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dio_WriteChannel')
+	.sect	'.debug_abbrev'
+.L132:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6,52,0,3
+	.byte	8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dio_WriteChannel')
+	.sect	'.debug_line'
+.L133:
+	.word	.L488-.L487
+.L487:
+	.half	3
+	.word	.L490-.L489
+.L489:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../MCAL/ssc/dio/src/Dio.c',0,0,0,0,0
+.L490:
+	.byte	5,6,7,0,5,2
+	.word	.L111
+	.byte	3,152,7,1,5,12,9
+	.half	.L446-.L111
+	.byte	3,10,1,5,42,9
+	.half	.L447-.L446
+	.byte	3,3,1,5,3,9
+	.half	.L443-.L447
+	.byte	1,5,7,7,9
+	.half	.L491-.L443
+	.byte	3,11,1,5,16,7,9
+	.half	.L492-.L491
+	.byte	3,2,1,5,62,9
+	.half	.L91-.L492
+	.byte	3,3,1,5,61,9
+	.half	.L450-.L91
+	.byte	1,5,25,9
+	.half	.L451-.L450
+	.byte	1,5,67,9
+	.half	.L453-.L451
+	.byte	3,4,1,5,46,9
+	.half	.L452-.L453
+	.byte	1,5,32,9
+	.half	.L448-.L452
+	.byte	3,127,1,5,1,9
+	.half	.L90-.L448
+	.byte	3,14,1,7,9
+	.half	.L135-.L90
+	.byte	0,1,1
+.L488:
+	.sdecl	'.debug_ranges',debug,cluster('Dio_WriteChannel')
+	.sect	'.debug_ranges'
+.L134:
+	.word	-1,.L111,0,.L135-.L111,0,0
+	.sdecl	'.debug_info',debug,cluster('Dio_ReadPort')
+	.sect	'.debug_info'
+.L136:
+	.word	306
+	.half	3
+	.word	.L137
+	.byte	4,1
+	.byte	'../MCAL/ssc/dio/src/Dio.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Havana\\workspace\\AURIX\\CliDemo\\Rel_Appl_freeRTOS_10_4_6\\',0,12,1
+	.word	.L139,.L138
+	.byte	2
+	.word	.L122
+	.byte	3
+	.byte	'Dio_ReadPort',0,1,228,7,19
+	.word	.L192
+	.byte	1,1,1
+	.word	.L113,.L204,.L112
+	.byte	4
+	.byte	'PortId',0,1,228,7,45
+	.word	.L190,.L205
+	.byte	5
+	.word	.L113,.L204
+	.byte	6
+	.byte	'GetPortAddressPtr',0,1,230,7,22
+	.word	.L197,.L206
+	.byte	6
+	.byte	'RetVal',0,1,231,7,22
+	.word	.L192,.L207
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dio_ReadPort')
+	.sect	'.debug_abbrev'
+.L137:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dio_ReadPort')
+	.sect	'.debug_line'
+.L138:
+	.word	.L494-.L493
+.L493:
+	.half	3
+	.word	.L496-.L495
+.L495:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../MCAL/ssc/dio/src/Dio.c',0,0,0,0,0
+.L496:
+	.byte	5,19,7,0,5,2
+	.word	.L113
+	.byte	3,227,7,1,5,10,9
+	.half	.L456-.L113
+	.byte	3,11,1,5,36,9
+	.half	.L457-.L456
+	.byte	3,2,1,5,3,9
+	.half	.L455-.L457
+	.byte	1,5,43,7,9
+	.half	.L497-.L455
+	.byte	3,8,1,5,57,9
+	.half	.L460-.L497
+	.byte	3,1,1,5,17,9
+	.half	.L498-.L460
+	.byte	1,5,44,9
+	.half	.L458-.L498
+	.byte	3,1,1,5,18,9
+	.half	.L499-.L458
+	.byte	1,5,44,9
+	.half	.L500-.L499
+	.byte	1,5,60,9
+	.half	.L461-.L500
+	.byte	3,127,1,5,3,9
+	.half	.L92-.L461
+	.byte	3,4,1,5,1,9
+	.half	.L93-.L92
+	.byte	3,1,1,7,9
+	.half	.L140-.L93
+	.byte	0,1,1
+.L494:
+	.sdecl	'.debug_ranges',debug,cluster('Dio_ReadPort')
+	.sect	'.debug_ranges'
+.L139:
+	.word	-1,.L113,0,.L140-.L113,0,0
+	.sdecl	'.debug_info',debug,cluster('Dio_WritePort')
+	.sect	'.debug_info'
+.L141:
+	.word	302
+	.half	3
+	.word	.L142
+	.byte	4,1
+	.byte	'../MCAL/ssc/dio/src/Dio.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Havana\\workspace\\AURIX\\CliDemo\\Rel_Appl_freeRTOS_10_4_6\\',0,12,1
+	.word	.L144,.L143
+	.byte	2
+	.word	.L122
+	.byte	3
+	.byte	'Dio_WritePort',0,1,158,8,6,1,1,1
+	.word	.L115,.L208,.L114
+	.byte	4
+	.byte	'PortId',0,1,158,8,34
+	.word	.L190,.L209
+	.byte	4
+	.byte	'Level',0,1,158,8,60
+	.word	.L192,.L210
+	.byte	5
+	.word	.L115,.L208
+	.byte	6
+	.byte	'GetPortAddressPtr',0,1,165,8,19
+	.word	.L197,.L211
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dio_WritePort')
+	.sect	'.debug_abbrev'
+.L142:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6,52,0,3
+	.byte	8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dio_WritePort')
+	.sect	'.debug_line'
+.L143:
+	.word	.L502-.L501
+.L501:
+	.half	3
+	.word	.L504-.L503
+.L503:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../MCAL/ssc/dio/src/Dio.c',0,0,0,0,0
+.L504:
+	.byte	5,6,7,0,5,2
+	.word	.L115
+	.byte	3,157,8,1,5,36,9
+	.half	.L466-.L115
+	.byte	3,11,1,5,3,9
+	.half	.L464-.L466
+	.byte	1,5,43,7,9
+	.half	.L505-.L464
+	.byte	3,8,1,5,32,9
+	.half	.L468-.L505
+	.byte	3,1,1,5,1,9
+	.half	.L94-.L468
+	.byte	3,2,1,7,9
+	.half	.L145-.L94
+	.byte	0,1,1
+.L502:
+	.sdecl	'.debug_ranges',debug,cluster('Dio_WritePort')
+	.sect	'.debug_ranges'
+.L144:
+	.word	-1,.L115,0,.L145-.L115,0,0
+	.sdecl	'.debug_info',debug,cluster('Dio_ReadChannelGroup')
+	.sect	'.debug_info'
+.L146:
+	.word	325
+	.half	3
+	.word	.L147
+	.byte	4,1
+	.byte	'../MCAL/ssc/dio/src/Dio.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Havana\\workspace\\AURIX\\CliDemo\\Rel_Appl_freeRTOS_10_4_6\\',0,12,1
+	.word	.L149,.L148
+	.byte	2
+	.word	.L122
+	.byte	3
+	.byte	'Dio_ReadChannelGroup',0,1,206,5,19
+	.word	.L192
+	.byte	1,1,1
+	.word	.L105,.L212,.L104
+	.byte	4
+	.byte	'ChannelGroupIdPtr',0,1,208,5,31
+	.word	.L213,.L214
+	.byte	5
+	.word	.L105,.L212
+	.byte	6
+	.byte	'GetPortAddressPtr',0,1,211,5,22
+	.word	.L197,.L215
+	.byte	6
+	.byte	'RetVal',0,1,212,5,22
+	.word	.L192,.L216
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dio_ReadChannelGroup')
+	.sect	'.debug_abbrev'
+.L147:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dio_ReadChannelGroup')
+	.sect	'.debug_line'
+.L148:
+	.word	.L507-.L506
+.L506:
+	.half	3
+	.word	.L509-.L508
+.L508:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../MCAL/ssc/dio/src/Dio.c',0,0,0,0,0
+.L509:
+	.byte	5,19,7,0,5,2
+	.word	.L105
+	.byte	3,205,5,1,5,10,9
+	.half	.L417-.L105
+	.byte	3,11,1,5,54,9
+	.half	.L418-.L417
+	.byte	3,3,1,5,3,9
+	.half	.L416-.L418
+	.byte	3,127,1,5,59,7,9
+	.half	.L510-.L416
+	.byte	3,9,1,5,56,9
+	.half	.L419-.L510
+	.byte	3,1,1,5,61,9
+	.half	.L511-.L419
+	.byte	3,1,1,5,59,9
+	.half	.L512-.L511
+	.byte	3,127,1,5,15,9
+	.half	.L513-.L512
+	.byte	1,5,43,9
+	.half	.L514-.L513
+	.byte	3,4,1,5,23,9
+	.half	.L515-.L514
+	.byte	1,5,3,9
+	.half	.L84-.L515
+	.byte	3,2,1,5,1,9
+	.half	.L85-.L84
+	.byte	3,1,1,7,9
+	.half	.L150-.L85
+	.byte	0,1,1
+.L507:
+	.sdecl	'.debug_ranges',debug,cluster('Dio_ReadChannelGroup')
+	.sect	'.debug_ranges'
+.L149:
+	.word	-1,.L105,0,.L150-.L105,0,0
+	.sdecl	'.debug_info',debug,cluster('Dio_WriteChannelGroup')
+	.sect	'.debug_info'
+.L151:
+	.word	368
+	.half	3
+	.word	.L152
+	.byte	4,1
+	.byte	'../MCAL/ssc/dio/src/Dio.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Havana\\workspace\\AURIX\\CliDemo\\Rel_Appl_freeRTOS_10_4_6\\',0,12,1
+	.word	.L154,.L153
+	.byte	2
+	.word	.L122
+	.byte	3
+	.byte	'Dio_WriteChannelGroup',0,1,144,6,6,1,1,1
+	.word	.L107,.L217,.L106
+	.byte	4
+	.byte	'ChannelGroupIdPtr',0,1,146,6,31
+	.word	.L213,.L218
+	.byte	4
+	.byte	'Level',0,1,147,6,21
+	.word	.L192,.L219
+	.byte	5
+	.word	.L107,.L217
+	.byte	6
+	.byte	'GetPortAddressPtr',0,1,155,6,19
+	.word	.L197,.L220
+	.byte	6
+	.byte	'PortVal',0,1,156,6,19
+	.word	.L194,.L221
+	.byte	6
+	.byte	'PortResetVal',0,1,157,6,19
+	.word	.L194,.L222
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dio_WriteChannelGroup')
+	.sect	'.debug_abbrev'
+.L152:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,54,15
+	.byte	39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6,52,0,3
+	.byte	8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dio_WriteChannelGroup')
+	.sect	'.debug_line'
+.L153:
+	.word	.L517-.L516
+.L516:
+	.half	3
+	.word	.L519-.L518
+.L518:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../MCAL/ssc/dio/src/Dio.c',0,0,0,0,0
+.L519:
+	.byte	5,6,7,0,5,2
+	.word	.L107
+	.byte	3,143,6,1,5,53,9
+	.half	.L424-.L107
+	.byte	3,17,1,5,3,9
+	.half	.L421-.L424
+	.byte	3,127,1,5,59,7,9
+	.half	.L520-.L421
+	.byte	3,8,1,5,39,9
+	.half	.L521-.L520
+	.byte	1,5,65,9
+	.half	.L425-.L521
+	.byte	3,1,1,5,69,9
+	.half	.L426-.L425
+	.byte	3,127,1,5,22,9
+	.half	.L522-.L426
+	.byte	3,4,1,5,60,9
+	.half	.L523-.L522
+	.byte	1,5,32,9
+	.half	.L427-.L523
+	.byte	1,5,40,9
+	.half	.L524-.L427
+	.byte	3,2,1,5,24,9
+	.half	.L428-.L524
+	.byte	1,5,58,9
+	.half	.L525-.L428
+	.byte	3,4,1,5,30,9
+	.half	.L429-.L525
+	.byte	3,1,1,5,1,9
+	.half	.L86-.L429
+	.byte	3,2,1,7,9
+	.half	.L155-.L86
+	.byte	0,1,1
+.L517:
+	.sdecl	'.debug_ranges',debug,cluster('Dio_WriteChannelGroup')
+	.sect	'.debug_ranges'
+.L154:
+	.word	-1,.L107,0,.L155-.L107,0,0
+	.sdecl	'.debug_info',debug,cluster('Dio_lCheckChannelId')
+	.sect	'.debug_info'
+.L156:
+	.word	1179
+	.half	3
+	.word	.L157
+	.byte	4,1
+	.byte	'../MCAL/ssc/dio/src/Dio.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Havana\\workspace\\AURIX\\CliDemo\\Rel_Appl_freeRTOS_10_4_6\\',0,12,1
+	.word	.L159,.L158
+	.byte	2
+	.word	.L122
+	.byte	3
+	.byte	'Dio_lCheckChannelId',0,1,242,2,7
+	.word	.L190
+	.byte	1,1,1
+	.word	.L99,.L223,.L98
+	.byte	4
+	.byte	'ApiId',0,1,242,2,33
+	.word	.L190,.L224
+	.byte	4
+	.byte	'ChannelId',0,1,242,2,56
+	.word	.L192,.L225
+	.byte	5
+	.word	.L99,.L223
+	.byte	6
+	.byte	'PortNumber',0,1,244,2,16
+	.word	.L194,.L226
+	.byte	6
+	.byte	'Index',0,1,245,2,16
+	.word	.L194,.L227
+	.byte	6
+	.byte	'ConfigIndex',0,1,246,2,16
+	.word	.L194,.L228
+	.byte	6
+	.byte	'PortReadOnly',0,1,247,2,16
+	.word	.L194,.L229
+	.byte	6
+	.byte	'PortAvailable',0,1,248,2,16
+	.word	.L194,.L230
+	.byte	6
+	.byte	'PinAvailable',0,1,249,2,16
+	.word	.L194,.L231
+	.byte	6
+	.byte	'PinNumber',0,1,250,2,16
+	.word	.L190,.L232
+	.byte	6
+	.byte	'ErrStatus',0,1,251,2,16
+	.word	.L190,.L233
+	.byte	7
+	.word	.L234,.L235,.L8
+	.byte	8
+	.word	.L236,.L237
+	.byte	9
+	.word	.L238,.L239
+	.byte	6
+	.byte	'RetVal',0,1,150,9,10
+	.word	.L194,.L241
+	.byte	7
+	.word	.L242,.L243,.L5
+	.byte	8
+	.word	.L244,.L245
+	.byte	10
+	.word	.L246,.L243,.L5
+	.byte	6
+	.byte	'RetVal',0,1,245,8,10
+	.word	.L194,.L247
+	.byte	0,0,7
+	.word	.L248,.L4,.L6
+	.byte	8
+	.word	.L249,.L250
+	.byte	9
+	.word	.L251,.L252
+	.byte	6
+	.byte	'RetVal',0,1,212,8,10
+	.word	.L194,.L253
+	.byte	0,0,7
+	.word	.L248,.L9,.L240
+	.byte	8
+	.word	.L249,.L250
+	.byte	0,0,0,7
+	.word	.L254,.L8,.L9
+	.byte	8
+	.word	.L255,.L256
+	.byte	8
+	.word	.L257,.L258
+	.byte	9
+	.word	.L259,.L260
+	.byte	6
+	.byte	'RetVal',0,1,156,10,9
+	.word	.L192,.L261
+	.byte	0,0,7
+	.word	.L234,.L9,.L240
+	.byte	8
+	.word	.L236,.L237
+	.byte	0,7
+	.word	.L254,.L240,.L10
+	.byte	8
+	.word	.L255,.L256
+	.byte	8
+	.word	.L257,.L258
+	.byte	0,7
+	.word	.L234,.L14,.L262
+	.byte	8
+	.word	.L236,.L237
+	.byte	10
+	.word	.L238,.L14,.L262
+	.byte	6
+	.byte	'RetVal',0,1,150,9,10
+	.word	.L194,.L263
+	.byte	7
+	.word	.L242,.L264,.L16
+	.byte	8
+	.word	.L244,.L245
+	.byte	10
+	.word	.L246,.L264,.L16
+	.byte	6
+	.byte	'RetVal',0,1,245,8,10
+	.word	.L194,.L265
+	.byte	0,0,7
+	.word	.L248,.L15,.L17
+	.byte	8
+	.word	.L249,.L250
+	.byte	9
+	.word	.L251,.L266
+	.byte	6
+	.byte	'RetVal',0,1,212,8,10
+	.word	.L194,.L267
+	.byte	0,0,7
+	.word	.L248,.L19,.L262
+	.byte	8
+	.word	.L249,.L250
+	.byte	0,0,0,7
+	.word	.L268,.L269,.L25
+	.byte	8
+	.word	.L270,.L271
+	.byte	9
+	.word	.L272,.L273
+	.byte	6
+	.byte	'RetVal',0,1,249,9,10
+	.word	.L194,.L276
+	.byte	7
+	.word	.L277,.L278,.L22
+	.byte	8
+	.word	.L279,.L280
+	.byte	10
+	.word	.L281,.L278,.L22
+	.byte	6
+	.byte	'RetVal',0,1,183,9,10
+	.word	.L194,.L282
+	.byte	0,0,7
+	.word	.L283,.L21,.L23
+	.byte	8
+	.word	.L284,.L285
+	.byte	9
+	.word	.L286,.L287
+	.byte	6
+	.byte	'RetVal',0,1,216,9,10
+	.word	.L194,.L288
+	.byte	0,0,7
+	.word	.L283,.L274,.L275
+	.byte	8
+	.word	.L284,.L285
+	.byte	0,0,0,7
+	.word	.L268,.L274,.L275
+	.byte	8
+	.word	.L270,.L271
+	.byte	0,0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dio_lCheckChannelId')
+	.sect	'.debug_abbrev'
+.L157:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,7,29,1,49,16,17,1,18,1,0,0,8,5,0,49,16,2,6,0,0,9,11,1,49,16,85
+	.byte	6,0,0,10,11,1,49,16,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dio_lCheckChannelId')
+	.sect	'.debug_line'
+.L158:
+	.word	.L527-.L526
+.L526:
+	.half	3
+	.word	.L529-.L528
+.L528:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../MCAL/ssc/dio/src/Dio.c',0,0,0,0,0
+.L529:
+	.byte	5,7,7,0,5,2
+	.word	.L99
+	.byte	3,241,2,1,5,13,9
+	.half	.L530-.L99
+	.byte	3,11,1,5,15,9
+	.half	.L365-.L530
+	.byte	3,1,1,5,18,9
+	.half	.L366-.L365
+	.byte	3,3,1,5,3,9
+	.half	.L367-.L366
+	.byte	1,5,15,7,9
+	.half	.L368-.L367
+	.byte	3,2,1,5,33,9
+	.half	.L531-.L368
+	.byte	1,5,45,9
+	.half	.L2-.L531
+	.byte	3,5,1,5,16,9
+	.half	.L369-.L2
+	.byte	1,5,43,9
+	.half	.L371-.L369
+	.byte	3,1,1,5,16,9
+	.half	.L370-.L371
+	.byte	1,5,42,9
+	.half	.L373-.L370
+	.byte	3,2,1,5,21,9
+	.half	.L235-.L373
+	.byte	3,141,6,1,5,13,9
+	.half	.L532-.L235
+	.byte	1,5,15,7,9
+	.half	.L243-.L532
+	.byte	3,95,1,5,55,9
+	.half	.L533-.L243
+	.byte	1,5,46,9
+	.half	.L534-.L533
+	.byte	1,5,15,9
+	.half	.L535-.L534
+	.byte	3,1,1,5,73,9
+	.half	.L374-.L535
+	.byte	3,127,1,5,3,9
+	.half	.L536-.L374
+	.byte	3,3,1,5,69,9
+	.half	.L5-.L536
+	.byte	3,30,1,5,15,9
+	.half	.L4-.L5
+	.byte	3,190,127,1,5,46,9
+	.half	.L537-.L4
+	.byte	1,5,15,9
+	.half	.L538-.L537
+	.byte	3,1,1,5,57,9
+	.half	.L375-.L538
+	.byte	3,127,1,5,3,9
+	.half	.L539-.L375
+	.byte	3,3,1,9
+	.half	.L6-.L539
+	.byte	3,194,0,1,5,23,9
+	.half	.L8-.L6
+	.byte	3,131,1,1,5,52,9
+	.half	.L540-.L8
+	.byte	1,5,41,9
+	.half	.L541-.L540
+	.byte	3,1,1,5,15,9
+	.half	.L542-.L541
+	.byte	1,5,41,9
+	.half	.L543-.L542
+	.byte	1,5,62,9
+	.half	.L377-.L543
+	.byte	3,127,1,5,2,9
+	.half	.L544-.L377
+	.byte	3,2,1,5,9,9
+	.half	.L9-.L544
+	.byte	3,238,120,1,5,48,7,9
+	.half	.L240-.L9
+	.byte	1,5,18,7,9
+	.half	.L10-.L240
+	.byte	3,2,1,5,36,9
+	.half	.L545-.L10
+	.byte	1,5,18,9
+	.half	.L11-.L545
+	.byte	3,4,1,5,42,9
+	.half	.L376-.L11
+	.byte	1,5,21,9
+	.half	.L14-.L376
+	.byte	3,132,6,1,5,13,9
+	.half	.L546-.L14
+	.byte	1,5,15,7,9
+	.half	.L264-.L546
+	.byte	3,95,1,5,55,9
+	.half	.L547-.L264
+	.byte	1,5,46,9
+	.half	.L548-.L547
+	.byte	1,5,15,9
+	.half	.L549-.L548
+	.byte	3,1,1,5,73,9
+	.half	.L379-.L549
+	.byte	3,127,1,5,3,9
+	.half	.L550-.L379
+	.byte	3,3,1,5,69,9
+	.half	.L16-.L550
+	.byte	3,30,1,5,15,9
+	.half	.L15-.L16
+	.byte	3,190,127,1,5,46,9
+	.half	.L551-.L15
+	.byte	1,5,15,9
+	.half	.L552-.L551
+	.byte	3,1,1,5,57,9
+	.half	.L380-.L552
+	.byte	3,127,1,5,3,9
+	.half	.L553-.L380
+	.byte	3,3,1,9
+	.half	.L17-.L553
+	.byte	3,194,0,1,5,10,9
+	.half	.L19-.L17
+	.byte	3,251,121,1,5,23,7,9
+	.half	.L262-.L19
+	.byte	3,2,1,5,48,9
+	.half	.L20-.L262
+	.byte	3,124,1,5,42,9
+	.half	.L13-.L20
+	.byte	1,5,19,7,9
+	.half	.L554-.L13
+	.byte	3,8,1,5,22,9
+	.half	.L269-.L554
+	.byte	3,223,6,1,5,13,9
+	.half	.L555-.L269
+	.byte	1,5,3,7,9
+	.half	.L278-.L555
+	.byte	3,65,1,5,69,9
+	.half	.L22-.L278
+	.byte	3,63,1,5,15,9
+	.half	.L21-.L22
+	.byte	3,95,1,5,55,9
+	.half	.L556-.L21
+	.byte	1,5,46,9
+	.half	.L378-.L556
+	.byte	1,5,15,9
+	.half	.L557-.L378
+	.byte	3,1,1,5,73,9
+	.half	.L382-.L557
+	.byte	3,127,1,5,3,9
+	.half	.L558-.L382
+	.byte	3,3,1,9
+	.half	.L23-.L558
+	.byte	3,33,1,5,9,9
+	.half	.L25-.L23
+	.byte	3,164,121,1,5,23,9
+	.half	.L559-.L25
+	.byte	1,5,49,9
+	.half	.L560-.L559
+	.byte	1,5,62,9
+	.half	.L561-.L560
+	.byte	1,5,8,9
+	.half	.L562-.L561
+	.byte	3,127,1,5,20,7,9
+	.half	.L563-.L562
+	.byte	3,4,1,5,38,9
+	.half	.L564-.L563
+	.byte	1,5,46,9
+	.half	.L26-.L564
+	.byte	3,4,1,5,13,9
+	.half	.L275-.L26
+	.byte	1,5,20,7,9
+	.half	.L565-.L275
+	.byte	3,2,1,5,38,9
+	.half	.L566-.L565
+	.byte	1,5,18,9
+	.half	.L28-.L566
+	.byte	3,4,1,5,32,9
+	.half	.L567-.L28
+	.byte	1,5,42,9
+	.half	.L568-.L567
+	.byte	3,1,1,5,55,9
+	.half	.L569-.L568
+	.byte	1,5,18,9
+	.half	.L570-.L569
+	.byte	3,1,1,5,31,9
+	.half	.L571-.L570
+	.byte	1,5,75,9
+	.half	.L572-.L571
+	.byte	3,127,1,5,13,9
+	.half	.L573-.L572
+	.byte	3,127,1,5,20,7,9
+	.half	.L574-.L573
+	.byte	3,5,1,5,38,9
+	.half	.L575-.L574
+	.byte	1,5,3,9
+	.half	.L3-.L575
+	.byte	3,9,1,5,24,7,9
+	.half	.L576-.L3
+	.byte	3,5,1,5,25,9
+	.half	.L577-.L576
+	.byte	3,1,1,9
+	.half	.L578-.L577
+	.byte	3,2,1,5,3,9
+	.half	.L32-.L578
+	.byte	3,14,1,5,1,9
+	.half	.L33-.L32
+	.byte	3,1,1,7,9
+	.half	.L160-.L33
+	.byte	0,1,1
+.L527:
+	.sdecl	'.debug_ranges',debug,cluster('Dio_lCheckChannelId')
+	.sect	'.debug_ranges'
+.L159:
+	.word	-1,.L99,0,.L160-.L99,0,0
+.L239:
+	.word	-1,.L99,.L235-.L99,.L8-.L99,.L9-.L99,.L240-.L99,0,0
+.L252:
+	.word	-1,.L99,.L4-.L99,.L6-.L99,.L9-.L99,.L240-.L99,0,0
+.L260:
+	.word	-1,.L99,.L8-.L99,.L9-.L99,.L240-.L99,.L10-.L99,0,0
+.L266:
+	.word	-1,.L99,.L15-.L99,.L17-.L99,.L19-.L99,.L262-.L99,0,0
+.L273:
+	.word	-1,.L99,.L269-.L99,.L25-.L99,.L274-.L99,.L275-.L99,0,0
+.L287:
+	.word	-1,.L99,.L21-.L99,.L23-.L99,.L274-.L99,.L275-.L99,0,0
+	.sdecl	'.debug_info',debug,cluster('Dio_lCheckGroupId')
+	.sect	'.debug_info'
+.L161:
+	.word	777
+	.half	3
+	.word	.L162
+	.byte	4,1
+	.byte	'../MCAL/ssc/dio/src/Dio.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Havana\\workspace\\AURIX\\CliDemo\\Rel_Appl_freeRTOS_10_4_6\\',0,12,1
+	.word	.L164,.L163
+	.byte	2
+	.word	.L122
+	.byte	3
+	.byte	'Dio_lCheckGroupId',0,1,222,4,7
+	.word	.L190
+	.byte	1,1,1
+	.word	.L103,.L289,.L102
+	.byte	4
+	.byte	'ApiId',0,1,222,4,31
+	.word	.L190,.L290
+	.byte	4
+	.byte	'GroupIdPtr',0,1,222,4,66
+	.word	.L213,.L291
+	.byte	5
+	.word	.L103,.L289
+	.byte	6
+	.byte	'PortReadOnly',0,1,224,4,10
+	.word	.L194,.L292
+	.byte	6
+	.byte	'PortAvailable',0,1,225,4,10
+	.word	.L194,.L293
+	.byte	6
+	.byte	'ErrStatus',0,1,226,4,10
+	.word	.L190,.L294
+	.byte	7
+	.word	.L268,.L295,.L66
+	.byte	8
+	.word	.L270,.L296
+	.byte	9
+	.word	.L272,.L297
+	.byte	6
+	.byte	'RetVal',0,1,249,9,10
+	.word	.L194,.L299
+	.byte	7
+	.word	.L277,.L300,.L63
+	.byte	8
+	.word	.L279,.L301
+	.byte	10
+	.word	.L281,.L300,.L63
+	.byte	6
+	.byte	'RetVal',0,1,183,9,10
+	.word	.L194,.L302
+	.byte	0,0,7
+	.word	.L283,.L62,.L64
+	.byte	8
+	.word	.L284,.L303
+	.byte	9
+	.word	.L286,.L304
+	.byte	6
+	.byte	'RetVal',0,1,216,9,10
+	.word	.L194,.L305
+	.byte	0,0,7
+	.word	.L283,.L298,.L72
+	.byte	8
+	.word	.L284,.L303
+	.byte	0,0,0,7
+	.word	.L234,.L306,.L71
+	.byte	8
+	.word	.L236,.L307
+	.byte	9
+	.word	.L238,.L308
+	.byte	6
+	.byte	'RetVal',0,1,150,9,10
+	.word	.L194,.L309
+	.byte	7
+	.word	.L242,.L310,.L68
+	.byte	8
+	.word	.L244,.L311
+	.byte	10
+	.word	.L246,.L310,.L68
+	.byte	6
+	.byte	'RetVal',0,1,245,8,10
+	.word	.L194,.L312
+	.byte	0,0,7
+	.word	.L248,.L67,.L69
+	.byte	8
+	.word	.L249,.L313
+	.byte	9
+	.word	.L251,.L314
+	.byte	6
+	.byte	'RetVal',0,1,212,8,10
+	.word	.L194,.L315
+	.byte	0,0,7
+	.word	.L248,.L72,.L73
+	.byte	8
+	.word	.L249,.L313
+	.byte	0,0,0,7
+	.word	.L268,.L298,.L72
+	.byte	8
+	.word	.L270,.L296
+	.byte	0,7
+	.word	.L234,.L72,.L73
+	.byte	8
+	.word	.L236,.L307
+	.byte	0,0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dio_lCheckGroupId')
+	.sect	'.debug_abbrev'
+.L162:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,7,29,1,49,16,17,1,18,1,0,0,8,5,0,49,16,2,6,0,0,9,11,1,49,16,85
+	.byte	6,0,0,10,11,1,49,16,17,1,18,1,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dio_lCheckGroupId')
+	.sect	'.debug_line'
+.L163:
+	.word	.L580-.L579
+.L579:
+	.half	3
+	.word	.L582-.L581
+.L581:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../MCAL/ssc/dio/src/Dio.c',0,0,0,0,0
+.L582:
+	.byte	5,7,7,0,5,2
+	.word	.L103
+	.byte	3,221,4,1,5,13,9
+	.half	.L400-.L103
+	.byte	3,7,1,5,3,9
+	.half	.L402-.L400
+	.byte	3,3,1,5,38,7,9
+	.half	.L583-.L402
+	.byte	3,2,1,5,15,9
+	.half	.L398-.L583
+	.byte	1,5,5,9
+	.half	.L404-.L398
+	.byte	3,2,1,5,61,7,9
+	.half	.L584-.L404
+	.byte	3,3,1,5,22,9
+	.half	.L295-.L584
+	.byte	3,140,5,1,5,13,9
+	.half	.L585-.L295
+	.byte	1,5,3,7,9
+	.half	.L300-.L585
+	.byte	3,65,1,5,69,9
+	.half	.L63-.L300
+	.byte	3,63,1,5,15,9
+	.half	.L62-.L63
+	.byte	3,95,1,5,55,9
+	.half	.L586-.L62
+	.byte	1,5,46,9
+	.half	.L587-.L586
+	.byte	1,5,15,9
+	.half	.L588-.L587
+	.byte	3,1,1,5,73,9
+	.half	.L406-.L588
+	.byte	3,127,1,5,3,9
+	.half	.L589-.L406
+	.byte	3,3,1,9
+	.half	.L64-.L589
+	.byte	3,33,1,5,63,9
+	.half	.L66-.L64
+	.byte	3,242,122,1,5,21,9
+	.half	.L306-.L66
+	.byte	3,168,4,1,5,13,9
+	.half	.L590-.L306
+	.byte	1,5,15,7,9
+	.half	.L310-.L590
+	.byte	3,95,1,5,55,9
+	.half	.L591-.L310
+	.byte	1,5,46,9
+	.half	.L592-.L591
+	.byte	1,5,15,9
+	.half	.L593-.L592
+	.byte	3,1,1,5,73,9
+	.half	.L408-.L593
+	.byte	3,127,1,5,3,9
+	.half	.L594-.L408
+	.byte	3,3,1,5,69,9
+	.half	.L68-.L594
+	.byte	3,30,1,5,15,9
+	.half	.L67-.L68
+	.byte	3,190,127,1,5,46,9
+	.half	.L595-.L67
+	.byte	1,5,15,9
+	.half	.L596-.L595
+	.byte	3,1,1,5,57,9
+	.half	.L409-.L596
+	.byte	3,127,1,5,3,9
+	.half	.L597-.L409
+	.byte	3,3,1,9
+	.half	.L69-.L597
+	.byte	3,194,0,1,5,12,9
+	.half	.L71-.L69
+	.byte	3,215,123,1,5,66,7,9
+	.half	.L298-.L71
+	.byte	1,5,32,7,9
+	.half	.L72-.L298
+	.byte	3,1,1,5,19,7,9
+	.half	.L73-.L72
+	.byte	3,4,1,5,37,9
+	.half	.L403-.L73
+	.byte	1,5,28,9
+	.half	.L74-.L403
+	.byte	3,3,1,5,12,9
+	.half	.L410-.L74
+	.byte	1,5,19,7,9
+	.half	.L598-.L410
+	.byte	3,2,1,5,37,9
+	.half	.L411-.L598
+	.byte	1,5,29,9
+	.half	.L76-.L411
+	.byte	3,4,1,5,66,9
+	.half	.L407-.L76
+	.byte	3,1,1,5,55,9
+	.half	.L599-.L407
+	.byte	1,5,29,9
+	.half	.L600-.L599
+	.byte	1,5,55,9
+	.half	.L601-.L600
+	.byte	1,5,19,9
+	.half	.L602-.L601
+	.byte	1,5,37,9
+	.half	.L603-.L602
+	.byte	3,127,1,5,12,9
+	.half	.L604-.L603
+	.byte	1,5,19,7,9
+	.half	.L605-.L604
+	.byte	3,4,1,5,37,9
+	.half	.L412-.L605
+	.byte	1,5,34,9
+	.half	.L78-.L412
+	.byte	3,5,1,5,67,9
+	.half	.L606-.L78
+	.byte	3,1,1,5,42,9
+	.half	.L607-.L606
+	.byte	1,5,56,9
+	.half	.L608-.L607
+	.byte	1,5,12,9
+	.half	.L609-.L608
+	.byte	3,127,1,5,19,7,9
+	.half	.L610-.L609
+	.byte	3,3,1,5,37,9
+	.half	.L413-.L610
+	.byte	1,5,3,9
+	.half	.L60-.L413
+	.byte	3,9,1,5,20,7,9
+	.half	.L611-.L60
+	.byte	3,6,1,5,21,9
+	.half	.L612-.L611
+	.byte	3,1,1,9
+	.half	.L613-.L612
+	.byte	3,2,1,5,3,9
+	.half	.L82-.L613
+	.byte	3,13,1,5,1,9
+	.half	.L83-.L82
+	.byte	3,2,1,7,9
+	.half	.L165-.L83
+	.byte	0,1,1
+.L580:
+	.sdecl	'.debug_ranges',debug,cluster('Dio_lCheckGroupId')
+	.sect	'.debug_ranges'
+.L164:
+	.word	-1,.L103,0,.L165-.L103,0,0
+.L297:
+	.word	-1,.L103,.L295-.L103,.L66-.L103,.L298-.L103,.L72-.L103,0,0
+.L304:
+	.word	-1,.L103,.L62-.L103,.L64-.L103,.L298-.L103,.L72-.L103,0,0
+.L308:
+	.word	-1,.L103,.L306-.L103,.L71-.L103,.L72-.L103,.L73-.L103,0,0
+.L314:
+	.word	-1,.L103,.L67-.L103,.L69-.L103,.L72-.L103,.L73-.L103,0,0
+	.sdecl	'.debug_info',debug,cluster('Dio_lCheckPortId')
+	.sect	'.debug_info'
+.L166:
+	.word	987
+	.half	3
+	.word	.L167
+	.byte	4,1
+	.byte	'../MCAL/ssc/dio/src/Dio.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Havana\\workspace\\AURIX\\CliDemo\\Rel_Appl_freeRTOS_10_4_6\\',0,12,1
+	.word	.L169,.L168
+	.byte	2
+	.word	.L122
+	.byte	3
+	.byte	'Dio_lCheckPortId',0,1,247,3,7
+	.word	.L190
+	.byte	1,1,1
+	.word	.L101,.L316,.L100
+	.byte	4
+	.byte	'ApiId',0,1,247,3,31
+	.word	.L190,.L317
+	.byte	4
+	.byte	'PortId',0,1,247,3,51
+	.word	.L190,.L318
+	.byte	5
+	.word	.L101,.L316
+	.byte	6
+	.byte	'Index',0,1,249,3,15
+	.word	.L194,.L319
+	.byte	6
+	.byte	'ConfigIndex',0,1,250,3,15
+	.word	.L194,.L320
+	.byte	6
+	.byte	'PortReadOnly',0,1,251,3,15
+	.word	.L194,.L321
+	.byte	6
+	.byte	'PortAvailable',0,1,252,3,15
+	.word	.L194,.L322
+	.byte	6
+	.byte	'ErrStatus',0,1,253,3,15
+	.word	.L190,.L323
+	.byte	7
+	.word	.L234,.L324,.L325
+	.byte	8
+	.word	.L236,.L326
+	.byte	9
+	.word	.L238,.L324,.L325
+	.byte	6
+	.byte	'RetVal',0,1,150,9,10
+	.word	.L194,.L327
+	.byte	7
+	.word	.L242,.L328,.L35
+	.byte	8
+	.word	.L244,.L329
+	.byte	9
+	.word	.L246,.L328,.L35
+	.byte	6
+	.byte	'RetVal',0,1,245,8,10
+	.word	.L194,.L330
+	.byte	0,0,7
+	.word	.L248,.L34,.L36
+	.byte	8
+	.word	.L249,.L331
+	.byte	10
+	.word	.L251,.L332
+	.byte	6
+	.byte	'RetVal',0,1,212,8,10
+	.word	.L194,.L333
+	.byte	0,0,7
+	.word	.L248,.L38,.L325
+	.byte	8
+	.word	.L249,.L331
+	.byte	0,0,0,7
+	.word	.L234,.L42,.L334
+	.byte	8
+	.word	.L236,.L326
+	.byte	9
+	.word	.L238,.L42,.L334
+	.byte	6
+	.byte	'RetVal',0,1,150,9,10
+	.word	.L194,.L335
+	.byte	7
+	.word	.L242,.L336,.L44
+	.byte	8
+	.word	.L244,.L329
+	.byte	9
+	.word	.L246,.L336,.L44
+	.byte	6
+	.byte	'RetVal',0,1,245,8,10
+	.word	.L194,.L337
+	.byte	0,0,7
+	.word	.L248,.L43,.L45
+	.byte	8
+	.word	.L249,.L331
+	.byte	10
+	.word	.L251,.L338
+	.byte	6
+	.byte	'RetVal',0,1,212,8,10
+	.word	.L194,.L339
+	.byte	0,0,7
+	.word	.L248,.L47,.L334
+	.byte	8
+	.word	.L249,.L331
+	.byte	0,0,0,7
+	.word	.L268,.L340,.L53
+	.byte	8
+	.word	.L270,.L341
+	.byte	10
+	.word	.L272,.L342
+	.byte	6
+	.byte	'RetVal',0,1,249,9,10
+	.word	.L194,.L345
+	.byte	7
+	.word	.L277,.L346,.L50
+	.byte	8
+	.word	.L279,.L347
+	.byte	9
+	.word	.L281,.L346,.L50
+	.byte	6
+	.byte	'RetVal',0,1,183,9,10
+	.word	.L194,.L348
+	.byte	0,0,7
+	.word	.L283,.L49,.L51
+	.byte	8
+	.word	.L284,.L349
+	.byte	10
+	.word	.L286,.L350
+	.byte	6
+	.byte	'RetVal',0,1,216,9,10
+	.word	.L194,.L351
+	.byte	0,0,7
+	.word	.L283,.L343,.L344
+	.byte	8
+	.word	.L284,.L349
+	.byte	0,0,0,7
+	.word	.L268,.L343,.L344
+	.byte	8
+	.word	.L270,.L341
+	.byte	0,0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dio_lCheckPortId')
+	.sect	'.debug_abbrev'
+.L167:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,7,29,1,49,16,17,1,18,1,0,0,8,5,0,49,16,2,6,0,0,9,11,1,49,16,17
+	.byte	1,18,1,0,0,10,11,1,49,16,85,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dio_lCheckPortId')
+	.sect	'.debug_line'
+.L168:
+	.word	.L615-.L614
+.L614:
+	.half	3
+	.word	.L617-.L616
+.L616:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../MCAL/ssc/dio/src/Dio.c',0,0,0,0,0
+.L617:
+	.byte	5,7,7,0,5,2
+	.word	.L101
+	.byte	3,246,3,1,5,13,9
+	.half	.L387-.L101
+	.byte	3,8,1,5,15,9
+	.half	.L388-.L387
+	.byte	3,1,1,5,21,9
+	.half	.L324-.L388
+	.byte	3,152,5,1,5,13,9
+	.half	.L618-.L324
+	.byte	1,5,15,7,9
+	.half	.L328-.L618
+	.byte	3,95,1,5,55,9
+	.half	.L619-.L328
+	.byte	1,5,46,9
+	.half	.L620-.L619
+	.byte	1,5,15,9
+	.half	.L621-.L620
+	.byte	3,1,1,5,73,9
+	.half	.L389-.L621
+	.byte	3,127,1,5,3,9
+	.half	.L622-.L389
+	.byte	3,3,1,5,69,9
+	.half	.L35-.L622
+	.byte	3,30,1,5,15,9
+	.half	.L34-.L35
+	.byte	3,190,127,1,5,46,9
+	.half	.L623-.L34
+	.byte	1,5,15,9
+	.half	.L624-.L623
+	.byte	3,1,1,5,57,9
+	.half	.L390-.L624
+	.byte	3,127,1,5,3,9
+	.half	.L625-.L390
+	.byte	3,3,1,9
+	.half	.L36-.L625
+	.byte	3,194,0,1,9
+	.half	.L38-.L36
+	.byte	3,234,122,1,5,15,7,9
+	.half	.L325-.L38
+	.byte	3,2,1,5,33,9
+	.half	.L626-.L325
+	.byte	1,5,15,9
+	.half	.L39-.L626
+	.byte	3,4,1,5,35,9
+	.half	.L391-.L39
+	.byte	1,5,21,9
+	.half	.L42-.L391
+	.byte	3,141,5,1,5,13,9
+	.half	.L627-.L42
+	.byte	1,5,15,7,9
+	.half	.L336-.L627
+	.byte	3,95,1,5,55,9
+	.half	.L628-.L336
+	.byte	1,5,46,9
+	.half	.L629-.L628
+	.byte	1,5,15,9
+	.half	.L630-.L629
+	.byte	3,1,1,5,73,9
+	.half	.L393-.L630
+	.byte	3,127,1,5,3,9
+	.half	.L631-.L393
+	.byte	3,3,1,5,69,9
+	.half	.L44-.L631
+	.byte	3,30,1,5,15,9
+	.half	.L43-.L44
+	.byte	3,190,127,1,5,46,9
+	.half	.L632-.L43
+	.byte	1,5,15,9
+	.half	.L633-.L632
+	.byte	3,1,1,5,57,9
+	.half	.L394-.L633
+	.byte	3,127,1,5,3,9
+	.half	.L634-.L394
+	.byte	3,3,1,9
+	.half	.L45-.L634
+	.byte	3,194,0,1,5,7,9
+	.half	.L47-.L45
+	.byte	3,242,122,1,5,20,7,9
+	.half	.L334-.L47
+	.byte	3,2,1,5,41,9
+	.half	.L48-.L334
+	.byte	3,124,1,5,35,9
+	.half	.L41-.L48
+	.byte	1,5,16,7,9
+	.half	.L635-.L41
+	.byte	3,8,1,5,22,9
+	.half	.L340-.L635
+	.byte	3,232,5,1,5,13,9
+	.half	.L636-.L340
+	.byte	1,5,3,7,9
+	.half	.L346-.L636
+	.byte	3,65,1,5,69,9
+	.half	.L50-.L346
+	.byte	3,63,1,5,15,9
+	.half	.L49-.L50
+	.byte	3,95,1,5,55,9
+	.half	.L637-.L49
+	.byte	1,5,46,9
+	.half	.L392-.L637
+	.byte	1,5,15,9
+	.half	.L638-.L392
+	.byte	3,1,1,5,73,9
+	.half	.L395-.L638
+	.byte	3,127,1,5,3,9
+	.half	.L639-.L395
+	.byte	3,3,1,9
+	.half	.L51-.L639
+	.byte	3,33,1,5,8,9
+	.half	.L53-.L51
+	.byte	3,155,122,1,5,22,9
+	.half	.L640-.L53
+	.byte	1,5,48,9
+	.half	.L641-.L640
+	.byte	1,5,61,9
+	.half	.L642-.L641
+	.byte	1,5,5,9
+	.half	.L643-.L642
+	.byte	1,5,18,7,9
+	.half	.L644-.L643
+	.byte	3,3,1,5,36,9
+	.half	.L645-.L644
+	.byte	1,5,40,9
+	.half	.L54-.L645
+	.byte	3,2,1,5,10,9
+	.half	.L344-.L54
+	.byte	1,5,18,7,9
+	.half	.L646-.L344
+	.byte	3,2,1,5,36,9
+	.half	.L647-.L646
+	.byte	1,5,3,9
+	.half	.L40-.L647
+	.byte	3,7,1,5,24,7,9
+	.half	.L648-.L40
+	.byte	3,5,1,5,25,9
+	.half	.L649-.L648
+	.byte	3,1,1,9
+	.half	.L650-.L649
+	.byte	3,2,1,5,3,9
+	.half	.L58-.L650
+	.byte	3,13,1,5,1,9
+	.half	.L59-.L58
+	.byte	3,1,1,7,9
+	.half	.L170-.L59
+	.byte	0,1,1
+.L615:
+	.sdecl	'.debug_ranges',debug,cluster('Dio_lCheckPortId')
+	.sect	'.debug_ranges'
+.L169:
+	.word	-1,.L101,0,.L170-.L101,0,0
+.L332:
+	.word	-1,.L101,.L34-.L101,.L36-.L101,.L38-.L101,.L325-.L101,0,0
+.L338:
+	.word	-1,.L101,.L43-.L101,.L45-.L101,.L47-.L101,.L334-.L101,0,0
+.L342:
+	.word	-1,.L101,.L340-.L101,.L53-.L101,.L343-.L101,.L344-.L101,0,0
+.L350:
+	.word	-1,.L101,.L49-.L101,.L51-.L101,.L343-.L101,.L344-.L101,0,0
+	.sdecl	'.debug_info',debug,cluster('Dio_lGetPortNumber')
+	.sect	'.debug_info'
+.L171:
+	.word	284
+	.half	3
+	.word	.L172
+	.byte	4,1
+	.byte	'../MCAL/ssc/dio/src/Dio.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Havana\\workspace\\AURIX\\CliDemo\\Rel_Appl_freeRTOS_10_4_6\\',0,12,1
+	.word	.L174,.L173
+	.byte	2
+	.word	.L122
+	.byte	3
+	.byte	'Dio_lGetPortNumber',0,1,188,10,14
+	.word	.L190
+	.byte	1,1,1
+	.word	.L117,.L352,.L116
+	.byte	4
+	.byte	'ChannelId',0,1,188,10,49
+	.word	.L192,.L353
+	.byte	5
+	.word	.L117,.L352
+	.byte	6
+	.byte	'RetVal',0,1,190,10,16
+	.word	.L190,.L354
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dio_lGetPortNumber')
+	.sect	'.debug_abbrev'
+.L172:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dio_lGetPortNumber')
+	.sect	'.debug_line'
+.L173:
+	.word	.L652-.L651
+.L651:
+	.half	3
+	.word	.L654-.L653
+.L653:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../MCAL/ssc/dio/src/Dio.c',0,0,0,0,0
+.L654:
+	.byte	5,20,7,0,5,2
+	.word	.L117
+	.byte	3,192,10,1,5,38,9
+	.half	.L655-.L117
+	.byte	3,127,1,5,46,9
+	.half	.L469-.L655
+	.byte	3,1,1,5,3,9
+	.half	.L470-.L469
+	.byte	3,2,1,5,1,9
+	.half	.L95-.L470
+	.byte	3,1,1,7,9
+	.half	.L175-.L95
+	.byte	0,1,1
+.L652:
+	.sdecl	'.debug_ranges',debug,cluster('Dio_lGetPortNumber')
+	.sect	'.debug_ranges'
+.L174:
+	.word	-1,.L117,0,.L175-.L117,0,0
+	.sdecl	'.debug_info',debug,cluster('Dio_lGetPortAdr')
+	.sect	'.debug_info'
+.L176:
+	.word	304
+	.half	3
+	.word	.L177
+	.byte	4,1
+	.byte	'../MCAL/ssc/dio/src/Dio.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Havana\\workspace\\AURIX\\CliDemo\\Rel_Appl_freeRTOS_10_4_6\\',0,12,1
+	.word	.L179,.L178
+	.byte	2
+	.word	.L122
+	.byte	3
+	.byte	'Dio_lGetPortAdr',0,1,220,10,8
+	.word	.L197
+	.byte	1,1,1
+	.word	.L119,.L355,.L118
+	.byte	4
+	.byte	'PortNumber',0,1,220,10,37
+	.word	.L190,.L356
+	.byte	5
+	.word	.L119,.L355
+	.byte	6
+	.byte	'RetVal',0,1,222,10,10
+	.word	.L197,.L357
+	.byte	6
+	.byte	'Quotient',0,1,223,10,10
+	.word	.L190,.L358
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dio_lGetPortAdr')
+	.sect	'.debug_abbrev'
+.L177:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dio_lGetPortAdr')
+	.sect	'.debug_line'
+.L178:
+	.word	.L657-.L656
+.L656:
+	.half	3
+	.word	.L659-.L658
+.L658:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../MCAL/ssc/dio/src/Dio.c',0,0,0,0,0
+.L659:
+	.byte	5,41,7,0,5,2
+	.word	.L119
+	.byte	3,143,11,1,5,76,9
+	.half	.L660-.L119
+	.byte	1,5,31,9
+	.half	.L472-.L660
+	.byte	3,6,1,5,15,9
+	.half	.L661-.L472
+	.byte	1,5,31,9
+	.half	.L662-.L661
+	.byte	3,1,1,5,68,9
+	.half	.L663-.L662
+	.byte	1,5,50,9
+	.half	.L473-.L663
+	.byte	1,5,63,9
+	.half	.L664-.L473
+	.byte	3,127,1,5,49,9
+	.half	.L471-.L664
+	.byte	1,5,41,9
+	.half	.L665-.L471
+	.byte	3,127,1,5,3,9
+	.half	.L474-.L665
+	.byte	3,5,1,5,1,9
+	.half	.L96-.L474
+	.byte	3,1,1,7,9
+	.half	.L180-.L96
+	.byte	0,1,1
+.L657:
+	.sdecl	'.debug_ranges',debug,cluster('Dio_lGetPortAdr')
+	.sect	'.debug_ranges'
+.L179:
+	.word	-1,.L119,0,.L180-.L119,0,0
+	.sdecl	'.debug_info',debug,cluster('Dio_lGetPinNumber')
+	.sect	'.debug_info'
+.L181:
+	.word	283
+	.half	3
+	.word	.L182
+	.byte	4,1
+	.byte	'../MCAL/ssc/dio/src/Dio.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Havana\\workspace\\AURIX\\CliDemo\\Rel_Appl_freeRTOS_10_4_6\\',0,12,1
+	.word	.L184,.L183
+	.byte	2
+	.word	.L122
+	.byte	3
+	.byte	'Dio_lGetPinNumber',0,1,179,11,7
+	.word	.L190
+	.byte	1,1,1
+	.word	.L121,.L359,.L120
+	.byte	4
+	.byte	'ChannelId',0,1,179,11,41
+	.word	.L192,.L360
+	.byte	5
+	.word	.L121,.L359
+	.byte	6
+	.byte	'RetVal',0,1,181,11,9
+	.word	.L190,.L361
+	.byte	0,0,0
+	.sdecl	'.debug_abbrev',debug,cluster('Dio_lGetPinNumber')
+	.sect	'.debug_abbrev'
+.L182:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,85,6,16,6,0,0,2,61,0,24,16,0,0,3,46,1,3,8,58,15,59,15,57,15,73,16
+	.byte	54,15,39,12,63,12,17,1,18,1,64,6,0,0,4,5,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,5,11,1,17,1,18,1,0,0,6
+	.byte	52,0,3,8,58,15,59,15,57,15,73,16,2,6,0,0,0
+	.sdecl	'.debug_line',debug,cluster('Dio_lGetPinNumber')
+	.sect	'.debug_line'
+.L183:
+	.word	.L667-.L666
+.L666:
+	.half	3
+	.word	.L669-.L668
+.L668:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1,0
+	.byte	'../MCAL/ssc/dio/src/Dio.c',0,0,0,0,0
+.L669:
+	.byte	5,30,7,0,5,2
+	.word	.L121
+	.byte	3,182,11,1,5,3,9
+	.half	.L475-.L121
+	.byte	3,1,1,5,1,9
+	.half	.L97-.L475
+	.byte	3,1,1,7,9
+	.half	.L185-.L97
+	.byte	0,1,1
+.L667:
+	.sdecl	'.debug_ranges',debug,cluster('Dio_lGetPinNumber')
+	.sect	'.debug_ranges'
+.L184:
+	.word	-1,.L121,0,.L185-.L121,0,0
+	.sdecl	'.debug_info',debug,cluster('Dio_kMSPortPin')
+	.sect	'.debug_info'
+.L186:
+	.word	209
+	.half	3
+	.word	.L187
+	.byte	4,1
+	.byte	'../MCAL/ssc/dio/src/Dio.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Havana\\workspace\\AURIX\\CliDemo\\Rel_Appl_freeRTOS_10_4_6\\',0,12,1,2
+	.word	.L122
+	.byte	3
+	.byte	'Dio_kMSPortPin',0,1,190,1,22
+	.word	.L362
+	.byte	5,3
+	.word	Dio_kMSPortPin
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('Dio_kMSPortPin')
+	.sect	'.debug_abbrev'
+.L187:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,2,9,0,0,0
+	.sdecl	'.debug_info',debug,cluster('Dio_kMaskUndefinedPortPins')
+	.sect	'.debug_info'
+.L188:
+	.word	221
+	.half	3
+	.word	.L189
+	.byte	4,1
+	.byte	'../MCAL/ssc/dio/src/Dio.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Havana\\workspace\\AURIX\\CliDemo\\Rel_Appl_freeRTOS_10_4_6\\',0,12,1,2
+	.word	.L122
+	.byte	3
+	.byte	'Dio_kMaskUndefinedPortPins',0,1,255,1,32
+	.word	.L363
+	.byte	5,3
+	.word	Dio_kMaskUndefinedPortPins
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('Dio_kMaskUndefinedPortPins')
+	.sect	'.debug_abbrev'
+.L189:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,2,9,0,0,0
+	.sdecl	'.debug_loc',debug,cluster('Dio_ReadChannel')
+	.sect	'.debug_loc'
+.L193:
+	.word	-1,.L109,0,.L430-.L109
+	.half	1
+	.byte	84
+	.word	.L431-.L109,.L432-.L109
+	.half	1
+	.byte	95
+	.word	.L434-.L109,.L435-.L109
+	.half	1
+	.byte	84
+	.word	.L439-.L109,.L437-.L109
+	.half	1
+	.byte	84
+	.word	0,0
+.L108:
+	.word	-1,.L109,0,.L191-.L109
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L198:
+	.word	-1,.L109,.L436-.L109,.L437-.L109
+	.half	1
+	.byte	98
+	.word	.L438-.L109,.L87-.L109
+	.half	1
+	.byte	111
+	.word	0,0
+.L195:
+	.word	-1,.L109,.L440-.L109,.L441-.L109
+	.half	1
+	.byte	88
+	.word	0,0
+.L196:
+	.word	-1,.L109,.L433-.L109,.L191-.L109
+	.half	1
+	.byte	89
+	.word	.L442-.L109,.L191-.L109
+	.half	1
+	.byte	82
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Dio_ReadChannelGroup')
+	.sect	'.debug_loc'
+.L214:
+	.word	-1,.L105,0,.L416-.L105
+	.half	1
+	.byte	100
+	.word	.L417-.L105,.L212-.L105
+	.half	1
+	.byte	111
+	.word	0,0
+.L104:
+	.word	-1,.L105,0,.L212-.L105
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L215:
+	.word	-1,.L105,.L419-.L105,.L84-.L105
+	.half	1
+	.byte	98
+	.word	0,0
+.L216:
+	.word	-1,.L105,.L418-.L105,.L212-.L105
+	.half	1
+	.byte	88
+	.word	.L420-.L105,.L212-.L105
+	.half	1
+	.byte	82
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Dio_ReadPort')
+	.sect	'.debug_loc'
+.L112:
+	.word	-1,.L113,0,.L204-.L113
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L206:
+	.word	-1,.L113,.L460-.L113,.L92-.L113
+	.half	1
+	.byte	98
+	.word	0,0
+.L205:
+	.word	-1,.L113,0,.L455-.L113
+	.half	1
+	.byte	84
+	.word	.L456-.L113,.L204-.L113
+	.half	1
+	.byte	89
+	.word	.L459-.L113,.L460-.L113
+	.half	1
+	.byte	84
+	.word	0,0
+.L207:
+	.word	-1,.L113,.L457-.L113,.L458-.L113
+	.half	1
+	.byte	88
+	.word	.L461-.L113,.L204-.L113
+	.half	1
+	.byte	88
+	.word	.L462-.L113,.L204-.L113
+	.half	1
+	.byte	82
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Dio_WriteChannel')
+	.sect	'.debug_loc'
+.L200:
+	.word	-1,.L111,0,.L443-.L111
+	.half	1
+	.byte	84
+	.word	.L445-.L111,.L199-.L111
+	.half	1
+	.byte	89
+	.word	.L449-.L111,.L450-.L111
+	.half	1
+	.byte	84
+	.word	.L454-.L111,.L452-.L111
+	.half	1
+	.byte	84
+	.word	0,0
+.L110:
+	.word	-1,.L111,0,.L199-.L111
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L202:
+	.word	-1,.L111,.L451-.L111,.L452-.L111
+	.half	1
+	.byte	98
+	.word	.L453-.L111,.L90-.L111
+	.half	1
+	.byte	111
+	.word	0,0
+.L201:
+	.word	-1,.L111,0,.L444-.L111
+	.half	1
+	.byte	85
+	.word	.L446-.L111,.L199-.L111
+	.half	1
+	.byte	95
+	.word	0,0
+.L203:
+	.word	-1,.L111,.L447-.L111,.L448-.L111
+	.half	1
+	.byte	88
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Dio_WriteChannelGroup')
+	.sect	'.debug_loc'
+.L218:
+	.word	-1,.L107,0,.L421-.L107
+	.half	1
+	.byte	100
+	.word	.L423-.L107,.L217-.L107
+	.half	1
+	.byte	111
+	.word	0,0
+.L106:
+	.word	-1,.L107,0,.L217-.L107
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L220:
+	.word	-1,.L107,.L429-.L107,.L86-.L107
+	.half	1
+	.byte	98
+	.word	0,0
+.L219:
+	.word	-1,.L107,0,.L422-.L107
+	.half	1
+	.byte	84
+	.word	.L424-.L107,.L425-.L107
+	.half	1
+	.byte	88
+	.word	0,0
+.L222:
+	.word	-1,.L107,.L427-.L107,.L428-.L107
+	.half	1
+	.byte	95
+	.word	0,0
+.L221:
+	.word	-1,.L107,.L426-.L107,.L86-.L107
+	.half	1
+	.byte	88
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Dio_WritePort')
+	.sect	'.debug_loc'
+.L114:
+	.word	-1,.L115,0,.L208-.L115
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L211:
+	.word	-1,.L115,.L468-.L115,.L94-.L115
+	.half	1
+	.byte	98
+	.word	0,0
+.L210:
+	.word	-1,.L115,0,.L463-.L115
+	.half	1
+	.byte	85
+	.word	.L466-.L115,.L208-.L115
+	.half	1
+	.byte	88
+	.word	0,0
+.L209:
+	.word	-1,.L115,0,.L464-.L115
+	.half	1
+	.byte	84
+	.word	.L465-.L115,.L208-.L115
+	.half	1
+	.byte	95
+	.word	.L467-.L115,.L468-.L115
+	.half	1
+	.byte	84
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Dio_lCheckChannelId')
+	.sect	'.debug_loc'
+.L224:
+	.word	-1,.L99,0,.L364-.L99
+	.half	1
+	.byte	84
+	.word	.L26-.L99,.L274-.L99
+	.half	1
+	.byte	89
+	.word	.L274-.L99,.L275-.L99
+	.half	1
+	.byte	84
+	.word	.L383-.L99,.L384-.L99
+	.half	1
+	.byte	89
+	.word	.L384-.L99,.L32-.L99
+	.half	1
+	.byte	86
+	.word	0,0
+.L225:
+	.word	-1,.L99,0,.L364-.L99
+	.half	1
+	.byte	85
+	.word	.L367-.L99,.L368-.L99
+	.half	1
+	.byte	88
+	.word	.L2-.L99,.L364-.L99
+	.half	1
+	.byte	88
+	.word	.L364-.L99,.L369-.L99
+	.half	1
+	.byte	84
+	.word	.L371-.L99,.L372-.L99
+	.half	1
+	.byte	88
+	.word	.L372-.L99,.L370-.L99
+	.half	1
+	.byte	84
+	.word	0,0
+.L228:
+	.word	-1,.L99,.L366-.L99,.L3-.L99
+	.half	1
+	.byte	91
+	.word	0,0
+.L98:
+	.word	-1,.L99,0,.L223-.L99
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L233:
+	.word	-1,.L99,.L365-.L99,.L223-.L99
+	.half	1
+	.byte	90
+	.word	.L385-.L99,.L223-.L99
+	.half	1
+	.byte	82
+	.word	0,0
+.L227:
+	.word	-1,.L99,.L376-.L99,.L378-.L99
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L258:
+	.word	0,0
+.L231:
+	.word	0,0
+.L232:
+	.word	-1,.L99,.L370-.L99,.L275-.L99
+	.half	1
+	.byte	82
+	.word	.L373-.L99,.L3-.L99
+	.half	1
+	.byte	88
+	.word	0,0
+.L250:
+	.word	0,0
+.L245:
+	.word	0,0
+.L237:
+	.word	0,0
+.L280:
+	.word	0,0
+.L285:
+	.word	0,0
+.L271:
+	.word	0,0
+.L256:
+	.word	0,0
+.L230:
+	.word	0,0
+.L226:
+	.word	-1,.L99,.L369-.L99,.L370-.L99
+	.half	1
+	.byte	82
+	.word	.L371-.L99,.L3-.L99
+	.half	1
+	.byte	92
+	.word	0,0
+.L229:
+	.word	0,0
+.L253:
+	.word	-1,.L99,.L374-.L99,.L4-.L99
+	.half	5
+	.byte	144,32,157,32,0
+	.word	.L375-.L99,.L376-.L99
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L267:
+	.word	-1,.L99,.L379-.L99,.L15-.L99
+	.half	1
+	.byte	95
+	.word	.L380-.L99,.L13-.L99
+	.half	1
+	.byte	95
+	.word	0,0
+.L265:
+	.word	0,0
+.L247:
+	.word	0,0
+.L241:
+	.word	0,0
+.L263:
+	.word	0,0
+.L282:
+	.word	0,0
+.L288:
+	.word	-1,.L99,.L381-.L99,.L21-.L99
+	.half	1
+	.byte	85
+	.word	.L382-.L99,.L275-.L99
+	.half	1
+	.byte	85
+	.word	0,0
+.L276:
+	.word	0,0
+.L261:
+	.word	-1,.L99,.L377-.L99,.L14-.L99
+	.half	1
+	.byte	81
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Dio_lCheckGroupId')
+	.sect	'.debug_loc'
+.L290:
+	.word	-1,.L103,0,.L398-.L103
+	.half	1
+	.byte	84
+	.word	.L399-.L103,.L289-.L103
+	.half	1
+	.byte	88
+	.word	.L414-.L103,.L82-.L103
+	.half	1
+	.byte	86
+	.word	0,0
+.L102:
+	.word	-1,.L103,0,.L289-.L103
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L294:
+	.word	-1,.L103,.L402-.L103,.L398-.L103
+	.half	1
+	.byte	89
+	.word	.L398-.L103,.L403-.L103
+	.half	1
+	.byte	82
+	.word	.L404-.L103,.L289-.L103
+	.half	1
+	.byte	89
+	.word	.L74-.L103,.L411-.L103
+	.half	1
+	.byte	82
+	.word	.L76-.L103,.L412-.L103
+	.half	1
+	.byte	82
+	.word	.L78-.L103,.L413-.L103
+	.half	1
+	.byte	82
+	.word	.L415-.L103,.L289-.L103
+	.half	1
+	.byte	82
+	.word	0,0
+.L291:
+	.word	-1,.L103,0,.L398-.L103
+	.half	1
+	.byte	100
+	.word	.L400-.L103,.L401-.L103
+	.half	1
+	.byte	111
+	.word	0,0
+.L313:
+	.word	0,0
+.L311:
+	.word	0,0
+.L307:
+	.word	0,0
+.L301:
+	.word	0,0
+.L303:
+	.word	0,0
+.L296:
+	.word	0,0
+.L293:
+	.word	0,0
+.L292:
+	.word	0,0
+.L315:
+	.word	-1,.L103,.L408-.L103,.L67-.L103
+	.half	1
+	.byte	95
+	.word	.L409-.L103,.L410-.L103
+	.half	1
+	.byte	95
+	.word	0,0
+.L312:
+	.word	0,0
+.L309:
+	.word	0,0
+.L302:
+	.word	0,0
+.L305:
+	.word	-1,.L103,.L405-.L103,.L62-.L103
+	.half	5
+	.byte	144,32,157,32,0
+	.word	.L406-.L103,.L407-.L103
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L299:
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Dio_lCheckPortId')
+	.sect	'.debug_loc'
+.L317:
+	.word	-1,.L101,0,.L344-.L101
+	.half	1
+	.byte	84
+	.word	.L387-.L101,.L316-.L101
+	.half	1
+	.byte	88
+	.word	.L396-.L101,.L58-.L101
+	.half	1
+	.byte	86
+	.word	0,0
+.L320:
+	.word	-1,.L101,.L324-.L101,.L344-.L101
+	.half	1
+	.byte	82
+	.word	0,0
+.L100:
+	.word	-1,.L101,0,.L316-.L101
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L323:
+	.word	-1,.L101,.L388-.L101,.L316-.L101
+	.half	1
+	.byte	89
+	.word	.L397-.L101,.L316-.L101
+	.half	1
+	.byte	82
+	.word	0,0
+.L319:
+	.word	-1,.L101,.L391-.L101,.L392-.L101
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L331:
+	.word	0,0
+.L329:
+	.word	0,0
+.L326:
+	.word	0,0
+.L347:
+	.word	0,0
+.L349:
+	.word	0,0
+.L341:
+	.word	0,0
+.L322:
+	.word	0,0
+.L318:
+	.word	-1,.L101,0,.L386-.L101
+	.half	1
+	.byte	85
+	.word	.L49-.L101,.L395-.L101
+	.half	1
+	.byte	85
+	.word	0,0
+.L321:
+	.word	0,0
+.L333:
+	.word	-1,.L101,.L389-.L101,.L34-.L101
+	.half	5
+	.byte	144,32,157,32,0
+	.word	.L390-.L101,.L391-.L101
+	.half	5
+	.byte	144,32,157,32,0
+	.word	0,0
+.L339:
+	.word	-1,.L101,.L393-.L101,.L43-.L101
+	.half	1
+	.byte	95
+	.word	.L394-.L101,.L41-.L101
+	.half	1
+	.byte	95
+	.word	0,0
+.L330:
+	.word	0,0
+.L337:
+	.word	0,0
+.L335:
+	.word	0,0
+.L327:
+	.word	0,0
+.L348:
+	.word	0,0
+.L351:
+	.word	-1,.L101,.L386-.L101,.L49-.L101
+	.half	1
+	.byte	85
+	.word	.L395-.L101,.L344-.L101
+	.half	1
+	.byte	85
+	.word	0,0
+.L345:
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Dio_lGetPinNumber')
+	.sect	'.debug_loc'
+.L360:
+	.word	-1,.L121,0,.L359-.L121
+	.half	1
+	.byte	84
+	.word	0,0
+.L120:
+	.word	-1,.L121,0,.L359-.L121
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L361:
+	.word	-1,.L121,.L475-.L121,.L359-.L121
+	.half	1
+	.byte	82
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Dio_lGetPortAdr')
+	.sect	'.debug_loc'
+.L118:
+	.word	-1,.L119,0,.L355-.L119
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L356:
+	.word	-1,.L119,0,.L471-.L119
+	.half	1
+	.byte	84
+	.word	0,0
+.L358:
+	.word	-1,.L119,.L472-.L119,.L473-.L119
+	.half	1
+	.byte	95
+	.word	0,0
+.L357:
+	.word	-1,.L119,.L474-.L119,.L355-.L119
+	.half	1
+	.byte	98
+	.word	0,0
+	.sdecl	'.debug_loc',debug,cluster('Dio_lGetPortNumber')
+	.sect	'.debug_loc'
+.L353:
+	.word	-1,.L117,0,.L469-.L117
+	.half	1
+	.byte	84
+	.word	0,0
+.L116:
+	.word	-1,.L117,0,.L352-.L117
+	.half	2
+	.byte	138,0
+	.word	0,0
+.L354:
+	.word	-1,.L117,.L470-.L117,.L352-.L117
+	.half	1
+	.byte	82
+	.word	0,0
+	.sdecl	'.debug_frame',debug
+	.sect	'.debug_frame'
+.L670:
+	.word	48
+	.word	-1
+	.byte	3,0,2,1,27,12,26,0,8,26,8,27,8,30,8,29,8,28,8,16,8,17,8,24,8,25,8,31,8,32,8,33,8,34,8,35,8,36,8,37,8,38
+	.byte	8,39
+	.sdecl	'.debug_frame',debug,cluster('Dio_lCheckChannelId')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L670,.L99,.L223-.L99
+	.sdecl	'.debug_frame',debug,cluster('Dio_lCheckPortId')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L670,.L101,.L316-.L101
+	.sdecl	'.debug_frame',debug,cluster('Dio_lCheckGroupId')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L670,.L103,.L289-.L103
+	.sdecl	'.debug_frame',debug,cluster('Dio_ReadChannelGroup')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L670,.L105,.L212-.L105
+	.sdecl	'.debug_frame',debug,cluster('Dio_WriteChannelGroup')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L670,.L107,.L217-.L107
+	.sdecl	'.debug_frame',debug,cluster('Dio_ReadChannel')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L670,.L109,.L191-.L109
+	.sdecl	'.debug_frame',debug,cluster('Dio_WriteChannel')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L670,.L111,.L199-.L111
+	.sdecl	'.debug_frame',debug,cluster('Dio_ReadPort')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L670,.L113,.L204-.L113
+	.sdecl	'.debug_frame',debug,cluster('Dio_WritePort')
+	.sect	'.debug_frame'
+	.word	12
+	.word	.L670,.L115,.L208-.L115
+	.sdecl	'.debug_frame',debug,cluster('Dio_lGetPortNumber')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L670,.L117,.L352-.L117
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	.sdecl	'.debug_frame',debug,cluster('Dio_lGetPortAdr')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L670,.L119,.L355-.L119
+	.byte	8,19,8,20,8,21,8,22,8,23,0,0
+	.sdecl	'.debug_frame',debug,cluster('Dio_lGetPinNumber')
+	.sect	'.debug_frame'
+	.word	24
+	.word	.L670,.L121,.L359-.L121
+	.byte	8,18,8,19,8,20,8,21,8,22,8,23
+	; Module end

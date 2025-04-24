@@ -1,0 +1,219 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler v1.1r8 Build 22011964"
+	.compiler_invocation	"ctc -f cc6552a --dep-file=MCAL/cfg/src/Lin_17_AscLin_PBCfg.d -c99 --fp-model=3cflnrSTz -D__CPU__=tc23x -D__CPU_TC23X__ --core=tc1.6.x --fp-model=+float -D__CPU__=tc23x -D_APP_KIT_BOARD_ -D_FREE_TASKING_C_COMPILER_=1 -D_TASKING_C_TRICORE_=1 -D_McalModified_ -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\APP -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\APP\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\BSW -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\BSW\\\\ecum -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\BSW\\\\ecum\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\BSW\\\\integration_general -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\BSW\\\\integration_general\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\FreeRTOS_V10_4_6 -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\FreeRTOS_V10_4_6\\\\Source -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\FreeRTOS_V10_4_6\\\\Source\\\\Portable -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\FreeRTOS_V10_4_6\\\\Source\\\\Portable\\\\Tasking -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\FreeRTOS_V10_4_6\\\\Source\\\\Portable\\\\Tasking\\\\Tricore_TC23X_Demo -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\FreeRTOS_V10_4_6\\\\Source\\\\include -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\cfg -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\cfg\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\Lin -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\Lin\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\Pwm -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\Pwm\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\adc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\adc\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\can -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\can\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\dio -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\dio\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\flsloader -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\flsloader\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\general -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\general\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\general\\\\tricore -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\general\\\\tricore\\\\compiler -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\general\\\\tricore\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\general\\\\tricore\\\\inc\\\\tc23x -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\gpt -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\gpt\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\icu -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\icu\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\irq -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\irq\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\mcu -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\mcu\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\port -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\port\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\spi -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\spi\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\tricore_general -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\tricore_general\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\uart -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\uart\\\\inc -g2 -w544 -w557 -t4 --language=+volatile -N0 -O0 -Y0 -Z0 --compact-max-size=200 --misrac-version=2004 -o MCAL/cfg/src/Lin_17_AscLin_PBCfg.src ../MCAL/cfg/src/Lin_17_AscLin_PBCfg.c"
+	.compiler_name		"ctc"
+	;source	'../MCAL/cfg/src/Lin_17_AscLin_PBCfg.c'
+
+	
+$TC16X
+	
+	.sdecl	'.rodata.CPU0.Private.CONFIGURATION_PB',data,rom,cluster('Lin_kChannelConfig0')
+	.sect	'.rodata.CPU0.Private.CONFIGURATION_PB'
+	.align	4
+Lin_kChannelConfig0:	.type	object
+	.size	Lin_kChannelConfig0,20
+	.half	341,1000,110,234
+	.space	1
+	.byte	63
+	.space	2
+	.word	25
+	.space	1
+	.byte	1,2
+	.space	1
+	.sdecl	'.rodata.CPU0.Private.CONFIGURATION_PB',data,rom,cluster('Lin_ConfigRoot')
+	.sect	'.rodata.CPU0.Private.CONFIGURATION_PB'
+	.global	Lin_ConfigRoot
+	.align	4
+Lin_ConfigRoot:	.type	object
+	.size	Lin_ConfigRoot,8
+	.word	Lin_kChannelConfig0
+	.byte	1
+	.space	3
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L3:
+	.word	1139
+	.half	3
+	.word	.L4
+	.byte	4
+.L2:
+	.byte	1
+	.byte	'../MCAL/cfg/src/Lin_17_AscLin_PBCfg.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Havana\\workspace\\AURIX\\CliDemo\\Rel_Appl_freeRTOS_10_4_6\\',0,12,1
+	.word	.L5
+	.byte	2,1,3
+	.word	193
+	.byte	4
+	.byte	'__codeptr',0,1,1,1
+	.word	195
+	.byte	5
+	.byte	'unsigned char',0,1,8,4
+	.byte	'uint8',0,2,90,29
+	.word	218
+	.byte	5
+	.byte	'unsigned short int',0,2,7,4
+	.byte	'uint16',0,2,92,29
+	.word	249
+	.byte	5
+	.byte	'unsigned long int',0,4,7,4
+	.byte	'uint32',0,2,94,29
+	.word	286
+	.byte	4
+	.byte	'EcuM_WakeupSourceType',0,3,45,16
+	.word	286
+	.byte	4
+	.byte	'Lin_FramePidType',0,4,56,15
+	.word	218
+	.byte	6,4,65,9,1,7
+	.byte	'LIN_MASTER_RESPONSE',0,0,7
+	.byte	'LIN_SLAVE_RESPONSE',0,1,7
+	.byte	'LIN_SLAVE_TO_SLAVE',0,2,0,4
+	.byte	'Lin_FrameResponseType',0,4,70,2
+	.word	377
+	.byte	6,4,78,9,1,7
+	.byte	'LIN_ENHANCED_CS',0,0,7
+	.byte	'LIN_CLASSIC_CS',0,1,0,4
+	.byte	'Lin_FrameCsModelType',0,4,82,2
+	.word	477
+	.byte	4
+	.byte	'Lin_FrameDlType',0,4,90,15
+	.word	218
+	.byte	8
+	.byte	'Lin_ChannelTimingConfigType',0,5,132,2,16,12,9
+	.byte	'HwBrgNumerator',0
+	.word	249
+	.byte	2,2,35,0,9
+	.byte	'HwBrgDenominator',0
+	.word	249
+	.byte	2,2,35,2,9
+	.byte	'HwBitconPrescalar',0
+	.word	249
+	.byte	2,2,35,4,9
+	.byte	'HwWakeupBitconPrescalar',0
+	.word	249
+	.byte	2,2,35,6,9
+	.byte	'InterByteResponseSpace',0
+	.word	218
+	.byte	1,2,35,8,9
+	.byte	'HwWakeupIocrDepth',0
+	.word	218
+	.byte	1,2,35,9,0,4
+	.byte	'Lin_ChannelTimingConfigType',0,5,148,2,2
+	.word	571
+	.byte	8
+	.byte	'Lin_17_AscLin_ChannelType',0,5,157,2,16,20,9
+	.byte	'TimingConfig',0
+	.word	571
+	.byte	12,2,35,0,9
+	.byte	'WakeupSourceId',0
+	.word	286
+	.byte	4,2,35,12,9
+	.byte	'HwModule',0
+	.word	218
+	.byte	1,2,35,16,9
+	.byte	'Wakeup',0
+	.word	218
+	.byte	1,2,35,17,9
+	.byte	'RxAlternatePinSelect',0
+	.word	218
+	.byte	1,2,35,18,0,4
+	.byte	'Lin_17_AscLin_ChannelType',0,5,169,2,2
+	.word	812
+	.byte	10
+	.word	812
+	.byte	3
+	.word	990
+	.byte	8
+	.byte	'Lin_17_AscLin_ConfigType',0,5,176,2,16,8,9
+	.byte	'ChannelConfigPtr',0
+	.word	995
+	.byte	4,2,35,0,9
+	.byte	'NoOfChannels',0
+	.word	218
+	.byte	1,2,35,4,0,4
+	.byte	'Lin_17_AscLin_ConfigType',0,5,183,2,2
+	.word	1000
+	.byte	11,8
+	.word	1000
+	.byte	12,0,0
+.L10:
+	.byte	10
+	.word	1114
+	.byte	11,20
+	.word	812
+	.byte	12,0,0
+.L11:
+	.byte	10
+	.word	1128
+	.byte	0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L4:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,21,0,54,15,0,0,3,15,0,73,19,0,0,4,22,0,3,8,58,15,59,15
+	.byte	57,15,73,19,0,0,5,36,0,3,8,11,15,62,15,0,0,6,4,1,58,15,59,15,57,15,11,15,0,0,7,40,0,3,8,28,13,0,0,8,19
+	.byte	1,3,8,58,15,59,15,57,15,11,15,0,0,9,13,0,3,8,73,19,11,15,56,9,0,0,10,38,0,73,19,0,0,11,1,1,11,15,73,19
+	.byte	0,0,12,33,0,47,15,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L5:
+	.word	.L13-.L12
+.L12:
+	.half	3
+	.word	.L15-.L14
+.L14:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1
+	.byte	'C:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\general\\\\tricore\\\\inc',0
+	.byte	'C:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\BSW\\\\ecum\\\\inc',0
+	.byte	'C:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\Lin\\\\inc',0,0
+	.byte	'../MCAL/cfg/src/Lin_17_AscLin_PBCfg.c',0,0,0,0
+	.byte	'Platform_Types.h',0,1,0,0
+	.byte	'EcuM_Cbk.h',0,2,0,0
+	.byte	'Lin_GeneralTypes.h',0,3,0,0
+	.byte	'Lin_17_AscLin.h',0,3,0,0,0
+.L15:
+.L13:
+	.sdecl	'.debug_info',debug,cluster('Lin_ConfigRoot')
+	.sect	'.debug_info'
+.L6:
+	.word	221
+	.half	3
+	.word	.L7
+	.byte	4,1
+	.byte	'../MCAL/cfg/src/Lin_17_AscLin_PBCfg.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Havana\\workspace\\AURIX\\CliDemo\\Rel_Appl_freeRTOS_10_4_6\\',0,12,1,2
+	.word	.L2
+	.byte	3
+	.byte	'Lin_ConfigRoot',0,1,112,33
+	.word	.L10
+	.byte	1,5,3
+	.word	Lin_ConfigRoot
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('Lin_ConfigRoot')
+	.sect	'.debug_abbrev'
+.L7:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	.sdecl	'.debug_info',debug,cluster('Lin_kChannelConfig0')
+	.sect	'.debug_info'
+.L8:
+	.word	225
+	.half	3
+	.word	.L9
+	.byte	4,1
+	.byte	'../MCAL/cfg/src/Lin_17_AscLin_PBCfg.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Havana\\workspace\\AURIX\\CliDemo\\Rel_Appl_freeRTOS_10_4_6\\',0,12,1,2
+	.word	.L2
+	.byte	3
+	.byte	'Lin_kChannelConfig0',0,1,86,41
+	.word	.L11
+	.byte	5,3
+	.word	Lin_kChannelConfig0
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('Lin_kChannelConfig0')
+	.sect	'.debug_abbrev'
+.L9:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,2,9,0,0,0
+	; Module end

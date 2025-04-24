@@ -1,0 +1,92 @@
+	; Module start
+	.compiler_version	"TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler v1.1r8 Build 22011964"
+	.compiler_invocation	"ctc -f cc18168a --dep-file=MCAL/cfg/src/EcuM_LCfg.d -c99 --fp-model=3cflnrSTz -D__CPU__=tc23x -D__CPU_TC23X__ --core=tc1.6.x --fp-model=+float -D__CPU__=tc23x -D_APP_KIT_BOARD_ -D_FREE_TASKING_C_COMPILER_=1 -D_TASKING_C_TRICORE_=1 -D_McalModified_ -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\APP -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\APP\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\BSW -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\BSW\\\\ecum -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\BSW\\\\ecum\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\BSW\\\\integration_general -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\BSW\\\\integration_general\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\FreeRTOS_V10_4_6 -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\FreeRTOS_V10_4_6\\\\Source -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\FreeRTOS_V10_4_6\\\\Source\\\\Portable -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\FreeRTOS_V10_4_6\\\\Source\\\\Portable\\\\Tasking -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\FreeRTOS_V10_4_6\\\\Source\\\\Portable\\\\Tasking\\\\Tricore_TC23X_Demo -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\FreeRTOS_V10_4_6\\\\Source\\\\include -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\cfg -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\cfg\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\Lin -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\Lin\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\Pwm -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\Pwm\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\adc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\adc\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\can -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\can\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\dio -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\dio\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\flsloader -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\flsloader\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\general -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\general\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\general\\\\tricore -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\general\\\\tricore\\\\compiler -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\general\\\\tricore\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\general\\\\tricore\\\\inc\\\\tc23x -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\gpt -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\gpt\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\icu -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\icu\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\irq -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\irq\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\mcu -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\mcu\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\port -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\port\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\spi -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\spi\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\tricore_general -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\tricore_general\\\\inc -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\uart -IC:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\uart\\\\inc -g2 -w544 -w557 -t4 --language=+volatile -N0 -O0 -Y0 -Z0 --compact-max-size=200 --misrac-version=2004 -o MCAL/cfg/src/EcuM_LCfg.src ../MCAL/cfg/src/EcuM_LCfg.c"
+	.compiler_name		"ctc"
+	;source	'../MCAL/cfg/src/EcuM_LCfg.c'
+
+	
+$TC16X
+	
+	.sdecl	'.rodata.CPU0.Private.DEFAULT_CONST_32BIT',data,rom,cluster('EcuM_ConfigConsistencyHash')
+	.sect	'.rodata.CPU0.Private.DEFAULT_CONST_32BIT'
+	.global	EcuM_ConfigConsistencyHash
+	.align	4
+EcuM_ConfigConsistencyHash:	.type	object
+	.size	EcuM_ConfigConsistencyHash,4
+	.word	-1
+	.sdecl	'.debug_info',debug
+	.sect	'.debug_info'
+.L3:
+	.word	314
+	.half	3
+	.word	.L4
+	.byte	4
+.L2:
+	.byte	1
+	.byte	'../MCAL/cfg/src/EcuM_LCfg.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Havana\\workspace\\AURIX\\CliDemo\\Rel_Appl_freeRTOS_10_4_6\\',0,12,1
+	.word	.L5
+	.byte	2,1,3
+	.word	183
+	.byte	4
+	.byte	'__codeptr',0,1,1,1
+	.word	185
+	.byte	5
+	.byte	'unsigned char',0,1,8,4
+	.byte	'uint8',0,2,90,29
+	.word	208
+	.byte	5
+	.byte	'unsigned short int',0,2,7,4
+	.byte	'uint16',0,2,92,29
+	.word	239
+	.byte	5
+	.byte	'unsigned long int',0,4,7,4
+	.byte	'uint32',0,2,94,29
+	.word	276
+.L8:
+	.byte	6
+	.word	276
+	.byte	0
+	.sdecl	'.debug_abbrev',debug
+	.sect	'.debug_abbrev'
+.L4:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,16,6,0,0,2,21,0,54,15,0,0,3,15,0,73,19,0,0,4,22,0,3,8,58,15,59,15
+	.byte	57,15,73,19,0,0,5,36,0,3,8,11,15,62,15,0,0,6,38,0,73,19,0,0,0
+	.sdecl	'.debug_line',debug
+	.sect	'.debug_line'
+.L5:
+	.word	.L10-.L9
+.L9:
+	.half	3
+	.word	.L12-.L11
+.L11:
+	.byte	2,1,-4,9,10,0,1,1,1,1,0,0,0,1
+	.byte	'C:\\\\Havana\\\\workspace\\\\AURIX\\\\CliDemo\\\\MCAL\\\\ssc\\\\general\\\\tricore\\\\inc',0,0
+	.byte	'../MCAL/cfg/src/EcuM_LCfg.c',0,0,0,0
+	.byte	'Platform_Types.h',0,1,0,0,0
+.L12:
+.L10:
+	.sdecl	'.debug_info',debug,cluster('EcuM_ConfigConsistencyHash')
+	.sect	'.debug_info'
+.L6:
+	.word	223
+	.half	3
+	.word	.L7
+	.byte	4,1
+	.byte	'../MCAL/cfg/src/EcuM_LCfg.c',0
+	.byte	'TASKING VX-toolset for AURIX Development Studio (non-commercial): C compiler',0
+	.byte	'C:\\Havana\\workspace\\AURIX\\CliDemo\\Rel_Appl_freeRTOS_10_4_6\\',0,12,1,2
+	.word	.L2
+	.byte	3
+	.byte	'EcuM_ConfigConsistencyHash',0,1,59,14
+	.word	.L8
+	.byte	1,5,3
+	.word	EcuM_ConfigConsistencyHash
+	.byte	0
+	.sdecl	'.debug_abbrev',debug,cluster('EcuM_ConfigConsistencyHash')
+	.sect	'.debug_abbrev'
+.L7:
+	.byte	1,17,1,3,8,37,8,27,8,19,15,128,70,12,0,0,2,61,0,24,16,0,0,3,52,0,3,8,58,15,59,15,57,15,73,16,63,12,2,9
+	.byte	0,0,0
+	; Module end
