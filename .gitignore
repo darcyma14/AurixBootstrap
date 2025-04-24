@@ -3,6 +3,11 @@
 .settings/
 .project
 .cproject
+Configurations/
+Libraries/
+Lcf_Gnuc_Tricore_Tc.lsl
+Lcf_Tasking_Tricore_Tc.lsl
+Cpu0_Main.c
 
 # 빌드 산출물 무시
 Rel_Appl_freeRTOS_10_4_6/
