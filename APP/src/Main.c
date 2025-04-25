@@ -83,6 +83,9 @@ int Main(void)
 {
     vehicleSpeed = time(0);
     modifyMe = rand();
+
+
+
     HANDLE_INTERRUPT_GLOBALLY();
 
     vStartDebugTask(_VERSION_);
