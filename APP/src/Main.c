@@ -81,8 +81,8 @@ volatile uint8 modifyMe = 5;
 
 int Main(void)
 {
-//    vehicleSpeed = time(0);
-//    modifyMe = rand();
+    vehicleSpeed = time(0);
+    modifyMe = rand();
 
     HANDLE_INTERRUPT_GLOBALLY();
 
