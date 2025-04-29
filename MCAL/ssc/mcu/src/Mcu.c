@@ -645,23 +645,23 @@ traverse efficiently through the memory locations*/
 *******************************************************************************/
 Std_ReturnType Mcu_InitClock( Mcu_ClockType ClockSetting )
 {
-	/* Local variables used in this API */
-	volatile uint32 TimeoutCtr;
-	uint32 DelayCtr;
-	uint32 OscconStatus;
-	uint32 AG3CF0_Status;
-	uint32 AG3CF1_Status;
-	uint32 AG3CF2_Status;
-	uint32 SmuStatus_Temp;
-	Std_ReturnType RetValue;
-	uint32 PllStableTimeoutCtr;
-#if ( MCU_DEV_ERROR_DETECT == STD_ON ) || ( MCU_SAFETY_ENABLE == STD_ON )
-	uint32 ErrorFlag;
-#endif
+  /* Local variables used in this API */
+  volatile uint32 TimeoutCtr;
+  uint32 DelayCtr;
+  uint32 OscconStatus;
+  uint32 AG3CF0_Status;
+  uint32 AG3CF1_Status;
+  uint32 AG3CF2_Status;
+  uint32 SmuStatus_Temp;
+  Std_ReturnType RetValue;
+  uint32 PllStableTimeoutCtr;
+  #if ( MCU_DEV_ERROR_DETECT == STD_ON ) || ( MCU_SAFETY_ENABLE == STD_ON )
+  uint32 ErrorFlag;
+  #endif
 
-#if ( MCU_DEV_ERROR_DETECT == STD_OFF ) && ( MCU_SAFETY_ENABLE == STD_ON )
-	ErrorFlag = MCU_ERR_NOT_FOUND;
-#endif
+  #if ( MCU_DEV_ERROR_DETECT == STD_OFF ) && ( MCU_SAFETY_ENABLE == STD_ON )
+  ErrorFlag = MCU_ERR_NOT_FOUND;
+  #endif
 
   /* Parameter check for the API if DET is STD_ON*/
   #if ( MCU_DEV_ERROR_DETECT == STD_ON )

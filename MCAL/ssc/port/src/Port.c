@@ -452,6 +452,7 @@ static uint8 Port_InitStatus;
 **     the port for use                                                       **
 **                                                                            **
 *******************************************************************************/
+
 void Port_Init ( const Port_ConfigType * ConfigPtr )
 {
   #if ((PORT_DEV_ERROR_DETECT == STD_ON) || (PORT_SAFETY_ENABLE == STD_ON))
@@ -1655,14 +1656,19 @@ IFX_LOCAL_INLINE void Port_lIOInit(void)
 {
   const uint32            *DataPtr;
   const Port_n_ConfigType *ConfigDataPtr;
+
   /* Each Port Number for the hardware unit */
   uint32                   PortNumber;
+
   /* Each Port level for the hardware unit */
   uint32                   PortLevel;
+
   /* Index to identify the port configuration information
   from the configuration array  */
+
   uint32                   ConfigIndex;
   Ifx_P                   *PortAddressPtr;
+
   const uint32            *PCSRDataPtr;
   volatile uint32         *PCSRRegPtr;
 
@@ -1738,10 +1744,12 @@ IFX_LOCAL_INLINE void Port_lIOInit(void)
           to efficiently access the SFRs of PORT*/
          PCSRRegPtr = ((volatile uint32*)(volatile void*)PortAddressPtr +
                                          PORT_PCSR_REG_OFFSET);
+
          Mcal_ResetSafetyENDINIT_Timed(PORT_ENDINIT_TIMEOUT);
          /* PCSRn */
         *PCSRRegPtr = *PCSRDataPtr;
-         Mcal_SetSafetyENDINIT_Timed();
+
+        Mcal_SetSafetyENDINIT_Timed();
 
          /*IFX_MISRA_RULE_17_04_STATUS=Pointer arithmetic used
           due to PBConfigStructure and is within allowed range.*/

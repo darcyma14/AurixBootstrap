@@ -154,8 +154,7 @@ static void prvTestTBootFunction(void)
 /*-----------------------------------------------------------*/
 
 static void prvDownloadImage(void)
-{
-    uint8_t rgucNumber[12] = "          ";
+{ 
     BaseType_t xSize = 0;
     register int i;
 
@@ -166,14 +165,18 @@ static void prvDownloadImage(void)
 
     for (i=0; i<0xF00000; i++);
 
-    if (xSize>0) {
-        vDbgPrintf("\n\n\rProgramming Completed Successfully!\r\n--------------------------------\r\n Name: ");
+    if (xSize>=0) {
+        vDbgPrintf("\n\n\rProgramming Completed Successfully!\r\n");
+#if 0     
+        vDbgPrintf("--------------------------------\r\n Name: ");
+        uint8_t rgucNumber[12] = "          ";
         vDbgPrintf((char *)pYmodemGetFileName());
         Int2Str(rgucNumber, (int) xSize);
         vDbgPrintf("\r\n Size: ");
         vDbgPrintf(( char * ) rgucNumber);
         vDbgPrintf(" Bytes\r\n");
         vDbgPrintf("--------------------------------\r\n");
+#endif        
     }
     else if (xSize==-1) {
         vDbgPrintf("\n\n\rThe image size is higher than the allowed space memory!\n\r");
@@ -185,7 +188,7 @@ static void prvDownloadImage(void)
         vDbgPrintf("\r\n\nAborted by user.\n\r");
     }
     else {
-        vDbgPrintf("\n\rFailed to receive the file!\n\r");
+        vDbgPrintf("\n\rFailed to receive the file! %u\n\r", xSize);
     }
 }
 /*-----------------------------------------------------------*/

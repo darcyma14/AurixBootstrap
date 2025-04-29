@@ -89,69 +89,71 @@ SAS_NAS_ALL_PR630_PR631,DS_NAS_FLSLOADER_PR115,DS_NAS_FLSLOADER_PR2986]
 *******************************************************************************/
   /* To differentiate between PFLASH and DFLASH the following value is written
   in the command cycle. */
-#define FLSLOADER_PFLASH_VAL            ( ( FlsLoader_AddressType )( 0x00000050U ) )
+#define FLSLOADER_PFLASH_VAL            ((FlsLoader_AddressType)(0x00000050U))
 
   /* The flash bank are assigned with values with respect to location in
   FLASH_FLASH0_FSR register. */
 
-#define FLSLOADER_PROG_MASK             ( ( uint32 )( 0x00000080U ) )
-#define FLSLOADER_ERASE_MASK            ( ( uint32 )( 0x00000100U ) )
+#define FLSLOADER_PROG_MASK             ((uint32)(0x00000080U))
+#define FLSLOADER_ERASE_MASK            ((uint32)(0x00000100U))
   /*The following to macros are used to determine the status of Flash. */
-#define FLSLOADER_NORMAL                ( 0U )
-#define FLSLOADER_SUSPEND               ( 1U )
-#define FLSLOADER_UNINTIALIZED          ( 0U )
+#define FLSLOADER_NORMAL                (0U)
+#define FLSLOADER_SUSPEND               (1U)
+#define FLSLOADER_UNINTIALIZED          (0U)
 
   /* Flash NULL */
-#define FLSLOADER_NULL                  ( ( void * ) 0 )
-#define FLSLOADER_ZERO_DATA             ( 0x00000000U )
-#ifndef FLSLOADER_PROCON_CHECK
-#define FLSLOADER_PROCON_CHECK          ( ( uint32 )( 0x7FFFFFFU ) )
-#endif
-#define FLSLOADER_PFLASH_ADDRESS_MASK   ( ( FlsLoader_AddressType )( 0x00FFFFFFU ) )
-#define FLSLOADER_ADDRESS_HI_5_MASK     ( ( FlsLoader_AddressType )( 0x000FFFFFU ) )
-#define FLSLOADER_SHIFT_BY_16           ( 16U )
-#define FLSLOADER_SHIFT_BY_8            ( 8U )
-#ifndef FLSLOADER_SHIFT_BY_15
-#define FLSLOADER_SHIFT_BY_15           ( 15U )
-#endif
-#define FLSLOADER_NUM_5                 ( 5U )
-#define FLSLOADER_NUM_32                ( 32U )
-#define FLSLOADER_NUM_256               ( 256U )
-#define FLSLOADER_NUM_8                 ( 8U )
-#define FLSLOADER_UCB0                  ( 0U )
-#define FLSLOADER_UCB1                  ( 1U )
-#define FLSLOADER_PWD                   ( 8U )
-#define FLSLOADER_NUM_3                 ( 3U )
-  /* ( 17*8 )bytes UCB <P/D>FLASH content */
-#define FLSLOADER_FLASH_TRAP_DIS        ( 0x00008000U )
-#define FLSLOADER_FLASH_TRAP_EN         ( 0xFFFF7FFFU )
+#define FLSLOADER_NULL                  ((void *) 0)
+#define FLSLOADER_ZERO_DATA             (0x00000000U)
+#define FLSLOADER_PROCON_CHECK          ((uint32)(0x7FFFFFFU))
+#define FLSLOADER_PFLASH_ADDRESS_MASK   ((FlsLoader_AddressType)(0x00FFFFFFU))
+#define FLSLOADER_ADDRESS_HI_5_MASK     ((FlsLoader_AddressType)(0x000FFFFFU))
+#define FLSLOADER_SHIFT_BY_16           (16U)
+#define FLSLOADER_SHIFT_BY_8            (8U)
+#define FLSLOADER_SHIFT_BY_15           (15U)
+#define FLSLOADER_NUM_5                 (5U)
+#define FLSLOADER_NUM_32                (32U)
+#define FLSLOADER_NUM_256               (256U)
+#define FLSLOADER_NUM_8                 (8U)
+#define FLSLOADER_UCB0                  (0U)
+#define FLSLOADER_UCB1                  (1U)
+#define FLSLOADER_PWD                   (8U)
+#define FLSLOADER_NUM_3                 (3U)
+  /* (17*8)bytes UCB <P/D>FLASH content */
+#define FLSLOADER_FLASH_TRAP_DIS        (0x00008000U)
+#define FLSLOADER_FLASH_TRAP_EN         (0xFFFF7FFFU)
 
   /* Program Verify Error */
-#define FLSLOADER_PVER_ERROR            ( 0x02000000U )
+#define FLSLOADER_PVER_ERROR                  (0x02000000U)
   /* Erase Verify Error */
-#define FLSLOADER_EVER_ERROR            ( 0x04000000U )
+#define FLSLOADER_EVER_ERROR                  (0x04000000U)
 
   /* Flash command should point this Address */
-#define FLSLOADER_CMD_BASE  ( ( FlsLoader_AddressType )( 0xAF000000U ) )
+#define FLSLOADER_CMD_BASE  ((FlsLoader_AddressType)(0xAF000000U))
 
-#define FLASH_HW_MODULE     ( ( volatile Ifx_FLASH * )( void * ) &( MODULE_FLASH0 ) )
-#define FLASH0_PROCONP      ( ( volatile Ifx_FLASH_PROCONP* )( void * )( &FLASH0_PROCONP0 ) )
-#define FLASH0_PROCONOTP    ( ( volatile Ifx_FLASH_PROCONOTP* )( void * )( &FLASH0_PROCONOTP0 ) )
-#define FLASH0_PROCONWOP    ( ( volatile Ifx_FLASH_PROCONWOP* )( void * )( &FLASH0_PROCONWOP0 ) )
+#define FLASH_HW_MODULE ((volatile Ifx_FLASH *)(void *) &(MODULE_FLASH0))
+#define FLASH0_PROCONP ((volatile Ifx_FLASH_PROCONP*)(void *)(&FLASH0_PROCONP0))
+#define FLASH0_PROCONOTP \
+         ((volatile Ifx_FLASH_PROCONOTP*)(void *)(&FLASH0_PROCONOTP0))
+#define FLASH0_PROCONWOP \
+         ((volatile Ifx_FLASH_PROCONWOP*)(void *)(&FLASH0_PROCONWOP0))
 
 
-#define FLSLOADER_WDT_PASSWORD_LOWER_MASK   ( 0x000000FCu )
+
+#define FLSLOADER_WDT_PASSWORD_LOWER_MASK  ( 0x000000FCu )
 
   /* mask for password Bits 8-15 */
-#define FLSLOADER_WDT_PASSWORD_UPPER_MASK   ( 0x0000FF00u )
+#define FLSLOADER_WDT_PASSWORD_UPPER_MASK  ( 0x0000FF00u )
 
   /* mask for password bits */
-#define FLSLOADER_WDT_PASSWORD_MASK         ( FLSLOADER_WDT_PASSWORD_LOWER_MASK |  FLSLOADER_WDT_PASSWORD_UPPER_MASK )
+#define FLSLOADER_WDT_PASSWORD_MASK   \
+                                    (FLSLOADER_WDT_PASSWORD_LOWER_MASK | \
+                                     FLSLOADER_WDT_PASSWORD_UPPER_MASK)
 
-#define FLSLOADER_WDT_RELOAD_MASK           ( 0xFFFF0000u )
+#define FLSLOADER_WDT_RELOAD_MASK          ( 0xFFFF0000u )
+
 
   /* mask for LCK and ENDINIT status bits */
-#define FLSLOADER_WDT_STATUS_MASK           ( 0x00000003u )
+#define FLSLOADER_WDT_STATUS_MASK          ( 0x00000003u )
 
 
 /*******************************************************************************
@@ -165,20 +167,21 @@ SAS_NAS_ALL_PR630_PR631,DS_NAS_FLSLOADER_PR115,DS_NAS_FLSLOADER_PR2986]
   */
   /*IFX_MISRA_RULE_19_07_STATUS=Function like macro used for code simplication 
   and readability*/
-#define FlsLoader_lGetMode( FlashType )     ( ( ( FlashType ) != ( FLSLOADER_DFLASH_BANK0 ) ) ? ( FLSLOADER_PFLASH_VAL ) : ( FLSLOADER_DFLASH_VAL ) )
+#define FlsLoader_lGetMode(FlashType) (((FlashType)!=(FLSLOADER_DFLASH_BANK0)) \
+                             ? (FLSLOADER_PFLASH_VAL) : (FLSLOADER_DFLASH_VAL))
 
 /******************************************************************************
 **                      Global Type Definitions                              **
 ******************************************************************************/
 /*
-#define RELOCATION_ADDR		( 0x70100000U )
+#define RELOCATION_ADDR		(0x70100000U)
 
 typedef struct
 {
-	void (* IResetSafetyENDINIT )( void );
-	void (* lSetSafetyENDINIT )( void );
-	uint32 (* erasePFlash )( FlsLoader_AddressType TargetAddress, FlsLoader_LengthType Length );
-	uint32 (* writePFlash )( FlsLoader_AddressType TargetAddress, FlsLoader_LengthType Length, const uint8 *SourceAddressPtr );
+	void (*IResetSafetyENDINIT)(void);
+	void (*lSetSafetyENDINIT)(void);
+	uint32 (*erasePFlash)(FlsLoader_AddressType TargetAddress, FlsLoader_LengthType Length);
+	uint32 (*writePFlash)(FlsLoader_AddressType TargetAddress, FlsLoader_LengthType Length, const uint8 *SourceAddressPtr);
 } Function;
 
 Function q_cmdFromPSPR;
@@ -218,7 +221,7 @@ Function q_cmdFromPSPR;
 #include "MemMap.h"
 #endif
   static uint8 FlsLoader_Status;
-#if ( FLSLOADER_DEV_ERROR_DETECT == STD_ON )
+#if (FLSLOADER_DEV_ERROR_DETECT == STD_ON)
   uint8  FlsLoader_InitStatus;
 #endif
 
@@ -246,31 +249,31 @@ Function q_cmdFromPSPR;
 **                    Prototypes Of Local Functions                           **
 *******************************************************************************/
   /* funtion to check program verification error */
-IFX_LOCAL_INLINE FlsLoader_ReturnType FlsLoader_lPverCheck( void );
+IFX_LOCAL_INLINE FlsLoader_ReturnType FlsLoader_lPverCheck(void);
 
   /* funtion to check Erase verification error */
-IFX_LOCAL_INLINE FlsLoader_ReturnType FlsLoader_lEverCheck( void );
+IFX_LOCAL_INLINE FlsLoader_ReturnType FlsLoader_lEverCheck(void);
 
-IFX_LOCAL_INLINE void FlsLoader_lResetSafetyENDINIT( void );
+IFX_LOCAL_INLINE void FlsLoader_lResetSafetyENDINIT(void);
 
-IFX_LOCAL_INLINE void FlsLoader_lSetSafetyENDINIT( void );
+IFX_LOCAL_INLINE void FlsLoader_lSetSafetyENDINIT(void);
 
 
-IFX_LOCAL_INLINE FlsLoader_ReturnType FlsLoader_lBurstWrite ( uint32 BurstLoadPageCount,
-                                                              FlsLoader_AddressType BurstOffSet,
-                                                              uint32 FlashType,
-                                                              const uint8 *SourceAddressPtr,
-                                                              FlsLoader_AddressType TargetAddress,
-                                                              uint32 NumberOfBursts
-                                                            );
+IFX_LOCAL_INLINE FlsLoader_ReturnType FlsLoader_lBurstWrite (
+                            uint32 BurstLoadPageCount,
+                            FlsLoader_AddressType BurstOffSet,
+                            uint32 FlashType,
+                            const uint8 *SourceAddressPtr,
+                            FlsLoader_AddressType TargetAddress,
+                            uint32 NumberOfBursts);
 
-IFX_LOCAL_INLINE FlsLoader_ReturnType FlsLoader_lPageWrite ( uint32 LoadPageCount,
-                                                             FlsLoader_AddressType OffSet,
-                                                             uint32 FlashType,
-                                                             const uint8 *SourceAddressPtr,
-                                                             FlsLoader_AddressType TargetAddress,
-                                                             uint32 NoOfPages
-                                                           );
+IFX_LOCAL_INLINE FlsLoader_ReturnType FlsLoader_lPageWrite (
+                           uint32 LoadPageCount,
+                           FlsLoader_AddressType OffSet,
+                           uint32 FlashType,
+                           const uint8 *SourceAddressPtr,
+                           FlsLoader_AddressType TargetAddress,
+                           uint32 NoOfPages);
 
 #ifdef _FREE_TASKING_C_COMPILER_
 #pragma protect restore
@@ -333,60 +336,54 @@ IFX_LOCAL_INLINE FlsLoader_ReturnType FlsLoader_lPageWrite ( uint32 LoadPageCoun
 /*
 CD_FlsLoader028: This is the initialization function for FlsLoader.
 */
-__indirect FlsLoader_ReturnType FlsLoader_Init( const FlsLoader_ConfigType* Address )
+__indirect FlsLoader_ReturnType FlsLoader_Init(const FlsLoader_ConfigType* Address)
 {
-    FlsLoader_ReturnType  RetError;
-    UNUSED_PARAMETER( Address )
+  FlsLoader_ReturnType  RetError;
+  UNUSED_PARAMETER(Address)
 
-    /* Init RetError to OK */
-    #if ( FLSLOADER_DEV_ERROR_DETECT == STD_ON )
-    {
-        RetError = FLSLOADER_E_OK;
-    }
+  /* Init RetError to OK */
+  #if (FLSLOADER_DEV_ERROR_DETECT == STD_ON)
+  RetError = FLSLOADER_E_OK; 
+  #endif
+  /*
+  Check if Passed Address is NULL
+  */
+
+  #if (FLSLOADER_DEV_ERROR_DETECT == STD_ON)
+  if ( Address != FLSLOADER_NULL )
+  {
+    /* Report FLSLOADER_E_PARAM_IGNORED DET */
+    Det_ReportError(
+                    FLSLOADER_MODULE_ID,
+                    FLSLOADER_INSTANCE_ID,
+                    FLSLOADER_SID_INIT,
+                    FLSLOADER_E_PARAM_IGNORED);
+  
+    RetError = FLSLOADER_E_NOT_OK;
+  }
+  if (RetError != FLSLOADER_E_NOT_OK)
+  #endif
+  {
+    RetError = FlsLoader_lCheckOTPWOP();
+    /*FLASH_FCON register will be initialized in the start up. */
+    FlsLoader_Status = FLSLOADER_NORMAL;
+    #if (FLSLOADER_DEV_ERROR_DETECT == STD_ON)
+    FlsLoader_InitStatus = FLSLOADER_INITIALIZED;
     #endif
-    /*
-     Check if Passed Address is NULL
-    */
-
-#if ( FLSLOADER_DEV_ERROR_DETECT == STD_ON )
-    if( Address != FLSLOADER_NULL )
-    {
-        /* Report FLSLOADER_E_PARAM_IGNORED DET */
-        Det_ReportError(
-                        FLSLOADER_MODULE_ID,
-                        FLSLOADER_INSTANCE_ID,
-                        FLSLOADER_SID_INIT,
-                        FLSLOADER_E_PARAM_IGNORED
-                        );
-
-        RetError = FLSLOADER_E_NOT_OK;
-    }
-
-    if( RetError != FLSLOADER_E_NOT_OK )
-#endif
-    {
-        RetError = FlsLoader_lCheckOTPWOP();
-        /*FLASH_FCON register will be initialized in the start up. */
-        FlsLoader_Status = FLSLOADER_NORMAL;
-        #if ( FLSLOADER_DEV_ERROR_DETECT == STD_ON )
-        {
-            FlsLoader_InitStatus = FLSLOADER_INITIALIZED;
-        }
-        #endif
-        Mcal_ResetENDINIT();
-        /* Disable traps on Uncorrectable errors */
-        FLASH0_MARP.U |= FLSLOADER_FLASH_TRAP_DIS;
-        /* Set End Init Protection */
-        Mcal_SetENDINIT();
-        /* Disable traps on Uncorrectable errors */
-        FLASH0_MARD.U |= FLSLOADER_FLASH_TRAP_DIS;
-    }
-    return ( RetError );
+    Mcal_ResetENDINIT();
+    /* Disable traps on Uncorrectable errors */
+    FLASH0_MARP.U |= FLSLOADER_FLASH_TRAP_DIS;
+    /* Set End Init Protection */
+    Mcal_SetENDINIT();
+    /* Disable traps on Uncorrectable errors */
+    FLASH0_MARD.U |= FLSLOADER_FLASH_TRAP_DIS;
+  }
+  return (RetError);
 }  /*End of Fls_Loader_Init */
 
   /*Preprocessor switch to enable/disable the API to deinitialze
   FlsLoader. */
-#if ( FLSLOADER_DEINIT_API == STD_ON )
+#if (FLSLOADER_DEINIT_API == STD_ON)
 /*******************************************************************************
 ** Traceability : [cover parentID=DS_NAS_FLSLOADER_PR1624]                    **
 
@@ -415,80 +412,74 @@ __indirect FlsLoader_ReturnType FlsLoader_Init( const FlsLoader_ConfigType* Addr
   /*
   CD_FlsLoader030: Service for FlsLaderDeInitialization
   */
-FlsLoader_ReturnType FlsLoader_DeInit( void )
+FlsLoader_ReturnType FlsLoader_DeInit(void)
 {
-    FlsLoader_ReturnType  RetError;
-    uint32 Fls0FsrCheck;
-    /* Init RetError to OK */
-    RetError = FLSLOADER_E_OK;
+  FlsLoader_ReturnType  RetError;
+  uint32 Fls0FsrCheck;
+  /* Init RetError to OK */
+  RetError = FLSLOADER_E_OK;
 
-#if ( FLSLOADER_DEV_ERROR_DETECT == STD_ON )
-    if( FlsLoader_InitStatus != FLSLOADER_INITIALIZED )
+  #if (FLSLOADER_DEV_ERROR_DETECT == STD_ON)
+  if (FlsLoader_InitStatus != FLSLOADER_INITIALIZED)
+  {
+    /* CD_FlsLoader032: FlsLoader not initialized,Report to DET*/
+    Det_ReportError (
+                      FLSLOADER_MODULE_ID,
+                      FLSLOADER_INSTANCE_ID,
+                      FLSLOADER_SID_DEINIT,
+                      FLSLOADER_E_UNINIT);
+    RetError = FLSLOADER_E_NOT_OK;
+  }
+  if (RetError != FLSLOADER_E_NOT_OK )
+  #endif
+  {
+    /* Check for Flash Busy*/
+    #ifdef IFX_FLSLOADER_DEBUG
+    Fls0FsrCheck = ((FLASH0_FSR.U & ((uint32)FLSLOADER_FLASH_BUSY_MASK)) |
+                     TestFlsloader_DebugMask01);
+    #else  /*#ifdef IFX_FLSLOADER_DEBUG*/
+    Fls0FsrCheck = (FLASH0_FSR.U & (uint32)(FLSLOADER_FLASH_BUSY_MASK));
+    #endif  /*#ifdef IFX_FLSLOADER_DEBUG*/
+    if (Fls0FsrCheck)
     {
-        /* CD_FlsLoader032: FlsLoader not initialized,Report to DET*/
-        Det_ReportError ( FLSLOADER_MODULE_ID,
-                          FLSLOADER_INSTANCE_ID,
-                          FLSLOADER_SID_DEINIT,
-                          FLSLOADER_E_UNINIT
-                          );
-        RetError = FLSLOADER_E_NOT_OK;
+      /* Report FLSLOADER_E_BUSY DET */
+      RetError = FLSLOADER_E_BUSY;
+      #if (FLSLOADER_DEV_ERROR_DETECT == STD_ON)
+      Det_ReportError (
+                      FLSLOADER_MODULE_ID,
+                      FLSLOADER_INSTANCE_ID,
+                      FLSLOADER_SID_DEINIT,
+                      (uint8)FLSLOADER_E_BUSY);
+      #endif
     }
-    if( RetError != FLSLOADER_E_NOT_OK )
-#endif
+    else
     {
-        /* Check for Flash Busy*/
-        #ifdef IFX_FLSLOADER_DEBUG
-        {
-            Fls0FsrCheck = ( ( FLASH0_FSR.U & ( ( uint32 ) FLSLOADER_FLASH_BUSY_MASK ) ) | TestFlsloader_DebugMask01 );
-        }
-        #else  /*#ifdef IFX_FLSLOADER_DEBUG*/
-        {
-            Fls0FsrCheck = ( FLASH0_FSR.U & ( uint32 ) ( FLSLOADER_FLASH_BUSY_MASK ) );
-        }
-        #endif  /*#ifdef IFX_FLSLOADER_DEBUG*/
-        if( Fls0FsrCheck )
-        {
-            /* Report FLSLOADER_E_BUSY DET */
-            RetError = FLSLOADER_E_BUSY;
-            #if ( FLSLOADER_DEV_ERROR_DETECT == STD_ON )
-            {
-                Det_ReportError( FLSLOADER_MODULE_ID,
-                                 FLSLOADER_INSTANCE_ID,
-                                 FLSLOADER_SID_DEINIT,
-                                 ( uint8 ) FLSLOADER_E_BUSY 
-                                 );
-            }
-            #endif
-        }
-        else
-        {
-            FlsLoader_Status = FLSLOADER_NORMAL;
-            #if ( FLSLOADER_DEV_ERROR_DETECT == STD_ON )
-            {
-                FlsLoader_InitStatus = FLSLOADER_UNINTIALIZED;
-            }
-            #endif
-            /* Reset to Read PFLASH, DFLASH (both banks) */
-            /*IFX_MISRA_RULE_01_02_STATUS=FlsLoader_AddressType is defined of type 
-            volatile uint32 to avoid compiler optimization in command cycles*/
-            /*IFX_MISRA_RULE_11_01_STATUS= The Pointers are type-cast to uint32 for 
-            address comparison/calculation purpose.*/
-            /*IFX_MISRA_RULE_11_03_STATUS= The Pointers are type-cast to uint32 for 
-            address comparison/calculation purpose.*/
-            *( ( FlsLoader_AddressType * )FlsLoader_lResetRead( FLSLOADER_DFLASH0_START_ADDRESS ) ) = FLSLOADER_VALUE_F0;
-        }
-        /* Reset EndInit protection */
-        Mcal_ResetENDINIT();
-        /* Enable traps on Uncorrectable errors */
-        FLASH0_MARP.U &= FLSLOADER_FLASH_TRAP_EN;
-        /* Set End Init Protection */
-        Mcal_SetENDINIT();
-        /* Enable traps on Uncorrectable errors */
-        FLASH0_MARD.U &= FLSLOADER_FLASH_TRAP_EN; 
+      FlsLoader_Status = FLSLOADER_NORMAL;
+      #if (FLSLOADER_DEV_ERROR_DETECT == STD_ON)
+      FlsLoader_InitStatus = FLSLOADER_UNINTIALIZED;
+      #endif
+      /* Reset to Read PFLASH, DFLASH (both banks) */
+      /*IFX_MISRA_RULE_01_02_STATUS=FlsLoader_AddressType is defined of type 
+      volatile uint32 to avoid compiler optimization in command cycles*/
+      /*IFX_MISRA_RULE_11_01_STATUS= The Pointers are type-cast to uint32 for 
+      address comparison/calculation purpose.*/
+      /*IFX_MISRA_RULE_11_03_STATUS= The Pointers are type-cast to uint32 for 
+      address comparison/calculation purpose.*/
+      *((FlsLoader_AddressType*)FlsLoader_lResetRead
+      (FLSLOADER_DFLASH0_START_ADDRESS)) = FLSLOADER_VALUE_F0;
     }
-    return ( RetError );
+    /* Reset EndInit protection */
+    Mcal_ResetENDINIT();
+    /* Enable traps on Uncorrectable errors */
+    FLASH0_MARP.U &= FLSLOADER_FLASH_TRAP_EN;
+    /* Set End Init Protection */
+    Mcal_SetENDINIT();
+    /* Enable traps on Uncorrectable errors */
+    FLASH0_MARD.U &= FLSLOADER_FLASH_TRAP_EN; 
+  }
+  return (RetError);
 }  /*End of function FlsLoader_DeInit */
-#endif  /*( FLSLOADER_DEINIT_API == STD_ON ) */
+#endif  /*(FLSLOADER_DEINIT_API == STD_ON) */
 
 #ifdef _FREE_TASKING_C_COMPILER_
 #pragma protect restore
@@ -545,128 +536,122 @@ FlsLoader_ReturnType FlsLoader_DeInit( void )
 **                    This function does not check whether the TargetAddress  **
 **                    crosses the boundry from one sector to another          **
 *******************************************************************************/
-__indirect FlsLoader_ReturnType FlsLoader_Write( FlsLoader_AddressType TargetAddress, FlsLoader_LengthType Length, const uint8 *SourceAddressPtr )
+__indirect FlsLoader_ReturnType FlsLoader_Write(FlsLoader_AddressType TargetAddress,
+                                     FlsLoader_LengthType Length,
+                                     const uint8 *SourceAddressPtr)
 {
-    FlsLoader_ReturnType RetError;
-    FlsLoader_AddressType OffSet;
-    FlsLoader_AddressType BurstOffSet;
-    uint32 FlashType;
-    uint32 NumberOfBursts;
-    uint32 FlsFsrCheck;
-    uint32 Icr;
-    uint32 BytesToWrite;
-    uint32 NoOfPages;
-    uint32 LoadPageCount;
-    uint32 BurstLoadPageCount;
+  FlsLoader_ReturnType  RetError;
+  FlsLoader_AddressType OffSet;
+  FlsLoader_AddressType BurstOffSet;
+  uint32                FlashType;
+  uint32                NumberOfBursts;
+  uint32                FlsFsrCheck;
+  uint32                Icr;
+  uint32                BytesToWrite;
+  uint32                NoOfPages;
+  uint32                LoadPageCount;
+  uint32                BurstLoadPageCount;
+
 
   /*Block 1: DET Check */
-#if ( FLSLOADER_DEV_ERROR_DETECT == STD_ON )
-    RetError = FlsLoader_lWriteDetCheck( Length, TargetAddress );
+  #if (FLSLOADER_DEV_ERROR_DETECT == STD_ON)
+  RetError = FlsLoader_lWriteDetCheck(Length,TargetAddress);
 
-    if( RetError != FLSLOADER_E_NOT_OK )
-#endif
+  if (RetError != FLSLOADER_E_NOT_OK)
+  #endif
+  {
+    #ifdef IFX_FLSLOADER_DEBUG
+    FlsFsrCheck = ((FLASH0_FSR.U & ((uint32)FLSLOADER_FLASH_BUSY_MASK)) |
+                    TestFlsloader_DebugMask01);
+    #else  /*#ifdef IFX_FLSLOADER_DEBUG*/
+    /*Check for Busy state of FLASH
+    Registers differ between Checking of Busy state of PFlash and DFlash */
+    FlsFsrCheck = (FLASH0_FSR.U & ((uint32)FLSLOADER_FLASH_BUSY_MASK));
+    #endif  /*#ifdef IFX_FLSLOADER_DEBUG*/
+    if ( FlsFsrCheck )
     {
-        #ifdef IFX_FLSLOADER_DEBUG
+      /* Report FLSLOADER_E_BUSY DET */
+      #if (FLSLOADER_DEV_ERROR_DETECT == STD_ON)
+      Det_ReportError(
+                    FLSLOADER_MODULE_ID,
+                    FLSLOADER_INSTANCE_ID,
+                    FLSLOADER_SID_WRITE,
+                    (uint8)FLSLOADER_E_BUSY);
+      #endif
+      RetError = FLSLOADER_E_BUSY;
+    }
+    else if ( SourceAddressPtr == FLSLOADER_NULL)
+    {
+      RetError = FLSLOADER_E_NOT_OK;
+    }
+    else
+    { 
+      /*PFLASH0*/
+      /* Block 2: check the Flash Type DFLASH/PFLASH .
+      If the Flash type is PFLASH check PMU0. */
+      FlashType = FlsLoader_lGetFlashType (TargetAddress);
+      /* Protection Installation check  */
+      /* Preprocessor switch to enable/disable the lockcheck functionality */
+      /*#if (FLSLOADER_ENABLE_LOCKCHECK == STD_ON)*/
+      #if (FLSLOADER_ENABLE_LOCKCHECK == STD_ON)
+      RetError = FlsLoader_lFlashLockCheck(TargetAddress,FlashType,Length);
+      if (FLSLOADER_E_OK == RetError)
+      #endif
+      {
+        /* Count the number of loops */
+        if (FlashType != FLSLOADER_DFLASH_BANK0)
         {
-            FlsFsrCheck = ( ( FLASH0_FSR.U & ( ( uint32 ) FLSLOADER_FLASH_BUSY_MASK ) ) | TestFlsloader_DebugMask01 );
-        }
-        #else  /*#ifdef IFX_FLSLOADER_DEBUG*/
-        {
-            /*Check for Busy state of FLASH
-            Registers differ between Checking of Busy state of PFlash and DFlash */
-            FlsFsrCheck = ( FLASH0_FSR.U & ( ( uint32 ) FLSLOADER_FLASH_BUSY_MASK ) );
-        }
-        #endif  /*#ifdef IFX_FLSLOADER_DEBUG*/
-
-        if( FlsFsrCheck )
-        {
-            /* Report FLSLOADER_E_BUSY DET */
-            #if( FLSLOADER_DEV_ERROR_DETECT == STD_ON )
-            {
-                Det_ReportError( FLSLOADER_MODULE_ID, FLSLOADER_INSTANCE_ID, FLSLOADER_SID_WRITE, ( uint8 ) FLSLOADER_E_BUSY );
-            }
-            #endif
-            RetError = FLSLOADER_E_BUSY;
-        }
-        else if( SourceAddressPtr == FLSLOADER_NULL )
-        {
-            RetError = FLSLOADER_E_NOT_OK;
+          NumberOfBursts  = Length >> FLSLOADER_SHIFT_BY_8; /* Divide by 256 */
+          LoadPageCount  = FLSLOADER_NUM_4;
+          BurstLoadPageCount = FLSLOADER_NUM_32;
+          OffSet       = (FlsLoader_AddressType)FLSLOADER_NUM_32;
+          BurstOffSet  = (FlsLoader_AddressType)FLSLOADER_NUM_256;
+          BytesToWrite = (Length - (NumberOfBursts * FLSLOADER_NUM_256));
+          NoOfPages    = (BytesToWrite / FLSLOADER_NUM_32);
         }
         else
         {
-            /*PFLASH0*/
-            /* Block 2: check the Flash Type DFLASH/PFLASH .
-               If the Flash type is PFLASH check PMU0. */
-            FlashType = FlsLoader_lGetFlashType( TargetAddress );
-            /* Protection Installation check  */
-            /* Preprocessor switch to enable/disable the lockcheck functionality */
-            /*#if (FLSLOADER_ENABLE_LOCKCHECK == STD_ON)*/
-#if ( FLSLOADER_ENABLE_LOCKCHECK == STD_ON )
-            RetError = FlsLoader_lFlashLockCheck( TargetAddress, FlashType, Length );
-            if (FLSLOADER_E_OK == RetError)
-#endif
-            {
-                /* Count the number of loops */
-                if( FlashType != FLSLOADER_DFLASH_BANK0 )
-                {
-                    NumberOfBursts  = Length >> FLSLOADER_SHIFT_BY_8; /* Divide by 256 */
-                    LoadPageCount  = FLSLOADER_NUM_4;
-                    BurstLoadPageCount = FLSLOADER_NUM_32;
-                    OffSet       = ( FlsLoader_AddressType ) FLSLOADER_NUM_32;
-                    BurstOffSet  = ( FlsLoader_AddressType ) FLSLOADER_NUM_256;
-                    BytesToWrite = ( Length - ( NumberOfBursts * FLSLOADER_NUM_256 ) );
-                    NoOfPages    = ( BytesToWrite / FLSLOADER_NUM_32 );
-                }
-                else
-                {
-                    NumberOfBursts  = Length >> FLSLOADER_NUM_5; /* Divide by 32 */
-                    LoadPageCount      = 1U;
-                    BurstLoadPageCount = FLSLOADER_NUM_4;
-                    OffSet       = ( FlsLoader_AddressType )FLSLOADER_NUM_8;
-                    BurstOffSet  = ( FlsLoader_AddressType )FLSLOADER_NUM_32;
-                    BytesToWrite = ( Length - ( NumberOfBursts * FLSLOADER_NUM_32 ) );
-                    NoOfPages    = ( BytesToWrite / FLSLOADER_NUM_8 );
-                }
-      
-                /* Block 5: Execute the command sequence . */
-                /* Initiating the state to normal*/
-                FlsLoader_Status = FLSLOADER_NORMAL;
-                /* Disable and restore interrupts for critical
-                   command cycles. As there are 2 critical command cycles,
-                   the entire write operation is protected. */
-                /* copy the Address to local variable */
-                Icr = FlsLoader_lDisableInts();
-        
-                /* Write in Burst Mode */
-                RetError = FlsLoader_lBurstWrite( BurstLoadPageCount,
-                                                  BurstOffSet,
-                                                  FlashType,
-                                                  SourceAddressPtr,
-                                                  TargetAddress,
-                                                  NumberOfBursts
-                                                  );
-        
-                if( ( RetError == FLSLOADER_E_OK ) && ( NoOfPages != 0U ) )
-                {
-                    /* Write Remaining Pages */
-                    TargetAddress += NumberOfBursts * ( BurstLoadPageCount << FLSLOADER_NUM_3 );
-                    /* IFX_MISRA_RULE_17_04_STATUS=Pointer arithmetic is used to access
-                       user buffer efficiently */
-                    SourceAddressPtr += NumberOfBursts * ( BurstLoadPageCount << FLSLOADER_NUM_3 );
-
-                    RetError = FlsLoader_lPageWrite( LoadPageCount,
-                                                     OffSet,
-                                                     FlashType,
-                                                     SourceAddressPtr,
-                                                     TargetAddress,
-                                                     NoOfPages 
-                                                     );
-                }
-                FlsLoader_lEnableInts( Icr );
-            }
+          NumberOfBursts  = Length >> FLSLOADER_NUM_5; /* Divide by 32 */
+          LoadPageCount      = 1U;
+          BurstLoadPageCount = FLSLOADER_NUM_4;
+          OffSet       = (FlsLoader_AddressType)FLSLOADER_NUM_8;
+          BurstOffSet  = (FlsLoader_AddressType)FLSLOADER_NUM_32;
+          BytesToWrite = (Length - (NumberOfBursts * FLSLOADER_NUM_32));
+          NoOfPages    = (BytesToWrite / FLSLOADER_NUM_8);
         }
+      
+        /* Block 5: Execute the command sequence . */
+        /*Initiating the state to normal*/
+        FlsLoader_Status = FLSLOADER_NORMAL; 
+        /* Disable and restore interrupts for critical
+        command cycles. As there are 2 critical command cycles, 
+        the entire write operation is protected. */
+        /* copy the Address to local variable*/
+        Icr = FlsLoader_lDisableInts();
+        
+        /*Write in Burst Mode*/
+        RetError = FlsLoader_lBurstWrite (BurstLoadPageCount,BurstOffSet,
+                                          FlashType,SourceAddressPtr,
+                                          TargetAddress,NumberOfBursts);
+        
+        if ((RetError == FLSLOADER_E_OK) && (NoOfPages != 0U))
+        {
+          /* Write Remaining Pages */
+          TargetAddress += NumberOfBursts * 
+                          (BurstLoadPageCount << FLSLOADER_NUM_3);
+          /*IFX_MISRA_RULE_17_04_STATUS=Pointer arithmetic is used to access
+          user buffer efficiently*/
+          SourceAddressPtr += NumberOfBursts * 
+                          (BurstLoadPageCount << FLSLOADER_NUM_3);
+          RetError = FlsLoader_lPageWrite (LoadPageCount,
+                                           OffSet,FlashType,SourceAddressPtr,
+                                           TargetAddress,NoOfPages);
+        }
+        FlsLoader_lEnableInts(Icr);
+      }
     }
-    return ( RetError );
+  }
+  return (RetError);
 }  /*End of function OCFLS_Write */
 
 #ifdef _FREE_TASKING_C_COMPILER_
@@ -718,176 +703,172 @@ __indirect FlsLoader_ReturnType FlsLoader_Write( FlsLoader_AddressType TargetAdd
 ** Description      : This function erases the sector of the internal flash.  **
 *******************************************************************************/
 /* Service to Erase a sector of Flash */
-__indirect FlsLoader_ReturnType FlsLoader_Erase( FlsLoader_AddressType TargetAddress, FlsLoader_LengthType Length )
+__indirect FlsLoader_ReturnType FlsLoader_Erase(FlsLoader_AddressType TargetAddress,
+                                     FlsLoader_LengthType Length )
 {
-    FlsLoader_ReturnType RetError;
-    FlsLoader_AddressType StartAddress;
-    uint32 FlsFsrCheck;
-    uint32 FlsFSRErase;
-    uint32 InnerCount;
-    uint32 Icr;
-    uint32 FlashType;
+  FlsLoader_ReturnType  RetError;
+  FlsLoader_AddressType StartAddress;
+  uint32                FlsFsrCheck;
+  uint32                FlsFSRErase;
+  uint32                InnerCount;
+  uint32                Icr;
+  uint32                FlashType;
 
-    /*Init RetError to OK */
-    /*RetError = (FlsLoader_ReturnType)FLSLOADER_E_OK;*/
+  /*Init RetError to OK */
+  /*RetError = (FlsLoader_ReturnType)FLSLOADER_E_OK;*/
 
-    /*Block 1: check DET */
-#if ( FLSLOADER_DEV_ERROR_DETECT == STD_ON )
-    RetError = FlsLoader_lEraseDetCheck( Length,TargetAddress );
+  /*Block 1: check DET */
+  #if (FLSLOADER_DEV_ERROR_DETECT == STD_ON)
+  RetError = FlsLoader_lEraseDetCheck(Length,TargetAddress);
 
-    if( RetError == FLSLOADER_E_OK )
-#endif
+  if (RetError == FLSLOADER_E_OK)
+  #endif
+  {
+    #ifdef IFX_FLSLOADER_DEBUG
+    FlsFsrCheck = ((FLASH0_FSR.U & ((uint32)FLSLOADER_FLASH_BUSY_MASK)) |
+                      TestFlsloader_DebugMask01);
+    #else  /*#ifdef IFX_FLSLOADER_DEBUG*/
+    /* Check for Busy state of FLASH
+    Registers differ between Checking of Busy state of PFlash and DFlash */
+    FlsFsrCheck = (FLASH0_FSR.U & ((uint32)FLSLOADER_FLASH_BUSY_MASK));
+    #endif  /*#ifdef IFX_FLSLOADER_DEBUG*/
+    if ( FlsFsrCheck )
     {
-        #ifdef IFX_FLSLOADER_DEBUG
-        FlsFsrCheck = ( ( FLASH0_FSR.U & ( (uint32 ) FLSLOADER_FLASH_BUSY_MASK ) ) | TestFlsloader_DebugMask01 );
-        #else  /*#ifdef IFX_FLSLOADER_DEBUG*/
-        /* Check for Busy state of FLASH
-        Registers differ between Checking of Busy state of PFlash and DFlash */
-        FlsFsrCheck = ( FLASH0_FSR.U & ( ( uint32 ) FLSLOADER_FLASH_BUSY_MASK ) );
-        #endif  /*#ifdef IFX_FLSLOADER_DEBUG*/
+      /* Report FLSLOADER_E_BUSY DET */
+      #if (FLSLOADER_DEV_ERROR_DETECT == STD_ON)
+      Det_ReportError(
+                     FLSLOADER_MODULE_ID,
+                     FLSLOADER_INSTANCE_ID,
+                     FLSLOADER_SID_ERASE,
+              (uint8)FLSLOADER_E_BUSY);
+      #endif
+      RetError = FLSLOADER_E_BUSY;
+    }
+    else
+    {
+      /* Extract the flash type */
+      FlashType = FlsLoader_lGetFlashType (TargetAddress);
 
-        if( FlsFsrCheck )
+      /* Given Address belongs to Data FLASH */
+      /*Check if the Target Address passed is UCB protected */
+      /* Check if global write protection is installed in DFLASH*/
+      /*Check if the Target Address passed is UCB protected */
+      #if (FLSLOADER_ENABLE_LOCKCHECK == STD_ON)
+      /* Protection Check Algorithm */
+      /* Preprocessor switch to enable/disable the lockcheck functionality */
+      /* Check if global write protection is installed */
+      RetError = FlsLoader_lEraseLockCheck (TargetAddress,FlashType,Length);
+
+      if (RetError == FLSLOADER_E_OK)
+      #endif
+      {
+        StartAddress = FLSLOADER_CMD_BASE;
+        Icr = FlsLoader_lDisableInts();
+        if (FlashType != FLSLOADER_DFLASH_BANK0)
         {
-            /* Report FLSLOADER_E_BUSY DET */
-            #if (FLSLOADER_DEV_ERROR_DETECT == STD_ON)
-            Det_ReportError( FLSLOADER_MODULE_ID, FLSLOADER_INSTANCE_ID, FLSLOADER_SID_ERASE, ( uint8 ) FLSLOADER_E_BUSY );
-            #endif
-            RetError = FLSLOADER_E_BUSY;
+          FlsLoader_lResetSafetyENDINIT();	
+        }
+        DSYNC();
+        FlsLoader_Status = FLSLOADER_NORMAL; /* Initiating the state to normal*/
+        /* Safety Reset Endinit is required for PFlash */
+        /* Enter Critical Section */
+        /* cycle 1 */
+        /*IFX_MISRA_RULE_01_02_STATUS=FlsLoader_AddressType is defined of type 
+        volatile uint32 to avoid compiler optimization in command cycles*/
+        /*IFX_MISRA_RULE_11_01_STATUS= The Pointers are type-cast to uint32 for 
+        address comparison/calculation purpose.*/
+        /*IFX_MISRA_RULE_11_03_STATUS= The Pointers are type-cast to uint32 for 
+        address comparison/calculation purpose.*/
+        *((FlsLoader_AddressType*)FLSLOADER_GET_CYCLE_AA50(StartAddress))  = 
+                                                                  TargetAddress;
+        /* cycle 2 */
+        /*IFX_MISRA_RULE_01_02_STATUS=FlsLoader_AddressType is defined of type 
+        volatile uint32 to avoid compiler optimization in command cycles*/
+        /*IFX_MISRA_RULE_11_01_STATUS= The Pointers are type-cast to uint32 for 
+        address comparison/calculation purpose.*/
+        /*IFX_MISRA_RULE_11_03_STATUS= The Pointers are type-cast to uint32 for 
+        address comparison/calculation purpose.*/
+        *((FlsLoader_AddressType*)FLSLOADER_GET_CYCLE_AA58(StartAddress))  = 
+                                                                   Length;
+        /* cycle 3 */
+        /*IFX_MISRA_RULE_01_02_STATUS=FlsLoader_AddressType is defined of type 
+        volatile uint32 to avoid compiler optimization in command cycles*/
+        /*IFX_MISRA_RULE_11_01_STATUS= The Pointers are type-cast to uint32 for 
+        address comparison/calculation purpose.*/
+        /*IFX_MISRA_RULE_11_03_STATUS= The Pointers are type-cast to uint32 for 
+        address comparison/calculation purpose.*/
+        *((FlsLoader_AddressType*)FLSLOADER_GET_CYCLE_AAA8(StartAddress))  = 
+                                                             FLSLOADER_VALUE_80;
+        /* cycle 4 */
+        /*IFX_MISRA_RULE_01_02_STATUS=FlsLoader_AddressType is defined of type 
+        volatile uint32 to avoid compiler optimization in command cycles*/
+        /*IFX_MISRA_RULE_11_01_STATUS= The Pointers are type-cast to uint32 for 
+        address comparison/calculation purpose.*/
+        /*IFX_MISRA_RULE_11_03_STATUS= The Pointers are type-cast to uint32 for 
+        address comparison/calculation purpose.*/
+        *((FlsLoader_AddressType*)FLSLOADER_GET_CYCLE_AAA8(StartAddress))  = 
+                                                             FLSLOADER_VALUE_50;
+        /* Exit Critical Section */
+        if (FlashType != FLSLOADER_DFLASH_BANK0)
+        {
+          FlsLoader_lSetSafetyENDINIT();
+        }
+        DSYNC();
+
+        InnerCount = 0U;
+        #ifdef  IFX_FLSLOADER_DEBUG
+        FlsFSRErase =  TestFlsloader_DebugMask06;
+        #else
+        FlsFSRErase = FLASH0_FSR.B.ERASE;
+        #endif
+
+        while((FlsFSRErase != FLSLOADER_BIT_SET) &&
+              (InnerCount < FLSLOADER_CMDCYCLE_TIMEOUT))
+        {
+          InnerCount++;
+          #ifdef  IFX_FLSLOADER_DEBUG
+          FlsFSRErase =  TestFlsloader_DebugMask06;
+          #else
+          FlsFSRErase = FLASH0_FSR.B.ERASE;
+          #endif   
+        }
+        
+        if(InnerCount < FLSLOADER_CMDCYCLE_TIMEOUT)
+        {
+          /* Check for FLASH BUSY flag */
+          /* PnBUSY and D0BUSY */
+          while((FLASH0_FSR.U & FLSLOADER_FLASH_BUSY_MASK) != 0U)
+          {
+            /*Do Nothing */
+          }
+          /* This check makes sure No protection error and no sequence error
+          and No operation error has occurred.*/
+          RetError = FlsLoader_lProtSeqOperErrorCheck();
+          if(RetError == FLSLOADER_E_OK)
+          {
+            /* This check makes sure No erase verification error */
+            RetError = FlsLoader_lEverCheck();
+          }
         }
         else
         {
-            /* Extract the flash type */
-            FlashType = FlsLoader_lGetFlashType( TargetAddress );
-
-            /* Given Address belongs to Data FLASH */
-            /* Check if the Target Address passed is UCB protected */
-            /* Check if global write protection is installed in DFLASH*/
-            /* Check if the Target Address passed is UCB protected */
-#if ( FLSLOADER_ENABLE_LOCKCHECK == STD_ON )
-            /* Protection Check Algorithm */
-            /* Preprocessor switch to enable/disable the lockcheck functionality */
-            /* Check if global write protection is installed */
-            RetError = FlsLoader_lEraseLockCheck( TargetAddress, FlashType, Length );
-
-            if( RetError == FLSLOADER_E_OK )
-#endif
-            {
-                StartAddress = FLSLOADER_CMD_BASE;
-                Icr = FlsLoader_lDisableInts();
-
-                if( FlashType != FLSLOADER_DFLASH_BANK0 )
-                {
-                    FlsLoader_lResetSafetyENDINIT();
-                }
-                DSYNC();
-
-                FlsLoader_Status = FLSLOADER_NORMAL; /* Initiating the state to normal*/
-
-                /* Safety Reset Endinit is required for PFlash */
-                /* Enter Critical Section */
-
-                /* cycle 1 */
-                /* IFX_MISRA_RULE_01_02_STATUS=FlsLoader_AddressType is defined of type
-                   volatile uint32 to avoid compiler optimization in command cycles*/
-                /* IFX_MISRA_RULE_11_01_STATUS= The Pointers are type-cast to uint32 for
-                   address comparison/calculation purpose.*/
-                /* IFX_MISRA_RULE_11_03_STATUS= The Pointers are type-cast to uint32 for
-                   address comparison/calculation purpose.*/
-                *( ( FlsLoader_AddressType * ) FLSLOADER_GET_CYCLE_AA50( StartAddress ) ) = TargetAddress;
-                /* cycle 2 */
-                /* IFX_MISRA_RULE_01_02_STATUS=FlsLoader_AddressType is defined of type
-                   volatile uint32 to avoid compiler optimization in command cycles*/
-                /* IFX_MISRA_RULE_11_01_STATUS= The Pointers are type-cast to uint32 for
-                   address comparison/calculation purpose.*/
-                /* IFX_MISRA_RULE_11_03_STATUS= The Pointers are type-cast to uint32 for
-                   address comparison/calculation purpose.*/
-                *( ( FlsLoader_AddressType * ) FLSLOADER_GET_CYCLE_AA58( StartAddress ) ) = Length;
-                /* cycle 3 */
-                /* IFX_MISRA_RULE_01_02_STATUS=FlsLoader_AddressType is defined of type
-                   volatile uint32 to avoid compiler optimization in command cycles*/
-                /* IFX_MISRA_RULE_11_01_STATUS= The Pointers are type-cast to uint32 for
-                   address comparison/calculation purpose.*/
-                /* IFX_MISRA_RULE_11_03_STATUS= The Pointers are type-cast to uint32 for
-                   address comparison/calculation purpose.*/
-               *( ( FlsLoader_AddressType * ) FLSLOADER_GET_CYCLE_AAA8( StartAddress ) ) = FLSLOADER_VALUE_80;
-
-                /* cycle 4 */
-                /* IFX_MISRA_RULE_01_02_STATUS=FlsLoader_AddressType is defined of type
-                   volatile uint32 to avoid compiler optimization in command cycles*/
-                /* IFX_MISRA_RULE_11_01_STATUS= The Pointers are type-cast to uint32 for
-                   address comparison/calculation purpose.*/
-                /* IFX_MISRA_RULE_11_03_STATUS= The Pointers are type-cast to uint32 for
-                   address comparison/calculation purpose.*/
-
-               *( ( FlsLoader_AddressType * ) FLSLOADER_GET_CYCLE_AAA8( StartAddress ) ) = FLSLOADER_VALUE_50;
-
-                /* Exit Critical Section */
-                if( FlashType != FLSLOADER_DFLASH_BANK0 )
-                {
-                    FlsLoader_lSetSafetyENDINIT();
-                }
-                DSYNC();
-
-                InnerCount = 0U;
-                #ifdef  IFX_FLSLOADER_DEBUG
-                {
-                    FlsFSRErase =  TestFlsloader_DebugMask06;
-                }
-                #else
-                {
-                    FlsFSRErase = FLASH0_FSR.B.ERASE;
-                }
-                #endif
-
-                while( ( FlsFSRErase != FLSLOADER_BIT_SET ) && ( InnerCount < FLSLOADER_CMDCYCLE_TIMEOUT ) )
-                {
-                    InnerCount++;
-                    #ifdef  IFX_FLSLOADER_DEBUG
-                    {
-                        FlsFSRErase =  TestFlsloader_DebugMask06;
-                    }
-                    #else
-                    {
-                        FlsFSRErase = FLASH0_FSR.B.ERASE;
-                    }
-                    #endif
-                }
-
-                if( InnerCount < FLSLOADER_CMDCYCLE_TIMEOUT )
-                {
-                    /* Check for FLASH BUSY flag */
-                    /* PnBUSY and D0BUSY */
-                    while( ( FLASH0_FSR.U & FLSLOADER_FLASH_BUSY_MASK ) != 0U )
-                    {
-                        /*Do Nothing */
-                    }
-                    /* This check makes sure No protection error and no sequence error
-                    and No operation error has occurred.*/
-                    RetError = FlsLoader_lProtSeqOperErrorCheck();
-                    if( RetError == FLSLOADER_E_OK )
-                    {
-                        /* This check makes sure No erase verification error */
-                        RetError = FlsLoader_lEverCheck();
-                    }
-                }
-                else
-                {
-                    RetError = FLSLOADER_E_NOT_OK;
-                }
-                /* Clear the status if the operation is successful.*/
-                /*IFX_MISRA_RULE_01_02_STATUS=FlsLoader_AddressType is defined of type
-                volatile uint32 to avoid compiler optimization in command cycles*/
-                /*IFX_MISRA_RULE_11_01_STATUS= The Pointers are type-cast to uint32 for
-                address comparison/calculation purpose.*/
-                /*IFX_MISRA_RULE_11_03_STATUS= The Pointers are type-cast to uint32 for
-                address comparison/calculation purpose.*/
-                *( ( FlsLoader_AddressType * )FlsLoader_lClearStatus( StartAddress ) ) = FLSLOADER_VALUE_FA;
-      
-                FlsLoader_lEnableInts(Icr);
-            }
+          RetError = FLSLOADER_E_NOT_OK;
         }
+        /* Clear the status if the operation is successful.*/
+        /*IFX_MISRA_RULE_01_02_STATUS=FlsLoader_AddressType is defined of type 
+        volatile uint32 to avoid compiler optimization in command cycles*/
+        /*IFX_MISRA_RULE_11_01_STATUS= The Pointers are type-cast to uint32 for 
+        address comparison/calculation purpose.*/
+        /*IFX_MISRA_RULE_11_03_STATUS= The Pointers are type-cast to uint32 for 
+        address comparison/calculation purpose.*/
+        *((FlsLoader_AddressType*)FlsLoader_lClearStatus(StartAddress))
+                          = FLSLOADER_VALUE_FA;
+      
+        FlsLoader_lEnableInts(Icr);
+      }
     }
-    return ( RetError );
+  }
+  return(RetError);
 }  /* End of Function */
 
 #ifdef _FREE_TASKING_C_COMPILER_
@@ -1450,44 +1431,44 @@ void FlsLoader_lEnableInts(uint32 Icr)
 ** function, also Time based check is not enabled                             **
 **                                                                            **
 *******************************************************************************/
-IFX_LOCAL_INLINE void FlsLoader_lResetSafetyENDINIT( void )
+IFX_LOCAL_INLINE void FlsLoader_lResetSafetyENDINIT(void)
 {
-    uint32 NewValCon0;
-    uint32 NewPw;                   /* next password to be used */
-    uint32 NewRel;                  /* next reload value to be used */
-    uint32 Result;
+  uint32 NewValCon0;
+  uint32 NewPw;                   /* next password to be used */
+  uint32 NewRel;                  /* next reload value to be used */
+ 
+  uint32 Result;
+  
+  /* Safety Wdg register is acquired */
+  volatile Ifx_SCU_WDTS_CON0* ScuWdtcon0Ptr 
+                              = &SCU_WDTS_CON0;
+  /* save old value */
+  NewValCon0  = SCU_WDTS_CON0.U;
+  /* get valid next password */
 
-    /* Safety Wdg register is acquired */
-    volatile Ifx_SCU_WDTS_CON0* ScuWdtcon0Ptr = &SCU_WDTS_CON0;
+  Result = NewValCon0 & FLSLOADER_WDT_PASSWORD_MASK;
+  Result = ( Result & FLSLOADER_WDT_PASSWORD_UPPER_MASK) |
+             ((~(Result & FLSLOADER_WDT_PASSWORD_LOWER_MASK)) 
+             & FLSLOADER_WDT_PASSWORD_LOWER_MASK );
 
-    /* save old value */
-    NewValCon0  = SCU_WDTS_CON0.U;
+  /* password sequencing will not be enabled at this time,
+  no need for the run time calculation of password */
+  NewPw = Result;
+  /* get valid next timer reload */
+  Result = NewValCon0 & FLSLOADER_WDT_RELOAD_MASK;
+  /* Time control enable shall not be enabled by the system */
+  NewRel= Result;
+  /* build required password WDTCON0 value */
+  NewValCon0 =  ( (NewRel) |              /* new reload value  */
+                  (NewPw)  |              /* new Password */
+                  (1u) );                 /* Clear LCK, keep ENDINIT set */
 
-    /* get valid next password */
+  ScuWdtcon0Ptr->U  = NewValCon0;        /* password access to unlock */
 
-    Result = NewValCon0 & FLSLOADER_WDT_PASSWORD_MASK;
-    Result = ( Result & FLSLOADER_WDT_PASSWORD_UPPER_MASK) | ( ( ~( Result & FLSLOADER_WDT_PASSWORD_LOWER_MASK ) )  & FLSLOADER_WDT_PASSWORD_LOWER_MASK );
+  NewValCon0 &= ~ FLSLOADER_WDT_STATUS_MASK;/*clear ENDINIT and LCK Bit */
+  NewValCon0 |= FLSLOADER_NUM_2;                    /* set LCK Bit */
 
-    /* password sequencing will not be enabled at this time,
-       no need for the run time calculation of password */
-    NewPw = Result;
-
-    /* get valid next timer reload */
-    Result = NewValCon0 & FLSLOADER_WDT_RELOAD_MASK;
-    /* Time control enable shall not be enabled by the system */
-    NewRel= Result;
-
-    /* build required password WDTCON0 value */
-    NewValCon0 =  ( ( NewRel )      /* new reload value  */
-                    | ( NewPw )     /* new Password */
-                    | ( 1u ) );     /* Clear LCK, keep ENDINIT set */
-
-    ScuWdtcon0Ptr->U  = NewValCon0;        /* password access to unlock */
-
-    NewValCon0 &= ~ FLSLOADER_WDT_STATUS_MASK;/*clear ENDINIT and LCK Bit */
-    NewValCon0 |= FLSLOADER_NUM_2;  /* set LCK Bit */
-
-    ScuWdtcon0Ptr->U = NewValCon0;  /* write access and lock for Timeout mode */
+  ScuWdtcon0Ptr->U = NewValCon0;  /* write access and lock for Timeout mode */
 }
 
 /*******************************************************************************

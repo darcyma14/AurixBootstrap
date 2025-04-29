@@ -15,7 +15,7 @@
 **                                                                            **
 **  VERSION   : 0.0.6                                                         **
 **                                                                            **
-**  DATE, TIME: 2022-10-01, 16:07:44                                          **
+**  DATE, TIME: 2021-12-28, 13:38:09                                          **
 **                                                                            **
 **  GENERATOR : Build b141014-0350                                            **
 **                                                                            **
@@ -65,7 +65,7 @@
 /*****************************************************************************
 **                                 PWM                                      **
 ******************************************************************************/
-#define GTM_PWM_MODULE_USED                          (STD_ON)
+#define GTM_PWM_MODULE_USED                          (STD_OFF)
 
 /* TIM and TOM usage */
 #define GTM_TOM_USED_BY_OTHER_DRIVERS    (STD_ON)

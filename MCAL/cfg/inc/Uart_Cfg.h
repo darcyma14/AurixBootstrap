@@ -14,7 +14,7 @@
 **                                                                            **
 **  $CC VERSION : \main\18 $                                                 **
 **                                                                            **
-**  DATE, TIME: 2022-10-01, 16:07:46                                          **
+**  DATE, TIME: 2021-12-28, 13:38:11                                          **
 **                                                                            **
 **  GENERATOR : Build b141014-0350                                            **
 **                                                                            **
@@ -86,11 +86,7 @@ Derived Configuration for UartAbortReadApi
 - if STD_ON, Function UartAbortReadApi is available  
 - if STD_OFF,Function UartAbortReadApi is not available 
 */
-#ifdef _McalModified_
-#define UART_ABORT_READ_API  (STD_ON)
-#else
 #define UART_ABORT_READ_API  (STD_OFF)
-#endif
 /*
 Derived Configuration for UartAbortWriteApi
 - if STD_ON, Function UartAbortWriteApi is available  

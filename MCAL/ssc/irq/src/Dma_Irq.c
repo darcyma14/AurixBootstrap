@@ -433,49 +433,49 @@ IFX_INTERRUPT(DMACH4SR_ISR, 0, IRQ_DMA_CHANNEL4_SR_PRIO)
 ISR(DMACH4SR_ISR)
 #endif
 {
-#if ((IRQ_DMA_CHANNEL4_USED == IRQ_DMA_USED_MCALSPI_TX) ||  (IRQ_DMA_CHANNEL4_USED == IRQ_DMA_USED_MCALSPI_RX))
-    uint32 DmaErrorstatus;
-#endif
-    /* Enable Global Interrupts */
-    Mcal_EnableAllInterrupts();
+  #if ((IRQ_DMA_CHANNEL4_USED == IRQ_DMA_USED_MCALSPI_TX) || \
+           (IRQ_DMA_CHANNEL4_USED == IRQ_DMA_USED_MCALSPI_RX))
+  uint32 DmaErrorstatus;
+  #endif
+  /* Enable Global Interrupts */
+  Mcal_EnableAllInterrupts();
 
-    /* SPI TX interrupt */
-#if (IRQ_DMA_CHANNEL4_USED == IRQ_DMA_USED_MCALSPI_TX)
+  /* SPI TX interrupt */
+  #if (IRQ_DMA_CHANNEL4_USED == IRQ_DMA_USED_MCALSPI_TX)
 
-    DmaErrorstatus  = Spi_IsrCheckDmaError( IRQ_DMA_CHANNEL4_PARAM );
+  DmaErrorstatus  = Spi_IsrCheckDmaError(IRQ_DMA_CHANNEL4_PARAM);
+  if (DmaErrorstatus == 0U)
+  {
+    Spi_IsrDmaQspiTx(IRQ_DMA_CHANNEL4_PARAM);
+  }
+  else
+  {
+    Spi_IsrDmaError(IRQ_DMA_CHANNEL4_PARAM);
+  }
+  /* SPI RX interrupt */
+  #elif (IRQ_DMA_CHANNEL4_USED == IRQ_DMA_USED_MCALSPI_RX)
 
-    if( DmaErrorstatus == 0U )
-    {
-        Spi_IsrDmaQspiTx( IRQ_DMA_CHANNEL4_PARAM );
-    }
-    else
-    {
-        Spi_IsrDmaError( IRQ_DMA_CHANNEL4_PARAM );
-    }
-    /* SPI RX interrupt */
- #elif (IRQ_DMA_CHANNEL4_USED == IRQ_DMA_USED_MCALSPI_RX)
+  DmaErrorstatus  = Spi_IsrCheckDmaError(IRQ_DMA_CHANNEL4_PARAM);
+  if (DmaErrorstatus == 0U)
+  {
+    Spi_IsrDmaQspiRx(IRQ_DMA_CHANNEL4_PARAM);
+  }
+  else
+  {
+    Spi_IsrDmaError(IRQ_DMA_CHANNEL4_PARAM);
+  }
+  /* ADC interrupt */
+  #elif (IRQ_DMA_CHANNEL4_USED == IRQ_DMA_USED_MCALADC)
 
-    DmaErrorstatus  = Spi_IsrCheckDmaError( IRQ_DMA_CHANNEL4_PARAM );
-    if (DmaErrorstatus == 0U)
-    {
-        Spi_IsrDmaQspiRx( IRQ_DMA_CHANNEL4_PARAM );
-    }
-    else
-    {
-        Spi_IsrDmaError( IRQ_DMA_CHANNEL4_PARAM );
-    }
-    /* ADC interrupt */
-#elif (IRQ_DMA_CHANNEL4_USED == IRQ_DMA_USED_MCALADC)
+  #if (ADC_GROUP_EMUX_SCAN == STD_ON)
+  Adc_IsrDmaSrn(IRQ_DMA_CHANNEL4_PARAM);
+  #endif /*End of ADC_GROUP_EMUX_SCAN == STD_ON*/
 
-#if ( ADC_GROUP_EMUX_SCAN == STD_ON )
-    Adc_IsrDmaSrn(IRQ_DMA_CHANNEL4_PARAM);
-#endif /*End of ADC_GROUP_EMUX_SCAN == STD_ON*/
-
-    /* DMA CDD interrupt */
-#elif (IRQ_DMA_CHANNEL4_USED == IRQ_DMA_AVAILABLE)
-    /* User Code Begins */
-    /* Complex DMA driver usage */
-#endif
+  /* DMA CDD interrupt */
+  #elif (IRQ_DMA_CHANNEL4_USED == IRQ_DMA_AVAILABLE)
+  /* User Code Begins */
+  /* Complex DMA driver usage */
+  #endif
 }
 #endif
 /******************************************************************************

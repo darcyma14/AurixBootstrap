@@ -52,110 +52,91 @@
 /*******************************************************************************
 **                      Global Macro Definitions                              **
 *******************************************************************************/
-#define IRQ_DMA_AVAILABLE          		(0U)
-#define IRQ_DMA_USED_MCALADC       		(1U)
-#define IRQ_DMA_USED_MCALSPI_TX    		(2U)
-#define IRQ_DMA_USED_MCALSPI_RX    		(3U)
-#define IRQ_ASCLIN_AVAILABLE       		(0U)
-#define IRQ_ASCLIN_USED_MCALLIN    		(1U)
-#define IRQ_ASCLIN_USED_MCALSTDLIN 		(2U)
-#define IRQ_ASCLIN_USED_MCALUART   		(3U)
+#define IRQ_DMA_AVAILABLE          (0U)
+#define IRQ_DMA_USED_MCALADC       (1U)
+#define IRQ_DMA_USED_MCALSPI_TX    (2U)
+#define IRQ_DMA_USED_MCALSPI_RX    (3U)
+#define IRQ_ASCLIN_AVAILABLE       (0U)
+#define IRQ_ASCLIN_USED_MCALLIN    (1U)    
+#define IRQ_ASCLIN_USED_MCALSTDLIN (2U)
+#define IRQ_ASCLIN_USED_MCALUART   (3U)
 
+#define Irq_InstallInterruptHandler(priority,irq_handler)
+#if defined(_TASKING_C_TRICORE_)
 
-#define Irq_InstallInterruptHandler( priority, irq_handler )
+#if (_TASKING_C_TRICORE_ == 1U)
 
-#if defined ( _TASKING_C_TRICORE_ )
-	#if ( _TASKING_C_TRICORE_ == 1U )
-		#ifndef IFX_INTERRUPT
-			#define IFX_INTERRUPT(isr, vectabNum, prio)  void __interrupt(prio) __vector_table(vectabNum) isr(void)
-		#endif
-	#endif /* (_TASKING_C_TRICORE_ == 1U) */
+#ifndef IFX_INTERRUPT
+#define IFX_INTERRUPT(isr, vectabNum, prio) \
+                    void __interrupt(prio) __vector_table(vectabNum) isr(void)
+#endif
+
+#endif /* (_TASKING_C_TRICORE_ == 1U) */
 
 #elif defined(_GNU_C_TRICORE_)
-	#if ( _GNU_C_TRICORE_ == 1U )
-		#ifndef IFX_INTERRUPT
-			#define IFX_INTERRUPT( isr, vectabNum, prio ) IFX_INTERRUPT_INTERNAL( isr, vectabNum, prio )
-		#endif
 
-		#ifndef IFX_INTERRUPT_INTERNAL
-			#define IFX_INTERRUPT_INTERNAL(isr, vectabNum, prio) \
-				__asm__ (".ifndef .intr.entry.include                        \n"\
-						".altmacro                                           \n"\
-						".macro .int_entry.2 intEntryLabel, name \
-									# define the section and inttab entry code \n"\
-						" .pushsection .\\intEntryLabel,\"ax\",@progbits   \n"\
-						" __\\intEntryLabel :                              \n"\
-						"   svlcx                                        \n"\
-						"   movh.a  %a14, hi:\\name                      \n"\
-						"   lea     %a14, [%a14]lo:\\name                \n"\
-						"   ji      %a14                                 \n"\
-						" .popsection                                      \n"\
-						".endm                                               \n"\
-						".macro .int_entry.1 prio,vectabNum,u,name           \n"\
-						".int_entry.2 intvec_tc\\vectabNum\\u\\prio,(name) \
-													  # build the unique name \n"\
-						".endm                                               \n"\
-						"                                                    \n"\
-						".macro .intr.entry name,vectabNum,prio              \n"\
-						".int_entry.1 %(prio),%(vectabNum),_,name \
-								   # evaluate the priority and the cpu number \n"\
-						".endm                                               \n"\
-						".intr.entry.include:                                \n"\
-						".endif                                              \n"\
-						".intr.entry "#isr","#vectabNum","#prio               );\
-				_IFXEXTERN_ void __attribute__ ( ( interrupt_handler ) ) isr(); \
-				void isr( void )
-		#endif /* IFX_INTERRUPT_INTERNAL */
-	#endif /* (_GNU_C_TRICORE_ == 1U) */
+#if (_GNU_C_TRICORE_ == 1U)
+#ifndef IFX_INTERRUPT
+#define IFX_INTERRUPT(isr, vectabNum, prio) \
+                                   IFX_INTERRUPT_INTERNAL(isr, vectabNum, prio)
+#endif
 
-#elif defined ( _DIABDATA_C_TRICORE_ )
-	#if ( _DIABDATA_C_TRICORE_ == 1U )
-		#ifndef IFX_INTERRUPT
-			#define IFX_INTERRUPT( isr, vectabNum, prio ) IFX_INTERRUPT_INTERNAL( isr, vectabNum, prio )
-		#endif
+#ifndef IFX_INTERRUPT_INTERNAL
+#define IFX_INTERRUPT_INTERNAL(isr, vectabNum, prio) \
+__asm__ (".ifndef .intr.entry.include                        \n"\
+    ".altmacro                                           \n"\
+    ".macro .int_entry.2 intEntryLabel, name \
+                                # define the section and inttab entry code \n"\
+        " .pushsection .\\intEntryLabel,\"ax\",@progbits   \n"\
+        " __\\intEntryLabel :                              \n"\
+        "   svlcx                                        \n"\
+        "   movh.a  %a14, hi:\\name                      \n"\
+        "   lea     %a14, [%a14]lo:\\name                \n"\
+        "   ji      %a14                                 \n"\
+        " .popsection                                      \n"\
+    ".endm                                               \n"\
+    ".macro .int_entry.1 prio,vectabNum,u,name           \n"\
+      ".int_entry.2 intvec_tc\\vectabNum\\u\\prio,(name) \
+                                                  # build the unique name \n"\
+    ".endm                                               \n"\
+        "                                                    \n"\
+    ".macro .intr.entry name,vectabNum,prio              \n"\
+      ".int_entry.1 %(prio),%(vectabNum),_,name \
+                               # evaluate the priority and the cpu number \n"\
+    ".endm                                               \n"\
+    ".intr.entry.include:                                \n"\
+    ".endif                                              \n"\
+        ".intr.entry "#isr","#vectabNum","#prio               );\
+_IFXEXTERN_ void __attribute__ ((interrupt_handler)) isr(); \
+void isr (void)
+#endif /* IFX_INTERRUPT */
 
-		#ifndef IFX_INTERRUPT_INTERNAL
-			#define IFX_INTERRUPT_INTERNAL(isr, vectabNum, prio) \
-			  __asm ("\t.align\t 5\n\t\
-					  .section .int."#prio"\n \t.sectionlink  .intvec_tc"#vectabNum"_"#prio"\n\
-					  #$$bf\n\
-					  __intvec_tc"#vectabNum"_"#prio":\n\
-					  movh.a\t %a14,"#isr"@ha\n\
-					  lea\t %a14,[%a14]"#isr"@l\n\
-					  ji\t %a14\n\
-					  #$$ef\n\t\
-					  .section .intend."#prio"\n \t.sectionlink   .text");\
-					  __interrupt__ void isr (void)
-			#endif /* IFX_INTERRUPT_INTERNAL */
-	#endif /* (_DIABDATA_C_TRICORE_ == 1U) */
+#endif /* (_GNU_C_TRICORE_ == 1U) */
 
-#elif defined(_HIGHTEC_C_TRICORE_)
-	#if ( _HIGHTEC_C_TRICORE_ == 1U )
-		#ifndef MAKESTRINGFY_FUNC
-			#define MAKESTRINGFY_FUNC( v, s ) void xIsrTbl##v##Func##s ( int iArg )
-		#endif
+#elif defined(_DIABDATA_C_TRICORE_)
 
-		#ifndef IFX_INTERRUPT
-			#define IFX_INTERRUPT( isr, vectabNum, prio ) MAKESTRINGFY_FUNC( vectabNum, prio )
-		#endif
+#if (_DIABDATA_C_TRICORE_ == 1U)
 
-		#ifndef EXTERN_ISR_HANDLER
-			#define STRINGING_HANDER( v, s ) xIsrTbl##v##Func##s
-			#define EXTERN_ISR_HANDLER( v, s ) extern void STRINGING_HANDER( v, s ) ( int )
-			#define XISR_HANDLER_NAMED( v, s ) STRINGING_HANDER( v, s )
-		#endif
+#ifndef IFX_INTERRUPT
+#define IFX_INTERRUPT(isr, vectabNum, prio) \
+                                  IFX_INTERRUPT_INTERNAL(isr, vectabNum, prio)
+#endif
 
-		#define IrqRegisterHandler( prio )\
-		{\
-		EXTERN_ISR_HANDLER( 0, prio );\
-		extern int _install_int_handler(int intno, void (*handler)(int), int arg);\
-			if( prio > 0 )\
-			{\
-				_install_int_handler(prio, XISR_HANDLER_NAMED( 0, prio ), 0);\
-			}\
-		}
+#ifndef IFX_INTERRUPT_INTERNAL
+#define IFX_INTERRUPT_INTERNAL(isr, vectabNum, prio) \
+  __asm ("\t.align\t 5\n\t\
+  .section .int."#prio"\n \t.sectionlink  .intvec_tc"#vectabNum"_"#prio"\n\
+#$$bf\n\
+__intvec_tc"#vectabNum"_"#prio":\n\
+      movh.a\t %a14,"#isr"@ha\n\
+      lea\t %a14,[%a14]"#isr"@l\n\
+      ji\t %a14\n\
+#$$ef\n\t\
+  .section .intend."#prio"\n \t.sectionlink   .text");\
+  __interrupt__ void isr (void)
+#endif /* IFX_INTERRUPT_INTERNAL */
 
-	#endif /* (_HIGHTEC_C_TRICORE_ == 1U) */
+#endif /* (_DIABDATA_C_TRICORE_ == 1U) */
 #endif
 
 /*******************************************************************************

@@ -14,7 +14,7 @@
 **                                                                            **
 **  $CC VERSION : \main\48 $                                                 **
 **                                                                            **
-**  DATE, TIME: 2022-10-01, 16:07:45                                          **
+**  DATE, TIME: 2021-12-28, 13:38:09                                          **
 **                                                                            **
 **  GENERATOR : Build b141014-0350                                            **
 **                                                                            **
@@ -111,6 +111,7 @@ Define for unused ERU Line
  allowed only for MemMap.h*/
 #include "MemMap.h"
 
+extern void Edge_Notification (void);
 
 #define ICU_17_GTMCCU6_STOP_SEC_CODE
 /*IFX_MISRA_RULE_19_01_STATUS=File inclusion after pre-processor directives is
@@ -134,77 +135,13 @@ static const Icu_17_GtmCcu6_ChannelConfigType Icu_kChannelConfig0[ ] =
   
   {
       /* ICU Channel 0 */
-    (Icu_17_GtmCcu6_NotifiPtrType)0,/*Notification-function name*/
+    &Edge_Notification,/*Notification-function name*/
     {
-      ICU_MODE_SIGNAL_MEASUREMENT,/*Measurement Mode*/
+      ICU_MODE_SIGNAL_EDGE_DETECT,/*Measurement Mode*/
       ICU_RISING_EDGE,/*Default Start Edge */
-      ICU_ACTIVE_TIME,/*Measurement Property*/
+      0U,/*Measurement Property*/
       ICU_NOT_WAKEUPCAPABLE,/*Wakeup capability*/
-      GTM_TIM0_CHANNEL5,/* Assigned Hardware Resource Number */
-      (uint8)ICU_GTM_OPTION, /* Assigned Hw Unit */
-      0U, /* CCU connection */
-      ICU_QM_SIGNAL, /* Safety ON or OFF*/        
-      0U,/* Reserved */
-    #if (ICU_SAFETY_ENABLE == STD_ON)   
-     0U,/*Buffer Marker value */
-    #endif   
-     0U,/* Filtering time for rising edge */
-     0U,/* Filtering time for falling edge */   
-     GTM_INTERRUPT_LEVEL_MODE,/* Filtering time for TIM interrupt mode */
-     GTM_CONFIGURABLE_CLOCK_0, /*Channel Clock Select */
-     TIMEBASE_TBU_TS0,  /* Gpr0 input select for the Tim channel */   
-     0U, /* Enables Filter for the Channel */
-   /*Decides the filter Counter frequency for the TIM Channel */
-     GTM_CONFIGURABLE_CLOCK_0,
-   /*Decides the filter mode for rising Edge of the TIM Channel Input */
-     IMMEDIATE_EDGE_PROPAGATION_MODE,
-   /*Decides the filter mode for falling Edge of the TIM Channel Input */ 
-     IMMEDIATE_EDGE_PROPAGATION_MODE, 
-     /*Input channel select : current chl or previous chl */
-   INPUT_OF_CURRENT_TIM_CHANNEL, 
-    }
-  },  
-  {
-      /* ICU Channel 1 */
-    (Icu_17_GtmCcu6_NotifiPtrType)0,/*Notification-function name*/
-    {
-      ICU_MODE_SIGNAL_MEASUREMENT,/*Measurement Mode*/
-      ICU_RISING_EDGE,/*Default Start Edge */
-      ICU_ACTIVE_TIME,/*Measurement Property*/
-      ICU_NOT_WAKEUPCAPABLE,/*Wakeup capability*/
-      GTM_TIM0_CHANNEL6,/* Assigned Hardware Resource Number */
-      (uint8)ICU_GTM_OPTION, /* Assigned Hw Unit */
-      0U, /* CCU connection */
-      ICU_QM_SIGNAL, /* Safety ON or OFF*/        
-      0U,/* Reserved */
-    #if (ICU_SAFETY_ENABLE == STD_ON)   
-     0U,/*Buffer Marker value */
-    #endif   
-     0U,/* Filtering time for rising edge */
-     0U,/* Filtering time for falling edge */   
-     GTM_INTERRUPT_LEVEL_MODE,/* Filtering time for TIM interrupt mode */
-     GTM_CONFIGURABLE_CLOCK_0, /*Channel Clock Select */
-     TIMEBASE_TBU_TS0,  /* Gpr0 input select for the Tim channel */   
-     0U, /* Enables Filter for the Channel */
-   /*Decides the filter Counter frequency for the TIM Channel */
-     GTM_CONFIGURABLE_CLOCK_0,
-   /*Decides the filter mode for rising Edge of the TIM Channel Input */
-     IMMEDIATE_EDGE_PROPAGATION_MODE,
-   /*Decides the filter mode for falling Edge of the TIM Channel Input */ 
-     IMMEDIATE_EDGE_PROPAGATION_MODE, 
-     /*Input channel select : current chl or previous chl */
-   INPUT_OF_CURRENT_TIM_CHANNEL, 
-    }
-  },  
-  {
-      /* ICU Channel 2 */
-    (Icu_17_GtmCcu6_NotifiPtrType)0,/*Notification-function name*/
-    {
-      ICU_MODE_SIGNAL_MEASUREMENT,/*Measurement Mode*/
-      ICU_RISING_EDGE,/*Default Start Edge */
-      ICU_ACTIVE_TIME,/*Measurement Property*/
-      ICU_NOT_WAKEUPCAPABLE,/*Wakeup capability*/
-      GTM_TIM0_CHANNEL7,/* Assigned Hardware Resource Number */
+      GTM_TIM0_CHANNEL0,/* Assigned Hardware Resource Number */
       (uint8)ICU_GTM_OPTION, /* Assigned Hw Unit */
       0U, /* CCU connection */
       ICU_QM_SIGNAL, /* Safety ON or OFF*/        
@@ -249,27 +186,11 @@ static const Icu_17_GtmCcu6_MapType Icu_17_GtmCcu6_MappingIndex0[ICU_MAX_CHANNEL
 
 
 
-  /*I_PH_02M*/
+  /*IcuChannel_0*/
   {   
     0U,
-    /* Signal Measurement, QM Signal */
+    /* Edge Detection, Indexing not required */
     0U
-  },
-
-
-  /*I_PH_03M*/
-  {   
-    1U,
-    /* Signal Measurement, QM Signal */
-    1U
-  },
-
-
-  /*I_PH_04M*/
-  {   
-    2U,
-    /* Signal Measurement, QM Signal */
-    2U
   }
 };
 
@@ -321,7 +242,7 @@ const Icu_17_GtmCcu6_ConfigType Icu_ConfigRoot[] =
      3. Number of EdgeCount Channels
      4. Number of Signal Measurement Channels.
     */
-    {0U,0U,0U,3U}
+    {1U,0U,0U,0U}
  }
 };
 

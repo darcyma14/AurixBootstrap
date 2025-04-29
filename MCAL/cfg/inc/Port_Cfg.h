@@ -14,7 +14,7 @@
 **                                                                            **
 **  $CC VERSION : \main\dev_tc23x_as4.0.3\4 $                                **
 **                                                                            **
-**  DATE, TIME: 2022-10-01, 16:07:43                                      **
+**  DATE, TIME: 2021-12-28, 13:38:06                                      **
 **                                                                            **
 **  GENERATOR : Build b141014-0350                                          **
 **                                                                            **
@@ -378,44 +378,44 @@ Configuration: PORT_INIT_CHECK_API
 
 /* Symbolic Name: Port11 Pin2 */
 /* To prevent double declaration */
-#ifndef  PORT_11_PIN_2_CS03
-#define PORT_11_PIN_2_CS03                          ((Port_PinType)(0x0b2))
+#ifndef  PORT_11_PIN_2
+#define PORT_11_PIN_2                          ((Port_PinType)(0x0b2))
 #endif
 
 /* Symbolic Name: Port11 Pin3 */
 /* To prevent double declaration */
-#ifndef  PORT_11_PIN_3_MRST1
-#define PORT_11_PIN_3_MRST1                          ((Port_PinType)(0x0b3))
+#ifndef  PORT_11_PIN_3
+#define PORT_11_PIN_3                          ((Port_PinType)(0x0b3))
 #endif
 
 /* Symbolic Name: Port11 Pin6 */
 /* To prevent double declaration */
-#ifndef  PORT_11_PIN_6_SCLK1
-#define PORT_11_PIN_6_SCLK1                          ((Port_PinType)(0x0b6))
+#ifndef  PORT_11_PIN_6
+#define PORT_11_PIN_6                          ((Port_PinType)(0x0b6))
 #endif
 
 /* Symbolic Name: Port11 Pin8 */
 /* To prevent double declaration */
-#ifndef  PORT_11_PIN_8_CS11
-#define PORT_11_PIN_8_CS11                          ((Port_PinType)(0x0b8))
+#ifndef  PORT_11_PIN_8
+#define PORT_11_PIN_8                          ((Port_PinType)(0x0b8))
 #endif
 
 /* Symbolic Name: Port11 Pin9 */
 /* To prevent double declaration */
-#ifndef  PORT_11_PIN_9_MTSR1
-#define PORT_11_PIN_9_MTSR1                          ((Port_PinType)(0x0b9))
+#ifndef  PORT_11_PIN_9
+#define PORT_11_PIN_9                          ((Port_PinType)(0x0b9))
 #endif
 
 /* Symbolic Name: Port11 Pin10 */
 /* To prevent double declaration */
-#ifndef  PORT_11_PIN_10_CS12
-#define PORT_11_PIN_10_CS12                          ((Port_PinType)(0x0ba))
+#ifndef  PORT_11_PIN_10
+#define PORT_11_PIN_10                          ((Port_PinType)(0x0ba))
 #endif
 
 /* Symbolic Name: Port11 Pin11 */
 /* To prevent double declaration */
-#ifndef  PORT_11_PIN_11_CS13
-#define PORT_11_PIN_11_CS13                          ((Port_PinType)(0x0bb))
+#ifndef  PORT_11_PIN_11
+#define PORT_11_PIN_11                          ((Port_PinType)(0x0bb))
 #endif
 
 /* Symbolic Name: Port11 Pin12 */
@@ -516,8 +516,8 @@ Configuration: PORT_INIT_CHECK_API
 
 /* Symbolic Name: Port15 Pin0 */
 /* To prevent double declaration */
-#ifndef  PORT_15_PIN_0_CS02
-#define PORT_15_PIN_0_CS02                          ((Port_PinType)(0x0f0))
+#ifndef  PORT_15_PIN_0
+#define PORT_15_PIN_0                          ((Port_PinType)(0x0f0))
 #endif
 
 /* Symbolic Name: Port15 Pin1 */
@@ -604,20 +604,20 @@ Configuration: PORT_INIT_CHECK_API
 
 /* Symbolic Name: Port20 Pin8 */
 /* To prevent double declaration */
-#ifndef  PORT_20_PIN_8
-#define PORT_20_PIN_8                          ((Port_PinType)(0x148))
+#ifndef  PORT_20_PIN_8_SLSO00
+#define PORT_20_PIN_8_SLSO00                          ((Port_PinType)(0x148))
 #endif
 
 /* Symbolic Name: Port20 Pin9 */
 /* To prevent double declaration */
-#ifndef  PORT_20_PIN_9_WDTSLCK
-#define PORT_20_PIN_9_WDTSLCK                          ((Port_PinType)(0x149))
+#ifndef  PORT_20_PIN_9
+#define PORT_20_PIN_9                          ((Port_PinType)(0x149))
 #endif
 
 /* Symbolic Name: Port20 Pin10 */
 /* To prevent double declaration */
-#ifndef  PORT_20_PIN_10_CS04
-#define PORT_20_PIN_10_CS04                          ((Port_PinType)(0x14a))
+#ifndef  PORT_20_PIN_10_BIST
+#define PORT_20_PIN_10_BIST                          ((Port_PinType)(0x14a))
 #endif
 
 /* Symbolic Name: Port20 Pin11 */
@@ -628,14 +628,14 @@ Configuration: PORT_INIT_CHECK_API
 
 /* Symbolic Name: Port20 Pin12 */
 /* To prevent double declaration */
-#ifndef  PORT_20_PIN_12_MRST0
-#define PORT_20_PIN_12_MRST0                          ((Port_PinType)(0x14c))
+#ifndef  PORT_20_PIN_12_MRST0A
+#define PORT_20_PIN_12_MRST0A                          ((Port_PinType)(0x14c))
 #endif
 
 /* Symbolic Name: Port20 Pin13 */
 /* To prevent double declaration */
-#ifndef  PORT_20_PIN_13_CS01
-#define PORT_20_PIN_13_CS01                          ((Port_PinType)(0x14d))
+#ifndef  PORT_20_PIN_13_DEBUG
+#define PORT_20_PIN_13_DEBUG                          ((Port_PinType)(0x14d))
 #endif
 
 /* Symbolic Name: Port20 Pin14 */

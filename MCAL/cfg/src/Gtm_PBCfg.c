@@ -14,7 +14,7 @@
 **                                                                            **
 **  $CC VERSION : \main\dev_tc23x\9 $                                        **
 **                                                                            **
-**  DATE, TIME: 2022-10-01, 16:07:44                                          **
+**  DATE, TIME: 2021-12-28, 13:38:09                                          **
 **                                                                            **
 **  GENERATOR : Build b141014-0350                                            **
 **                                                                            **
@@ -54,7 +54,7 @@
 **                                                                           **
 **  $CC VERSION : \main\dev_tc23x\6 $                                        **
 **                                                                           **
-**  DATE, TIME: 2022-10-01, 16:07:44                                         **
+**  DATE, TIME: 2021-12-28, 13:38:09                                         **
 **                                                                           **
 **  GENERATOR : Build b141014-0350                                           **
 **                                                                           **
@@ -151,7 +151,7 @@ static const Gtm_ClockSettingType Gtm_kClockSetting0 =
 {
   0x00955556U,
   {
-    0x0000000aU,
+    0x00000001U,
     0x00000000U,
     0x00000000U,
     0x00000000U,
@@ -190,43 +190,7 @@ static const Gtm_TomTgcConfigType Gtm_kTomTgcConfig0[] =
 static const Gtm_TomConfigType Gtm_kTomConfig0[] = 
 {
   {
-    GTM_DRIVER_PWM,
-    GTM_INTERRUPT_LEVEL_MODE,
-    Gtm_lTimerCtrlValue(0x0U,GTM_FIXED_CLOCK_3),
-    NULL_PTR
-
-  },
-
-
-  {
     GTM_DRIVER_GPT,
-    GTM_INTERRUPT_LEVEL_MODE,
-    Gtm_lTimerCtrlValue(0x0U,GTM_FIXED_CLOCK_3),
-    NULL_PTR
-
-  },
-
-
-  {
-    GTM_DRIVER_PWM,
-    GTM_INTERRUPT_LEVEL_MODE,
-    Gtm_lTimerCtrlValue(0x0U,GTM_FIXED_CLOCK_3),
-    NULL_PTR
-
-  },
-
-
-  {
-    GTM_DRIVER_PWM,
-    GTM_INTERRUPT_LEVEL_MODE,
-    Gtm_lTimerCtrlValue(0x0U,GTM_FIXED_CLOCK_0),
-    NULL_PTR
-
-  },
-
-
-  {
-    GTM_DRIVER_PWM,
     GTM_INTERRUPT_LEVEL_MODE,
     Gtm_lTimerCtrlValue(0x0U,GTM_FIXED_CLOCK_3),
     NULL_PTR
@@ -251,28 +215,6 @@ static const Gtm_TimConfigType Gtm_kTimConfig0[] =
     Gtm_TimTduBuildReg(0x0U,GTM_CONFIGURABLE_CLOCK_0),  
     0x00000000U
   },
-  {
-    GTM_DRIVER_ICU,
-    Gtm_lIncludeIntMode8Bit(0x0U,GTM_INTERRUPT_LEVEL_MODE),
-    0x00000000U,
-    0x0U,
-    Gtm_TimbuildReg(0x0U, GTM_CONFIGURABLE_CLOCK_0),
-    NULL_PTR,
-    0x00000000U,
-    Gtm_TimTduBuildReg(0x0U,GTM_CONFIGURABLE_CLOCK_0),  
-    0x00000000U
-  },
-  {
-    GTM_DRIVER_ICU,
-    Gtm_lIncludeIntMode8Bit(0x0U,GTM_INTERRUPT_LEVEL_MODE),
-    0x00000000U,
-    0x0U,
-    Gtm_TimbuildReg(0x0U, GTM_CONFIGURABLE_CLOCK_0),
-    NULL_PTR,
-    0x00000000U,
-    Gtm_TimTduBuildReg(0x0U,GTM_CONFIGURABLE_CLOCK_0),  
-    0x00000000U
-  },
 
 };
 
@@ -280,25 +222,25 @@ static const Gtm_ModUsageConfigType Gtm_kModUsage0 =
 {  
    /*TIM Module Usage */
        {
-      GTM_TIM_CH_NOT_USEDBY_ICU,
-      GTM_TIM_CH_NOT_USEDBY_ICU,
-      GTM_TIM_CH_NOT_USEDBY_ICU,
-      GTM_TIM_CH_NOT_USEDBY_ICU,
-      GTM_TIM_CH_NOT_USEDBY_ICU,
       0x0U, /*ICU channel no*/
-      0x1U, /*ICU channel no*/
-      0x2U, /*ICU channel no*/
+      GTM_TIM_CH_NOT_USEDBY_ICU,
+      GTM_TIM_CH_NOT_USEDBY_ICU,
+      GTM_TIM_CH_NOT_USEDBY_ICU,
+      GTM_TIM_CH_NOT_USEDBY_ICU,
+      GTM_TIM_CH_NOT_USEDBY_ICU,
+      GTM_TIM_CH_NOT_USEDBY_ICU,
+      GTM_TIM_CH_NOT_USEDBY_ICU,
    },
     {   /*TOM module Usage */
      /*TOM Module 0 Usage*/    {
-      0x1U,/*PWM channel no*/
+      GTM_TOM_CH_NOT_USEDBY_GPT_PWM,
       0x0U, /*GPT channel no*/
-      0x2U,/*PWM channel no*/
       GTM_TOM_CH_NOT_USEDBY_GPT_PWM,
       GTM_TOM_CH_NOT_USEDBY_GPT_PWM,
-      0x0U,/*PWM channel no*/
       GTM_TOM_CH_NOT_USEDBY_GPT_PWM,
-      0x3U,/*PWM channel no*/
+      GTM_TOM_CH_NOT_USEDBY_GPT_PWM,
+      GTM_TOM_CH_NOT_USEDBY_GPT_PWM,
+      GTM_TOM_CH_NOT_USEDBY_GPT_PWM,
       GTM_TOM_CH_NOT_USEDBY_GPT_PWM,
       GTM_TOM_CH_NOT_USEDBY_GPT_PWM,
       GTM_TOM_CH_NOT_USEDBY_GPT_PWM,
@@ -338,14 +280,14 @@ static const Gtm_ModUsageConfigType Gtm_kModUsage0 =
 static const Gtm_PortConfigType Gtm_kPortConfig0 =
 {
   {
-    0x11100000U,
+    0x00000004U,
   },
   {
     0x00000000U,
     0x00000000U,
     0x00000000U,
     0x00000000U,
-    0x00200000U,
+    0x00000000U,
     0x00000000U,
     0x00000000U,
     0x00000000U,
@@ -362,17 +304,17 @@ static const Gtm_ModuleConfigType Gtm_kModuleConfig0 =
   0xFFFFFFFFU,  /* Access Enable 0 */
   0UL,  /* Access Enable 1 */
 
-  {  0x5400U
+  {  0x0001U
   },    /* TIM Module Usage by GTM and ICU driver*/
-  {  0xe0U
+  {  0x01U
   },  /* TIM Usage */
   &Gtm_kTimConfig0[0],  /* TIM Configuration Pointer */
   {0x01U},  /* TOM TGC Usage */
   &Gtm_kTomTgcConfig0[0],  /* TOM TGC Configuration Pointer */
-  {0x00004419U,
+  {0x00000008U,
    0x00000000U,
    },
-  {0x000000a7U
+  {0x00000002U
   },  /* TOM Usage */
   &Gtm_kTomConfig0[0],  /* TOM Configuration Pointer */
 

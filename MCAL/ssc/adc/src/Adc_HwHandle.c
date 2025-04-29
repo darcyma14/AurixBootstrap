@@ -4493,46 +4493,52 @@ uint32 Adc_lSwConvDetCheck
   Adc_GroupType Group
 )
 {
-#if (ADC_RESULT_HANDLING_MODE == ADC_AUTOSAR)
-Adc_GlobalDataType         *DataPtr;
-#endif
-const Adc_GroupCfgType     *GrpPtr;
-const Adc_KernelConfigType *CfgPtr;
-uint32                     RetErr;
+  #if (ADC_RESULT_HANDLING_MODE == ADC_AUTOSAR)
+  Adc_GlobalDataType         *DataPtr;
+  #endif
+  const Adc_GroupCfgType     *GrpPtr;
+  const Adc_KernelConfigType *CfgPtr;
+  uint32                     RetErr;
 
-	RetErr = ADC_E_DET_NO_ERR;
+  RetErr = ADC_E_DET_NO_ERR;
 
-#if (ADC_RESULT_HANDLING_MODE == ADC_AUTOSAR)
-	/* Get ADC Kernel index for variables */
-	/* Assign the address of ASIL or QM signal variable to global data pointer*/
-	DataPtr = Adc_lGetDataAddress( AdcKernel );
-#endif
-	CfgPtr = Adc_kConfigPtr->CfgPtr[ AdcKernel ];
-
-	/* Parameter Group ID is valid check for other errors */
-	/*IFX_MISRA_RULE_17_04_STATUS=Pointer arithmetic used due to
-	Group Configuration Structure and is within allowed range*/
-	GrpPtr = ( CfgPtr->GrpCfgPtr + Group );
-
-	if( GrpPtr->TriggSrc != ADC_TRIGG_SRC_SW )
-	{
-		/* ADC133: Group with trigger source not configured as Software */
-		Det_ReportError( ADC_MODULE_ID, ADC_MODULE_INSTANCE, ServiceId, ADC_E_WRONG_TRIGG_SRC );
-		RetErr = ( uint32 ) ADC_E_WRONG_TRIGG_SRC;
-	}
-#if (ADC_RESULT_HANDLING_MODE == ADC_AUTOSAR)
-	else if( DataPtr->GroupResultBuffer[ Group ] == NULL_PTR )
-	{
-		/* ADC133: Group is not initialised for Result buffer */
-		Det_ReportError( ADC_MODULE_ID, ADC_MODULE_INSTANCE, ServiceId, ADC_E_BUFFER_UNINIT );
-		RetErr = (uint32)ADC_E_BUFFER_UNINIT;
-	}
-	else
-	{
-		/* Do Nothing */
-	}
-#endif /* (ADC_RESULT_HANDLING_MODE == ADC_AUTOSAR) */
-	return (RetErr);
+  #if (ADC_RESULT_HANDLING_MODE == ADC_AUTOSAR)
+  /* Get ADC Kernel index for variables */
+  /* Assign the address of ASIL or QM signal variable to global data pointer*/
+  DataPtr = Adc_lGetDataAddress(AdcKernel);
+  #endif
+  CfgPtr = Adc_kConfigPtr->CfgPtr[AdcKernel];
+  
+  /* Parameter Group ID is valid check for other errors */
+  /*IFX_MISRA_RULE_17_04_STATUS=Pointer arithmetic used due to 
+  Group Configuration Structure and is within allowed range*/
+  GrpPtr = (CfgPtr->GrpCfgPtr + Group);
+  
+  
+  if ( GrpPtr->TriggSrc != ADC_TRIGG_SRC_SW)
+  {
+    /* ADC133: Group with trigger source not configured as Software */
+    Det_ReportError( ADC_MODULE_ID, ADC_MODULE_INSTANCE, 
+                     ServiceId, ADC_E_WRONG_TRIGG_SRC
+                   );    
+    RetErr = (uint32)ADC_E_WRONG_TRIGG_SRC;
+  }
+  #if (ADC_RESULT_HANDLING_MODE == ADC_AUTOSAR)
+  else if (DataPtr->GroupResultBuffer[Group] == NULL_PTR)
+  {
+    /* ADC133: Group is not initialised for Result buffer */
+    Det_ReportError( ADC_MODULE_ID, ADC_MODULE_INSTANCE, 
+                     ServiceId, ADC_E_BUFFER_UNINIT
+                   );    
+    RetErr = (uint32)ADC_E_BUFFER_UNINIT;
+  }
+  else
+  {
+    /* Do Nothing */
+  }
+  #endif /* (ADC_RESULT_HANDLING_MODE == ADC_AUTOSAR) */
+  
+  return(RetErr);
 } /* Adc_lSwConvDetCheck */
 #endif
 /*(ADC_DEV_ERROR_DETECT==STD_ON) And (ADC_ENABLE_START_STOP_GROUP_API==STD_ON)*/

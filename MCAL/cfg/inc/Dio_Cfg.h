@@ -14,7 +14,7 @@
 **                                                                            **
 **   $CC VERSION : \main\37 $                                                 **
 **                                                                            **
-**   DATE, TIME  : 2022-10-01, 16:07:45                                       **
+**   DATE, TIME  : 2021-12-28, 13:38:10                                       **
 **                                                                            **
 **   GENERATOR   : Build b141014-0350                                         **
 **                                                                            **
@@ -399,73 +399,106 @@ Configuration: PORT_PB_FIXED_ADDRESS
   31 characters to follow Autosar naming conventions*/
 /* To prevent double declaration */
 #ifndef DioConf_DioPort_DioPort_0
-#define DioConf_DioPort_DioPort_0 (DIO_PORT_0)
+#define DioConf_DioPort_DioPort_0 (DIO_PORT_33)
 #endif
 
 
-/* DIO Channel : (DioConf_DioChannel_LS2_EN) */
+/* DIO Channel : (DioConf_DioChannel_HSD_I0) */
 /*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
   31 characters to follow Autosar naming conventions*/
 /*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
   31 characters to follow Autosar naming conventions*/
 /* To prevent double declaration */
-#ifndef DioConf_DioChannel_LS2_EN
-#define DioConf_DioChannel_LS2_EN (DIO_CHANNEL_0_2)
+#ifndef DioConf_DioChannel_HSD_I0
+#define DioConf_DioChannel_HSD_I0 (DIO_CHANNEL_33_0)
 #endif
 
 
-/* DIO Channel : (DioConf_DioChannel_LS1_EN) */
+/* DIO Channel : (DioConf_DioChannel_HSD_I1) */
 /*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
   31 characters to follow Autosar naming conventions*/
 /*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
   31 characters to follow Autosar naming conventions*/
 /* To prevent double declaration */
-#ifndef DioConf_DioChannel_LS1_EN
-#define DioConf_DioChannel_LS1_EN (DIO_CHANNEL_0_3)
+#ifndef DioConf_DioChannel_HSD_I1
+#define DioConf_DioChannel_HSD_I1 (DIO_CHANNEL_33_1)
 #endif
 
 
-/* DIO Channel : (DioConf_DioChannel_PMIC_SS2) */
+/* DIO Channel : (DioConf_DioChannel_HSD_I2) */
 /*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
   31 characters to follow Autosar naming conventions*/
 /*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
   31 characters to follow Autosar naming conventions*/
 /* To prevent double declaration */
-#ifndef DioConf_DioChannel_PMIC_SS2
-#define DioConf_DioChannel_PMIC_SS2 (DIO_CHANNEL_0_6)
+#ifndef DioConf_DioChannel_HSD_I2
+#define DioConf_DioChannel_HSD_I2 (DIO_CHANNEL_33_2)
 #endif
 
 
-/* DIO Channel : (DioConf_DioChannel_PMIC_SS1) */
+/* DIO Channel : (DioConf_DioChannel_HSD_I3) */
 /*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
   31 characters to follow Autosar naming conventions*/
 /*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
   31 characters to follow Autosar naming conventions*/
 /* To prevent double declaration */
-#ifndef DioConf_DioChannel_PMIC_SS1
-#define DioConf_DioChannel_PMIC_SS1 (DIO_CHANNEL_0_7)
+#ifndef DioConf_DioChannel_HSD_I3
+#define DioConf_DioChannel_HSD_I3 (DIO_CHANNEL_33_3)
 #endif
 
 
-/* DIO Channel : (DioConf_DioChannel_PMIC_MPS) */
+/* DIO Channel : (DioConf_DioChannel_HSD_SEL0) */
 /*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
   31 characters to follow Autosar naming conventions*/
 /*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
   31 characters to follow Autosar naming conventions*/
 /* To prevent double declaration */
-#ifndef DioConf_DioChannel_PMIC_MPS
-#define DioConf_DioChannel_PMIC_MPS (DIO_CHANNEL_0_8)
+#ifndef DioConf_DioChannel_HSD_SEL0
+#define DioConf_DioChannel_HSD_SEL0 (DIO_CHANNEL_33_4)
 #endif
 
 
-/* DIO Channel : (DioConf_DioChannel_I_SH_02M) */
+/* DIO Channel : (DioConf_DioChannel_HSD_SEL1) */
 /*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
   31 characters to follow Autosar naming conventions*/
 /*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
   31 characters to follow Autosar naming conventions*/
 /* To prevent double declaration */
-#ifndef DioConf_DioChannel_I_SH_02M
-#define DioConf_DioChannel_I_SH_02M (DIO_CHANNEL_0_12)
+#ifndef DioConf_DioChannel_HSD_SEL1
+#define DioConf_DioChannel_HSD_SEL1 (DIO_CHANNEL_33_5)
+#endif
+
+
+/* DIO Channel : (DioConf_DioChannel_HSD_SEL2) */
+/*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
+  31 characters to follow Autosar naming conventions*/
+/*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
+  31 characters to follow Autosar naming conventions*/
+/* To prevent double declaration */
+#ifndef DioConf_DioChannel_HSD_SEL2
+#define DioConf_DioChannel_HSD_SEL2 (DIO_CHANNEL_33_6)
+#endif
+
+
+/* DIO Channel : (DioConf_DioChannel_HSD_SEn) */
+/*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
+  31 characters to follow Autosar naming conventions*/
+/*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
+  31 characters to follow Autosar naming conventions*/
+/* To prevent double declaration */
+#ifndef DioConf_DioChannel_HSD_SEn
+#define DioConf_DioChannel_HSD_SEn (DIO_CHANNEL_33_7)
+#endif
+
+
+/* DIO Channel : (DioConf_DioChannel_HSD_FAULT) */
+/*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
+  31 characters to follow Autosar naming conventions*/
+/*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
+  31 characters to follow Autosar naming conventions*/
+/* To prevent double declaration */
+#ifndef DioConf_DioChannel_HSD_FAULT
+#define DioConf_DioChannel_HSD_FAULT (DIO_CHANNEL_33_8)
 #endif
 
 
@@ -482,25 +515,25 @@ Configuration: PORT_PB_FIXED_ADDRESS
 #endif
 
 
-/* DIO Channel : (DioConf_DioChannel_LIN2_EN) */
+/* DIO Channel : (DioConf_DioChannel_LED1) */
 /*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
   31 characters to follow Autosar naming conventions*/
 /*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
   31 characters to follow Autosar naming conventions*/
 /* To prevent double declaration */
-#ifndef DioConf_DioChannel_LIN2_EN
-#define DioConf_DioChannel_LIN2_EN (DIO_CHANNEL_2_0)
+#ifndef DioConf_DioChannel_LED1
+#define DioConf_DioChannel_LED1 (DIO_CHANNEL_2_1)
 #endif
 
 
-/* DIO Channel : (DioConf_DioChannel_LIN1_EN) */
+/* DIO Channel : (DioConf_DioChannel_LED2) */
 /*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
   31 characters to follow Autosar naming conventions*/
 /*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
   31 characters to follow Autosar naming conventions*/
 /* To prevent double declaration */
-#ifndef DioConf_DioChannel_LIN1_EN
-#define DioConf_DioChannel_LIN1_EN (DIO_CHANNEL_2_1)
+#ifndef DioConf_DioChannel_LED2
+#define DioConf_DioChannel_LED2 (DIO_CHANNEL_2_2)
 #endif
 
 
@@ -517,6 +550,28 @@ Configuration: PORT_PB_FIXED_ADDRESS
 #endif
 
 
+/* DIO Channel : (DioConf_DioChannel_POS_SEN_R) */
+/*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
+  31 characters to follow Autosar naming conventions*/
+/*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
+  31 characters to follow Autosar naming conventions*/
+/* To prevent double declaration */
+#ifndef DioConf_DioChannel_POS_SEN_R
+#define DioConf_DioChannel_POS_SEN_R (DIO_CHANNEL_10_2)
+#endif
+
+
+/* DIO Channel : (DioConf_DioChannel_POS_SEN_L) */
+/*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
+  31 characters to follow Autosar naming conventions*/
+/*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
+  31 characters to follow Autosar naming conventions*/
+/* To prevent double declaration */
+#ifndef DioConf_DioChannel_POS_SEN_L
+#define DioConf_DioChannel_POS_SEN_L (DIO_CHANNEL_10_3)
+#endif
+
+
 /*
   DIO PORT : (DioConf_DioPort_DioPort_3)
 */
@@ -526,338 +581,29 @@ Configuration: PORT_PB_FIXED_ADDRESS
   31 characters to follow Autosar naming conventions*/
 /* To prevent double declaration */
 #ifndef DioConf_DioPort_DioPort_3
-#define DioConf_DioPort_DioPort_3 (DIO_PORT_11)
+#define DioConf_DioPort_DioPort_3 (DIO_PORT_20)
 #endif
 
 
-/* DIO Channel : (DioConf_DioChannel_SPI0_CS3) */
+/* DIO Channel : (DioConf_DioChannel_PMIC_BIST) */
 /*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
   31 characters to follow Autosar naming conventions*/
 /*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
   31 characters to follow Autosar naming conventions*/
 /* To prevent double declaration */
-#ifndef DioConf_DioChannel_SPI0_CS3
-#define DioConf_DioChannel_SPI0_CS3 (DIO_CHANNEL_11_2)
+#ifndef DioConf_DioChannel_PMIC_BIST
+#define DioConf_DioChannel_PMIC_BIST (DIO_CHANNEL_20_10)
 #endif
 
 
-/*
-  DIO PORT : (DioConf_DioPort_DioPort_4)
-*/
+/* DIO Channel : (DioConf_DioChannel_PMIC_DBG) */
 /*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
   31 characters to follow Autosar naming conventions*/
 /*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
   31 characters to follow Autosar naming conventions*/
 /* To prevent double declaration */
-#ifndef DioConf_DioPort_DioPort_4
-#define DioConf_DioPort_DioPort_4 (DIO_PORT_13)
-#endif
-
-
-/* DIO Channel : (DioConf_DioChannel_O_SL_09M) */
-/*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/* To prevent double declaration */
-#ifndef DioConf_DioChannel_O_SL_09M
-#define DioConf_DioChannel_O_SL_09M (DIO_CHANNEL_13_1)
-#endif
-
-
-/* DIO Channel : (DioConf_DioChannel_TS_LED) */
-/*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/* To prevent double declaration */
-#ifndef DioConf_DioChannel_TS_LED
-#define DioConf_DioChannel_TS_LED (DIO_CHANNEL_13_3)
-#endif
-
-
-/*
-  DIO PORT : (DioConf_DioPort_DioPort_5)
-*/
-/*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/* To prevent double declaration */
-#ifndef DioConf_DioPort_DioPort_5
-#define DioConf_DioPort_DioPort_5 (DIO_PORT_15)
-#endif
-
-
-/* DIO Channel : (DioConf_DioChannel_O_SH_02M) */
-/*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/* To prevent double declaration */
-#ifndef DioConf_DioChannel_O_SH_02M
-#define DioConf_DioChannel_O_SH_02M (DIO_CHANNEL_15_1)
-#endif
-
-
-/* DIO Channel : (DioConf_DioChannel_CAN3_NEN) */
-/*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/* To prevent double declaration */
-#ifndef DioConf_DioChannel_CAN3_NEN
-#define DioConf_DioChannel_CAN3_NEN (DIO_CHANNEL_15_6)
-#endif
-
-
-/*
-  DIO PORT : (DioConf_DioPort_DioPort_6)
-*/
-/*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/* To prevent double declaration */
-#ifndef DioConf_DioPort_DioPort_6
-#define DioConf_DioPort_DioPort_6 (DIO_PORT_21)
-#endif
-
-
-/* DIO Channel : (DioConf_DioChannel_LED_EN) */
-/*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/* To prevent double declaration */
-#ifndef DioConf_DioChannel_LED_EN
-#define DioConf_DioChannel_LED_EN (DIO_CHANNEL_21_2)
-#endif
-
-
-/* DIO Channel : (DioConf_DioChannel_O_LED_03M) */
-/*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/* To prevent double declaration */
-#ifndef DioConf_DioChannel_O_LED_03M
-#define DioConf_DioChannel_O_LED_03M (DIO_CHANNEL_21_3)
-#endif
-
-
-/* DIO Channel : (DioConf_DioChannel_O_LED_02M) */
-/*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/* To prevent double declaration */
-#ifndef DioConf_DioChannel_O_LED_02M
-#define DioConf_DioChannel_O_LED_02M (DIO_CHANNEL_21_4)
-#endif
-
-
-/* DIO Channel : (DioConf_DioChannel_O_LED_01M) */
-/*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/* To prevent double declaration */
-#ifndef DioConf_DioChannel_O_LED_01M
-#define DioConf_DioChannel_O_LED_01M (DIO_CHANNEL_21_5)
-#endif
-
-
-/*
-  DIO PORT : (DioConf_DioPort_DioPort_7)
-*/
-/*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/* To prevent double declaration */
-#ifndef DioConf_DioPort_DioPort_7
-#define DioConf_DioPort_DioPort_7 (DIO_PORT_22)
-#endif
-
-
-/* DIO Channel : (DioConf_DioChannel_I_SH_03M) */
-/*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/* To prevent double declaration */
-#ifndef DioConf_DioChannel_I_SH_03M
-#define DioConf_DioChannel_I_SH_03M (DIO_CHANNEL_22_0)
-#endif
-
-
-/* DIO Channel : (DioConf_DioChannel_I_SH_05M) */
-/*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/* To prevent double declaration */
-#ifndef DioConf_DioChannel_I_SH_05M
-#define DioConf_DioChannel_I_SH_05M (DIO_CHANNEL_22_2)
-#endif
-
-
-/* DIO Channel : (DioConf_DioChannel_I_SH_06M) */
-/*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/* To prevent double declaration */
-#ifndef DioConf_DioChannel_I_SH_06M
-#define DioConf_DioChannel_I_SH_06M (DIO_CHANNEL_22_3)
-#endif
-
-
-/* DIO Channel : (DioConf_DioChannel_LED_ERRN) */
-/*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/* To prevent double declaration */
-#ifndef DioConf_DioChannel_LED_ERRN
-#define DioConf_DioChannel_LED_ERRN (DIO_CHANNEL_22_4)
-#endif
-
-
-/*
-  DIO PORT : (DioConf_DioPort_DioPort_8)
-*/
-/*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/* To prevent double declaration */
-#ifndef DioConf_DioPort_DioPort_8
-#define DioConf_DioPort_DioPort_8 (DIO_PORT_33)
-#endif
-
-
-/* DIO Channel : (DioConf_DioChannel_I_SL_08M) */
-/*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/* To prevent double declaration */
-#ifndef DioConf_DioChannel_I_SL_08M
-#define DioConf_DioChannel_I_SL_08M (DIO_CHANNEL_33_0)
-#endif
-
-
-/* DIO Channel : (DioConf_DioChannel_I_SL_07M) */
-/*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/* To prevent double declaration */
-#ifndef DioConf_DioChannel_I_SL_07M
-#define DioConf_DioChannel_I_SL_07M (DIO_CHANNEL_33_1)
-#endif
-
-
-/* DIO Channel : (DioConf_DioChannel_I_SL_06M) */
-/*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/* To prevent double declaration */
-#ifndef DioConf_DioChannel_I_SL_06M
-#define DioConf_DioChannel_I_SL_06M (DIO_CHANNEL_33_2)
-#endif
-
-
-/* DIO Channel : (DioConf_DioChannel_I_SL_04M) */
-/*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/* To prevent double declaration */
-#ifndef DioConf_DioChannel_I_SL_04M
-#define DioConf_DioChannel_I_SL_04M (DIO_CHANNEL_33_4)
-#endif
-
-
-/* DIO Channel : (DioConf_DioChannel_I_SL_03M) */
-/*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/* To prevent double declaration */
-#ifndef DioConf_DioChannel_I_SL_03M
-#define DioConf_DioChannel_I_SL_03M (DIO_CHANNEL_33_5)
-#endif
-
-
-/* DIO Channel : (DioConf_DioChannel_I_SL_02M) */
-/*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/* To prevent double declaration */
-#ifndef DioConf_DioChannel_I_SL_02M
-#define DioConf_DioChannel_I_SL_02M (DIO_CHANNEL_33_6)
-#endif
-
-
-/* DIO Channel : (DioConf_DioChannel_PMIC_ERR) */
-/*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/* To prevent double declaration */
-#ifndef DioConf_DioChannel_PMIC_ERR
-#define DioConf_DioChannel_PMIC_ERR (DIO_CHANNEL_33_8)
-#endif
-
-
-/*
-  DIO PORT : (DioConf_DioPort_DioPort_9)
-*/
-/*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/* To prevent double declaration */
-#ifndef DioConf_DioPort_DioPort_9
-#define DioConf_DioPort_DioPort_9 (DIO_PORT_34)
-#endif
-
-
-/* DIO Channel : (DioConf_DioChannel_I_SL_01M) */
-/*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/* To prevent double declaration */
-#ifndef DioConf_DioChannel_I_SL_01M
-#define DioConf_DioChannel_I_SL_01M (DIO_CHANNEL_34_0)
-#endif
-
-
-/* DIO Channel : (DioConf_DioChannel_I_SL_10M) */
-/*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/* To prevent double declaration */
-#ifndef DioConf_DioChannel_I_SL_10M
-#define DioConf_DioChannel_I_SL_10M (DIO_CHANNEL_34_2)
-#endif
-
-
-/* DIO Channel : (DioConf_DioChannel_I_SL_09M) */
-/*IFX_MISRA_RULE_05_01_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/*IFX_MISRA_RULE_01_04_STATUS = The generated macro may exceed
-  31 characters to follow Autosar naming conventions*/
-/* To prevent double declaration */
-#ifndef DioConf_DioChannel_I_SL_09M
-#define DioConf_DioChannel_I_SL_09M (DIO_CHANNEL_34_3)
+#ifndef DioConf_DioChannel_PMIC_DBG
+#define DioConf_DioChannel_PMIC_DBG (DIO_CHANNEL_20_13)
 #endif
 
 

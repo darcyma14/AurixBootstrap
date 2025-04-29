@@ -14,7 +14,7 @@
 **                                                                            **
 **  $CC VERSION : \main\24 $                                                 **
 **                                                                            **
-**  DATE, TIME: 2022-10-01, 16:07:46                                          **
+**  DATE, TIME: 2021-12-28, 13:38:11                                          **
 **                                                                            **
 **  GENERATOR : Build b141014-0350                                            **
 **                                                                            **
@@ -88,7 +88,7 @@ static const Uart_ChannelType  Uart_kChannelConfig0[1] =
     1U,      /* UartRxPinSelection */
     0U,      /*Parity Enable*/ 
     0U,      /* Odd or Even Parity */ 
-    0U,      /*CTS Enable*/
+    1U,      /*CTS Enable*/
     0U,      /*RTS/CTS Polarity*/
   },
 };

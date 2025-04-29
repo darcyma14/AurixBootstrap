@@ -14,7 +14,7 @@
 **                                                                            **
 **  $CC VERSION : \main\dev_tc23x\6 $                                        **
 **                                                                            **
-**  DATE, TIME: 2022-10-01, 16:07:43                                      **
+**  DATE, TIME: 2021-12-28, 13:38:07                                      **
 **                                                                            **
 **  GENERATOR : Build b141014-0350                                          **
 **                                                                            **
@@ -35,8 +35,6 @@
 *******************************************************************************/
 /* Inclusion of Port Header file */
 #include "Port.h"
-
-
 
 /*******************************************************************************
 **                      Private Macro Definitions                             **
@@ -189,26 +187,26 @@ Configuration Options: Pin driver strength
 static const Port_n_ConfigType Port_kConfiguration0[] = 
 {
 /*                              Port0                       */
-	{
-		{
-			/* Port pins direction, characteristics and mode configuration */
-			{
-				((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT3),/*Pin 0*/
-				((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 1*/
-				((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 2*/
-				((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 3*/
-				((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT3),/*Pin 4*/
-				((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 5*/
-				((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 6*/
-				((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 7*/
-				((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 8*/
-				((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 9*/
-				(PORT_PIN_DEFAULT),/*Pin 10*/
-				(PORT_PIN_DEFAULT),/*Pin 11*/
-				((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 12*/
-				(PORT_PIN_DEFAULT),/*Pin 13*/
-				(PORT_PIN_DEFAULT),/*Pin 14*/
-				(PORT_PIN_DEFAULT) /*Pin 15*/
+  {
+    {
+      /* Port pins direction, characteristics and mode configuration */
+      {
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 0*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 1*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 2*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 3*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 4*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 5*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 6*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 7*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 8*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 9*/
+         (PORT_PIN_DEFAULT),/*Pin 10*/
+         (PORT_PIN_DEFAULT),/*Pin 11*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 12*/
+         (PORT_PIN_DEFAULT),/*Pin 13*/
+         (PORT_PIN_DEFAULT),/*Pin 14*/
+         (PORT_PIN_DEFAULT) /*Pin 15*/ 
       }
     },
     {
@@ -260,15 +258,15 @@ static const Port_n_ConfigType Port_kConfiguration0[] =
     {
       /* Port pins direction, characteristics and mode configuration */
       {
-         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 0*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 0*/
          ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 1*/
-         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT5),/*Pin 2*/
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 3*/
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 4*/
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 5*/
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 6*/
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 7*/
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 8*/
+         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 2*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 3*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 4*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 5*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 6*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 7*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 8*/
          (PORT_PIN_DEFAULT),/*Pin 9*/
          (PORT_PIN_DEFAULT),/*Pin 10*/
          (PORT_PIN_DEFAULT),/*Pin 11*/
@@ -328,9 +326,9 @@ static const Port_n_ConfigType Port_kConfiguration0[] =
       /* Port pins direction, characteristics and mode configuration */
       {
          (PORT_PIN_DEFAULT),/*Pin 0*/
-         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 1*/
-         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 2*/
-         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 3*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_DOWN | PORT_PIN_MODE_GPIO),/*Pin 1*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_DOWN | PORT_PIN_MODE_GPIO),/*Pin 2*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_DOWN | PORT_PIN_MODE_GPIO),/*Pin 3*/
          (PORT_PIN_DEFAULT),/*Pin 4*/
          ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 5*/
          ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 6*/
@@ -396,16 +394,16 @@ static const Port_n_ConfigType Port_kConfiguration0[] =
       {
          (PORT_PIN_DEFAULT),/*Pin 0*/
          (PORT_PIN_DEFAULT),/*Pin 1*/
-         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 2*/
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 3*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 2*/
+         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 3*/
          (PORT_PIN_DEFAULT),/*Pin 4*/
          (PORT_PIN_DEFAULT),/*Pin 5*/
-         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT3),/*Pin 6*/
+         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 6*/
          (PORT_PIN_DEFAULT),/*Pin 7*/
-         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT3),/*Pin 8*/
-         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT3),/*Pin 9*/
-         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT4),/*Pin 10*/
-         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT4),/*Pin 11*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 8*/
+         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 9*/
+         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 10*/
+         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 11*/
          ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 12*/
          (PORT_PIN_DEFAULT),/*Pin 13*/
          (PORT_PIN_DEFAULT),/*Pin 14*/
@@ -417,16 +415,16 @@ static const Port_n_ConfigType Port_kConfiguration0[] =
       {
          0U,/* Pin 0 */ 
          0U,/* Pin 1 */ 
-         PORT_PIN_HIGH,/* Pin 2 */ 
+         PORT_PIN_LOW,/* Pin 2 */ 
          PORT_PIN_LOW,/* Pin 3 */ 
          0U,/* Pin 4 */ 
          0U,/* Pin 5 */ 
          PORT_PIN_LOW,/* Pin 6 */ 
          0U,/* Pin 7 */ 
-         PORT_PIN_HIGH,/* Pin 8 */ 
+         PORT_PIN_LOW,/* Pin 8 */ 
          PORT_PIN_LOW,/* Pin 9 */ 
-         PORT_PIN_HIGH,/* Pin 10 */ 
-         PORT_PIN_HIGH,/* Pin 11 */ 
+         PORT_PIN_LOW,/* Pin 10 */ 
+         PORT_PIN_LOW,/* Pin 11 */ 
          PORT_PIN_LOW,/* Pin 12 */ 
          0U,/* Pin 13 */ 
          0U,/* Pin 14 */ 
@@ -467,10 +465,10 @@ static const Port_n_ConfigType Port_kConfiguration0[] =
          ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 2*/
          ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 3*/
 #else
-         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 0*/
-         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 1*/
-         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT1),/*Pin 2*/
-         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 3*/
+         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT7),/*Pin 0*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 1*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 2*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_DOWN | PORT_PIN_MODE_GPIO),/*Pin 3*/
 #endif
          (PORT_PIN_DEFAULT),/*Pin 4*/
          (PORT_PIN_DEFAULT),/*Pin 5*/
@@ -535,15 +533,15 @@ static const Port_n_ConfigType Port_kConfiguration0[] =
     {
       /* Port pins direction, characteristics and mode configuration */
       {
-         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT5),/*Pin 0*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 0*/
          ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 1*/
          ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 2*/
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_DOWN | PORT_PIN_MODE_GPIO),/*Pin 3*/
-         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT1),/*Pin 4*/
-         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT1),/*Pin 5*/
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_DOWN | PORT_PIN_MODE_GPIO),/*Pin 6*/
-         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT1),/*Pin 7*/
-         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT1),/*Pin 8*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 3*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_DOWN | PORT_PIN_MODE_GPIO),/*Pin 4*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 5*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 6*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 7*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 8*/
          (PORT_PIN_DEFAULT),/*Pin 9*/
          (PORT_PIN_DEFAULT),/*Pin 10*/
          (PORT_PIN_DEFAULT),/*Pin 11*/
@@ -602,15 +600,15 @@ static const Port_n_ConfigType Port_kConfiguration0[] =
     {
       /* Port pins direction, characteristics and mode configuration */
       {
-         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT3),/*Pin 0*/
-         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 1*/
-         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 2*/
-         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT1),/*Pin 3*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 0*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 1*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 2*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 3*/
          ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT2),/*Pin 4*/
          ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 5*/
-         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 6*/
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_DOWN | PORT_PIN_MODE_GPIO),/*Pin 7*/
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_DOWN | PORT_PIN_MODE_GPIO),/*Pin 8*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 6*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 7*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 8*/
          (PORT_PIN_DEFAULT),/*Pin 9*/
          (PORT_PIN_DEFAULT),/*Pin 10*/
          (PORT_PIN_DEFAULT),/*Pin 11*/
@@ -623,7 +621,7 @@ static const Port_n_ConfigType Port_kConfiguration0[] =
     {
       /* Port pins initial level configuration */
       {
-         PORT_PIN_HIGH,/* Pin 0 */ 
+         PORT_PIN_LOW,/* Pin 0 */ 
          PORT_PIN_LOW,/* Pin 1 */ 
          PORT_PIN_LOW,/* Pin 2 */ 
          PORT_PIN_LOW,/* Pin 3 */ 
@@ -665,55 +663,51 @@ static const Port_n_ConfigType Port_kConfiguration0[] =
                      )
    },
 /*                              Port20                       */
+  {
     {
-        {
-            /* Port pins direction, characteristics and mode configuration */
-            #ifdef _APP_KIT_BOARD_
-            {
-                ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 0*/
-                (PORT_PIN_DEFAULT),/*Pin 1*/
-                ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 2*/
-                ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT5),/*Pin 3*/
-                (PORT_PIN_DEFAULT),/*Pin 4*/
-                (PORT_PIN_DEFAULT),/*Pin 5*/
-                ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 6*/
-
-                ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 7*/   /*CAN0_RXDB*/
-                ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT5),/*Pin 8*/ /*CAN0_TXD*/
-
-                ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT6),/*Pin 9*/
-                ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT3),/*Pin 10*/
-                ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT3),/*Pin 11*/
-                ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_DOWN | PORT_PIN_MODE_GPIO),/*Pin 12*/
-                ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT3),/*Pin 13*/
-                ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT3),/*Pin 14*/
-                (PORT_PIN_DEFAULT) /*Pin 15*/
-            }
-            #else
-            {
-                ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 0*/
-                (PORT_PIN_DEFAULT),/*Pin 1*/
-                ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 2*/
-                ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT5),/*Pin 3*/
-                (PORT_PIN_DEFAULT),/*Pin 4*/
-                (PORT_PIN_DEFAULT),/*Pin 5*/
-                ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 6*/
-                ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 7*/
-                ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 8*/
-                ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT6),/*Pin 9*/
-                ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT3),/*Pin 10*/
-                ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT3),/*Pin 11*/
-                ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_DOWN | PORT_PIN_MODE_GPIO),/*Pin 12*/
-                ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT3),/*Pin 13*/
-                ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT3),/*Pin 14*/
-                (PORT_PIN_DEFAULT) /*Pin 15*/
-            }
-            #endif
-        },
-        {
-            /* Port pins initial level configuration */
-            #ifdef _APP_KIT_BOARD_
-            {
+      /* Port pins direction, characteristics and mode configuration */
+      {
+#ifdef _APP_KIT_BOARD_
+            ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 0*/
+            (PORT_PIN_DEFAULT),/*Pin 1*/
+            ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 2*/
+            ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT5),/*Pin 3*/
+            (PORT_PIN_DEFAULT),/*Pin 4*/
+            (PORT_PIN_DEFAULT),/*Pin 5*/
+            ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 6*/
+            ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 7*/   /*CAN0_RXDB*/
+            ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT5),/*Pin 8*/ /*CAN0_TXD*/
+            ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT6),/*Pin 9*/
+            ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT3),/*Pin 10*/
+            ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT3),/*Pin 11*/
+            ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_DOWN | PORT_PIN_MODE_GPIO),/*Pin 12*/
+            ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT3),/*Pin 13*/
+            ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT3),/*Pin 14*/
+            (PORT_PIN_DEFAULT) /*Pin 15*/               
+#else       
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 0*/
+         (PORT_PIN_DEFAULT),/*Pin 1*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 2*/
+         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT5),/*Pin 3*/
+         (PORT_PIN_DEFAULT),/*Pin 4*/
+         (PORT_PIN_DEFAULT),/*Pin 5*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 6*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 7*/
+         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT3),/*Pin 8*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 9*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_DOWN | PORT_PIN_MODE_GPIO),/*Pin 10*/
+         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT3),/*Pin 11*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_DOWN | PORT_PIN_MODE_GPIO),/*Pin 12*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 13*/
+         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT3),/*Pin 14*/
+         (PORT_PIN_DEFAULT) /*Pin 15*/ 
+#endif
+      }
+    },
+    {
+      /* Port pins initial level configuration */
+      {
+#ifdef _APP_KIT_BOARD_
                 PORT_PIN_LOW,/* Pin 0 */
                 0U,/* Pin 1 */
                 PORT_PIN_LOW,/* Pin 2 */
@@ -732,51 +726,49 @@ static const Port_n_ConfigType Port_kConfiguration0[] =
                 PORT_PIN_HIGH,/* Pin 13 */
                 PORT_PIN_LOW,/* Pin 14 */
                 0U /* Pin 15 */
-            }
-            #else
-            {
-                PORT_PIN_LOW,/* Pin 0 */
-                0U,/* Pin 1 */
-                PORT_PIN_LOW,/* Pin 2 */
-                PORT_PIN_LOW,/* Pin 3 */
-                0U,/* Pin 4 */
-                0U,/* Pin 5 */
-                PORT_PIN_LOW,/* Pin 6 */
-                PORT_PIN_LOW,/* Pin 7 */
-                PORT_PIN_HIGH,/* Pin 8 */
-                PORT_PIN_LOW,/* Pin 9 */
-                PORT_PIN_HIGH,/* Pin 10 */
-                PORT_PIN_LOW,/* Pin 11 */
-                PORT_PIN_LOW,/* Pin 12 */
-                PORT_PIN_HIGH,/* Pin 13 */
-                PORT_PIN_LOW,/* Pin 14 */
-                0U /* Pin 15 */
-            }
-            #endif
-        },
-        /* Port pins drive strength1 configuration */
-        Portx_lPdrConfig1(
-             (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 0 */
-             (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 1 */
-             (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 2 */
-             (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 3 */
-             (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 4 */
-             (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 5 */
-             (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 6 */
-             (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1) /* Pin 7 */
-                         ),
-        /* Port pins drive strength2 configuration */
-        Portx_lPdrConfig2(
-             (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 8 */
-             (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 9 */
-             (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 10 */
-             (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 11 */
-             (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 12 */
-             (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 13 */
-             (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 14 */
-             (PORT_PIN_PAD_LEVEL_DEFAULT) /* Pin 15 */
-                         )
-    },
+#else
+         PORT_PIN_LOW,/* Pin 0 */ 
+         0U,/* Pin 1 */ 
+         PORT_PIN_LOW,/* Pin 2 */ 
+         PORT_PIN_LOW,/* Pin 3 */ 
+         0U,/* Pin 4 */ 
+         0U,/* Pin 5 */ 
+         PORT_PIN_LOW,/* Pin 6 */ 
+         PORT_PIN_LOW,/* Pin 7 */ 
+         PORT_PIN_HIGH,/* Pin 8 */ 
+         PORT_PIN_LOW,/* Pin 9 */ 
+         PORT_PIN_LOW,/* Pin 10 */ 
+         PORT_PIN_LOW,/* Pin 11 */ 
+         PORT_PIN_LOW,/* Pin 12 */ 
+         PORT_PIN_LOW,/* Pin 13 */ 
+         PORT_PIN_LOW,/* Pin 14 */ 
+         0U /* Pin 15 */ 
+#endif
+      }
+    },      
+    /* Port pins drive strength1 configuration */
+    Portx_lPdrConfig1(
+         (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 0 */ 
+         (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 1 */ 
+         (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 2 */ 
+         (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 3 */ 
+         (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 4 */ 
+         (PORT_PIN_PAD_LEVEL_DEFAULT),/* Pin 5 */ 
+         (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 6 */ 
+         (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1) /* Pin 7 */ 
+                     ),
+    /* Port pins drive strength2 configuration */
+    Portx_lPdrConfig2(
+         (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 8 */ 
+         (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 9 */ 
+         (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 10 */ 
+         (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 11 */ 
+         (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 12 */ 
+         (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 13 */ 
+         (PORT_PDR_CMOS_AUTOMOTIVE_LEVEL | PORT_CMOS_SPEED_GRADE1),/* Pin 14 */ 
+         (PORT_PIN_PAD_LEVEL_DEFAULT) /* Pin 15 */ 
+                     )
+   },
 /*                              Port21                       */
   {
     {
@@ -784,10 +776,10 @@ static const Port_n_ConfigType Port_kConfiguration0[] =
       {
          (PORT_PIN_DEFAULT),/*Pin 0*/
          (PORT_PIN_DEFAULT),/*Pin 1*/
-         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 2*/
-         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 3*/
-         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 4*/
-         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 5*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 2*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 3*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 4*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 5*/
          ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 6*/
          ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 7*/
          (PORT_PIN_DEFAULT),/*Pin 8*/
@@ -806,9 +798,9 @@ static const Port_n_ConfigType Port_kConfiguration0[] =
          0U,/* Pin 0 */ 
          0U,/* Pin 1 */ 
          PORT_PIN_LOW,/* Pin 2 */ 
-         PORT_PIN_HIGH,/* Pin 3 */ 
-         PORT_PIN_HIGH,/* Pin 4 */ 
-         PORT_PIN_HIGH,/* Pin 5 */ 
+         PORT_PIN_LOW,/* Pin 3 */ 
+         PORT_PIN_LOW,/* Pin 4 */ 
+         PORT_PIN_LOW,/* Pin 5 */ 
          PORT_PIN_LOW,/* Pin 6 */ 
          PORT_PIN_LOW,/* Pin 7 */ 
          0U,/* Pin 8 */ 
@@ -849,11 +841,11 @@ static const Port_n_ConfigType Port_kConfiguration0[] =
     {
       /* Port pins direction, characteristics and mode configuration */
       {
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 0*/
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 1*/
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 2*/
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 3*/
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 4*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_DOWN | PORT_PIN_MODE_GPIO),/*Pin 0*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_DOWN | PORT_PIN_MODE_GPIO),/*Pin 1*/
+         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 2*/
+         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 3*/
+         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 4*/
          (PORT_PIN_DEFAULT),/*Pin 5*/
          (PORT_PIN_DEFAULT),/*Pin 6*/
          (PORT_PIN_DEFAULT),/*Pin 7*/
@@ -917,7 +909,7 @@ static const Port_n_ConfigType Port_kConfiguration0[] =
       /* Port pins direction, characteristics and mode configuration */
       {
          (PORT_PIN_DEFAULT),/*Pin 0*/
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 1*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_DOWN | PORT_PIN_MODE_GPIO),/*Pin 1*/
          (PORT_PIN_DEFAULT),/*Pin 2*/
          (PORT_PIN_DEFAULT),/*Pin 3*/
          (PORT_PIN_DEFAULT),/*Pin 4*/
@@ -984,36 +976,36 @@ static const Port_n_ConfigType Port_kConfiguration0[] =
       /* Port pins direction, characteristics and mode configuration */
       {
 #ifdef TC234_KIT_BOARD
-		 ( ( uint8 ) PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO ),/*Pin 0*/
-		 ( ( uint8 ) PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO ),/*Pin 1*/
-		 ( ( uint8 ) PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO ),/*Pin 2*/
-		 ( ( uint8 ) PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO ),/*Pin 3*/
-		 ( ( uint8 ) PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO ),/*Pin 4*/
-         ( ( uint8 ) PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT2 ),/*Pin 5*/
-		 ( ( uint8 ) PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO ),/*Pin 6*/
-		 ( ( uint8 ) PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO ),/*Pin 7*/
-		 ( ( uint8 ) PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO ),/*Pin 8*/
-		 ( ( uint8 ) PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO ),/*Pin 9*/
-		 ( ( uint8 ) PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO ),/*Pin 10*/
-		 ( ( uint8 ) PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO ),/*Pin 11*/
-		 ( ( uint8 ) PORT_PIN_IN | PORT_PIN_IN_PULL_DOWN | PORT_PIN_MODE_GPIO ),/*Pin 12*/
-		 ( PORT_PIN_DEFAULT),/*Pin 13*/
-		 ( PORT_PIN_DEFAULT),/*Pin 14*/
-		 ( PORT_PIN_DEFAULT) /*Pin 15*/
+		 ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 0*/
+		 ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 1*/
+		 ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 2*/
+		 ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 3*/
+		 ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 4*/
+         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT2),/*Pin 5*/
+		 ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 6*/
+		 ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 7*/
+		 ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 8*/
+		 ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 9*/
+		 ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 10*/
+		 ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 11*/
+		 ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_DOWN | PORT_PIN_MODE_GPIO),/*Pin 12*/
+		 (PORT_PIN_DEFAULT),/*Pin 13*/
+		 (PORT_PIN_DEFAULT),/*Pin 14*/
+		 (PORT_PIN_DEFAULT) /*Pin 15*/
 #else
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 0*/
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 1*/
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 2*/
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 3*/
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 4*/
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 5*/
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 6*/
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 7*/
+         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 0*/
+         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 1*/
+         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 2*/
+         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 3*/
+         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 4*/
+         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 5*/
+         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 6*/
+         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 7*/
          ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_GPIO),/*Pin 8*/
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 9*/
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 10*/
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 11*/
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 12*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_DOWN | PORT_PIN_MODE_GPIO),/*Pin 9*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_DOWN | PORT_PIN_MODE_GPIO),/*Pin 10*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_DOWN | PORT_PIN_MODE_GPIO),/*Pin 11*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_DOWN | PORT_PIN_MODE_GPIO),/*Pin 12*/
          (PORT_PIN_DEFAULT),/*Pin 13*/
          (PORT_PIN_DEFAULT),/*Pin 14*/
          (PORT_PIN_DEFAULT) /*Pin 15*/ 
@@ -1069,10 +1061,10 @@ static const Port_n_ConfigType Port_kConfiguration0[] =
     {
       /* Port pins direction, characteristics and mode configuration */
       {
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 0*/
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_DOWN | PORT_PIN_MODE_GPIO),/*Pin 1*/
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 2*/
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 3*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 0*/
+         ((uint8)PORT_PIN_OUT | PORT_PIN_OUT_PUSHPULL | PORT_PIN_MODE_ALT4),/*Pin 1*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 2*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 3*/
          (PORT_PIN_DEFAULT),/*Pin 4*/
          (PORT_PIN_DEFAULT),/*Pin 5*/
          (PORT_PIN_DEFAULT),/*Pin 6*/
@@ -1209,12 +1201,12 @@ static const Port_n_ConfigType Port_kConfiguration0[] =
          ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 3*/
          ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 4*/
          ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 5*/
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 6*/
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 7*/
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 8*/
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 9*/
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 10*/
-         ((uint8)PORT_PIN_IN | PORT_PIN_IN_NO_PULL | PORT_PIN_MODE_GPIO),/*Pin 11*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 6*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 7*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 8*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 9*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 10*/
+         ((uint8)PORT_PIN_IN | PORT_PIN_IN_PULL_UP | PORT_PIN_MODE_GPIO),/*Pin 11*/
          (PORT_PIN_DEFAULT),/*Pin 12*/
          (PORT_PIN_DEFAULT),/*Pin 13*/
          (PORT_PIN_DEFAULT),/*Pin 14*/
@@ -1296,12 +1288,12 @@ static const uint16 Port_DiscSet0[] =
                  PORT_PIN_ANALOG_INPUT_ENABLE,/* Pin 3 */ 
                  PORT_PIN_ANALOG_INPUT_ENABLE,/* Pin 4 */ 
                  PORT_PIN_ANALOG_INPUT_ENABLE,/* Pin 5 */ 
-                 PORT_PIN_ANALOG_INPUT_ENABLE,/* Pin 6 */ 
-                 PORT_PIN_ANALOG_INPUT_ENABLE,/* Pin 7 */ 
-                 PORT_PIN_ANALOG_INPUT_ENABLE,/* Pin 8 */ 
-                 PORT_PIN_ANALOG_INPUT_ENABLE,/* Pin 9 */ 
-                 PORT_PIN_ANALOG_INPUT_ENABLE,/* Pin 10 */ 
-                 PORT_PIN_ANALOG_INPUT_ENABLE,/* Pin 11 */ 
+                 PORT_PIN_ANALOG_INPUT_DISABLE,/* Pin 6 */ 
+                 PORT_PIN_ANALOG_INPUT_DISABLE,/* Pin 7 */ 
+                 PORT_PIN_ANALOG_INPUT_DISABLE,/* Pin 8 */ 
+                 PORT_PIN_ANALOG_INPUT_DISABLE,/* Pin 9 */ 
+                 PORT_PIN_ANALOG_INPUT_DISABLE,/* Pin 10 */ 
+                 PORT_PIN_ANALOG_INPUT_DISABLE,/* Pin 11 */ 
                  PORT_PIN_ANALOG_INPUT_DISABLE,/* Pin 12 */ 
                  PORT_PIN_ANALOG_INPUT_DISABLE,/* Pin 13 */ 
                  PORT_PIN_ANALOG_INPUT_DISABLE,/* Pin 14 */ 

@@ -14,7 +14,7 @@
 **                                                                            **
 **  $CC VERSION : \main\82 $                                                 **
 **                                                                            **
-**  DATE, TIME: 2022-10-01, 16:07:46                                          **
+**  DATE, TIME: 2021-12-28, 13:38:11                                          **
 **                                                                            **
 **  GENERATOR : Build b141014-0350                                            **
 **                                                                            **
@@ -180,7 +180,7 @@ Spi configuration.
 For example if there are two post build configurations with 2 and 3 sequences
 repectively, SPI_MAXIMUM_SEQUENCE must be configured as 3.
 */
-#define SPI_MAXIMUM_SEQUENCE (6U)
+#define SPI_MAXIMUM_SEQUENCE (1U)
 
 /*
 Configuration : SPI_MAXIMUM_IB_BUFFER_SIZE(Vendor Specific)
@@ -227,7 +227,7 @@ Configuration: SPI_MAXIMUM_JOB
 It is the maximum among the total number of Jobs configured in each
 Spi configuration.
 */
-#define SPI_MAXIMUM_JOB  (6U)
+#define SPI_MAXIMUM_JOB  (1U)
 
 /*
 Configuration: SPI_WRITELOCK_INDEX
@@ -262,7 +262,7 @@ The Symbolic Name is Equivalent to the Channel Container Name
 
 /* The generated macro may exceeds 31 characters to follow Autosar naming
    conventions*/
-#define SpiConf_SpiChannel_SpiChannel_HSD ((Spi_ChannelType)0U)
+#define SpiConf_SpiChannel_SpiChannel_SPI_Ref ((Spi_ChannelType)0U)
 
 /*
 Configuration Options:
@@ -304,27 +304,7 @@ This name is referenced to build the Job Link within a sequence.
 */
 /* The generated macro may exceeds 31 characters to follow Autosar naming
    conventions*/
-#define SpiConf_SpiJob_SpiJob_HSD ((Spi_JobType)0U)
-/* The generated macro may exceeds 31 characters to follow Autosar naming
-   conventions*/
-#define SpiConf_SpiJob_SpiJob_LSD1 ((Spi_JobType)1U)
-/* The generated macro may exceeds 31 characters to follow Autosar naming
-   conventions*/
-#define SpiConf_SpiJob_SpiJob_LSD2 ((Spi_JobType)2U)
-/* The generated macro may exceeds 31 characters to follow Autosar naming
-   conventions*/
-#define SpiConf_SpiJob_SpiJob_CAN1 ((Spi_JobType)3U)
-/* The generated macro may exceeds 31 characters to follow Autosar naming
-   conventions*/
-#define SpiConf_SpiJob_SpiJob_CAN2 ((Spi_JobType)4U)
-/* The generated macro may exceeds 31 characters to follow Autosar naming
-   conventions*/
-#define SpiConf_SpiJob_SpiJob_PMIC ((Spi_JobType)5U)
-
-#ifdef TC234_KIT_BOARD
-#define SpiConf_SpiJob_SpiJob_E2PROM ((Spi_JobType)6U)
-#endif
-
+#define SpiConf_SpiJob_SpiJob_SPI_Ref ((Spi_JobType)0U)
 /*
 Configuration Options:
 SPI Shift Clock Idle Levels
@@ -395,26 +375,8 @@ SPI Driver Sequence Symbolic Names. For Each Sequence a unique Id is created.
 The Symbolic Name is Equivalent to the Sequence Container Name*/
 /* The generated macro may exceeds 31 characters to follow Autosar naming
    conventions*/
-#define SpiConf_SpiSequence_SpiSequence_HSD ((Spi_SequenceType)0U)
-/* The generated macro may exceeds 31 characters to follow Autosar naming
-   conventions*/
-#define SpiConf_SpiSequence_SpiSequence_LSD1 ((Spi_SequenceType)1U)
-/* The generated macro may exceeds 31 characters to follow Autosar naming
-   conventions*/
-#define SpiConf_SpiSequence_SpiSequence_LSD2 ((Spi_SequenceType)2U)
-/* The generated macro may exceeds 31 characters to follow Autosar naming
-   conventions*/
-#define SpiConf_SpiSequence_SpiSequence_CAN1 ((Spi_SequenceType)3U)
-/* The generated macro may exceeds 31 characters to follow Autosar naming
-   conventions*/
-#define SpiConf_SpiSequence_SpiSequence_CAN2 ((Spi_SequenceType)4U)
-/* The generated macro may exceeds 31 characters to follow Autosar naming
-   conventions*/
-#define SpiConf_SpiSequence_SpiSequence_PMIC ((Spi_SequenceType)5U)
+#define SpiConf_SpiSequence_SpiSequence_SPI_Ref ((Spi_SequenceType)0U)
 
-#ifdef TC234_KIT_BOARD
-#define SpiConf_SpiSequence_SpiSequence_E2PROM ((Spi_SequenceType)6U)
-#endif
 
 /*
               Container : SpiHardwareConfiguration
@@ -475,7 +437,7 @@ MRSTxA : 0
 MRSTxB : 1
 */
 #define SPI_QSPI0_MRIS_SEL (0U)
-#define SPI_QSPI1_MRIS_SEL (1U)
+#define SPI_QSPI1_MRIS_SEL (0U)
 #define SPI_QSPI2_MRIS_SEL (0U)
 #define SPI_QSPI3_MRIS_SEL (0U)
 
@@ -494,9 +456,7 @@ Configuration: SPI_QSPI1_USED
 - if STD_ON, QSPI1 is used
 - if STD_OFF,QSPI1 is not used
 */
-#define SPI_QSPI1_USED (STD_ON)
-/* Index For QSPI1 Module */
-#define SPI_QSPI1_INDEX (1U)
+#define SPI_QSPI1_USED (STD_OFF)
 
 /*
 Configuration: SPI_QSPI2_USED
@@ -527,7 +487,7 @@ Configuration: SPI_QSPI5_USED
 #define SPI_QSPI5_USED (STD_OFF)
 
 /* SPI Master Used Modules */
-#define SPI_MASTER_MODULES_USED      (0x0003U)
+#define SPI_MASTER_MODULES_USED      (0x0001U)
 
 
 /*
@@ -576,11 +536,10 @@ Otherwise,using this level of functionality makes no sense.*/
 
 /* QSPI HW Type */
 #define SPI_QSPI0_HWTYPE  (ASYNC_BUS)
-#define SPI_QSPI1_HWTYPE  (ASYNC_BUS)
 
 
 /* SPI ASYNC Modules */
-#define SPI_ASYNC_MODULES   (0x0003U)
+#define SPI_ASYNC_MODULES   (0x0001U)
 
 #define SPI_ASIL_MASTER_ASYNC_USED (STD_OFF)
 
@@ -594,7 +553,7 @@ Otherwise,using this level of functionality makes no sense.*/
 
 
 /* SPI Number of QM Async masters configured */
-#define SPI_NUM_QM_ASYNC_MASTERS    (2U)
+#define SPI_NUM_QM_ASYNC_MASTERS    (1U)
 
 /* Module Debug Support */
 #define SPI_DEBUG_SUPPORT  (STD_OFF)
@@ -619,15 +578,11 @@ Otherwise,using this level of functionality makes no sense.*/
 */
 #define IRQ_QSPI0_DMA_TX_OR_ERR_PRIO (IRQ_DMA_CHANNEL2_SR_PRIO)
 #define IRQ_QSPI0_DMA_RX_OR_ERR_PRIO (IRQ_DMA_CHANNEL1_SR_PRIO)
-#define IRQ_QSPI1_DMA_TX_OR_ERR_PRIO (IRQ_DMA_CHANNEL4_SR_PRIO)
-#define IRQ_QSPI1_DMA_RX_OR_ERR_PRIO (IRQ_DMA_CHANNEL3_SR_PRIO)
 /*
   Transmit and Receive Dma Channel IRQ CAT.
 */
 #define IRQ_QSPI0_DMA_TX_OR_ERR_CAT (IRQ_DMA_CHANNEL2_SR_CAT)
 #define IRQ_QSPI0_DMA_RX_OR_ERR_CAT (IRQ_DMA_CHANNEL1_SR_CAT)
-#define IRQ_QSPI1_DMA_TX_OR_ERR_CAT (IRQ_DMA_CHANNEL4_SR_CAT)
-#define IRQ_QSPI1_DMA_RX_OR_ERR_CAT (IRQ_DMA_CHANNEL3_SR_CAT)
 
 /* Dem reporting  macros */
 #define DEM_REPORT_DISABLED (0U)

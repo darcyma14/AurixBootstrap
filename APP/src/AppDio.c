@@ -23,9 +23,6 @@ void Dio_Write(Dio_ChannelType channel, Dio_LevelType OnOff)
 
 void Init_LED(void)
 {
-	Dio_Write(TS_LED, ON);
-	Dio_Write(LED_EN, ON);
-	Dio_Write(O_LED_01M, OFF);
-	Dio_Write(O_LED_02M, OFF);
-	Dio_Write(O_LED_03M, OFF);
+    Dio_Write(LED1, ON);
+    Dio_Write(LED2, ON);
 }

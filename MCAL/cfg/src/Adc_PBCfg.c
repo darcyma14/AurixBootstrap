@@ -14,7 +14,7 @@
 **                                                                            **
 **   $CC VERSION : \main\dev_tc23x_as4.0.3\15 $                               **
 **                                                                            **
-**   DATE, TIME: 2022-10-01, 16:07:46                                         **
+**   DATE, TIME: 2021-12-28, 13:38:10                                         **
 **                                                                            **
 **   GENERATOR : Build b141014-0350                                           **
 **                                                                            **
@@ -833,7 +833,55 @@ static const Adc_ChannelCfgType Adc_kKernel0ChCfg0[]=
 {
 
  {
-  /* I_AH_T5M  configuration */
+  /* PRES_G1  configuration */
+  Adc_lConfigChannel(
+                      ADC_REF_VOLTAGE_VAREF,
+                      (2U),
+                      (0x0U)
+                    ),
+  ADC_RES_ACCUMULATION_NONE,
+  0U,  /* Limit Check not enable for the channel */
+  0U,  /* No channel event on Limit Check */
+  0U,  /* Boundary values */
+  0U,  /* value of BNDSELX bitfields */
+  0U   /* Channel not enabled for synchronization */
+ },
+
+
+ {
+  /* PRES_G2  configuration */
+  Adc_lConfigChannel(
+                      ADC_REF_VOLTAGE_VAREF,
+                      (2U),
+                      (0x1U)
+                    ),
+  ADC_RES_ACCUMULATION_NONE,
+  0U,  /* Limit Check not enable for the channel */
+  0U,  /* No channel event on Limit Check */
+  0U,  /* Boundary values */
+  0U,  /* value of BNDSELX bitfields */
+  0U   /* Channel not enabled for synchronization */
+ },
+
+
+ {
+  /* PRES_TQ_L  configuration */
+  Adc_lConfigChannel(
+                      ADC_REF_VOLTAGE_VAREF,
+                      (2U),
+                      (0x2U)
+                    ),
+  ADC_RES_ACCUMULATION_NONE,
+  0U,  /* Limit Check not enable for the channel */
+  0U,  /* No channel event on Limit Check */
+  0U,  /* Boundary values */
+  0U,  /* value of BNDSELX bitfields */
+  0U   /* Channel not enabled for synchronization */
+ },
+
+
+ {
+  /* PRES_TQ_R  configuration */
   Adc_lConfigChannel(
                       ADC_REF_VOLTAGE_VAREF,
                       (2U),
@@ -849,7 +897,71 @@ static const Adc_ChannelCfgType Adc_kKernel0ChCfg0[]=
 
 
  {
-  /* I_AL_APS2M  configuration */
+  /* PRES_TOTAL  configuration */
+  Adc_lConfigChannel(
+                      ADC_REF_VOLTAGE_VAREF,
+                      (2U),
+                      (0x4U)
+                    ),
+  ADC_RES_ACCUMULATION_NONE,
+  0U,  /* Limit Check not enable for the channel */
+  0U,  /* No channel event on Limit Check */
+  0U,  /* Boundary values */
+  0U,  /* value of BNDSELX bitfields */
+  0U   /* Channel not enabled for synchronization */
+ },
+
+
+ {
+  /* PRES_SPR  configuration */
+  Adc_lConfigChannel(
+                      ADC_REF_VOLTAGE_VAREF,
+                      (2U),
+                      (0x5U)
+                    ),
+  ADC_RES_ACCUMULATION_NONE,
+  0U,  /* Limit Check not enable for the channel */
+  0U,  /* No channel event on Limit Check */
+  0U,  /* Boundary values */
+  0U,  /* value of BNDSELX bitfields */
+  0U   /* Channel not enabled for synchronization */
+ },
+
+
+ {
+  /* TMP_OIL  configuration */
+  Adc_lConfigChannel(
+                      ADC_REF_VOLTAGE_VAREF,
+                      (2U),
+                      (0x6U)
+                    ),
+  ADC_RES_ACCUMULATION_NONE,
+  0U,  /* Limit Check not enable for the channel */
+  0U,  /* No channel event on Limit Check */
+  0U,  /* Boundary values */
+  0U,  /* value of BNDSELX bitfields */
+  0U   /* Channel not enabled for synchronization */
+ },
+
+
+ {
+  /* TMP_SPR  configuration */
+  Adc_lConfigChannel(
+                      ADC_REF_VOLTAGE_VAREF,
+                      (2U),
+                      (0x7U)
+                    ),
+  ADC_RES_ACCUMULATION_NONE,
+  0U,  /* Limit Check not enable for the channel */
+  0U,  /* No channel event on Limit Check */
+  0U,  /* Boundary values */
+  0U,  /* value of BNDSELX bitfields */
+  0U   /* Channel not enabled for synchronization */
+ },
+
+
+ {
+  /* HSD_CUR  configuration */
   Adc_lConfigChannel(
                       ADC_REF_VOLTAGE_VAREF,
                       (2U),
@@ -865,27 +977,11 @@ static const Adc_ChannelCfgType Adc_kKernel0ChCfg0[]=
 
 
  {
-  /* IGN_AI  configuration */
+  /* V5_EXT  configuration */
   Adc_lConfigChannel(
                       ADC_REF_VOLTAGE_VAREF,
                       (2U),
-                      (0x9U)
-                    ),
-  ADC_RES_ACCUMULATION_NONE,
-  0U,  /* Limit Check not enable for the channel */
-  0U,  /* No channel event on Limit Check */
-  0U,  /* Boundary values */
-  0U,  /* value of BNDSELX bitfields */
-  0U   /* Channel not enabled for synchronization */
- },
-
-
- {
-  /* I_AH_T1M  configuration */
-  Adc_lConfigChannel(
-                      ADC_REF_VOLTAGE_VAREF,
-                      (2U),
-                      (0xaU)
+                      (0xbU)
                     ),
   ADC_RES_ACCUMULATION_NONE,
   0U,  /* Limit Check not enable for the channel */
@@ -900,7 +996,39 @@ static const Adc_ChannelCfgType Adc_kKernel1ChCfg0[]=
 {
 
  {
-  /* I_AX_CRZM  configuration */
+  /* V33_MON  configuration */
+  Adc_lConfigChannel(
+                      ADC_REF_VOLTAGE_VAREF,
+                      (3U),
+                      (0x10U)
+                    ),
+  ADC_RES_ACCUMULATION_NONE,
+  0U,  /* Limit Check not enable for the channel */
+  0U,  /* No channel event on Limit Check */
+  0U,  /* Boundary values */
+  0U,  /* value of BNDSELX bitfields */
+  0U   /* Channel not enabled for synchronization */
+ },
+
+
+ {
+  /* V5_MON  configuration */
+  Adc_lConfigChannel(
+                      ADC_REF_VOLTAGE_VAREF,
+                      (3U),
+                      (0x11U)
+                    ),
+  ADC_RES_ACCUMULATION_NONE,
+  0U,  /* Limit Check not enable for the channel */
+  0U,  /* No channel event on Limit Check */
+  0U,  /* Boundary values */
+  0U,  /* value of BNDSELX bitfields */
+  0U   /* Channel not enabled for synchronization */
+ },
+
+
+ {
+  /* BAT_MON  configuration */
   Adc_lConfigChannel(
                       ADC_REF_VOLTAGE_VAREF,
                       (3U),
@@ -916,11 +1044,11 @@ static const Adc_ChannelCfgType Adc_kKernel1ChCfg0[]=
 
 
  {
-  /* I_AL_APS1M  configuration */
+  /* IGN_MON  configuration */
   Adc_lConfigChannel(
                       ADC_REF_VOLTAGE_VAREF,
                       (3U),
-                      (0x18U)
+                      (0x13U)
                     ),
   ADC_RES_ACCUMULATION_NONE,
   0U,  /* Limit Check not enable for the channel */
@@ -932,27 +1060,11 @@ static const Adc_ChannelCfgType Adc_kKernel1ChCfg0[]=
 
 
  {
-  /* ACC_AI  configuration */
+  /* TMP_MCU  configuration */
   Adc_lConfigChannel(
                       ADC_REF_VOLTAGE_VAREF,
                       (3U),
-                      (0x19U)
-                    ),
-  ADC_RES_ACCUMULATION_NONE,
-  0U,  /* Limit Check not enable for the channel */
-  0U,  /* No channel event on Limit Check */
-  0U,  /* Boundary values */
-  0U,  /* value of BNDSELX bitfields */
-  0U   /* Channel not enabled for synchronization */
- },
-
-
- {
-  /* VSUP_AI  configuration */
-  Adc_lConfigChannel(
-                      ADC_REF_VOLTAGE_VAREF,
-                      (3U),
-                      (0x1aU)
+                      (0x14U)
                     ),
   ADC_RES_ACCUMULATION_NONE,
   0U,  /* Limit Check not enable for the channel */
@@ -980,24 +1092,31 @@ allowed.
 
 static const Adc_GroupDefType Adc_kCfg0Kernel0Adc0_AutoScan[]=
 {  
-  4U,
+  10U,
 
   0U ,
   1U ,
   2U ,
-  3U 
+  3U ,
+  4U ,
+  5U ,
+  6U ,
+  7U ,
+  8U ,
+  9U 
 };
 
 /* ADC 1 unit configuration */
 
 static const Adc_GroupDefType Adc_kCfg0Kernel1Adc1_AutoScan[]=
 {  
-  4U,
+  5U,
 
   0U ,
   1U ,
   2U ,
-  3U 
+  3U ,
+  4U 
 };
 
 
@@ -1038,7 +1157,7 @@ static const Adc_GroupCfgType Adc_kKernel0GrpCfg0[] =
 
 
     /* Internal channel mask from group defination - derived from the tool */
-    (uint16)0x708,
+    (uint16)0x9ff,
 
     /* Group trigger source : SW / HW */
     ADC_TRIGG_SRC_SW,
@@ -1079,7 +1198,7 @@ static const Adc_GroupCfgType Adc_kKernel1GrpCfg0[] =
 
 
     /* Internal channel mask from group defination - derived from the tool */
-    (uint16)0x704,
+    (uint16)0x1f,
 
     /* Group trigger source : SW / HW */
     ADC_TRIGG_SRC_SW,

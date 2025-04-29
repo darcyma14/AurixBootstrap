@@ -14,7 +14,7 @@
 **                                                                            **
 **   $CC VERSION : \main\29 $                                                 **
 **                                                                            **
-**   DATE, TIME  : 2022-10-01, 16:07:45                                       **
+**   DATE, TIME  : 2021-12-28, 13:38:09                                       **
 **                                                                            **
 **   GENERATOR   : Build b141014-0350                                         **
 **                                                                            **
@@ -67,44 +67,44 @@
 static const Dio_PortChannelIdType Dio_kPortChannelConfig_0[] =
 {
   { /* Port0 */
-     DIO_PORT_CONFIGURED,
-     (0x11ccU)
+     DIO_PORT_NOT_CONFIGURED,
+     (0x0000U)
   },
   { /* Port2 */
      DIO_PORT_CONFIGURED,
-     (0x0003U)
+     (0x0006U)
   },
   { /* Port10 */
      DIO_PORT_CONFIGURED,
-     (0x0000U)
+     (0x000cU)
   },
   { /* Port11 */
-     DIO_PORT_CONFIGURED,
-     (0x0004U)
+     DIO_PORT_NOT_CONFIGURED,
+     (0x0000U)
   },
   { /* Port13 */
-     DIO_PORT_CONFIGURED,
-     (0x000aU)
+     DIO_PORT_NOT_CONFIGURED,
+     (0x0000U)
   },
   { /* Port14 */
      DIO_PORT_NOT_CONFIGURED,
      (0x0000U)
   },
   { /* Port15 */
-     DIO_PORT_CONFIGURED,
-     (0x0042U)
-  },
-  { /* Port20 */
      DIO_PORT_NOT_CONFIGURED,
      (0x0000U)
   },
-  { /* Port21 */
+  { /* Port20 */
      DIO_PORT_CONFIGURED,
-     (0x003cU)
+     (0x2400U)
+  },
+  { /* Port21 */
+     DIO_PORT_NOT_CONFIGURED,
+     (0x0000U)
   },
   { /* Port22 */
-     DIO_PORT_CONFIGURED,
-     (0x001dU)
+     DIO_PORT_NOT_CONFIGURED,
+     (0x0000U)
   },
   { /* Port23 */
      DIO_PORT_NOT_CONFIGURED,
@@ -112,11 +112,11 @@ static const Dio_PortChannelIdType Dio_kPortChannelConfig_0[] =
   },
   { /* Port33 */
      DIO_PORT_CONFIGURED,
-     (0x0177U)
+     (0x01ffU)
   },
   { /* Port34 */
-     DIO_PORT_CONFIGURED,
-     (0x000dU)
+     DIO_PORT_NOT_CONFIGURED,
+     (0x0000U)
   },
   { /* Port40 */
      DIO_PORT_NOT_CONFIGURED,

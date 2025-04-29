@@ -44,7 +44,6 @@
 
 /* extern uint8 Test_RxConfirmCount;
 extern uint8 Test_TxConfirmCount; */
-extern uint8 ESCC_TxConfirmCount, DEBUG1_TxConfirmCount, DEBUG2_TxConfirmCount, DEBUG3_TxConfirmCount;
 extern uint8 DTO_TxConfirmCount, DTM_TxConfirmCount;
 
 /*******************************************************************************
@@ -55,83 +54,55 @@ void CanIf_RxIndication(Can_HwHandleType Hrh,
                         uint8 CanDlc, 
                         const uint8 *CanSduPtr)
 {
-  /* uint8 i; */
-#if 0
- switch(Hrh)
- {
- case MO_CRM:
-	 memcpy((void*)&VaCALB_CCPCRM_Data[0], (void*)&CanSduPtr[0], CanDlc) ;
-	 VbCALB_CCPCRM_Received = 1u ;
-	 break ;
- case MO_ESCS:
- 	 memcpy((void*)&VaCALB_ESCS_Data[0], (void*)&CanSduPtr[0], CanDlc) ;
- 	 VbCALB_ESCS_Received = 1u ;
- 	 break ;
- case MO_MCU:
-  	 memcpy((void*)&VaCALB_MCU_Data[0], (void*)&CanSduPtr[0], CanDlc) ;
-  	 VbCALB_MCU_Received = 1u ;
-  	 break ;
- case MO_VEH:
-   	 memcpy((void*)&VaCALB_VEH_Data[0], (void*)&CanSduPtr[0], CanDlc) ;
-   	 VbCALB_VEH_Received = 1u ;
-   	 break ;
- case MO1_6B0H:
-	 memcpy((void*)&VSCANN1_6B0H_Data[0], (void*)&CanSduPtr[0], CanDlc) ;
-	 VSCANN1_6B0H_Received = 1u ;
-	 break;
- case MO2_6B0H:
- 	 memcpy((void*)&VSCANN2_6B0H_Data[0], (void*)&CanSduPtr[0], CanDlc) ;
- 	VSCANN2_6B0H_Received = 1u ;
- 	 break;
- default :
-	 break ;
- }
+    /* uint8 i; */
 
-  /*
-  #if (CAN_STANDARD_ID_ONLY == STD_OFF) 
-  if(CanId & CAN_EXTENDED_MSB_SET)
-  {
-    print_f("\n Received a Extended Id Message! ");
-    print_f(" Hrh = %d, ID = 0x%x, DLC = %d",Hrh,CanId&0x1FFFFFFF,CanDlc);
-  }
-  else
-  #endif
-  {
-    print_f("\n Received a Standard Id Message! ");
-    print_f("\n Hrh = %d, ID = 0x%x, DLC = %d", Hrh, CanId, CanDlc );
-  }
-  
-  
-  print_f(" Msg = ");
-  for (i=0; i < CanDlc ; i++)
-  {
-    print_f("%x ",CanSduPtr[i]);
-  }
-  print_f("\n");
-
-  Test_RxConfirmCount++ ;
-  */
-#endif
+   switch(Hrh)
+   {
+   case MO_CRM:
+//       memcpy((void*)&g_ccp_crm[0], (void*)&CanSduPtr[0], CanDlc) ;
+//       g_ccp_received = 1u ;
+       break ;
+   default :
+       break ;
 }
+   
+
+   /*
+   #if (CAN_STANDARD_ID_ONLY == STD_OFF) 
+   if(CanId & CAN_EXTENDED_MSB_SET)
+   {
+     print_f("\n Received a Extended Id Message! ");
+     print_f(" Hrh = %d, ID = 0x%x, DLC = %d",Hrh,CanId&0x1FFFFFFF,CanDlc);
+   }
+   else
+   #endif
+   {
+     print_f("\n Received a Standard Id Message! ");
+     print_f("\n Hrh = %d, ID = 0x%x, DLC = %d", Hrh, CanId, CanDlc );
+   }
+   
+   
+   print_f(" Msg = ");
+   for (i=0; i < CanDlc ; i++)
+   {
+     print_f("%x ",CanSduPtr[i]);
+   }
+   print_f("\n");
+
+   Test_RxConfirmCount++ ;
+   */
+ }   
 
 /*******************************************************************************
                       CanIf_TxConfirmation
 *******************************************************************************/
 void CanIf_TxConfirmation (PduIdType CanTxPduId)
 {
-//  print_f("\n Transmitted a message! CanTxPduId = %d", CanTxPduId);
-  if(CanTxPduId == MO_DTO)
-	  DTO_TxConfirmCount = 0u ;
-  else if(CanTxPduId == MO_DTM)
-	  DTM_TxConfirmCount = 0u ;
-  else if(CanTxPduId == MO_DEBUG1)
-	  DEBUG1_TxConfirmCount = 0u ;
-  else if(CanTxPduId == MO_DEBUG2)
-  	  DEBUG2_TxConfirmCount = 0u ;
-  else if(CanTxPduId == MO_DEBUG3)
-  	  DEBUG3_TxConfirmCount = 0u ;
-  else
-	  ESCC_TxConfirmCount = 0u;
+    print_f("\n Transmitted a message! CanTxPduId = %d", CanTxPduId);
+    if(CanTxPduId == MO_DTO)
+        DTO_TxConfirmCount = 0u ;
+    else if(CanTxPduId == MO_DTM)
+        DTM_TxConfirmCount = 0u ;
 }
 
 /*******************************************************************************
@@ -139,8 +110,8 @@ void CanIf_TxConfirmation (PduIdType CanTxPduId)
 *******************************************************************************/
 void CanIf_ControllerBusOff(uint8 ControllerId)
 {
-//  print_f("\n Callback function Can_ControllerBusOff is called!");
-//  print_f("ControllerId = %d", ControllerId);
+    print_f("\n Callback function Can_ControllerBusOff is called!");
+    print_f("ControllerId = %d", ControllerId);
 }
 
 /*******************************************************************************
@@ -149,9 +120,9 @@ void CanIf_ControllerBusOff(uint8 ControllerId)
 void CanIf_ControllerModeIndication( uint8 ControllerId,
                                      CanIf_ControllerModeType ControllerMode )
 {
-//  print_f("\n Callback function CanIf_ControllerModeIndication is called!\n");
-//  print_f(" ControllerId = %d \n", ControllerId);
-//  print_f(" ControllerMode = %d \n", ControllerMode);
+    print_f("\n Callback function CanIf_ControllerModeIndication is called!\n");
+    print_f(" ControllerId = %d \n", ControllerId);
+    print_f(" ControllerMode = %d \n", ControllerMode);
 }
 
 /*******************************************************************************
@@ -162,11 +133,11 @@ boolean Appl_LPduRxCalloutFunction(uint8 Hrh,
                                    uint8 CanDlc,
                                    const uint8 *CanSduPtr)
 {
-  UNUSED_PARAMETER (Hrh)
-  UNUSED_PARAMETER (CanId)
-  UNUSED_PARAMETER (CanDlc)
-  UNUSED_PARAMETER (CanSduPtr)
-  print_f("\n Callback function Appl_LPduRxCalloutFunction is called!");
-  return(TRUE);
+    UNUSED_PARAMETER (Hrh)
+    UNUSED_PARAMETER (CanId)
+    UNUSED_PARAMETER (CanDlc)
+    UNUSED_PARAMETER (CanSduPtr)
+    print_f("\n Callback function Appl_LPduRxCalloutFunction is called!");
+    return(TRUE);
 }
 #endif

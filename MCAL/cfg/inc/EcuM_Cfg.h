@@ -14,7 +14,7 @@
 **                                                                            **
 **   $CC VERSION : \main\15 $                                                 **
 **                                                                            **
-**   DATE, TIME: 2022-10-01, 16:07:43                                         **
+**   DATE, TIME: 2021-12-28, 13:38:08                                         **
 **                                                                            **
 **   GENERATOR : Build b141014-0350                                           **
 **                                                                            **
@@ -74,8 +74,6 @@
 #define ECUM_USES_UART
 #define ECUM_USES_ICU
 #define ECUM_USES_GPT
-#define ECUM_USES_PWM
-#define ECUM_USES_LIN
 
 
 /*
@@ -105,17 +103,15 @@ Configuration: EcuM_DriverInitListOneConfig
 #define EcuM_DriverInitListOneConfig(configptr) \
 {\
 \
-	Port_Init( configptr->Port_ConfigData );  \
-	Dio_Init( configptr->Dio_ConfigData );  \
-	Spi_Init( configptr->Spi_ConfigData );  \
-	Can_17_MCanP_Init( configptr->Can_ConfigData );  \
-	Adc_Init( configptr->Adc_ConfigData );  \
-	FlsLoader_Init( NULL_PTR );  \
-	Icu_17_GtmCcu6_Init( configptr->Icu_ConfigData );  \
-	Gpt_Init( configptr->Gpt_ConfigData );  \
-	Pwm_17_Gtm_Init( configptr->Pwm_ConfigData );  \
-	Uart_Init( configptr->Uart_ConfigData );  \
-	Lin_17_AscLin_Init( configptr->Lin_17_AscLin_ConfigData );  \
+  Port_Init(configptr->Port_ConfigData);  \
+  Dio_Init(configptr->Dio_ConfigData);  \
+  Spi_Init(configptr->Spi_ConfigData);  \
+  Can_17_MCanP_Init(configptr->Can_ConfigData);  \
+  Adc_Init(configptr->Adc_ConfigData);  \
+  Uart_Init(configptr->Uart_ConfigData);  \
+  FlsLoader_Init(NULL_PTR);  \
+  Icu_17_GtmCcu6_Init(configptr->Icu_ConfigData);  \
+  Gpt_Init(configptr->Gpt_ConfigData);  \
 }
 
 /*
@@ -165,10 +161,6 @@ typedef struct EcuM_ConfigType_Tag
   const struct Icu_17_GtmCcu6_ConfigType   * Icu_ConfigData;
 
   const struct Gpt_ConfigType   * Gpt_ConfigData;
-  const struct Pwm_17_Gtm_ConfigType   * Pwm_ConfigData;
-
-  const struct Lin_17_AscLin_ConfigType   * Lin_17_AscLin_ConfigData;
-
 
  /* EcuM internal configuration data */
   const uint8               LocalConfigData;

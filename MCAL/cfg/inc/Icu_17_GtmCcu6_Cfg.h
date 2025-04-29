@@ -14,7 +14,7 @@
 **                                                                            **
 **  $CC VERSION : \main\37 $                                                 **
 **                                                                            **
-**  DATE, TIME: 2022-10-01, 16:07:45                                          **
+**  DATE, TIME: 2021-12-28, 13:38:09                                          **
 **                                                                            **
 **  GENERATOR : Build b141014-0350                                            **
 **                                                                            **
@@ -167,7 +167,7 @@ from the code
 - if STD_OFF, Icu_GetDutyCycleValues is disabled
 */
 /* ICU114:Configuration Icu_GetDutyCycleValues API */
-#define ICU_GET_DUTY_CYCLE_VALUES_API  (STD_ON)
+#define ICU_GET_DUTY_CYCLE_VALUES_API  (STD_OFF)
 
 /*
 Configuration: ICU_GET_INPUT_STATE_API
@@ -177,7 +177,7 @@ from the code
 - if STD_OFF, Icu_GetInputState is disabled
 */
 /* ICU114:Configuration Icu_GetInputState API */
-#define ICU_GET_INPUT_STATE_API        (STD_ON)
+#define ICU_GET_INPUT_STATE_API        (STD_OFF)
 
 /*
 Configuration: ICU_GET_TIME_ELAPSED_API
@@ -232,7 +232,7 @@ from the code
          Icu_GetTimeElapsed, Icu_GetDutyCycleValues is disabled
 */
 /* ICU123: configuration of timestamp API */
-#define ICU_SIGNAL_MEASUREMENT_API              (STD_ON)
+#define ICU_SIGNAL_MEASUREMENT_API              (STD_OFF)
 
 
 
@@ -244,7 +244,7 @@ from the code
 - if STD_OFF, Edge Detection functionality is disabled
 */
 /* ICU123: configuration of timestamp API */
-#define ICU_EDGE_DETECT_API                     (STD_OFF)
+#define ICU_EDGE_DETECT_API                     (STD_ON)
 
 
 /*
@@ -298,25 +298,25 @@ InstanceId of ICU module
 /********************************************************************
 LIST OF ALL CONFIGURED QM CHANNELS  
 *********************************************************************/
-#define ICU_MAX_EDGE_DETECT_QM_GTM_CHANNELS  (0U)
+#define ICU_MAX_EDGE_DETECT_QM_GTM_CHANNELS  (1U)
 #define ICU_MAX_EDGE_DETECT_QM_CCU6_CHANNELS  (0U)
 #define ICU_MAX_EDGE_DETECT_QM_ERU_CHANNELS  (0U)
  
-#define ICU_MAX_SIGNAL_MEASURE_QM_GTM_CHANNELS  (3U)
+#define ICU_MAX_SIGNAL_MEASURE_QM_GTM_CHANNELS  (0U)
 #define ICU_MAX_SIGNAL_MEASURE_QM_CCU6_CHANNELS  (0U)
 
-#define ICU_MAX_SIGNAL_MEASURE_QM_CHANNELS   (3U)   
+#define ICU_MAX_SIGNAL_MEASURE_QM_CHANNELS   (0U)   
 
 #define ICU_MAX_EDGE_COUNT_QM_CHANNELS (0U)
 #define ICU_MAX_TIMESTAMP_QM_CHANNELS (0U)
             
-#define ICU_MAX_QM_GTM_CHANNELS   (3U)
+#define ICU_MAX_QM_GTM_CHANNELS   (1U)
  
 #define ICU_MAX_QM_CCU6_CHANNELS          (0U)
 
 #define ICU_MAX_QM_ERU_CHANNELS          (0U)
     
-#define ICU_MAX_QM_CHANNELS          (3U)
+#define ICU_MAX_QM_CHANNELS          (1U)
 
 #define ICU_MAX_ASIL_GTM_CHANNELS      (0U)   
                       
@@ -326,7 +326,7 @@ LIST OF ALL CONFIGURED QM CHANNELS
 /***************************************************************************
 TOTAL NUMBER OF CONFIGURED CHANNELS  : All channels are QM as safety is OFF
 ****************************************************************************/
-#define ICU_MAX_CHANNELS    (3U)
+#define ICU_MAX_CHANNELS    (1U)
 
 
 /*
@@ -342,16 +342,8 @@ Indication of using wakeup concept to higher layer
 
 
 
-#ifndef IcuConf_IcuChannel_I_PH_02M
-#define IcuConf_IcuChannel_I_PH_02M          ((Icu_17_GtmCcu6_ChannelType)0)
-#endif
-
-#ifndef IcuConf_IcuChannel_I_PH_03M
-#define IcuConf_IcuChannel_I_PH_03M          ((Icu_17_GtmCcu6_ChannelType)1)
-#endif
-
-#ifndef IcuConf_IcuChannel_I_PH_04M
-#define IcuConf_IcuChannel_I_PH_04M          ((Icu_17_GtmCcu6_ChannelType)2)
+#ifndef IcuConf_IcuChannel_IcuChannel_0
+#define IcuConf_IcuChannel_IcuChannel_0          ((Icu_17_GtmCcu6_ChannelType)0)
 #endif
 
 
@@ -377,7 +369,7 @@ STD_OFF: TIM cells are not used in Signal measurement mode.
 
 
 #define ICU_ASIL_TIM_SIGMEAS_USED     (STD_OFF)
-#define ICU_QM_TIM_SIGMEAS_USED     (STD_ON)
+#define ICU_QM_TIM_SIGMEAS_USED     (STD_OFF)
 #if (ICU_ASIL_TIM_SIGMEAS_USED == STD_ON) || (ICU_QM_TIM_SIGMEAS_USED == STD_ON)
 #define ICU_TIM_SIGMEAS_USED    (STD_ON)
 #else
@@ -385,7 +377,7 @@ STD_OFF: TIM cells are not used in Signal measurement mode.
 #endif
 
 #define ICU_ASIL_TIM_SIGEDGE_USED     (STD_OFF) 
-#define ICU_QM_TIM_SIGEDGE_USED     (STD_OFF)
+#define ICU_QM_TIM_SIGEDGE_USED     (STD_ON)
 #if (ICU_ASIL_TIM_SIGEDGE_USED == STD_ON) || (ICU_QM_TIM_SIGEDGE_USED == STD_ON)
 #define ICU_TIM_SIGEDGE_USED     (STD_ON)
 #else

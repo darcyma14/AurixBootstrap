@@ -1466,7 +1466,7 @@ Uart_SizeType Uart_AbortRead(Uart_ChannelIdType  Channel)
   const Uart_ChannelType *ChannelConfigPtr;
   Uart_SizeType UartRetSize = UART_ZERO_U ;
   uint8 HwUnit;
-
+  
   #if (UART_DEV_ERROR_DETECT == STD_ON)
   Uart_ReturnType Retvalue = UART_OK;
   
@@ -1825,7 +1825,7 @@ void Uart_IsrTransmit(uint8  HwUnit)
   Ifx_ASCLIN* HwModulePtr = &(UART_HW_MODULE[HwUnit]);
   uint16 Tempsum;
   Uart_ChannelIdType Channel;
-
+  
   /* Extract the Channel */
   Channel = Uart_BusChannelMap[HwUnit];
   Tempsum = (uint16)(Uart_ChannelInfo[Channel].Uart_TxDataCopyCntr - \

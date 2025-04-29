@@ -276,8 +276,8 @@ part. Receive the lower part, extend with zero.
 C) Spi_DataType inferior to data width. According to the memory alignement use
 prior both rules.
 */
-typedef uint8 Spi_DataType;
-//typedef uint32 Spi_DataType;
+//typedef uint8 Spi_DataType;
+typedef uint32 Spi_DataType;
 /* [/cover] */
 
 /* [cover parentID=DS_AS_SPI165_SPI_PR4522] */
@@ -588,12 +588,12 @@ along with the ECON register value to be set in Spi_Init
 */
 typedef struct Spi_BaudrateEconType
 {
-    /* EcoN Register value 32-bit */
-    uint32 EconVal;
-
-    /*8-bit variable, with lower nibble conatining the
+  /* EcoN Register value 32-bit */
+  uint32 EconVal;
+  
+  /*8-bit variable, with lower nibble conatining the
     QSPI instance and higher nibble containing QSPI_Channel number */
-    Spi_HWUnitType QSPIHwUnit;
+  Spi_HWUnitType QSPIHwUnit;
 }Spi_BaudrateEconType;
 #endif /* SPI_BAUDRATE_AT_RUNTIME == STD_OFF */
 

@@ -14,7 +14,7 @@
 **                                                                            **
 **   $CC VERSION : \main\39 $                                                 **
 **                                                                            **
-**   DATE, TIME: 2022-10-01, 16:07:43                                         **
+**   DATE, TIME: 2021-12-28, 13:38:08                                         **
 **                                                                            **
 **   GENERATOR : Build b141014-0350                                           **
 **                                                                            **
@@ -170,10 +170,6 @@ const EcuM_ConfigType EcuM_ConfigAlternative[] =
     &Icu_ConfigRoot[0],
 
     &Gpt_ConfigRoot[0],
-    &Pwm_ConfigRoot[0],
-
-    &Lin_ConfigRoot[0],
-
     0xFF                  /* EcuM Internal Data */
   }
 };

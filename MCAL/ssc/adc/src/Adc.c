@@ -386,7 +386,7 @@ Std_ReturnType Adc_SetupResultBuffer
 **             ADC_DEINIT_API is switched On                                  **
 **                                                                            **
 *******************************************************************************/
-void Adc_DeInit( void )
+void Adc_DeInit(void )
 {
   #if (ADC_GROUP_EMUX_SCAN == STD_ON)
   const Adc_HwUnitCfgType     *HwCfgPtr;
@@ -542,28 +542,32 @@ void Adc_StartGroupConversion
   Adc_GroupType Group
 )
 {
-#if ( (ADC_PRIORITY_IMPLEMENTATION != ADC_PRIORITY_HW_SW) && (ADC_ENABLE_QUEUING == STD_OFF) )
-	Adc_GlobalDataType *DataPtr;
-#endif /* (ADC_PRIORITY_IMPLEMENTATION != ADC_PRIORITY_HW_SW) */
-#if ( (ADC_DEV_ERROR_DETECT == STD_ON) || (ADC_SAFETY_ENABLE == STD_ON) )
-	uint32 Err;
- #endif
+  #if ( (ADC_PRIORITY_IMPLEMENTATION != ADC_PRIORITY_HW_SW) && \
+                                               (ADC_ENABLE_QUEUING == STD_OFF) )
+  Adc_GlobalDataType *DataPtr;
+  #endif /* (ADC_PRIORITY_IMPLEMENTATION != ADC_PRIORITY_HW_SW) */
+  #if ( (ADC_DEV_ERROR_DETECT == STD_ON) || (ADC_SAFETY_ENABLE == STD_ON) )
+  uint32 Err;
+  #endif
   /* (ADC_DEV_ERROR_DETECT == STD_ON) || (ADC_SAFETY_ENABLE == STD_ON) */
 
-#if ( (ADC_PRIORITY_IMPLEMENTATION != ADC_PRIORITY_HW_SW) && (ADC_ENABLE_QUEUING != STD_ON) )
-	const Adc_GroupCfgType    *GrpPtr;
-	uint32 GrpRequestSource;
-#if (ADC_REQSRC2 == ADC_REQSRC_USED)
-	uint8 LoopCnt;
-#endif /* (ADC_REQSRC2 == ADC_REQSRC_USED) */
- #endif /* (Priority is not ADC_PRIORITY_HW_SW) and (Queue is STD_OFF) */
-	Adc_GroupType GroupId;
-	uint8 Kernel;
+  #if ( (ADC_PRIORITY_IMPLEMENTATION != ADC_PRIORITY_HW_SW) &&\
+        (ADC_ENABLE_QUEUING != STD_ON)\
+      )
+  const Adc_GroupCfgType    *GrpPtr;
+  uint32 GrpRequestSource;
+  #if (ADC_REQSRC2 == ADC_REQSRC_USED)
+  uint8 LoopCnt;
+  #endif /* (ADC_REQSRC2 == ADC_REQSRC_USED) */
+  #endif /* (Priority is not ADC_PRIORITY_HW_SW) and (Queue is STD_OFF) */
+  Adc_GroupType GroupId;
+  uint8 Kernel;
 
-	/* Get Kernel number from Group ID */
-	Kernel = ( uint8 ) Adc_lGetAdcKernel( Group );
-	/* Get the Group Id for perticular kernel */
-	GroupId = ( Adc_GroupType ) Adc_lGetKernelGroupId( Group );
+
+  /* Get Kernel number from Group ID */
+  Kernel = (uint8)Adc_lGetAdcKernel(Group);
+  /* Get the Group Id for perticular kernel */
+  GroupId = (Adc_GroupType)Adc_lGetKernelGroupId(Group);
 
 /*-------------------------------------**
 ** Check for Developement Time Errors  **
@@ -571,27 +575,29 @@ void Adc_StartGroupConversion
 /* ADC234, ADC067: Detected development errors shall be reported to the 
    Det_ReportError service 
 */
-	#if ( (ADC_DEV_ERROR_DETECT == STD_ON) || (ADC_SAFETY_ENABLE == STD_ON) )
+  #if ( (ADC_DEV_ERROR_DETECT == STD_ON) || (ADC_SAFETY_ENABLE == STD_ON) )
 
-		#if (ADC_DEV_ERROR_DETECT == STD_ON)
-		/* ADC294: Check for DET error ADC_E_UNINIT */
-		Err = Adc_lCheckInit( ADC_SID_START_GROUP_CONVERSION );
+  #if (ADC_DEV_ERROR_DETECT == STD_ON)
 
-		if (Err == ADC_E_DET_NO_ERR)
-		#endif  /* (ADC_DEV_ERROR_DETECT == STD_ON) */
-	{
-		/* ADC125 : Check for ADC_E_PARAM_GROUP
-		ADC133 : Check for ADC_E_WRONG_TRIGG_SRC
-		ADC424 : Check for ADC_E_BUFFER_UNINIT
-		*/
-		Err = Adc_lValidateParamGroup( ADC_SID_START_GROUP_CONVERSION, GroupId, Kernel );
-	}
+  /* ADC294: Check for DET error ADC_E_UNINIT */
+  Err = Adc_lCheckInit(ADC_SID_START_GROUP_CONVERSION);
+
+  if (Err == ADC_E_DET_NO_ERR)
+  #endif  /* (ADC_DEV_ERROR_DETECT == STD_ON) */
+  {
+    /* ADC125 : Check for ADC_E_PARAM_GROUP
+       ADC133 : Check for ADC_E_WRONG_TRIGG_SRC
+       ADC424 : Check for ADC_E_BUFFER_UNINIT
+    */
+    Err = 
+      Adc_lValidateParamGroup(ADC_SID_START_GROUP_CONVERSION, GroupId, Kernel);
+  }
 
 /* Check for Group Busy Status. This status is checked only when DET is STD_ON.
 In the production mode the user should not make any calls
 that leads to ADC_E_BUSY. Failing to do so may lead to arbitrary behavior of the
 driver.*/
-
+    
   #if (ADC_DEV_ERROR_DETECT == STD_ON)
   /* Enter Critical Section */
   Adc_lSchmEnterStartGroup();
@@ -605,7 +611,7 @@ driver.*/
   }
   #endif  /* (ADC_RESULT_POLLING_MODE == STD_OFF) */
   #endif  /* (ADC_DEV_ERROR_DETECT == STD_ON) */
-
+  
   if (Err != ADC_E_DET_NO_ERR)
   {
     #if (ADC_DEV_ERROR_DETECT == STD_ON)
@@ -3056,87 +3062,92 @@ Std_ReturnType Adc_17_GetChannelStatus
 ** [cover parentID=DS_NAS_ADC_PR127_2] [/cover]                               **
 **                                                                            **
 *******************************************************************************/
-static uint32 Adc_lValidateParamGroup( uint8 ServiceId, Adc_GroupType Group, uint8 AdcKernel )
+static uint32 Adc_lValidateParamGroup
+                    (uint8 ServiceId, Adc_GroupType Group, uint8 AdcKernel)
 {
-#if (ADC_DEV_ERROR_DETECT == STD_ON)
-const Adc_GroupCfgType     *GrpPtr;
-#endif /* (ADC_DEV_ERROR_DETECT == STD_ON) */
-const Adc_KernelConfigType *CfgPtr;
-uint32                     RetErr;
+  #if (ADC_DEV_ERROR_DETECT == STD_ON)
+  const Adc_GroupCfgType     *GrpPtr;
+  #endif /* (ADC_DEV_ERROR_DETECT == STD_ON) */
+  const Adc_KernelConfigType *CfgPtr;
+  uint32                     RetErr;
 
-	RetErr = ADC_E_DET_NO_ERR;
+  RetErr = ADC_E_DET_NO_ERR;
   
-	if( AdcKernel < ADC_MAX_KERNELS )
-	{
-		CfgPtr = Adc_kConfigPtr->CfgPtr[AdcKernel];
+  if (AdcKernel < ADC_MAX_KERNELS)
+  {
+    CfgPtr = Adc_kConfigPtr->CfgPtr[AdcKernel];
   
-		if( CfgPtr == NULL_PTR )
-		{
-			RetErr = (uint32)ADC_E_PARAM_GROUP;
-		}
-		/*Group id is out of range*/
-		else if( Group >= CfgPtr->TotCfgGrps )
-		{
-			RetErr = (uint32)ADC_E_PARAM_GROUP;
-		}
-		else
-		{
-			/* Do-Nothing*/
-		}
-	}
-	else
-	{
-		RetErr = (uint32)ADC_E_PARAM_GROUP;
-	}
+    if (CfgPtr == NULL_PTR)
+    {
+      RetErr = (uint32)ADC_E_PARAM_GROUP;
+    }
+    /*Group id is out of range*/
+    else if (Group >= CfgPtr->TotCfgGrps)
+    {
+      RetErr = (uint32)ADC_E_PARAM_GROUP;
+    }
+    else
+    {
+      /* Do-Nothing*/
+    }
+  }
+  else
+  {
+    RetErr = (uint32)ADC_E_PARAM_GROUP;
+  }
 
-	if (RetErr == (uint32)ADC_E_PARAM_GROUP)
-	{
-/* ADC269, ADC065: Invalid group ID passed, report DET error */
-#if (ADC_DEV_ERROR_DETECT == STD_ON)
-		Det_ReportError( ADC_MODULE_ID, ADC_MODULE_INSTANCE, 
+  if (RetErr == (uint32)ADC_E_PARAM_GROUP)
+  {
+    /* ADC269, ADC065: Invalid group ID passed, report DET error */
+    #if (ADC_DEV_ERROR_DETECT == STD_ON)
+    Det_ReportError( ADC_MODULE_ID, ADC_MODULE_INSTANCE, 
                      ServiceId, ADC_E_PARAM_GROUP
                    );    
-#endif /* (ADC_DEV_ERROR_DETECT == STD_ON) */
+    #endif /* (ADC_DEV_ERROR_DETECT == STD_ON) */
     
-#if (ADC_SAFETY_ENABLE == STD_ON)
-		SafeMcal_ReportError( ADC_MODULE_ID, ADC_MODULE_INSTANCE, 
-						  ServiceId, ADC_E_PARAM_GROUP
-						);    
-#endif /* (ADC_SAFETY_ENABLE == STD_ON) */
-	}
-#if (ADC_DEV_ERROR_DETECT == STD_ON)
-	else
-	{
-		CfgPtr = Adc_kConfigPtr->CfgPtr[ AdcKernel ];
+    #if (ADC_SAFETY_ENABLE == STD_ON)
+    SafeMcal_ReportError( ADC_MODULE_ID, ADC_MODULE_INSTANCE, 
+                          ServiceId, ADC_E_PARAM_GROUP
+                        );    
+    #endif /* (ADC_SAFETY_ENABLE == STD_ON) */
+  }
+  #if (ADC_DEV_ERROR_DETECT == STD_ON)
+  else
+  {
+    CfgPtr = Adc_kConfigPtr->CfgPtr[AdcKernel];
   
-		/* Parameter Group ID is valid check for other errors */
+    /* Parameter Group ID is valid check for other errors */
     
-		/*IFX_MISRA_RULE_17_04_STATUS=Pointer arithmetic used due to 
-		Group Configuration Structure and is within allowed range*/
-		GrpPtr = ( CfgPtr->GrpCfgPtr + Group );
+    /*IFX_MISRA_RULE_17_04_STATUS=Pointer arithmetic used due to 
+    Group Configuration Structure and is within allowed range*/
+    GrpPtr = (CfgPtr->GrpCfgPtr + Group);
+    
 
-		switch( ServiceId )
-		{
-#if (ADC_ENABLE_START_STOP_GROUP_API == STD_ON)
-		case ADC_SID_START_GROUP_CONVERSION:
-			{
-				RetErr = Adc_lSwConvDetCheck( ServiceId, AdcKernel, Group );
-			}/* ADC_SID_START_GROUP_CONVERSION */
-			break;
-	case ADC_SID_STOP_GROUP_CONVERSION:
-		{
+    switch (ServiceId)
+    {
+      #if (ADC_ENABLE_START_STOP_GROUP_API == STD_ON)      
+      case ADC_SID_START_GROUP_CONVERSION:
+      {
 
-			if (GrpPtr->TriggSrc != ADC_TRIGG_SRC_SW)
-			{
-				/* ADC164: Group with trigger source not configured as Software */
-				Det_ReportError( ADC_MODULE_ID, ADC_MODULE_INSTANCE,
-							   ServiceId, ADC_E_WRONG_TRIGG_SRC
-							 );
-				RetErr = (uint32)ADC_E_WRONG_TRIGG_SRC;
-			}
-		}/* ADC_SID_STOP_GROUP_CONVERSION */
-		break;
-#endif /* (ADC_ENABLE_START_STOP_GROUP_API == STD_ON) */
+        RetErr = Adc_lSwConvDetCheck(ServiceId, AdcKernel, Group);
+        
+      }/* ADC_SID_START_GROUP_CONVERSION */
+      break;
+      case ADC_SID_STOP_GROUP_CONVERSION:
+      {
+
+        if (GrpPtr->TriggSrc != ADC_TRIGG_SRC_SW)
+        {
+          /* ADC164: Group with trigger source not configured as Software */
+          Det_ReportError( ADC_MODULE_ID, ADC_MODULE_INSTANCE, 
+                           ServiceId, ADC_E_WRONG_TRIGG_SRC
+                         );    
+          RetErr = (uint32)ADC_E_WRONG_TRIGG_SRC;
+        }
+      }/* ADC_SID_STOP_GROUP_CONVERSION */
+      break;
+      #endif /* (ADC_ENABLE_START_STOP_GROUP_API == STD_ON) */
+        
       #if (ADC_HW_TRIGGER_API == STD_ON)
       case ADC_SID_ENABLE_HARDWARE_TRIGGER:
       {

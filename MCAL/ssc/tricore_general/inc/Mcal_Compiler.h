@@ -49,14 +49,6 @@
 #include "stdarg.h"
 #endif /* #if (_DIABDATA_C_TRICORE_ == 1U) */
 #endif
-
-#ifdef _HIGHTEC_C_TRICORE_
-#if (_HIGHTEC_C_TRICORE_ == 1U)
-#include <machine/intrinsics.h>
-#include <machine/wdtcon.h>
-#endif /* #if (_HIGHTEC_C_TRICORE_ == 1U) */
-#endif
-
 #include "Mcal_Options.h"
 /*******************************************************************************
 **                      Configuration data                                    **
@@ -104,7 +96,7 @@ Inline keyword
 */
 
 
-#if defined (_GNU_C_TRICORE_)
+#ifdef _GNU_C_TRICORE_
 #if (_GNU_C_TRICORE_ == 1U)
 /* Start of integration check:This change is made to make Integration between
  "Mcal and SafeTlib"  work fine */
@@ -210,9 +202,6 @@ standard by the upper layers AI00251033 */
 #endif
 #endif
 
-
-
-
 /*
 extern keyword
 */
@@ -223,11 +212,12 @@ extern keyword
 #define _EXTERN_       extern
 #endif
 
-#if defined (_GNU_C_TRICORE_)
+#ifdef _GNU_C_TRICORE_
+
 #if (_GNU_C_TRICORE_ == 1U)
 
 #ifndef _IFXEXTERN_
-/*IFX_MISRA_RULE_19_04_STATUS=_IFXEXTERN_ cannot be expand to a braced
+/*IFX_MISRA_RULE_19_04_STATUS=_IFXEXTERN_ cannot be expand to a braced 
  initialiser*/
 #define _IFXEXTERN_    extern
 #endif
@@ -241,22 +231,6 @@ extern keyword
 #endif
 
 #endif
-
-
-#if defined (_HIGHTEC_C_TRICORE_)
-#if (_HIGHTEC_C_TRICORE_ == 1U)
-
-#undef _IFXEXTERN_
-#define _IFXEXTERN_
-
-#undef IFX_INLINE
-#define IFX_INLINE	static __inline__
-
-#endif /* #if (_HIGHTEC_C_TRICORE_ == 1U) */
-
-#endif
-
-
 /*
 Inline qualifier, in case of GNU compiler extern is required
 for inline function definition , if residing in header file.
@@ -461,73 +435,6 @@ intrinsic function*/
 #endif /* #if (_DIABDATA_C_TRICORE_ == 1U) */
 #endif
 
-#ifdef _HIGHTEC_C_TRICORE_
-#if (_HIGHTEC_C_TRICORE_ == 1U)
-	
-/* CRC declaration to ensure this function is always inlined */
-IFX_INLINE unsigned __crc32( unsigned b, unsigned a );
-IFX_INLINE unsigned __crc32( unsigned b, unsigned a ) {
-  unsigned res;
-  /* The operands a and b are interchanged because GNU compiler has
-   * used V1.0 D9 2010-11 of Tricore instruction manual. In this manual,
-   * crc32 instruction uses crc32 D[c], D[a], D[b] instead of
-   * crc32 D[c], D[b], D[a]
-   */
-  __asm__ volatile("crc32 %0, %2, %1" :"=d"(res) : "d"(b), "d"(a): "memory");
-    return res;
-}
-/*
-Hitech Intrinsic: Insert ISYNC Instruction
-*/
-/*IFX_MISRA_RULE_19_07_STATUS=Function like macro used to call the Tricore
-intrinsic function*/
-#define ISYNC() _isync()
-
-/*IFX_MISRA_RULE_19_07_STATUS=Function like macro used to call the Tricore
-intrinsic function*/
-#define DSYNC() _dsync()
-/* Intrinsic: Disable Global Interrupt Flag */
-/*IFX_MISRA_RULE_19_07_STATUS=Function like macro used to call the Tricore
-intrinsic function*/
-#define DISABLE() _disable()
-
-/* Intrinsic: Enable Global Interrupt Flag */
-/*IFX_MISRA_RULE_19_07_STATUS=Function like macro used to call the Tricore
-intrinsic function*/
-#define ENABLE() _enable()
-
-/* Intrinsic: No operation */
-/*IFX_MISRA_RULE_19_07_STATUS=Function like macro used to call the Tricore
-intrinsic function*/
-#define NOP() (_nop())
-
-/* Intrinsic: : move contents of the addressed core SFR into a data register */
-/*IFX_MISRA_RULE_19_07_STATUS=Function like macro used to call the Tricore
-intrinsic function*/
-#define MFCR(Reg) (__mfcr((Reg)))
-/*
-Intrinsic:  Move contents of a data register (Data)
-to the addressed core SFR (Reg)
-*/
-/*IFX_MISRA_RULE_19_07_STATUS=Function like macro used to call the Tricore
-intrinsic function*/
-/*IFX_MISRA_RULE_19_04_STATUS=MTCR cannot be expand to a braced 
- initialiser*/
-#define MTCR(Reg, Data)   DSYNC();\
-                          __mtcr((Reg), (Data));\
-                          ISYNC()
-
-/*
- * SYSCALL to generate system call trap
- */
-/*IFX_MISRA_RULE_19_07_STATUS=Function like macro used to call the Tricore
-intrinsic function*/
-/*IFX_MISRA_RULE_19_04_STATUS=SYSCALL cannot be expand to a braced 
- initialiser*/
-#define SYSCALL(tin)   _syscall(tin)	
-#endif /* #if (_HIGHTEC_C_TRICORE_ == 1U) */
-#endif
-
 /*
 Tasking Intrinsic: Disable Global Interrupt Flag and return it
 */
@@ -560,11 +467,11 @@ intrinsic function*/
 #endif
 
 
-#if defined (_GNU_C_TRICORE_) || defined (_DIABDATA_C_TRICORE_) || defined (_HIGHTEC_C_TRICORE_)
-#if (_GNU_C_TRICORE_ == 1U) || (_DIABDATA_C_TRICORE_ == 1U) || (_HIGHTEC_C_TRICORE_ == 1U)
+#if defined (_GNU_C_TRICORE_) || defined (_DIABDATA_C_TRICORE_)
+#if (_GNU_C_TRICORE_ == 1U) || (_DIABDATA_C_TRICORE_ == 1U)
 #ifndef __indirect
 #define __indirect
-#endif /* (_GNU_C_TRICORE_ == 1U) || (_DIABDATA_C_TRICORE_ == 1U) || (_HIGHTEC_C_TRICORE_ == 1U) */
+#endif /* (_GNU_C_TRICORE_ == 1U) || (_DIABDATA_C_TRICORE_ == 1U) */
 #endif
 #endif
 
@@ -658,26 +565,6 @@ intrinsic function*/
 }
 
 #endif /* #if (_DIABDATA_C_TRICORE_ == 1U) */
-#elif defined _HIGHTEC_C_TRICORE_
-#if (_HIGHTEC_C_TRICORE_ == 1U)
-/*IFX_MISRA_RULE_19_07_STATUS=Function like macro used to call the Tricore
-intrinsic function*/
-/*IFX_MISRA_RULE_19_04_STATUS=IMASKLDMST cannot be expand to a braced 
- initialiser*/
-
-#define IMASKLDMST(address,val,offset,bits) \
-                        __imaskldmst(address, val, offset, bits)
-
-/*! \brief Atomic load-modify-store. */
-
-#define __imaskldmst(address, value, bitoffset, bits) \
-  {long long tmp;\
-  __asm__("imask %A0,%1,%2,%3"\
-          :"=d"((long long)tmp)\
-          :"d"(value),"d"(bitoffset),"i"(bits): "memory");\
-  __asm__("ldmst [%0]0,%A1"::"a"(address),"d"(tmp): "memory");}
-
-#endif /* #if (_HIGHTEC_C_TRICORE_ == 1U) */
 #endif
 /*
 Example:
@@ -761,25 +648,6 @@ intrinsic function*/
                                                     (unsigned)(width)))
 
 #endif /* #if (_DIABDATA_C_TRICORE_ == 1U) */
-#elif defined _HIGHTEC_C_TRICORE_
-#if (_HIGHTEC_C_TRICORE_ == 1U)
-/*IFX_MISRA_RULE_19_07_STATUS=Function like macro used to call the Tricore
-intrinsic function*/
-#define EXTRACT(value,pos,width)            (__extru((unsigned)(value), \
-                                                    (unsigned)(pos), \
-                                                    (unsigned)(width)))
-
-/* Same as __extr() but return bit-field as unsigned integer */
-IFX_INLINE unsigned __extru(unsigned a, unsigned p, unsigned w) {
-  unsigned res;
-  __asm__ volatile ("mov %%d14,%2  \n\
-                     mov %%d15,%3  \n\
-                     extr.u %0,%1,%%e14"
-                    : "=d" (res) : "d" (a), "d" (p), "d" (w):"d14","d15");
-  return res;
-}
-
-#endif /* #if (_HIGHTEC_C_TRICORE_ == 1U) */
 #endif
 /*******************************************************************************
 ** Macro Syntax : Mcal_CountLeadingZeros(Variable)                            **
@@ -844,24 +712,6 @@ _IFXEXTERN_ IFX_INLINE unsigned int cmpswap_w (unsigned int volatile *address,
 }
 #endif /* #if (_GNU_C_TRICORE_ == 1U) */
 #endif
-
-#ifdef _HIGHTEC_C_TRICORE_
-#if (_HIGHTEC_C_TRICORE_ == 1U)
-_IFXEXTERN_ IFX_INLINE unsigned int cmpswap_w (unsigned int volatile *address,
-           unsigned int value, unsigned int condition)
-{
-  __extension__ unsigned long long reg64
-    = value | (unsigned long long) condition << 32;
-
-  __asm__ __volatile__ ("cmpswap.w [%[addr]]0, %A[reg]"
-                        : [reg] "+d" (reg64)
-                        : [addr] "a" (address)
-                        : "memory");
-    return reg64;
-}
-#endif /* #if (_HIGHTEC_C_TRICORE_ == 1U) */
-#endif
-
 /*******************************************************************************
 ** Macro Syntax : Mcal_CmpAndSwap(ResourceStatusPtr,Value,Compare)            **
 **                                                                            **
@@ -911,19 +761,6 @@ asm volatile unsigned int IFX_INLINE Mcal_CmpAndSwap(
 }
 
 #endif /* #if (_DIABDATA_C_TRICORE_ == 1U) */
-
-#elif defined _HIGHTEC_C_TRICORE_ /* TBD _cmpswapw is NA in  intrinsics file : GNU*/
-#if (_HIGHTEC_C_TRICORE_ == 1U)
-/*IFX_MISRA_RULE_19_07_STATUS=Function like macro used to call the Tricore
-intrinsic function*/
-/*IFX_MISRA_RULE_19_04_STATUS=Mcal_CmpAndSwap cannot be expand to a braced 
- initialiser*/
-#define  Mcal_CmpAndSwap(ResourceStatusPtr,Value,Compare)  \
-        cmpswap_w(((unsigned_int*)(void*)ResourceStatusPtr), \
-        ((unsigned_int)Value), ((unsigned_int)Compare) )
-
-#endif /* #if (_HIGHTEC_C_TRICORE_ == 1U) */
-
 #endif
 
 #ifdef _DIABDATA_C_TRICORE_
@@ -1159,7 +996,6 @@ There is no impact of order of evaluation with the # operator at this function*/
 
 
 #endif /* #if (_DIABDATA_C_TRICORE_ == 1U) */
-#elif defined(_HIGHTEC_C_TRICORE_)
 #else
   #error "No compiler defined!"
 #endif
@@ -1215,7 +1051,6 @@ asm volatile void MEMWRITE64(void *DESTINATION, void *SOURCE)
   st.d   [DESTINATION+]0,%e4
 }
 #endif /* #if (_DIABDATA_C_TRICORE_ == 1U) */
-#elif defined(_HIGHTEC_C_TRICORE_)
 #else
   #error "No compiler defined!"
 #endif
@@ -1282,7 +1117,6 @@ asm volatile void MEMWRITE64_RB(void *DESTINATION, void *SOURCE, void *READBACK)
 }
 
 #endif /* #if (_DIABDATA_C_TRICORE_ == 1U) */
-#elif defined(_HIGHTEC_C_TRICORE_)
 #else
   #error "No compiler defined!"
 #endif
@@ -1348,7 +1182,6 @@ asm volatile void MEMWRITE64_RB(void *DESTINATION, void *SOURCE, void *READBACK)
   }
 
 #endif /* #if (_DIABDATA_C_TRICORE_ == 1U) */
-#elif defined(_HIGHTEC_C_TRICORE_)
 #else
   #error "No compiler defined!"
 #endif
@@ -1415,7 +1248,6 @@ asm volatile void MEMWRITE64_RB(void *DESTINATION, void *SOURCE, void *READBACK)
 #if (_DIABDATA_C_TRICORE_ == 1U)
 /* TBD */
 #endif /* #if (_DIABDATA_C_TRICORE_ == 1U) */
-#elif defined(_HIGHTEC_C_TRICORE_)
 #else
   #error "No compiler defined!"
 #endif

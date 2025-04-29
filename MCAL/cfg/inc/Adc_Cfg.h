@@ -14,7 +14,7 @@
 **                                                                            **
 **   $CC VERSION : \main\dev_tc23x_as4.0.3\9 $                                **
 **                                                                            **
-**   DATE, TIME: 2022-10-01, 16:07:46                                         **
+**   DATE, TIME: 2021-12-28, 13:38:10                                         **
 **                                                                            **
 **   GENERATOR : Build b141014-0350                                           **
 **                                                                            **
@@ -660,38 +660,66 @@ This parameter is automatically ganerated by the tool
 
 /* ADC0 HW Unit */
 
-#ifndef AdcConf_AdcChannel_I_AH_T5M /* to prevent double declaration */
-#define AdcConf_AdcChannel_I_AH_T5M  ((Adc_ChannelType)0)
-#endif /* AdcConf_AdcChannel_I_AH_T5M */
+#ifndef AdcConf_AdcChannel_PRES_G1 /* to prevent double declaration */
+#define AdcConf_AdcChannel_PRES_G1  ((Adc_ChannelType)0)
+#endif /* AdcConf_AdcChannel_PRES_G1 */
 
-#ifndef AdcConf_AdcChannel_I_AL_APS2M /* to prevent double declaration */
-#define AdcConf_AdcChannel_I_AL_APS2M  ((Adc_ChannelType)1)
-#endif /* AdcConf_AdcChannel_I_AL_APS2M */
+#ifndef AdcConf_AdcChannel_PRES_G2 /* to prevent double declaration */
+#define AdcConf_AdcChannel_PRES_G2  ((Adc_ChannelType)1)
+#endif /* AdcConf_AdcChannel_PRES_G2 */
 
-#ifndef AdcConf_AdcChannel_IGN_AI /* to prevent double declaration */
-#define AdcConf_AdcChannel_IGN_AI  ((Adc_ChannelType)2)
-#endif /* AdcConf_AdcChannel_IGN_AI */
+#ifndef AdcConf_AdcChannel_PRES_TQ_L /* to prevent double declaration */
+#define AdcConf_AdcChannel_PRES_TQ_L  ((Adc_ChannelType)2)
+#endif /* AdcConf_AdcChannel_PRES_TQ_L */
 
-#ifndef AdcConf_AdcChannel_I_AH_T1M /* to prevent double declaration */
-#define AdcConf_AdcChannel_I_AH_T1M  ((Adc_ChannelType)3)
-#endif /* AdcConf_AdcChannel_I_AH_T1M */
+#ifndef AdcConf_AdcChannel_PRES_TQ_R /* to prevent double declaration */
+#define AdcConf_AdcChannel_PRES_TQ_R  ((Adc_ChannelType)3)
+#endif /* AdcConf_AdcChannel_PRES_TQ_R */
+
+#ifndef AdcConf_AdcChannel_PRES_TOTAL /* to prevent double declaration */
+#define AdcConf_AdcChannel_PRES_TOTAL  ((Adc_ChannelType)4)
+#endif /* AdcConf_AdcChannel_PRES_TOTAL */
+
+#ifndef AdcConf_AdcChannel_PRES_SPR /* to prevent double declaration */
+#define AdcConf_AdcChannel_PRES_SPR  ((Adc_ChannelType)5)
+#endif /* AdcConf_AdcChannel_PRES_SPR */
+
+#ifndef AdcConf_AdcChannel_TMP_OIL /* to prevent double declaration */
+#define AdcConf_AdcChannel_TMP_OIL  ((Adc_ChannelType)6)
+#endif /* AdcConf_AdcChannel_TMP_OIL */
+
+#ifndef AdcConf_AdcChannel_TMP_SPR /* to prevent double declaration */
+#define AdcConf_AdcChannel_TMP_SPR  ((Adc_ChannelType)7)
+#endif /* AdcConf_AdcChannel_TMP_SPR */
+
+#ifndef AdcConf_AdcChannel_HSD_CUR /* to prevent double declaration */
+#define AdcConf_AdcChannel_HSD_CUR  ((Adc_ChannelType)8)
+#endif /* AdcConf_AdcChannel_HSD_CUR */
+
+#ifndef AdcConf_AdcChannel_V5_EXT /* to prevent double declaration */
+#define AdcConf_AdcChannel_V5_EXT  ((Adc_ChannelType)9)
+#endif /* AdcConf_AdcChannel_V5_EXT */
 /* ADC1 HW Unit */
 
-#ifndef AdcConf_AdcChannel_I_AX_CRZM /* to prevent double declaration */
-#define AdcConf_AdcChannel_I_AX_CRZM  ((Adc_ChannelType)0)
-#endif /* AdcConf_AdcChannel_I_AX_CRZM */
+#ifndef AdcConf_AdcChannel_V33_MON /* to prevent double declaration */
+#define AdcConf_AdcChannel_V33_MON  ((Adc_ChannelType)0)
+#endif /* AdcConf_AdcChannel_V33_MON */
 
-#ifndef AdcConf_AdcChannel_I_AL_APS1M /* to prevent double declaration */
-#define AdcConf_AdcChannel_I_AL_APS1M  ((Adc_ChannelType)1)
-#endif /* AdcConf_AdcChannel_I_AL_APS1M */
+#ifndef AdcConf_AdcChannel_V5_MON /* to prevent double declaration */
+#define AdcConf_AdcChannel_V5_MON  ((Adc_ChannelType)1)
+#endif /* AdcConf_AdcChannel_V5_MON */
 
-#ifndef AdcConf_AdcChannel_ACC_AI /* to prevent double declaration */
-#define AdcConf_AdcChannel_ACC_AI  ((Adc_ChannelType)2)
-#endif /* AdcConf_AdcChannel_ACC_AI */
+#ifndef AdcConf_AdcChannel_BAT_MON /* to prevent double declaration */
+#define AdcConf_AdcChannel_BAT_MON  ((Adc_ChannelType)2)
+#endif /* AdcConf_AdcChannel_BAT_MON */
 
-#ifndef AdcConf_AdcChannel_VSUP_AI /* to prevent double declaration */
-#define AdcConf_AdcChannel_VSUP_AI  ((Adc_ChannelType)3)
-#endif /* AdcConf_AdcChannel_VSUP_AI */
+#ifndef AdcConf_AdcChannel_IGN_MON /* to prevent double declaration */
+#define AdcConf_AdcChannel_IGN_MON  ((Adc_ChannelType)3)
+#endif /* AdcConf_AdcChannel_IGN_MON */
+
+#ifndef AdcConf_AdcChannel_TMP_MCU /* to prevent double declaration */
+#define AdcConf_AdcChannel_TMP_MCU  ((Adc_ChannelType)4)
+#endif /* AdcConf_AdcChannel_TMP_MCU */
 
 /*GROUP SYMBOLIC NAME */
 

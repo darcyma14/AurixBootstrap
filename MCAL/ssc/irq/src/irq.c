@@ -46,9 +46,8 @@
 **                      Private Type Definitions                              **
 *******************************************************************************/
 
-
 /* Set CLRR to clear SRR bit and disable SRE bit */
-#define IRQ_DISABLE_CLEAR_SRC     ( 0x02000000U )
+#define IRQ_DISABLE_CLEAR_SRC     (0x02000000U)
 
 /*******************************************************************************
 **                      Private Function Declarations                         **
@@ -630,21 +629,24 @@ static void Irq_ClearHsmIntFlags (void)
 **                                                                            **
 *******************************************************************************/
 
-void IrqAscLin_Init( void )
+void IrqAscLin_Init(void)
 {
-    #if ( IRQ_ASCLIN_EXIST == STD_ON )
-        #if ( IRQ_ASCLIN0_EXIST == STD_ON )
-            SRC_ASCLIN0TX.U   |= ( IRQ_ASCLIN0_TX_TOS | IRQ_ASCLIN0_TX_PRIO );
-            SRC_ASCLIN0RX.U   |= ( IRQ_ASCLIN0_RX_TOS | IRQ_ASCLIN0_RX_PRIO );
-            SRC_ASCLIN0ERR.U  |= ( IRQ_ASCLIN0_ERR_TOS | IRQ_ASCLIN0_ERR_PRIO );
-        #endif
+  #if (IRQ_ASCLIN_EXIST == STD_ON)
 
-        #if ( IRQ_ASCLIN1_EXIST == STD_ON )
-            SRC_ASCLIN1TX.U   |= ( IRQ_ASCLIN1_TX_TOS | IRQ_ASCLIN1_TX_PRIO );
-            SRC_ASCLIN1RX.U   |= ( IRQ_ASCLIN1_RX_TOS | IRQ_ASCLIN1_RX_PRIO );
-            SRC_ASCLIN1ERR.U  |= ( IRQ_ASCLIN1_ERR_TOS | IRQ_ASCLIN1_ERR_PRIO );
-        #endif
-    #endif
+  #if (IRQ_ASCLIN0_EXIST == STD_ON)
+  SRC_ASCLIN0TX.U   |=(IRQ_ASCLIN0_TX_TOS | IRQ_ASCLIN0_TX_PRIO);
+  SRC_ASCLIN0RX.U   |=(IRQ_ASCLIN0_RX_TOS | IRQ_ASCLIN0_RX_PRIO);
+  SRC_ASCLIN0ERR.U  |=(IRQ_ASCLIN0_ERR_TOS | IRQ_ASCLIN0_ERR_PRIO);
+  #endif
+
+  #if (IRQ_ASCLIN1_EXIST == STD_ON)
+  SRC_ASCLIN1TX.U   |=(IRQ_ASCLIN1_TX_TOS | IRQ_ASCLIN1_TX_PRIO);
+  SRC_ASCLIN1RX.U   |=(IRQ_ASCLIN1_RX_TOS | IRQ_ASCLIN1_RX_PRIO);
+  SRC_ASCLIN1ERR.U  |=(IRQ_ASCLIN1_ERR_TOS | IRQ_ASCLIN1_ERR_PRIO);
+  #endif
+  
+  #endif
+
 }
 
 /*******************************************************************************
@@ -817,107 +819,109 @@ void IrqGtm_Init(void)
 **               service nodes according to priority configurartion.          **
 **                                                                            **
 *******************************************************************************/
-void IrqCan_Init( void )
+void IrqCan_Init(void)
 {
-    #if (IRQ_CAN_EXIST == STD_ON)
-        /* Interrupt Priority is written to the SRC registers*/
-        #if (IRQ_CAN0_EXIST == STD_ON)
-            SRC_CANINT0.U  |= (IRQ_CAN_SR0_TOS | IRQ_CAN_SR0_PRIO);
-        #endif
 
-        #if (IRQ_CAN1_EXIST == STD_ON)
-            SRC_CANINT1.U  |= (IRQ_CAN_SR1_TOS | IRQ_CAN_SR1_PRIO);
-        #endif
+  #if (IRQ_CAN_EXIST == STD_ON)
+  /* Interrupt Priority is written to the SRC registers*/
+  #if (IRQ_CAN0_EXIST == STD_ON)
+  SRC_CANINT0.U  |= (IRQ_CAN_SR0_TOS | IRQ_CAN_SR0_PRIO);
+  #endif
+  
+  #if (IRQ_CAN1_EXIST == STD_ON)
+  SRC_CANINT1.U  |= (IRQ_CAN_SR1_TOS | IRQ_CAN_SR1_PRIO);
+  #endif
+  
+  #if (IRQ_CAN2_EXIST == STD_ON)
+  SRC_CANINT2.U  |= (IRQ_CAN_SR2_TOS | IRQ_CAN_SR2_PRIO);
+  #endif
+  
+  #if (IRQ_CAN3_EXIST == STD_ON)
+  SRC_CANINT3.U  |= (IRQ_CAN_SR3_TOS | IRQ_CAN_SR3_PRIO);
+  #endif
+  
+  #if (IRQ_CAN4_EXIST == STD_ON)
+  SRC_CANINT4.U  |= (IRQ_CAN_SR4_TOS | IRQ_CAN_SR4_PRIO);
+  #endif
+  
+  #if (IRQ_CAN5_EXIST == STD_ON)
+  SRC_CANINT5.U  |= (IRQ_CAN_SR5_TOS | IRQ_CAN_SR5_PRIO);
+  #endif
+  
+  #if (IRQ_CAN6_EXIST == STD_ON)
+  SRC_CANINT6.U  |= (IRQ_CAN_SR6_TOS | IRQ_CAN_SR6_PRIO);
+  #endif
+  
+  #if (IRQ_CAN7_EXIST == STD_ON)
+  SRC_CANINT7.U  |= (IRQ_CAN_SR7_TOS | IRQ_CAN_SR7_PRIO);
+  #endif
+  
+  #if (IRQ_CAN8_EXIST == STD_ON)
+  SRC_CANINT8.U  |= (IRQ_CAN_SR8_TOS | IRQ_CAN_SR8_PRIO);
+  #endif
+  
+  #if (IRQ_CAN9_EXIST == STD_ON)
+  SRC_CANINT9.U  |= (IRQ_CAN_SR9_TOS | IRQ_CAN_SR9_PRIO);
+  #endif
+  
+  #if (IRQ_CAN10_EXIST == STD_ON)
+  SRC_CANINT10.U  |= (IRQ_CAN_SR10_TOS | IRQ_CAN_SR10_PRIO);
+  #endif
+  
+  #if (IRQ_CAN11_EXIST == STD_ON)
+  SRC_CANINT11.U  |= (IRQ_CAN_SR11_TOS | IRQ_CAN_SR11_PRIO);
+  #endif
+  
+  #if (IRQ_CAN12_EXIST == STD_ON)
+  SRC_CANINT12.U  |= (IRQ_CAN_SR12_TOS | IRQ_CAN_SR12_PRIO);
+  #endif
 
-        #if (IRQ_CAN2_EXIST == STD_ON)
-            SRC_CANINT2.U  |= (IRQ_CAN_SR2_TOS | IRQ_CAN_SR2_PRIO);
-        #endif
+  #if (IRQ_CAN13_EXIST == STD_ON)
+  SRC_CANINT13.U  |= (IRQ_CAN_SR13_TOS | IRQ_CAN_SR13_PRIO);
+  #endif
 
-        #if (IRQ_CAN3_EXIST == STD_ON)
-            SRC_CANINT3.U  |= (IRQ_CAN_SR3_TOS | IRQ_CAN_SR3_PRIO);
-        #endif
+  #if (IRQ_CAN14_EXIST == STD_ON)
+  SRC_CANINT14.U  |= (IRQ_CAN_SR14_TOS | IRQ_CAN_SR14_PRIO);
+  #endif
 
-        #if (IRQ_CAN4_EXIST == STD_ON)
-            SRC_CANINT4.U  |= (IRQ_CAN_SR4_TOS | IRQ_CAN_SR4_PRIO);
-        #endif
+  #if (IRQ_CAN15_EXIST == STD_ON)
+  SRC_CANINT15.U  |= (IRQ_CAN_SR15_TOS | IRQ_CAN_SR15_PRIO);
+  #endif
 
-        #if (IRQ_CAN5_EXIST == STD_ON)
-            SRC_CANINT5.U  |= (IRQ_CAN_SR5_TOS | IRQ_CAN_SR5_PRIO);
-        #endif
+  #if (IRQ_CAN16_EXIST == STD_ON)
+  SRC_CAN1INT0.U  |= (IRQ_CAN_SR16_TOS | IRQ_CAN_SR16_PRIO);
+  #endif
+  
+  #if (IRQ_CAN17_EXIST == STD_ON)
+  SRC_CAN1INT1.U  |= (IRQ_CAN_SR17_TOS | IRQ_CAN_SR17_PRIO);
+  #endif
+  
+  #if (IRQ_CAN18_EXIST == STD_ON)
+  SRC_CAN1INT2.U  |= (IRQ_CAN_SR18_TOS | IRQ_CAN_SR18_PRIO);
+  #endif
+  
+  #if (IRQ_CAN19_EXIST == STD_ON)
+  SRC_CAN1INT3.U  |= (IRQ_CAN_SR19_TOS | IRQ_CAN_SR19_PRIO);
+  #endif
+  
+  #if (IRQ_CAN20_EXIST == STD_ON)
+  SRC_CAN1INT4.U  |= (IRQ_CAN_SR20_TOS | IRQ_CAN_SR20_PRIO);
+  #endif
+  
+  #if (IRQ_CAN21_EXIST == STD_ON)
+  SRC_CAN1INT5.U  |= (IRQ_CAN_SR21_TOS | IRQ_CAN_SR21_PRIO);
+  #endif
+  
+  #if (IRQ_CAN22_EXIST == STD_ON)
+  SRC_CAN1INT6.U  |= (IRQ_CAN_SR22_TOS | IRQ_CAN_SR22_PRIO);
+  #endif
 
-        #if (IRQ_CAN6_EXIST == STD_ON)
-            SRC_CANINT6.U  |= (IRQ_CAN_SR6_TOS | IRQ_CAN_SR6_PRIO);
-        #endif
+  #if (IRQ_CAN23_EXIST == STD_ON)
+  SRC_CAN1INT7.U  |= (IRQ_CAN_SR23_TOS | IRQ_CAN_SR23_PRIO);
+  #endif
 
-        #if (IRQ_CAN7_EXIST == STD_ON)
-            SRC_CANINT7.U  |= (IRQ_CAN_SR7_TOS | IRQ_CAN_SR7_PRIO);
-        #endif
-
-        #if (IRQ_CAN8_EXIST == STD_ON)
-            SRC_CANINT8.U  |= (IRQ_CAN_SR8_TOS | IRQ_CAN_SR8_PRIO);
-        #endif
-
-        #if (IRQ_CAN9_EXIST == STD_ON)
-            SRC_CANINT9.U  |= (IRQ_CAN_SR9_TOS | IRQ_CAN_SR9_PRIO);
-        #endif
-
-        #if (IRQ_CAN10_EXIST == STD_ON)
-            SRC_CANINT10.U  |= (IRQ_CAN_SR10_TOS | IRQ_CAN_SR10_PRIO);
-        #endif
-
-        #if (IRQ_CAN11_EXIST == STD_ON)
-            SRC_CANINT11.U  |= (IRQ_CAN_SR11_TOS | IRQ_CAN_SR11_PRIO);
-        #endif
-
-        #if (IRQ_CAN12_EXIST == STD_ON)
-            SRC_CANINT12.U  |= (IRQ_CAN_SR12_TOS | IRQ_CAN_SR12_PRIO);
-        #endif
-
-        #if (IRQ_CAN13_EXIST == STD_ON)
-            SRC_CANINT13.U  |= (IRQ_CAN_SR13_TOS | IRQ_CAN_SR13_PRIO);
-        #endif
-
-        #if (IRQ_CAN14_EXIST == STD_ON)
-            SRC_CANINT14.U  |= (IRQ_CAN_SR14_TOS | IRQ_CAN_SR14_PRIO);
-        #endif
-
-        #if (IRQ_CAN15_EXIST == STD_ON)
-            SRC_CANINT15.U  |= (IRQ_CAN_SR15_TOS | IRQ_CAN_SR15_PRIO);
-        #endif
-
-        #if (IRQ_CAN16_EXIST == STD_ON)
-            SRC_CAN1INT0.U  |= (IRQ_CAN_SR16_TOS | IRQ_CAN_SR16_PRIO);
-        #endif
-
-        #if (IRQ_CAN17_EXIST == STD_ON)
-            SRC_CAN1INT1.U  |= (IRQ_CAN_SR17_TOS | IRQ_CAN_SR17_PRIO);
-        #endif
-
-        #if (IRQ_CAN18_EXIST == STD_ON)
-            SRC_CAN1INT2.U  |= (IRQ_CAN_SR18_TOS | IRQ_CAN_SR18_PRIO);
-        #endif
-
-        #if (IRQ_CAN19_EXIST == STD_ON)
-            SRC_CAN1INT3.U  |= (IRQ_CAN_SR19_TOS | IRQ_CAN_SR19_PRIO);
-        #endif
-
-        #if (IRQ_CAN20_EXIST == STD_ON)
-            SRC_CAN1INT4.U  |= (IRQ_CAN_SR20_TOS | IRQ_CAN_SR20_PRIO);
-        #endif
-
-        #if (IRQ_CAN21_EXIST == STD_ON)
-            SRC_CAN1INT5.U  |= (IRQ_CAN_SR21_TOS | IRQ_CAN_SR21_PRIO);
-        #endif
-
-        #if (IRQ_CAN22_EXIST == STD_ON)
-            SRC_CAN1INT6.U  |= (IRQ_CAN_SR22_TOS | IRQ_CAN_SR22_PRIO);
-        #endif
-
-        #if (IRQ_CAN23_EXIST == STD_ON)
-            SRC_CAN1INT7.U  |= (IRQ_CAN_SR23_TOS | IRQ_CAN_SR23_PRIO);
-        #endif
-    #endif
-}
+  #endif
+ }
 
 
 /*******************************************************************************

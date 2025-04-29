@@ -15,7 +15,7 @@
 **                                                                            **
 **   $CC VERSION : \main\dev_tc23x\10 $                                       **
 **                                                                            **
-**   DATE, TIME: 2022-10-01, 16:07:45                                         **
+**   DATE, TIME: 2021-12-28, 13:38:10                                         **
 **                                                                            **
 **   GENERATOR : Build b141014-0350                                           **
 **                                                                            **
@@ -71,7 +71,11 @@ Configuration: IRQ_OSEK_ENABLE
 #define IRQ_ASCLIN1_TX_CAT          (IRQ_CAT1)
 
 /* ASC Lin Tx interrupt Priority Setting*/
+#ifdef _McalModified_
 #define IRQ_ASCLIN0_TX_PRIO         0x6e
+#else
+#define IRQ_ASCLIN0_TX_PRIO         0x0
+#endif
 #define IRQ_ASCLIN1_TX_PRIO         0x64
 
 /* ASC Lin Tx interrupt type of service Setting*/
@@ -83,7 +87,11 @@ Configuration: IRQ_OSEK_ENABLE
 #define IRQ_ASCLIN1_RX_CAT          (IRQ_CAT1)
 
 /* ASC Lin Rx interrupt Priority Setting*/
+#ifdef _McalModified_
 #define IRQ_ASCLIN0_RX_PRIO         0x6f
+#else
+#define IRQ_ASCLIN0_RX_PRIO         0x0
+#endif
 #define IRQ_ASCLIN1_RX_PRIO         0x65
 
 /* ASC Lin Rx interrupt type of service Setting*/
@@ -101,6 +109,7 @@ Configuration: IRQ_OSEK_ENABLE
 #else
 #define IRQ_ASCLIN1_ERR_PRIO        0x0
 #endif
+
 /* ASC Lin Err interrupt type of service Setting*/
 #define IRQ_ASCLIN0_ERR_TOS         (IRQ_TOS_CPU0)
 #define IRQ_ASCLIN1_ERR_TOS         (IRQ_TOS_CPU0)
@@ -170,7 +179,7 @@ Configuration: IRQ_OSEK_ENABLE
 
 /* Qspi PT interrupt Priority Setting*/
 #define IRQ_QSPI0_PT_PRIO           0x28
-#define IRQ_QSPI1_PT_PRIO           0x29
+#define IRQ_QSPI1_PT_PRIO           0x0
 #define IRQ_QSPI2_PT_PRIO           0x0
 #define IRQ_QSPI3_PT_PRIO           0x0
 
@@ -200,7 +209,7 @@ Configuration: IRQ_OSEK_ENABLE
 
 /* Qspi UD interrupt Priority Setting*/
 #define IRQ_QSPI0_UD_PRIO           0x32
-#define IRQ_QSPI1_UD_PRIO           0x33
+#define IRQ_QSPI1_UD_PRIO           0x0
 #define IRQ_QSPI2_UD_PRIO           0x0
 #define IRQ_QSPI3_UD_PRIO           0x0
 
@@ -323,8 +332,8 @@ Configuration: IRQ_OSEK_ENABLE
 #define IRQ_DMA_CHANNEL0_SR_PRIO     0x0
 #define IRQ_DMA_CHANNEL1_SR_PRIO     0x3c
 #define IRQ_DMA_CHANNEL2_SR_PRIO     0x3b
-#define IRQ_DMA_CHANNEL3_SR_PRIO     0x3a
-#define IRQ_DMA_CHANNEL4_SR_PRIO     0x39
+#define IRQ_DMA_CHANNEL3_SR_PRIO     0x0
+#define IRQ_DMA_CHANNEL4_SR_PRIO     0x0
 #define IRQ_DMA_CHANNEL5_SR_PRIO     0x0
 #define IRQ_DMA_CHANNEL6_SR_PRIO     0x0
 #define IRQ_DMA_CHANNEL7_SR_PRIO     0x0
@@ -366,10 +375,10 @@ Configuration: IRQ_OSEK_ENABLE
 #define IRQ_DMA_CHANNEL1_PARAM       (0U)
 #define IRQ_DMA_CHANNEL2_USED        (IRQ_DMA_USED_MCALSPI_TX)
 #define IRQ_DMA_CHANNEL2_PARAM       (0U)
-#define IRQ_DMA_CHANNEL3_USED        (IRQ_DMA_USED_MCALSPI_RX)
-#define IRQ_DMA_CHANNEL3_PARAM       (1U)
-#define IRQ_DMA_CHANNEL4_USED        (IRQ_DMA_USED_MCALSPI_TX)
-#define IRQ_DMA_CHANNEL4_PARAM       (1U)
+#define IRQ_DMA_CHANNEL3_USED        (IRQ_DMA_AVAILABLE)
+#define IRQ_DMA_CHANNEL3_PARAM       (255U)
+#define IRQ_DMA_CHANNEL4_USED        (IRQ_DMA_AVAILABLE)
+#define IRQ_DMA_CHANNEL4_PARAM       (255U)
 #define IRQ_DMA_CHANNEL5_USED        (IRQ_DMA_AVAILABLE)
 #define IRQ_DMA_CHANNEL5_PARAM       (255U)
 #define IRQ_DMA_CHANNEL6_USED        (IRQ_DMA_AVAILABLE)
@@ -394,7 +403,7 @@ Configuration: IRQ_OSEK_ENABLE
 #define IRQ_DMA_CHANNEL15_PARAM      (255U)
 
 /* Macro for AscLin_Irq.c*/
-#define IRQ_ASCLIN_CHANNEL0_USED      (IRQ_ASCLIN_USED_MCALLIN)
+#define IRQ_ASCLIN_CHANNEL0_USED      (IRQ_ASCLIN_AVAILABLE)
 #define IRQ_ASCLIN_CHANNEL1_USED      (IRQ_ASCLIN_USED_MCALUART)
 
 
@@ -441,15 +450,13 @@ Configuration: IRQ_OSEK_ENABLE
 #define IRQ_CAN_SR23_CAT            (IRQ_CAT1)
 
 /*  CAN interrupt Priority setting  */
-#define IRQ_CAN_SR0_PRIO            0x0
-#define IRQ_CAN_SR1_PRIO            0x46
-#define IRQ_CAN_SR2_PRIO            0x48
-#ifdef _APP_KIT_BOARD_
-#define IRQ_CAN_SR3_PRIO            0x45
-#endif
-#define IRQ_CAN_SR4_PRIO            0x47
-#define IRQ_CAN_SR5_PRIO            0x49
-#define IRQ_CAN_SR6_PRIO            0x4a
+#define IRQ_CAN_SR0_PRIO            0x46
+#define IRQ_CAN_SR1_PRIO            0x0
+#define IRQ_CAN_SR2_PRIO            0x0
+#define IRQ_CAN_SR3_PRIO            0x47
+#define IRQ_CAN_SR4_PRIO            0x0
+#define IRQ_CAN_SR5_PRIO            0x0
+#define IRQ_CAN_SR6_PRIO            0x48
 #define IRQ_CAN_SR7_PRIO            0x0
 #define IRQ_CAN_SR8_PRIO            0x0
 #define IRQ_CAN_SR9_PRIO            0x0
@@ -459,12 +466,12 @@ Configuration: IRQ_OSEK_ENABLE
 #define IRQ_CAN_SR13_PRIO           0x0
 #define IRQ_CAN_SR14_PRIO           0x0
 #define IRQ_CAN_SR15_PRIO           0x0
-#define IRQ_CAN_SR16_PRIO           0x4b
+#define IRQ_CAN_SR16_PRIO           0x49
 #define IRQ_CAN_SR17_PRIO           0x0
-#define IRQ_CAN_SR18_PRIO           0x0
-#define IRQ_CAN_SR19_PRIO           0x4c
+#define IRQ_CAN_SR18_PRIO           0x4a
+#define IRQ_CAN_SR19_PRIO           0x4b
 #define IRQ_CAN_SR20_PRIO           0x0
-#define IRQ_CAN_SR21_PRIO           0x0
+#define IRQ_CAN_SR21_PRIO           0x4c
 #define IRQ_CAN_SR22_PRIO           0x4d
 #define IRQ_CAN_SR23_PRIO           0x0
 

@@ -176,6 +176,7 @@ IFX_INTERRUPT(ASCLIN0TX_ISR, 0, IRQ_ASCLIN0_TX_PRIO)
 ISR(ASCLIN0TX_ISR)
 #endif
 {
+
   /* Enable Global Interrupts */
   Mcal_EnableAllInterrupts();
 
@@ -227,6 +228,7 @@ ISR(ASCLIN1TX_ISR)
   /* Complex STDLIN driver usage */
   StdLin_IsrTransmit(1U);
 #endif/*#if (IRQ_ASCLIN_CHANNEL1_USED == IRQ_ASCLIN_USED_MCALLIN)*/
+
 }
 #endif
 

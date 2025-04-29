@@ -1224,336 +1224,350 @@ DS_AS_SPI234,DS_NAS_SPI_PR913, DS_NAS_HE2_SPI_PR3023, DS_NAS_EP_SPI_PR3023]
 ** Mode in POLLING MODE and all the interrupts disabled                       **
 *******************************************************************************/
 #if ((SPI_LEVEL_DELIVERED == 1U) || (SPI_LEVEL_DELIVERED == 2U))
-void Spi_Init( const Spi_ConfigType* ConfigPtr )
+void Spi_Init(const Spi_ConfigType* ConfigPtr)
 {
-    uint32 Index;
-#if ( SPI_QM_ASYNC_MASTER_MODULES_USED != 0U )
-    uint32 QmModIndex;
-#endif
-#if ( SPI_CHANNEL_BUFFERS_ALLOWED != 1U )
-    uint32 BufferIndex;
-    const Spi_ChannelConfigType* ChannelConfigPtr;
-#endif
-#if ( ( SPI_DEV_ERROR_DETECT == STD_ON ) || ( SPI_SAFETY_ENABLE == STD_ON ) )
+  uint32 Index;
+  #if (SPI_QM_ASYNC_MASTER_MODULES_USED != 0U)
+  uint32 QmModIndex;
+  #endif
+  #if (SPI_CHANNEL_BUFFERS_ALLOWED != 1U)
+  uint32 BufferIndex;
+  const Spi_ChannelConfigType* ChannelConfigPtr;
+  #endif
+
+  #if ( (SPI_DEV_ERROR_DETECT == STD_ON) || (SPI_SAFETY_ENABLE == STD_ON) )
     Std_ReturnType ReturnStatus;
-#endif
-#if ( ( SPI_CHANNEL_BUFFERS_ALLOWED == 1U ) || ( SPI_CHANNEL_BUFFERS_ALLOWED == 2U ) )
-    Spi_EBBufferType* EBBufferPtr;
-#endif /* ( SPI_CHANNEL_BUFFERS_ALLOWED != 0U ) */
+  #endif
 
-#if ( SPI_INTERRUPTABLE_SEQUENCE_ALLOWED == STD_ON )
+  #if ((SPI_CHANNEL_BUFFERS_ALLOWED == 1U) || \
+       (SPI_CHANNEL_BUFFERS_ALLOWED == 2U))
+  Spi_EBBufferType* EBBufferPtr;
+  #endif
+  /* (SPI_CHANNEL_BUFFERS_ALLOWED != 0U) */
+
+  #if (SPI_INTERRUPTABLE_SEQUENCE_ALLOWED == STD_ON)
     /* Workaround for MISRA 2004 Rule 1.2 */
-    for( Index = 0U; Index < SPI_MAX_JOB_TRIG_Q_LENGTH; Index++ )
+    for(Index = 0U; Index < SPI_MAX_JOB_TRIG_Q_LENGTH; Index++)
     {
-        #if ( SPI_SAFETY_ENABLE == STD_ON )
-        {
-            Spi_AsilJobAndSeqAccess.JobQueueRearrange[ Index ] = 0U;
-            Spi_AsilJobAndSeqAccess.JobLinkedSequenceRearrange[ Index ] = 0U;
-        }
-        #endif
 
-        #if ( SPI_QM_ASYNC_MASTER_MODULES_USED != 0U )
-        {
-            #if ( SPI_ASYNC_PARALLEL_TRANSMIT == STD_OFF )
-            {
-                Spi_QmJobAndSeqAccess.JobQueueRearrange[ Index ] = 0U;
-                Spi_QmJobAndSeqAccess.JobLinkedSequenceRearrange[ Index ] = 0U;
-            }
-            #else
-            {
-                QmModIndex = 0U;
-                do
-                {
-                    Spi_QmJobAndSeqAccess[ QmModIndex ].JobQueueRearrange[ Index ] = 0U;
-                    Spi_QmJobAndSeqAccess[ QmModIndex ].JobLinkedSequenceRearrange[ Index ]= 0U;
-                    QmModIndex++;
-                }while( QmModIndex < SPI_NUM_QM_ASYNC_MASTERS );
-            }
-            #endif
-        }
-        #endif
+      #if (SPI_SAFETY_ENABLE == STD_ON)
+      Spi_AsilJobAndSeqAccess.JobQueueRearrange[Index]          = 0U;
+      Spi_AsilJobAndSeqAccess.JobLinkedSequenceRearrange[Index] = 0U;
+      #endif
+
+      #if (SPI_QM_ASYNC_MASTER_MODULES_USED != 0U)
+      #if (SPI_ASYNC_PARALLEL_TRANSMIT == STD_OFF)
+      Spi_QmJobAndSeqAccess.JobQueueRearrange[Index]            = 0U;
+      Spi_QmJobAndSeqAccess.JobLinkedSequenceRearrange[Index]   = 0U;
+      #else
+      QmModIndex = 0U;
+      do
+      {
+        Spi_QmJobAndSeqAccess[QmModIndex].JobQueueRearrange[Index]         = 0U;
+        Spi_QmJobAndSeqAccess[QmModIndex].JobLinkedSequenceRearrange[Index]= 0U;
+        QmModIndex++;
+      }while(QmModIndex < SPI_NUM_QM_ASYNC_MASTERS);
+      #endif
+      #endif
     }
-#endif
+  #endif
 
-    /* if DET detection or Safety switched On */
-#if ( ( SPI_DEV_ERROR_DETECT == STD_ON ) || ( SPI_SAFETY_ENABLE == STD_ON ) )
+  /* if DET detection or Safety switched On */
+  #if ( (SPI_DEV_ERROR_DETECT == STD_ON) || (SPI_SAFETY_ENABLE == STD_ON) )
     ReturnStatus = E_OK;
 
-#if ( SPI_DEV_ERROR_DETECT == STD_ON )
-    if( Spi_DriverState == SPI_DRIVER_INITIALIZED )
+  #if (SPI_DEV_ERROR_DETECT == STD_ON)
+  if (Spi_DriverState == SPI_DRIVER_INITIALIZED)
+  {
+    Det_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID,
+        SPI_SID_INIT, SPI_E_ALREADY_INITIALIZED );
+
+    ReturnStatus = E_NOT_OK;
+  }
+  else
+  #endif
+  /* (SPI_DEV_ERROR_DETECT == STD_ON) */
+
+  /* The ConfigPtr is expected to be a NULL_PTR in case of Pre Compile Variant
+     delivery */
+  #if (SPI_PB_FIXEDADDR == STD_ON)
+  if (Spi_kConfigPtr != ConfigPtr)
+  #else
+  if (ConfigPtr == NULL_PTR)
+  #endif
+  /*(SPI_PB_FIXEDADDR == STD_ON)*/
+  {
+    /* Report to  DET */
+    #if (SPI_DEV_ERROR_DETECT == STD_ON)
+    Det_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID,
+        SPI_SID_INIT, SPI_E_PARAM_CONFIG );
+    #endif
+    /* (SPI_DEV_ERROR_DETECT == STD_ON) */
+
+    #if (SPI_SAFETY_ENABLE == STD_ON)
+    SafeMcal_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID,
+        SPI_SID_INIT, SPI_E_PARAM_CONFIG );
+     /* [cover parentID=DS_MCAL_SPI_9841_01][/cover] */
+    #endif
+    /* (SPI_SAFETY_ENABLE == STD_ON) */
+
+    /* Return from Function upon error */
+    ReturnStatus = E_NOT_OK;
+  }
+  else
+  {
+    /*Do Nothing*/
+  } /* (Spi_kConfigPtr != ConfigPtr) */
+
+  #if (SPI_SAFETY_ENABLE == STD_ON)
+  if ((ReturnStatus == E_OK) &&
+      (ConfigPtr->SafetyMarker != ((uint32)SPI_MODULE_ID << 16U)))
+  {
+    /* report to upper layer */
+    SafeMcal_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID,
+        SPI_SID_INIT, SPI_E_PARAM_CONFIG );
+     /* [cover parentID=DS_MCAL_SPI_9841_01][/cover] */
+    ReturnStatus = E_NOT_OK;
+  }
+  #endif
+  /* (SPI_SAFETY_ENABLE == STD_ON) */
+
+  if (ReturnStatus == E_OK)
+  #endif
+  /*( (SPI_DEV_ERROR_DETECT == STD_ON) || (SPI_SAFETY_ENABLE == STD_ON) )  */
+  {
+  
+    #if (SPI_PB_FIXEDADDR == STD_OFF)
+    Spi_kConfigPtr = ConfigPtr;  /* Store ConfigPtr for use by APIs*/
+    #endif
+    
+    /* Tx,Rx Dma Channel no's are copied to Global variable from Configuration*/
+    Index = 0U;
+    #if (SPI_QM_ASYNC_MASTER_MODULES_USED != 0U)
+    QmModIndex = 0U;
+    #endif
+    do
     {
-        Det_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID, SPI_SID_INIT, SPI_E_ALREADY_INITIALIZED );
-        ReturnStatus = E_NOT_OK;
-    }
-    else
-#endif /* ( SPI_DEV_ERROR_DETECT == STD_ON ) */
+      #if (SPI_SAFETY_ENABLE == STD_ON)
+      if(SPI_ASIL_MASTER == Spi_lGetModuleKind((uint8)Index))
+      {
+         /*  NULL_PTR check is not needed since ASIL master is mandated to be
+             configured for ASYNC transmission with valid DMA channels */
 
-    /* The ConfigPtr is expected to be a NULL_PTR in case of Pre Compile Variant
-       delivery */
-#if ( SPI_PB_FIXEDADDR == STD_ON )
-        if( Spi_kConfigPtr != ConfigPtr )
-#else
-        if( ConfigPtr == NULL_PTR )
-#endif /*(SPI_PB_FIXEDADDR == STD_ON)*/
+         /* SPI_NUM_ASIL_MASTER_MODULES is always 1 hence index of 0 is used */
+         Spi_AsilChnlAccess[0U].DmaChannelIdx.TxDmaChannel =
+             ConfigPtr->HWModuleConfigPtr[Index]->SpiDmaConfigPtr->TxDmaChannel;
+
+         Spi_AsilChnlAccess[0U].DmaChannelIdx.RxDmaChannel =
+             ConfigPtr->HWModuleConfigPtr[Index]->SpiDmaConfigPtr->RxDmaChannel;
+      }
+      else
+      #endif
+      {
+        if(Spi_lModuleConfiguredAndAsync((uint8)Index) != 0U)
         {
-            /* Report to  DET */
-            #if ( SPI_DEV_ERROR_DETECT == STD_ON )
-            {
-                Det_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID, SPI_SID_INIT, SPI_E_PARAM_CONFIG );
-            }
-            #endif /* (SPI_DEV_ERROR_DETECT == STD_ON) */
+           #if (SPI_QM_ASYNC_MASTER_MODULES_USED != 0U)
+            Spi_QmChnlAccess[QmModIndex].DmaChannelIdx.TxDmaChannel =
+             ConfigPtr->HWModuleConfigPtr[Index]->SpiDmaConfigPtr->TxDmaChannel;
 
-            #if ( SPI_SAFETY_ENABLE == STD_ON )
-            {
-                SafeMcal_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID, SPI_SID_INIT, SPI_E_PARAM_CONFIG );
-                /* [cover parentID=DS_MCAL_SPI_9841_01][/cover] */
-            }
-            #endif /* ( SPI_SAFETY_ENABLE == STD_ON ) */
+            Spi_QmChnlAccess[QmModIndex].DmaChannelIdx.RxDmaChannel =
+             ConfigPtr->HWModuleConfigPtr[Index]->SpiDmaConfigPtr->RxDmaChannel;
 
-            /* Return from Function upon error */
-            ReturnStatus = E_NOT_OK;
+           /* Increment only if module is configured as QM master module */
+            QmModIndex++;
+           #endif
         }
-        else
-        {
-            /*Do Nothing*/
-        } /* (Spi_kConfigPtr != ConfigPtr) */
+      }
+      Index++;
+    }while  (Index < SPI_MAX_HW_UNIT);
 
-    #if ( SPI_SAFETY_ENABLE == STD_ON )
+    /* HW initilisation */
+    Spi_lHwInit(ConfigPtr);
+
+  /*  ------------------------------------------------------------------ **
+  **                 SPI Channel Initialization                          **
+  **  ------------------------------------------------------------------ */
+    /*
+      This Init function shall define defaults values for needed
+      parameters of the structure referenced by the ConfigPtr
+    */
+    Spi_NoOfIBChannels = 0U; /* Reset Number of IB Channels */
+    Index = 0U;
+    #if (SPI_CHANNEL_BUFFERS_ALLOWED != 1U)
+    BufferIndex = 0U;
+    ChannelConfigPtr = ConfigPtr->SpiChannelConfigPtr;
+    #endif
+    /* (SPI_CHANNEL_BUFFERS_ALLOWED != 1U) */
+
+    do
     {
-        if( ( ReturnStatus == E_OK ) && ( ConfigPtr->SafetyMarker != ( ( uint32 ) SPI_MODULE_ID << 16U ) ) )
-        {
-            /* report to upper layer */
-            SafeMcal_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID, SPI_SID_INIT, SPI_E_PARAM_CONFIG );
-            /* [cover parentID=DS_MCAL_SPI_9841_01][/cover] */
-            ReturnStatus = E_NOT_OK;
-        }
-    }
-    #endif /* (SPI_SAFETY_ENABLE == STD_ON) */
+      #if (SPI_CHANNEL_BUFFERS_ALLOWED == 2U)
+      if (ChannelConfigPtr->ChannelBufferType == SPI_IB_BUFFER)
+      #endif
+      /*(SPI_CHANNEL_BUFFERS_ALLOWED == 2U)*/
+      #if (SPI_CHANNEL_BUFFERS_ALLOWED != 1U)
+      {
+        /* Store Buffer Offset Position for IB Channels */
+        Spi_IBBufferAccess.IBBufferOffset[Index] = (uint16)BufferIndex;
+        BufferIndex = BufferIndex + (uint32)ChannelConfigPtr->NoOfBuffers;
+        /*Store the Maximum IB buffer channel for the current configuration */
+        Spi_NoOfIBChannels++;
+      }
+      /*IFX_MISRA_RULE_17_04_STATUS="ChannelConfigPtr" Pointer arithmetic used
+        due to PBConfigStructure and is within allowed range.*/
+      ChannelConfigPtr++;
+      #endif
+      /*(SPI_CHANNEL_BUFFERS_ALLOWED != 1U)*/
+      Index++;
+    }while (Index < (uint32)ConfigPtr->NoOfChannels);/* loop to update the IB */
 
-    if( ReturnStatus == E_OK )
-#endif /*( ( SPI_DEV_ERROR_DETECT == STD_ON ) || ( SPI_SAFETY_ENABLE == STD_ON ) )  */
+    #if (SPI_CHANNEL_BUFFERS_ALLOWED != 0U)
+    /* Initailize Index to the last channel i.e Max Channel */
+    Index = (uint32)ConfigPtr->NoOfChannels - (uint32)(Spi_NoOfIBChannels);
+    do
     {
-        #if ( SPI_PB_FIXEDADDR == STD_OFF )
-        {
-            Spi_kConfigPtr = ConfigPtr;  /* Store ConfigPtr for use by APIs*/
-        }
+      Index--;
+      EBBufferPtr = &(Spi_EBBuffer[Index]); /* Get EB_Buffer Pointer */
+      EBBufferPtr->DestPtr = NULL_PTR;   /* Set EB Destination Pointer to NULL*/
+      EBBufferPtr->SrcPtr  = NULL_PTR;   /* Set EB Source Pointer to NULL */
+      EBBufferPtr->Length  = (Spi_NumberOfDataType)0;/* Set EB Length to 0 */
+    }while (Index > 0U);
+    #endif
+    /*(SPI_CHANNEL_BUFFERS_ALLOWED != 0) */
+
+   /*  ------------------------------------------------------------------ **
+  **                 Global Variable Initialization                      **
+  **  ------------------------------------------------------------------ */
+   /*
+     After having finished the module initialization,
+    the SPI Handler/Driver state shall be set to SPI_IDLE and set the
+    Sequences result shall be set to SPI_SEQ_OK and the jobs result
+    shall be set to SPI_JOB_OK.
+   */
+
+    /* Set SPI Bus Status to Idle */
+    Spi_lSetAsyncBusStatus((Spi_StatusType)SPI_IDLE);
+
+    Spi_BusStatus = SPI_IDLE; /* Set SPI Bus Status to Idle */
+    #if (SPI_INTERRUPTABLE_SEQUENCE_ALLOWED == STD_ON)
+      Index = ConfigPtr->NoOfSequences; /* Set Index to the last Sequence */
+      do
+      {
+        Index--;
+        /* Set each Sequence Status to SPI_SEQ_OK */
+        #if (SPI_SAFETY_ENABLE == STD_ON)
+        Spi_AsilJobAndSeqAccess.CurrentJobIndex[Index] = 0U;
         #endif
-        
-        /* Tx,Rx Dma Channel no's are copied to Global variable from Configuration*/
-        Index = 0U;
-        #if ( SPI_QM_ASYNC_MASTER_MODULES_USED != 0U )
-        {
-            QmModIndex = 0U;
-        }
-        #endif
+
+        #if (SPI_QM_ASYNC_MASTER_MODULES_USED != 0U)
+        #if (SPI_ASYNC_PARALLEL_TRANSMIT == STD_OFF)
+        Spi_QmJobAndSeqAccess.CurrentJobIndex[Index] = 0U;
+        #else
+        QmModIndex = 0U;
         do
         {
-#if ( SPI_SAFETY_ENABLE == STD_ON )
-            if( SPI_ASIL_MASTER == Spi_lGetModuleKind( ( uint8 ) Index ) )
-            {
-                /*  NULL_PTR check is not needed since ASIL master is mandated to be
-                    configured for ASYNC transmission with valid DMA channels */
+          Spi_QmJobAndSeqAccess[QmModIndex].CurrentJobIndex[Index] = 0U;
+          QmModIndex++;
+        }while(QmModIndex < SPI_NUM_QM_ASYNC_MASTERS);
+        #endif
+        #endif
+      }while (Index > 0U);
 
-                /* SPI_NUM_ASIL_MASTER_MODULES is always 1 hence index of 0 is used */
-                Spi_AsilChnlAccess[ 0U ].DmaChannelIdx.TxDmaChannel = ConfigPtr->HWModuleConfigPtr[ Index ]->SpiDmaConfigPtr->TxDmaChannel;
+    /* if SPI_INTERRUPTABLE_SEQUENCE_ALLOWED == STD_OFF */
+    #else
+      #if (SPI_SAFETY_ENABLE == STD_ON)
+      Spi_AsilJobAndSeqAccess.CurrentJobIndex = 0U;
+      #endif
 
-                Spi_AsilChnlAccess[ 0U ].DmaChannelIdx.RxDmaChannel = ConfigPtr->HWModuleConfigPtr[ Index ]->SpiDmaConfigPtr->RxDmaChannel;
-            }
-            else
+      #if (SPI_QM_ASYNC_MASTER_MODULES_USED != 0U)
+      #if (SPI_ASYNC_PARALLEL_TRANSMIT == STD_OFF)
+      Spi_QmJobAndSeqAccess.CurrentJobIndex = 0U;
+      #else
+      QmModIndex = 0U;
+      do
+      {
+        Spi_QmJobAndSeqAccess[QmModIndex].CurrentJobIndex = 0U;
+        QmModIndex++;
+      }while(QmModIndex < SPI_NUM_QM_ASYNC_MASTERS);
+      #endif
+      #endif
+    #endif
+    /*(SPI_INTERRUPTABLE_SEQUENCE_ALLOWED == STD_ON)*/
+
+    #if (SPI_CHANNEL_BUFFERS_ALLOWED != 1U)
+    /* clear the status variable ChannelWriteLock */
+    Spi_lClearChannelWriteLock();
+    #endif
+    /*(SPI_CHANNEL_BUFFERS_ALLOWED != 1U) */
+
+    /* Job Result status to SPI_JOB_OK */
+    Spi_lClearJobResultStatus();
+    /* Sequence status to SPI_SEQ_OK */
+    Spi_lClearSequenceStatus();
+
+    /* Set Sequence Status to not active in the Sequence Queue */
+    Index = 0U;
+    do
+    {
+
+      #if (SPI_SAFETY_ENABLE == STD_ON)
+      Spi_AsilJobAndSeqAccess.JobLinkedSeq[Index] = SPI_SEQ_IDLE_ID;
+      Spi_AsilJobAndSeqAccess.JobQueue[Index]     = SPI_JOB_IDLE_ID;
+      #endif
+
+      #if (SPI_QM_ASYNC_MASTER_MODULES_USED != 0U)
+      #if (SPI_ASYNC_PARALLEL_TRANSMIT == STD_OFF)
+      Spi_QmJobAndSeqAccess.JobLinkedSeq[Index]   = SPI_SEQ_IDLE_ID;
+      Spi_QmJobAndSeqAccess.JobQueue[Index]       = SPI_JOB_IDLE_ID;
+      #else
+      QmModIndex = 0U;
+      do
+      {
+        Spi_QmJobAndSeqAccess[QmModIndex].JobLinkedSeq[Index] = SPI_SEQ_IDLE_ID;
+        Spi_QmJobAndSeqAccess[QmModIndex].JobQueue[Index]     = SPI_JOB_IDLE_ID;
+        QmModIndex++;
+      }while(QmModIndex < SPI_NUM_QM_ASYNC_MASTERS);
+      #endif
+      #endif
+
+      Index++;
+    }while (Index < SPI_MAX_JOB_TRIG_Q_LENGTH);
+
+    #if (SPI_SLAVE_ENABLE == STD_ON)
+    Spi_lSlaveInit(ConfigPtr);
+    #endif
+#if (SPI_SUPPORT_CONCURRENT_SYNC_TRANSMIT == STD_OFF)
+#if (SPI_LEVEL_DELIVERED == 2U)
+#if(SPI_LEVEL2_ASYNC_ONLY == STD_OFF)
+    Spi_SyncLock = 0U;
+#endif /* SPI_LEVEL2_ASYNC_ONLY == STD_OFF */
 #endif
-            {
-                if( Spi_lModuleConfiguredAndAsync( ( uint8 ) Index ) != 0U )
-                {
-                    #if ( SPI_QM_ASYNC_MASTER_MODULES_USED != 0U )
-                    {
-                        Spi_QmChnlAccess[ QmModIndex ].DmaChannelIdx.TxDmaChannel = ConfigPtr->HWModuleConfigPtr[ Index ]->SpiDmaConfigPtr->TxDmaChannel;
-                        Spi_QmChnlAccess[ QmModIndex ].DmaChannelIdx.RxDmaChannel = ConfigPtr->HWModuleConfigPtr[ Index ]->SpiDmaConfigPtr->RxDmaChannel;
-                        /* Increment only if module is configured as QM master module */
-                        QmModIndex++;
-                    }
-                    #endif
-                }
-            }
-            Index++;
-        }while( Index < SPI_MAX_HW_UNIT );
+#endif
 
-        /* HW initilisation */
-        Spi_lHwInit( ConfigPtr );
+    /*
+      For LEVEL 2, this function sets the SPI
+      Handler/Driver asynchronous mechanism mode to SPI_POLLING_MODE by
+      default. Interrupts related to SPI busses shall be disabled.
+    */
+    #if (SPI_LEVEL_DELIVERED == 2U)
+    Spi_AsyncMode = (uint8)SPI_POLLING_MODE;
+    #endif
+    /* (SPI_LEVEL_DELIVERED == 2U) */
 
-        /*  ------------------------------------------------------------------ **
-        **                 SPI Channel Initialization                          **
-        **  ------------------------------------------------------------------ */
-        /*
-        This Init function shall define defaults values for needed
-        parameters of the structure referenced by the ConfigPtr
-        */
-        Spi_NoOfIBChannels = 0U; /* Reset Number of IB Channels */
-        Index = 0U;
-        #if ( SPI_CHANNEL_BUFFERS_ALLOWED != 1U )
-        {
-            BufferIndex = 0U;
-            ChannelConfigPtr = ConfigPtr->SpiChannelConfigPtr;
-        }
-        #endif /* (SPI_CHANNEL_BUFFERS_ALLOWED != 1U) */
+    #if (SPI_DEV_ERROR_DETECT == STD_ON)
+    Spi_DriverState = SPI_DRIVER_INITIALIZED;
+    #endif
+    /*(SPI_DEV_ERROR_DETECT == STD_ON)*/
 
-        do
-        {
-#if ( SPI_CHANNEL_BUFFERS_ALLOWED == 2U )
-            if( ChannelConfigPtr->ChannelBufferType == SPI_IB_BUFFER )
-#endif /*(SPI_CHANNEL_BUFFERS_ALLOWED == 2U)*/
-#if ( SPI_CHANNEL_BUFFERS_ALLOWED != 1U )
-            {
-                /* Store Buffer Offset Position for IB Channels */
-                Spi_IBBufferAccess.IBBufferOffset[ Index ] = ( uint16 ) BufferIndex;
-                BufferIndex = BufferIndex + ( uint32 ) ChannelConfigPtr->NoOfBuffers;
-                /* Store the Maximum IB buffer channel for the current configuration */
-                Spi_NoOfIBChannels++;
-            }
-            /* IFX_MISRA_RULE_17_04_STATUS="ChannelConfigPtr" Pointer arithmetic used
-                due to PBConfigStructure and is within allowed range.*/
-            ChannelConfigPtr++;
-#endif /*( SPI_CHANNEL_BUFFERS_ALLOWED != 1U )*/
-            Index++;
-        }while( Index < ( uint32 ) ConfigPtr->NoOfChannels );/* loop to update the IB */
+    #if (SPI_PB_FIXEDADDR == STD_ON)
+    Spi_InitStatus = SPI_DRIVER_INITIALIZED;
+    #endif
+    /*(SPI_PB_FIXEDADDR == STD_ON)*/
 
-#if ( SPI_CHANNEL_BUFFERS_ALLOWED != 0U )
-        /* Initailize Index to the last channel i.e Max Channel */
-        Index = ( uint32 ) ConfigPtr->NoOfChannels - ( uint32 ) ( Spi_NoOfIBChannels );
-        do
-        {
-            Index--;
-            EBBufferPtr = &( Spi_EBBuffer[ Index ] ); /* Get EB_Buffer Pointer */
-            EBBufferPtr->DestPtr = NULL_PTR;   /* Set EB Destination Pointer to NULL*/
-            EBBufferPtr->SrcPtr = NULL_PTR;   /* Set EB Source Pointer to NULL */
-            EBBufferPtr->Length = ( Spi_NumberOfDataType ) 0;/* Set EB Length to 0 */
-        }while (Index > 0U);
-#endif /*(SPI_CHANNEL_BUFFERS_ALLOWED != 0) */
-        /*  ------------------------------------------------------------------ **
-        **                 Global Variable Initialization                      **
-        **  ------------------------------------------------------------------ */
-        /*
-            After having finished the module initialization,
-            the SPI Handler/Driver state shall be set to SPI_IDLE and set the
-            Sequences result shall be set to SPI_SEQ_OK and the jobs result
-            shall be set to SPI_JOB_OK.
-        */
-
-        /* Set SPI Bus Status to Idle */
-        Spi_lSetAsyncBusStatus( ( Spi_StatusType ) SPI_IDLE );
-
-        Spi_BusStatus = SPI_IDLE; /* Set SPI Bus Status to Idle */
-#if (SPI_INTERRUPTABLE_SEQUENCE_ALLOWED == STD_ON)
-        Index = ConfigPtr->NoOfSequences; /* Set Index to the last Sequence */
-        do
-        {
-            Index--;
-            /* Set each Sequence Status to SPI_SEQ_OK */
-            #if ( SPI_SAFETY_ENABLE == STD_ON )
-                Spi_AsilJobAndSeqAccess.CurrentJobIndex[ Index ] = 0U;
-            #endif
-
-            #if ( SPI_QM_ASYNC_MASTER_MODULES_USED != 0U )
-                #if ( SPI_ASYNC_PARALLEL_TRANSMIT == STD_OFF )
-                    Spi_QmJobAndSeqAccess.CurrentJobIndex[ Index ] = 0U;
-                #else
-                    QmModIndex = 0U;
-                    do
-                    {
-                        Spi_QmJobAndSeqAccess[ QmModIndex ].CurrentJobIndex[ Index ] = 0U;
-                        QmModIndex++;
-                    }while( QmModIndex < SPI_NUM_QM_ASYNC_MASTERS );
-                #endif
-            #endif
-        }while( Index > 0U );
-/* if SPI_INTERRUPTABLE_SEQUENCE_ALLOWED == STD_OFF */
-#else
-        #if ( SPI_SAFETY_ENABLE == STD_ON )
-            Spi_AsilJobAndSeqAccess.CurrentJobIndex = 0U;
-        #endif
-
-        #if ( SPI_QM_ASYNC_MASTER_MODULES_USED != 0U )
-            #if ( SPI_ASYNC_PARALLEL_TRANSMIT == STD_OFF )
-                Spi_QmJobAndSeqAccess.CurrentJobIndex = 0U;
-            #else
-                QmModIndex = 0U;
-                do
-                {
-                    Spi_QmJobAndSeqAccess[ QmModIndex ].CurrentJobIndex = 0U;
-                    QmModIndex++;
-                }while( QmModIndex < SPI_NUM_QM_ASYNC_MASTERS );
-            #endif
-        #endif
-#endif /*( SPI_INTERRUPTABLE_SEQUENCE_ALLOWED == STD_ON )*/
-
-        #if ( SPI_CHANNEL_BUFFERS_ALLOWED != 1U )
-            /* clear the status variable ChannelWriteLock */
-            Spi_lClearChannelWriteLock();
-        #endif /*(SPI_CHANNEL_BUFFERS_ALLOWED != 1U) */
-
-        /* Job Result status to SPI_JOB_OK */
-        Spi_lClearJobResultStatus();
-        /* Sequence status to SPI_SEQ_OK */
-        Spi_lClearSequenceStatus();
-
-        /* Set Sequence Status to not active in the Sequence Queue */
-        Index = 0U;
-        do
-        {
-            #if ( SPI_SAFETY_ENABLE == STD_ON )
-                Spi_AsilJobAndSeqAccess.JobLinkedSeq[ Index ] = SPI_SEQ_IDLE_ID;
-                Spi_AsilJobAndSeqAccess.JobQueue[ Index ]     = SPI_JOB_IDLE_ID;
-            #endif
-
-            #if ( SPI_QM_ASYNC_MASTER_MODULES_USED != 0U )
-                #if ( SPI_ASYNC_PARALLEL_TRANSMIT == STD_OFF )
-                    Spi_QmJobAndSeqAccess.JobLinkedSeq[ Index ] = SPI_SEQ_IDLE_ID;
-                    Spi_QmJobAndSeqAccess.JobQueue[ Index ] = SPI_JOB_IDLE_ID;
-                #else
-                QmModIndex = 0U;
-                do
-                {
-                    Spi_QmJobAndSeqAccess[ QmModIndex ].JobLinkedSeq[ Index ] = SPI_SEQ_IDLE_ID;
-                    Spi_QmJobAndSeqAccess[ QmModIndex ].JobQueue[ Index ] = SPI_JOB_IDLE_ID;
-                    QmModIndex++;
-                }while( QmModIndex < SPI_NUM_QM_ASYNC_MASTERS );
-                #endif
-            #endif
-            Index++;
-        }while( Index < SPI_MAX_JOB_TRIG_Q_LENGTH );
-
-        #if ( SPI_SLAVE_ENABLE == STD_ON )
-            Spi_lSlaveInit( ConfigPtr );
-        #endif
-
-        #if ( SPI_SUPPORT_CONCURRENT_SYNC_TRANSMIT == STD_OFF )
-            #if ( SPI_LEVEL_DELIVERED == 2U )
-                #if ( SPI_LEVEL2_ASYNC_ONLY == STD_OFF )
-                    Spi_SyncLock = 0U;
-                #endif /* SPI_LEVEL2_ASYNC_ONLY == STD_OFF */
-            #endif
-        #endif
-
-        /*
-            For LEVEL 2, this function sets the SPI
-            Handler/Driver asynchronous mechanism mode to SPI_POLLING_MODE by
-            default. Interrupts related to SPI busses shall be disabled.
-        */
-        #if ( SPI_LEVEL_DELIVERED == 2U )
-            Spi_AsyncMode = (uint8)SPI_POLLING_MODE;
-        #endif /* (SPI_LEVEL_DELIVERED == 2U) */
-
-        #if ( SPI_DEV_ERROR_DETECT == STD_ON )
-            Spi_DriverState = SPI_DRIVER_INITIALIZED;
-        #endif /*(SPI_DEV_ERROR_DETECT == STD_ON)*/
-
-        #if ( SPI_PB_FIXEDADDR == STD_ON )
-            Spi_InitStatus = SPI_DRIVER_INITIALIZED;
-        #endif /*(SPI_PB_FIXEDADDR == STD_ON)*/
-    }
+  }
 }/* End of Function: Spi_Init */
 #endif
 /* (SPI_LEVEL_DELIVERED == 1U) || (SPI_LEVEL_DELIVERED == 2U) */
-
 
 /*******************************************************************************
 ** Syntax : void Spi_Init(const Spi_ConfigType* ConfigPtr)                    **
@@ -2305,328 +2319,327 @@ DS_NAS_SPI_PR100, DS_NAS_SPI_PR101,DS_AS403_SPI194 ]
 ** Spi_WriteIB method for IB Channels but before the Spi_ReadIB method.       **
 *******************************************************************************/
 /*[cover parentID=DS_AS_SPI109_1*/
-#if ( ( SPI_LEVEL_DELIVERED == 1U ) || ( SPI_LEVEL_DELIVERED == 2U ) )
+#if ((SPI_LEVEL_DELIVERED == 1U) || (SPI_LEVEL_DELIVERED == 2U))
 /* [/cover]*/
-Std_ReturnType Spi_AsyncTransmit( Spi_SequenceType Sequence )
+Std_ReturnType Spi_AsyncTransmit(Spi_SequenceType Sequence)
 {
-    Spi_JobAndSeqAccessType *JobSeqDataPtr;
-    uint32 RetVal;
-    const Spi_SequenceConfigType* ParamSeqConfigPtr;
-    uint32 HWUnit;
-    uint32 SeqJobSharingStatus;
-    uint16 JobId;
-    uint16 FirstJobInQueue;
-#if ( SPI_INTERRUPTABLE_SEQUENCE_ALLOWED == STD_OFF )
-    uint16 Index;
-#endif
-    /*(SPI_INTERRUPTABLE_SEQUENCE_ALLOWED == STD_OFF)*/
-    uint32 JobCounter;
-    uint8 IsQAvail;
+  Spi_JobAndSeqAccessType   *JobSeqDataPtr;
+  uint32 RetVal;
+  const Spi_SequenceConfigType* ParamSeqConfigPtr;
+  uint32 HWUnit;
+  uint32 SeqJobSharingStatus;
+  uint16 JobId;
+  uint16 FirstJobInQueue;
+  #if (SPI_INTERRUPTABLE_SEQUENCE_ALLOWED == STD_OFF)
+  uint16 Index;
+  #endif
+  /*(SPI_INTERRUPTABLE_SEQUENCE_ALLOWED == STD_OFF)*/
+  uint32 JobCounter;
+  uint8 IsQAvail;
 
-#if ( ( SPI_DEV_ERROR_DETECT == STD_OFF ) && ( SPI_SAFETY_ENABLE == STD_ON ) )
-    RetVal = E_OK;
-#endif
+  #if ((SPI_DEV_ERROR_DETECT == STD_OFF) && (SPI_SAFETY_ENABLE == STD_ON))
+  RetVal = E_OK;
+  #endif
 
-#if ( ( SPI_DEV_ERROR_DETECT == STD_ON) || ( SPI_SAFETY_ENABLE == STD_ON ) )
-    JobSeqDataPtr = NULL_PTR; /* To remove warning: Possibly Uninitialised*/
-#endif
+  #if ((SPI_DEV_ERROR_DETECT == STD_ON) || (SPI_SAFETY_ENABLE == STD_ON))
+  JobSeqDataPtr = NULL_PTR; /* To remove warning: Possibly Uninitialised*/
+  #endif
 
-#if ( ( SPI_DEV_ERROR_DETECT == STD_ON ) || ( SPI_SAFETY_ENABLE == STD_ON ) )
-    /* API called before initialization */
-    #if ( SPI_DEV_ERROR_DETECT == STD_ON )
-        RetVal = Spi_lGetDetInitStatus( SPI_SID_ASYNCTRANSMIT );
-    #endif
+  #if ( (SPI_DEV_ERROR_DETECT == STD_ON) || (SPI_SAFETY_ENABLE == STD_ON) )
+  /* API called before initialization */
+  #if (SPI_DEV_ERROR_DETECT == STD_ON)
+  RetVal = Spi_lGetDetInitStatus(SPI_SID_ASYNCTRANSMIT);
+  #endif
 
     /*
-       Sequence shall be within the specified range of
-       values (Sync Seq Limit to SPI_MAX_SEQUENCE )
+    Sequence shall be within the specified range of
+    values (Sync Seq Limit to SPI_MAX_SEQUENCE )
     */
-    #if ( SPI_LEVEL_DELIVERED == 2U )
-#if ( !( ( SPI_DEV_ERROR_DETECT == STD_OFF ) && ( SPI_SAFETY_ENABLE == STD_ON ) ) )
-        if( ( RetVal == E_OK ) 
-            && ( ( Sequence >= Spi_kConfigPtr->NoOfSequences ) || ( Sequence < Spi_kConfigPtr->NoOfSyncSequences ) ) 
-            )
-#else
-        if( ( ( Sequence >= Spi_kConfigPtr->NoOfSequences ) || ( Sequence < Spi_kConfigPtr->NoOfSyncSequences ) ) )
-#endif
-        {
-            /* Report to DET */
-            #if ( SPI_DEV_ERROR_DETECT == STD_ON )
-            {
-                Det_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID, SPI_SID_ASYNCTRANSMIT, SPI_E_PARAM_SEQ );
-            }
-            #endif
+  #if (SPI_LEVEL_DELIVERED == 2U)
 
-            #if ( SPI_SAFETY_ENABLE == STD_ON )
-                SafeMcal_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID, SPI_SID_ASYNCTRANSMIT, SPI_E_PARAM_SEQ );
-                /* [cover parentID=DS_MCAL_SPI_9841_04][/cover] */
-            #endif
+  #if (!((SPI_DEV_ERROR_DETECT == STD_OFF) && (SPI_SAFETY_ENABLE == STD_ON)))
+  if ((RetVal == E_OK) &&
+         ((Sequence >= Spi_kConfigPtr->NoOfSequences)
+         || (Sequence < Spi_kConfigPtr->NoOfSyncSequences)))
+  #else
+  if (((Sequence >= Spi_kConfigPtr->NoOfSequences)
+         || (Sequence < Spi_kConfigPtr->NoOfSyncSequences)))
+  #endif
+  {
+    /* Report to DET */
+    #if (SPI_DEV_ERROR_DETECT == STD_ON)
+    Det_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID,
+       SPI_SID_ASYNCTRANSMIT, SPI_E_PARAM_SEQ );
+    #endif
 
-            /* In case of DET or Safety error, Service is Rejected */
-            RetVal = E_NOT_OK;
-        }
-    #else
-#if ( ! ( ( SPI_DEV_ERROR_DETECT == STD_OFF ) && ( SPI_SAFETY_ENABLE == STD_ON ) ) )
-        if( ( RetVal == E_OK ) && ( Sequence >= Spi_kConfigPtr->NoOfSequences ) )
-#else
-        if( Sequence >= Spi_kConfigPtr->NoOfSequences )
-#endif
-        {
-            /* Report to DET */
-            #if ( SPI_DEV_ERROR_DETECT == STD_ON )
-            {
-                Det_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID, SPI_SID_ASYNCTRANSMIT, SPI_E_PARAM_SEQ );
-            }
-            #endif
+    #if (SPI_SAFETY_ENABLE == STD_ON)
+    SafeMcal_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID,
+        SPI_SID_ASYNCTRANSMIT, SPI_E_PARAM_SEQ );
+    /* [cover parentID=DS_MCAL_SPI_9841_04][/cover] */
+    #endif
 
-            #if ( SPI_SAFETY_ENABLE == STD_ON )
-            {
-                SafeMcal_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID, SPI_SID_ASYNCTRANSMIT, SPI_E_PARAM_SEQ );
-                /* [cover parentID=DS_MCAL_SPI_9841_04][/cover] */
-            }
-            #endif
+    /* In case of DET or Safety error, Service is Rejected */
+    RetVal = E_NOT_OK;
+  }
+  #else
+  #if (!((SPI_DEV_ERROR_DETECT == STD_OFF) && (SPI_SAFETY_ENABLE == STD_ON)))
+  if ((RetVal == E_OK) && (Sequence >= Spi_kConfigPtr->NoOfSequences))
+  #else
+  if (Sequence >= Spi_kConfigPtr->NoOfSequences)
+  #endif
+  {
+    /* Report to DET */
+    #if (SPI_DEV_ERROR_DETECT == STD_ON)
+    Det_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID,
+        SPI_SID_ASYNCTRANSMIT, SPI_E_PARAM_SEQ );
+    #endif
 
-            /* In case of DET or Safety error, Service is Rejected */
-            RetVal = E_NOT_OK;
-        }
-    #endif /*( SPI_LEVEL_DELIVERED == 2U )*/
+    #if (SPI_SAFETY_ENABLE == STD_ON)
+    SafeMcal_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID,
+        SPI_SID_ASYNCTRANSMIT, SPI_E_PARAM_SEQ );
+     /* [cover parentID=DS_MCAL_SPI_9841_04][/cover] */
+    #endif
 
-    if( RetVal == E_OK )
+    /* In case of DET or Safety error, Service is Rejected */
+    RetVal = E_NOT_OK;
+  }
+  #endif
+  /*(SPI_LEVEL_DELIVERED == 2U)*/
+
+    if(RetVal == E_OK)
     {
-        #if ( SPI_SAFETY_ENABLE == STD_ON )
-            if( SPI_ASIL_SEQUENCE == Spi_lGetSequenceKind( Sequence ) )
-            {
-                JobSeqDataPtr = &Spi_AsilJobAndSeqAccess;
-            }
-            else
-            {
-                #if ( SPI_QM_ASYNC_MASTER_MODULES_USED != 0U )
-                    #if (SPI_ASYNC_PARALLEL_TRANSMIT == STD_OFF)
-                        JobSeqDataPtr = &Spi_QmJobAndSeqAccess;
-                    #else
-                        JobSeqDataPtr = &Spi_QmJobAndSeqAccess[ Spi_lGetQmModuleVarIndexSeq( Sequence ) ];
-                    #endif
-                #endif
-                /* Do nothing if QM modules are NOT Used */
-            }
+      #if (SPI_SAFETY_ENABLE == STD_ON)
+        if( SPI_ASIL_SEQUENCE == Spi_lGetSequenceKind(Sequence) )
+        {
+          JobSeqDataPtr = &Spi_AsilJobAndSeqAccess;
+        }
+        else
+        {
+          #if (SPI_QM_ASYNC_MASTER_MODULES_USED != 0U)
+          #if (SPI_ASYNC_PARALLEL_TRANSMIT == STD_OFF)
+          JobSeqDataPtr = &Spi_QmJobAndSeqAccess;
+          #else
+          JobSeqDataPtr = &Spi_QmJobAndSeqAccess[\
+                                         Spi_lGetQmModuleVarIndexSeq(Sequence)];
+          #endif
+          #endif
+          /* Do nothing if QM modules are NOT Used */
+        }
+      #else
+      {
+        #if (SPI_ASYNC_PARALLEL_TRANSMIT == STD_OFF)
+        JobSeqDataPtr = &Spi_QmJobAndSeqAccess;
         #else
-            {
-                #if ( SPI_ASYNC_PARALLEL_TRANSMIT == STD_OFF )
-                    JobSeqDataPtr = &Spi_QmJobAndSeqAccess;
-                #else
-                    JobSeqDataPtr = &Spi_QmJobAndSeqAccess[ Spi_lGetQmModuleVarIndexSeq( Sequence ) ];
-                #endif
-            }
+        JobSeqDataPtr = &Spi_QmJobAndSeqAccess[\
+                                         Spi_lGetQmModuleVarIndexSeq(Sequence)];
         #endif
+      }
+      #endif
 
-        /* IFX_MISRA_RULE_17_04_STATUS="SpiSequenceConfigPtr" Pointer arithmetic
-           used due to PBConfigStructure and is within allowed range.*/
-        ParamSeqConfigPtr = &( Spi_kConfigPtr->SpiSequenceConfigPtr[ Sequence ] );
-        IsQAvail = Spi_lIsQueueAvailable( ParamSeqConfigPtr->JobsInParamSeq, JobSeqDataPtr );
-        /* DET for the non availability of Job Queue when a new sequence arrives */
-        #if ( SPI_DEV_ERROR_DETECT == STD_ON )
-            /* Enter Critical Section: EnterKey-B */
-            SchM_Enter_Spi_AsyncTransmit();
-            if( IsQAvail == E_NOT_OK )
-            {
-                /* Exit Critical Section asap for minimal blocking time: ExitKey-B1*/
-                SchM_Exit_Spi_AsyncTransmit();
-                
-                Det_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID, SPI_SID_ASYNCTRANSMIT, SPI_E_QUEUE_FULL );
-                /* In case of DET, Service is Rejected */
-                RetVal = E_NOT_OK;
-            }
-        #endif
+      /*IFX_MISRA_RULE_17_04_STATUS="SpiSequenceConfigPtr" Pointer arithmetic
+        used due to PBConfigStructure and is within allowed range.*/
+      ParamSeqConfigPtr = &(Spi_kConfigPtr->SpiSequenceConfigPtr[Sequence]);
+      IsQAvail = Spi_lIsQueueAvailable(ParamSeqConfigPtr->JobsInParamSeq,
+                                       JobSeqDataPtr);
+      /* DET for the non availability of Job Queue when a new sequence arrives*/
+      #if (SPI_DEV_ERROR_DETECT == STD_ON)
+     /* Enter Critical Section: EnterKey-B */
+      SchM_Enter_Spi_AsyncTransmit();
+      if (IsQAvail == E_NOT_OK)
+      {
+        /* Exit Critical Section asap for minimal blocking time: ExitKey-B1*/
+        SchM_Exit_Spi_AsyncTransmit();
+        Det_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID,
+        SPI_SID_ASYNCTRANSMIT, SPI_E_QUEUE_FULL );
+        /* In case of DET, Service is Rejected */
+        RetVal = E_NOT_OK;
+      }
+      #endif
     }
     else
     {
-        IsQAvail = E_NOT_OK;
-        ParamSeqConfigPtr = NULL_PTR;
+     IsQAvail = E_NOT_OK;
+     ParamSeqConfigPtr = NULL_PTR;
     }
 
-#else 
+#else
     /* else condition for
-       ( (SPI_DEV_ERROR_DETECT == STD_ON) || (SPI_SAFETY_ENABLE == STD_ON) )
-       initialise parameters which are not initalised if error checks are OFF */
+     ( (SPI_DEV_ERROR_DETECT == STD_ON) || (SPI_SAFETY_ENABLE == STD_ON) )
+    initialise parameters which are not initalised if error checks are OFF */
     /* fix for AI00238517 Point.1 Dead code */
-    #if ( SPI_ASYNC_PARALLEL_TRANSMIT == STD_OFF )
-        JobSeqDataPtr = &Spi_QmJobAndSeqAccess;
+    #if (SPI_ASYNC_PARALLEL_TRANSMIT == STD_OFF)
+    JobSeqDataPtr = &Spi_QmJobAndSeqAccess;
     #else
-        JobSeqDataPtr = &Spi_QmJobAndSeqAccess[ Spi_lGetQmModuleVarIndexSeq( Sequence ) ];
+    JobSeqDataPtr = &Spi_QmJobAndSeqAccess[\
+                                         Spi_lGetQmModuleVarIndexSeq(Sequence)];
     #endif
-    /* IFX_MISRA_RULE_17_04_STATUS="SpiSequenceConfigPtr" Pointer arithmetic used
-       due to PBConfigStructure and is within allowed range.*/
-    ParamSeqConfigPtr = &( Spi_kConfigPtr->SpiSequenceConfigPtr[ Sequence ] );
-    IsQAvail = Spi_lIsQueueAvailable( ParamSeqConfigPtr->JobsInParamSeq, JobSeqDataPtr );
-#endif /* ( (SPI_DEV_ERROR_DETECT == STD_ON) || (SPI_SAFETY_ENABLE == STD_ON) ) */
+    /*IFX_MISRA_RULE_17_04_STATUS="SpiSequenceConfigPtr" Pointer arithmetic used
+      due to PBConfigStructure and is within allowed range.*/
+    ParamSeqConfigPtr = &(Spi_kConfigPtr->SpiSequenceConfigPtr[Sequence]);
+    IsQAvail = Spi_lIsQueueAvailable(ParamSeqConfigPtr->JobsInParamSeq,
+                                     JobSeqDataPtr);
+#endif
+ /* ( (SPI_DEV_ERROR_DETECT == STD_ON) || (SPI_SAFETY_ENABLE == STD_ON) ) */
 
 #if ( (SPI_DEV_ERROR_DETECT == STD_ON) || (SPI_SAFETY_ENABLE == STD_ON) )
-    if( RetVal == E_OK )
-#endif /* ( (SPI_DEV_ERROR_DETECT == STD_ON) || (SPI_SAFETY_ENABLE == STD_ON) ) */
+  if (RetVal == E_OK)
+#endif
+ /* ( (SPI_DEV_ERROR_DETECT == STD_ON) || (SPI_SAFETY_ENABLE == STD_ON) ) */
+  {
+    RetVal = E_NOT_OK;
+
+    /*IFX_MISRA_RULE_17_04_STATUS="JobLinkPtr" Pointer arithmetic used due to
+      PBConfigStructure and is within allowed range.*/
+    JobId = ParamSeqConfigPtr->JobLinkPtr[0U]; /*Get First Job of the Sequence*/
+    /* Get SPI Bus */
+    /*IFX_MISRA_RULE_17_04_STATUS="SpiJobConfigPtr" Pointer arithmetic used due
+      to PBConfigStructure and is within allowed range.*/
+    HWUnit = Spi_kConfigPtr->SpiJobConfigPtr[JobId].HwUnit;
+    HWUnit &= SPI_HWUNIT_MASK;
+
+    JobCounter = 0U;
+
+    /* Sequence is not already pending */
+    /* Check if Sequence Requested shares a job with another sequences
+    that is in state SPI_SEQ_PENDING */
+    #if (SPI_DEV_ERROR_DETECT == STD_OFF)
+    SchM_Enter_Spi_AsyncTransmit(); /* Enter Critical Section: EnterKey-C */
+    #endif
+    if (IsQAvail == E_OK)
     {
-    	RetVal = E_NOT_OK;
+      /* If the requested Sequence is already in the state SPI_SEQ_PENDING
+       the SPI Handler/Driver does not take in account this new request and
+       this service returns value E_NOT_OK. According to [SPI100],
+       the SPI Handler/Driver shall report the SPI_E_SEQ_PENDING error.
+       If the requested Sequence shares Jobs with another sequence
+       that is in the state SPI_SEQ_PENDING, the SPI Handler/Driver does not
+       take in account this new request and this service returns value E_NOT_OK.
+       The SPI Handler/Driver shall report the
+       SPI_E_SEQ_PENDING error.*/
+       /* ParamSeqConfigPtr->SeqSharingJobs : Holds for each sequence all the
+       other sequences that shares a job with this sequence. The current
+       sequence is also set.
+       SeqStatus : Holds all pending sequences */
+      if (SPI_SEQ_PENDING != (Spi_lGetSeqStatus(Sequence)))
+      {
+        SeqJobSharingStatus = Spi_lSeqSharingJobStatus(ParamSeqConfigPtr);
+      }
+      else
+      {
+        SeqJobSharingStatus = 1U;
+      }/*(SPI_SEQ_PENDING != (Spi_lGetSeqStatus(Sequence)))*/
 
-		/* IFX_MISRA_RULE_17_04_STATUS="JobLinkPtr" Pointer arithmetic used due to
-		   PBConfigStructure and is within allowed range.*/
-		JobId = ParamSeqConfigPtr->JobLinkPtr[ 0U ]; /*Get First Job of the Sequence*/
-		/* Get SPI Bus */
-		/* IFX_MISRA_RULE_17_04_STATUS="SpiJobConfigPtr" Pointer arithmetic used due
-		   to PBConfigStructure and is within allowed range.*/
-		HWUnit = Spi_kConfigPtr->SpiJobConfigPtr[ JobId ].HwUnit;
-		HWUnit &= SPI_HWUNIT_MASK;
+      if (SeqJobSharingStatus == 0U)
+      {
+        RetVal = E_OK;
+        /* Set Sequence Status to Pending */
+        /* set the sequence result to SPI_SEQ_PENDING */
+        Spi_lSetSeqStatus(Sequence, SPI_SEQ_PENDING);
+        /* If the bus attached to the lead job is free, start transmission
+         immediately */
+        #if (SPI_INTERRUPTABLE_SEQUENCE_ALLOWED == STD_OFF)
+        Index = JobSeqDataPtr->EndIndex;
 
-		JobCounter = 0U;
-
-		/* Sequence is not already pending */
-		/* Check if Sequence Requested shares a job with another sequences
-		   that is in state SPI_SEQ_PENDING */
-		#if ( SPI_DEV_ERROR_DETECT == STD_OFF )
-			SchM_Enter_Spi_AsyncTransmit(); /* Enter Critical Section: EnterKey-C */
-		#endif
-
-		if( IsQAvail == E_OK )
+        do
         {
-            /* If the requested Sequence is already in the state SPI_SEQ_PENDING
-               the SPI Handler/Driver does not take in account this new request and
-               this service returns value E_NOT_OK. According to [SPI100],
-               the SPI Handler/Driver shall report the SPI_E_SEQ_PENDING error.
-               If the requested Sequence shares Jobs with another sequence
-               that is in the state SPI_SEQ_PENDING, the SPI Handler/Driver does not
-               take in account this new request and this service returns value E_NOT_OK.
-               The SPI Handler/Driver shall report the
-               SPI_E_SEQ_PENDING error.*/
-            /* ParamSeqConfigPtr->SeqSharingJobs : Holds for each sequence all the
-               other sequences that shares a job with this sequence. The current
-               sequence is also set.
-               SeqStatus : Holds all pending sequences */
-            if( SPI_SEQ_PENDING != ( Spi_lGetSeqStatus( Sequence ) ) )
-            {
-                SeqJobSharingStatus = Spi_lSeqSharingJobStatus( ParamSeqConfigPtr );
-            }
-            else
-            {
-                SeqJobSharingStatus = 1U;
-            } /*(SPI_SEQ_PENDING != (Spi_lGetSeqStatus(Sequence)))*/
+          /* extract each job id from the sequence */
+          /*IFX_MISRA_RULE_17_04_STATUS="JobLinkPtr" Pointer arithmetic used due
+            to PBConfigStructure and is within allowed range.*/
+          JobId = ParamSeqConfigPtr->JobLinkPtr[JobCounter];
+          JobSeqDataPtr->JobQueue[Index] = JobId;
+          JobSeqDataPtr->JobLinkedSeq[Index] = Sequence;
 
-            if( SeqJobSharingStatus == 0U )
-            {
-                RetVal = E_OK;
-                /* Set Sequence Status to Pending */
-                /* set the sequence result to SPI_SEQ_PENDING */
-                Spi_lSetSeqStatus( Sequence, SPI_SEQ_PENDING );
-                /* If the bus attached to the lead job is free, start transmission
-                immediately */
-                #if (SPI_INTERRUPTABLE_SEQUENCE_ALLOWED == STD_OFF )
-                    Index = JobSeqDataPtr->EndIndex;
+          Spi_lSetJobStatusAtomic(JobId,SPI_JOB_QUEUED );
+          JobCounter++;
+          Index = Spi_lIncrementAndRoundIndex(Index);
+        /*IFX_MISRA_RULE_17_04_STATUS="JobLinkPtr" Pointer arithmetic used due
+          to PBConfigStructure and is within allowed range.*/
+        }while (ParamSeqConfigPtr->JobLinkPtr[JobCounter] != \
+                                                 SPI_JOB_LINK_DELIMITER);
+        JobSeqDataPtr->EndIndex = Index;
+        #else
+        do
+        {
+          /* extract each job id from the sequence */
+          /*IFX_MISRA_RULE_17_04_STATUS="JobLinkPtr" Pointer arithmetic used due
+            to PBConfigStructure and is within allowed range.*/
+          JobId = ParamSeqConfigPtr->JobLinkPtr[JobCounter];
+          Spi_lSetJobStatusAtomic(JobId, SPI_JOB_QUEUED );
+          JobCounter++;
+        /*IFX_MISRA_RULE_17_04_STATUS="JobLinkPtr" Pointer arithmetic used due
+          to PBConfigStructure and is within allowed range.*/
+        }while (ParamSeqConfigPtr->JobLinkPtr[JobCounter] != \
+                                                 SPI_JOB_LINK_DELIMITER);
+        #endif
+        /*(SPI_INTERRUPTABLE_SEQUENCE_ALLOWED == STD_OFF)*/
 
-                    do
-                    {
-                        /* extract each job id from the sequence */
-                        /* IFX_MISRA_RULE_17_04_STATUS="JobLinkPtr" Pointer arithmetic used due
-                        to PBConfigStructure and is within allowed range.*/
-                        JobId = ParamSeqConfigPtr->JobLinkPtr[ JobCounter ];
-                        JobSeqDataPtr->JobQueue[ Index ] = JobId;
-                        JobSeqDataPtr->JobLinkedSeq[ Index ] = Sequence;
+        #if (SPI_INTERRUPTABLE_SEQUENCE_ALLOWED == STD_ON)
+        Spi_lIntSeqAsyncTransmit(Sequence,JobSeqDataPtr);
+        #endif
+        /*(SPI_INTERRUPTABLE_SEQUENCE_ALLOWED == STD_ON)*/
+        if (SPI_IDLE == Spi_lGetSeqAsyncBusStatus(Sequence))
+        {
+          /* Store the pending Sequence and its first Job in the SPI Bus */
+          /* set the SPI Handler/Driver status to SPI_BUSY */
+          Spi_lSetSeqAsyncBusStatus((Spi_StatusType)SPI_BUSY, Sequence);
+          Spi_BusStatus = SPI_BUSY;
 
-                        Spi_lSetJobStatusAtomic( JobId,SPI_JOB_QUEUED );
-                        JobCounter++;
-                        Index = Spi_lIncrementAndRoundIndex( Index );
-                        /* IFX_MISRA_RULE_17_04_STATUS="JobLinkPtr" Pointer arithmetic used due
-                        to PBConfigStructure and is within allowed range.*/
-                    }while( ParamSeqConfigPtr->JobLinkPtr[ JobCounter ] != SPI_JOB_LINK_DELIMITER );
-                    JobSeqDataPtr->EndIndex = Index;
-                #else
-                    do
-                    {
-                        /* extract each job id from the sequence */
-                        /* IFX_MISRA_RULE_17_04_STATUS="JobLinkPtr" Pointer arithmetic used due
-                           to PBConfigStructure and is within allowed range.*/
-                        JobId = ParamSeqConfigPtr->JobLinkPtr[ JobCounter ];
-                        Spi_lSetJobStatusAtomic( JobId, SPI_JOB_QUEUED );
-                        JobCounter++;
-                        /* IFX_MISRA_RULE_17_04_STATUS="JobLinkPtr" Pointer arithmetic used due
-                           to PBConfigStructure and is within allowed range.*/
-                    }while( ParamSeqConfigPtr->JobLinkPtr[ JobCounter ] != SPI_JOB_LINK_DELIMITER );
-                #endif /*( SPI_INTERRUPTABLE_SEQUENCE_ALLOWED == STD_OFF )*/
+          /* To start the first job transmission */
+          FirstJobInQueue = JobSeqDataPtr->JobQueue[0U];
+          /* Set First Job Index in the Status Array */
+          #if (SPI_INTERRUPTABLE_SEQUENCE_ALLOWED == STD_OFF)
+          JobSeqDataPtr->CurrentJobIndex = 0U;
+          /* Set First Job Index in the Status Array */
+          #else /* (SPI_INTERRUPTABLE_SEQUENCE_ALLOWED == STD_ON) */
+          JobSeqDataPtr->CurrentJobIndex[Sequence] = 0U;
+          #endif
 
-                #if ( SPI_INTERRUPTABLE_SEQUENCE_ALLOWED == STD_ON )
-                {
-                    Spi_lIntSeqAsyncTransmit( Sequence,JobSeqDataPtr );
-                }
-                #endif /*(SPI_INTERRUPTABLE_SEQUENCE_ALLOWED == STD_ON)*/
+          #if (SPI_CANCEL_API == STD_ON)
+          Spi_lClrSeqCancelStatus(Sequence);
+          #endif
+          /* (SPI_CANCEL_API == STD_ON) */
 
-                if (SPI_IDLE == Spi_lGetSeqAsyncBusStatus( Sequence ) )
-                {
-                    /* Store the pending Sequence and its first Job in the SPI Bus */
-                    /* set the SPI Handler/Driver status to SPI_BUSY */
-                    Spi_lSetSeqAsyncBusStatus( ( Spi_StatusType ) SPI_BUSY, Sequence );
-                    Spi_BusStatus = SPI_BUSY;
-
-                    /* To start the first job transmission */
-                    FirstJobInQueue = JobSeqDataPtr->JobQueue[ 0U ];
-                    /* Set First Job Index in the Status Array */
-                    #if ( SPI_INTERRUPTABLE_SEQUENCE_ALLOWED == STD_OFF )
-                    {
-                        JobSeqDataPtr->CurrentJobIndex = 0U;
-                        /* Set First Job Index in the Status Array */
-                    }
-                    #else /* (SPI_INTERRUPTABLE_SEQUENCE_ALLOWED == STD_ON) */
-                    {
-                        JobSeqDataPtr->CurrentJobIndex[ Sequence ] = 0U;
-                    }
-                    #endif
-
-                    #if ( SPI_CANCEL_API == STD_ON )
-                    {
-                        Spi_lClrSeqCancelStatus( Sequence );
-                    }
-                    #endif /* (SPI_CANCEL_API == STD_ON) */
-
-                    /* Id should be incremented first and Job should be started.
-                        Reason:
-                        For an empty Queue, a request comes with no of jobs that is
-                        equal to the Queue size, in this scenario, the Queue should
-                        be assigned to full status before starting a job.
-                    */
-                    JobSeqDataPtr->StartIndexExtractJobId++;
-                    Spi_lStartJob( HWUnit, FirstJobInQueue );
-                } /*(Spi_AsyncBusStatus == SPI_BUS_IDLE)*/
-                else
-                {
-                    #if ( SPI_INTERRUPTABLE_SEQUENCE_ALLOWED == STD_ON )
-                    {
-                        /* Set First Job Index in the Status Array */
-                        JobSeqDataPtr->CurrentJobIndex[ Sequence ] = 0U;
-                    }
-                    #endif
-                }/*(Spi_AsyncBusStatus == SPI_BUS_IDLE)*/
-                /* Exit Critical Section asap for minimal blocking time: ExitKey-C1*/
-                SchM_Exit_Spi_AsyncTransmit();
-            }/*(!(SeqJobSharingStatus))*/
-            else
-            {
-                /* Exit Critical Section asap for minimal blocking time: ExitKey-B2*/
-                SchM_Exit_Spi_AsyncTransmit();
-                #if ( SPI_DEV_ERROR_DETECT == STD_ON )
-                {
-                    /* Sequence is already pending, return E_NOT_OK */
-                    /* Report to DET */
-                    Det_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID, SPI_SID_ASYNCTRANSMIT, SPI_E_SEQ_PENDING );
-                }
-                #endif /* SPI_DEV_ERROR_DETECT */
-            }/*(!(SeqJobSharingStatus))*/
-        } /*IsQAvail == E_OK*/
+          /* Id should be incremented first and Job should be started.
+             Reason:
+             For an empty Queue, a request comes with no of jobs that is
+             equal to the Queue size, in this scenario, the Queue should
+             be assigned to full status before starting a job.
+           */
+          JobSeqDataPtr->StartIndexExtractJobId++;
+          Spi_lStartJob(HWUnit, FirstJobInQueue );
+        } /*(Spi_AsyncBusStatus == SPI_BUS_IDLE)*/
         else
         {
-            #if ( SPI_DEV_ERROR_DETECT == STD_OFF )
-            {
-                /* Exit Critical Section asap for minimal blocking time: ExitKey-C2*/
-                SchM_Exit_Spi_AsyncTransmit();
-            }
-            #endif
-        }
+          #if (SPI_INTERRUPTABLE_SEQUENCE_ALLOWED == STD_ON)
+          /* Set First Job Index in the Status Array */
+          JobSeqDataPtr->CurrentJobIndex[Sequence] = 0U;
+          #endif
+        }/*(Spi_AsyncBusStatus == SPI_BUS_IDLE)*/
+        /* Exit Critical Section asap for minimal blocking time: ExitKey-C1*/
+        SchM_Exit_Spi_AsyncTransmit();
+      }/*(!(SeqJobSharingStatus))*/
+      else
+      {
+        /* Exit Critical Section asap for minimal blocking time: ExitKey-B2*/
+        SchM_Exit_Spi_AsyncTransmit();
+        #if (SPI_DEV_ERROR_DETECT == STD_ON)
+        /* Sequence is already pending, return E_NOT_OK */
+          /* Report to DET */
+        Det_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID,
+        SPI_SID_ASYNCTRANSMIT, SPI_E_SEQ_PENDING );
+        #endif
+        /* SPI_DEV_ERROR_DETECT */
+      }/*(!(SeqJobSharingStatus))*/
+    }/*IsQAvail == E_OK*/
+    else
+    {
+      #if (SPI_DEV_ERROR_DETECT == STD_OFF)
+        /* Exit Critical Section asap for minimal blocking time: ExitKey-C2*/
+        SchM_Exit_Spi_AsyncTransmit();
+      #endif
     }
-    return ( Std_ReturnType ) RetVal;
+  }
+  return (Std_ReturnType)RetVal;
 }
 #endif
  /* SPI_LEVEL_DELIVERED == 1U) || (SPI_LEVEL_DELIVERED == 2U */
@@ -2897,213 +2910,247 @@ DS_AS_SPI258_SPI317]
 ** declared before to call a Transmit method for them.                        **
 **                                                                            **
 *******************************************************************************/
-#if ( ( SPI_CHANNEL_BUFFERS_ALLOWED == 1U ) || ( SPI_CHANNEL_BUFFERS_ALLOWED == 2U ) )
-Std_ReturnType Spi_SetupEB( Spi_ChannelType Channel, const Spi_DataType* SrcDataBufferPtr, Spi_DataType* DesDataBufferPtr, Spi_NumberOfDataType Length )
+#if ((SPI_CHANNEL_BUFFERS_ALLOWED == 1U)||(SPI_CHANNEL_BUFFERS_ALLOWED == 2U))
+Std_ReturnType Spi_SetupEB
+(
+  Spi_ChannelType Channel,
+  const Spi_DataType* SrcDataBufferPtr,
+  Spi_DataType* DesDataBufferPtr,
+  Spi_NumberOfDataType Length
+)
 {
-	uint32 RetVal;
-    uint16 DataConfig;
-#if ( SPI_SAFETY_ENABLE == STD_ON )
-    uint16 BufferLength;
-#endif
-    Spi_EBBufferType* EBBufferPtr;
-#if ( ( SPI_DEV_ERROR_DETECT == STD_ON ) || ( SPI_SAFETY_ENABLE == STD_ON ) )
-    uint32 TransferCount = 0U;
-    DataConfig = 0U;
-#endif
-#if ( SPI_SAFETY_ENABLE == STD_ON )
-    BufferLength = 0U;
-#endif
-#if ( ( SPI_DEV_ERROR_DETECT == STD_OFF ) && ( SPI_SAFETY_ENABLE == STD_ON ) )
-    RetVal = E_OK;
-#endif
+  uint32 RetVal;
+  uint16 DataConfig;
+  #if (SPI_SAFETY_ENABLE == STD_ON)
+  uint16 BufferLength;
+  #endif
+  Spi_EBBufferType* EBBufferPtr;
 
-#if ( ( SPI_DEV_ERROR_DETECT == STD_ON ) || ( SPI_SAFETY_ENABLE == STD_ON ) )
-    /* API called before initialization */
-#if ( SPI_DEV_ERROR_DETECT == STD_ON )
-    RetVal = Spi_lGetDetInitStatus( SPI_SID_SETUPEB );
-#endif
+  #if ( (SPI_DEV_ERROR_DETECT == STD_ON) || (SPI_SAFETY_ENABLE == STD_ON) )
+  uint32 TransferCount = 0U;
+  DataConfig = 0U;
+  #endif
 
-    /* Channel not an IB Channel and is not within 0
-       to SPI_MAX_CHANNEL*/
- #if ( !( ( SPI_DEV_ERROR_DETECT == STD_OFF ) && ( SPI_SAFETY_ENABLE == STD_ON ) ) )
-    if( ( RetVal == E_OK ) 
-        && ( ( Channel < ( Spi_ChannelType ) Spi_NoOfIBChannels ) || ( Channel >= Spi_kConfigPtr->NoOfChannels ) ) )
+  #if (SPI_SAFETY_ENABLE == STD_ON)
+  BufferLength = 0U;
+  #endif
+
+  #if ((SPI_DEV_ERROR_DETECT == STD_OFF) && (SPI_SAFETY_ENABLE == STD_ON))
+  RetVal = E_OK;
+  #endif
+
+#if ( (SPI_DEV_ERROR_DETECT == STD_ON) || (SPI_SAFETY_ENABLE == STD_ON) )
+
+  /* API called before initialization */
+  #if (SPI_DEV_ERROR_DETECT == STD_ON)
+  RetVal = Spi_lGetDetInitStatus(SPI_SID_SETUPEB);
+  #endif
+
+  /*Channel not an IB Channel and is not within 0
+    to SPI_MAX_CHANNEL*/
+ #if(!((SPI_DEV_ERROR_DETECT == STD_OFF) && (SPI_SAFETY_ENABLE == STD_ON)))
+  if ((RetVal == E_OK) &&
+      ((Channel < (Spi_ChannelType)Spi_NoOfIBChannels) ||
+      (Channel >= Spi_kConfigPtr->NoOfChannels)))
  #else
-    if ( ( Channel < (Spi_ChannelType)Spi_NoOfIBChannels ) || ( Channel >= Spi_kConfigPtr->NoOfChannels ) )
+  if ((Channel < (Spi_ChannelType)Spi_NoOfIBChannels) ||
+      (Channel >= Spi_kConfigPtr->NoOfChannels))
+ #endif
+  {
+    /* Report to DET */
+    #if (SPI_DEV_ERROR_DETECT == STD_ON)
+    Det_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID,
+        SPI_SID_SETUPEB, SPI_E_PARAM_CHANNEL );
+    #endif
+
+    #if (SPI_SAFETY_ENABLE == STD_ON)
+    SafeMcal_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID,
+        SPI_SID_SETUPEB, SPI_E_PARAM_CHANNEL );
+     /* [cover parentID=DS_MCAL_SPI_9841_07][/cover] */
+    #endif
+
+    RetVal = E_NOT_OK;
+  }
+  /*Length of data shall be within the
+    specified buffer maximum values*/
+  else
+  {
+    #if(!((SPI_DEV_ERROR_DETECT == STD_OFF) && (SPI_SAFETY_ENABLE == STD_ON)))
+    if(RetVal == E_OK)
+    {
+    #endif
+    /*IFX_MISRA_RULE_17_04_STATUS="SpiChannelConfigPtr" Pointer arithmetic used
+      due to PBConfigStructure and is within allowed range.*/
+    DataConfig = Spi_kConfigPtr->SpiChannelConfigPtr[Channel].DataConfig ;
+
+    /* Data Width > 16 bits */
+    if (DataConfig   & SPI_32BIT_DATAMASK)
+    {
+      /* Length/4U */
+      /*IFX_MISRA_RULE_17_04_STATUS="SpiChannelConfigPtr" Pointer arithmetic
+        used due to PBConfigStructure and is within allowed range.*/
+      TransferCount =
+      ((uint32)Spi_kConfigPtr->SpiChannelConfigPtr[Channel].NoOfBuffers >>
+                                    SPI_TRANSFERCOUNT_SHIFT_32BIT);
+      #if (SPI_SAFETY_ENABLE == STD_ON)
+      BufferLength = Length << SPI_TRANSFERCOUNT_SHIFT_32BIT;
+      #endif
+    }
+    else if (DataConfig & SPI_16BIT_DATAMASK)
+    {
+      /* Length/2U */
+      /*IFX_MISRA_RULE_17_04_STATUS="SpiChannelConfigPtr" Pointer arithmetic
+        used due to PBConfigStructure and is within allowed range.*/
+      TransferCount =
+        ((uint32)Spi_kConfigPtr->SpiChannelConfigPtr[Channel].NoOfBuffers >>
+                                     SPI_TRANSFERCOUNT_SHIFT_16BIT);
+      #if (SPI_SAFETY_ENABLE == STD_ON)
+      BufferLength = Length << SPI_TRANSFERCOUNT_SHIFT_16BIT;
+      #endif
+    }
+    else
+    {
+      /*IFX_MISRA_RULE_17_04_STATUS="SpiChannelConfigPtr" Pointer arithmetic
+        used due to PBConfigStructure and is within allowed range.*/
+      TransferCount =
+               (uint32)Spi_kConfigPtr->SpiChannelConfigPtr[Channel].NoOfBuffers;
+      #if (SPI_SAFETY_ENABLE == STD_ON)
+      BufferLength = Length;
+      #endif
+    }
+    #if(!((SPI_DEV_ERROR_DETECT == STD_OFF) && (SPI_SAFETY_ENABLE == STD_ON)))
+    }
+    #endif
+
+ #if(!((SPI_DEV_ERROR_DETECT == STD_OFF) && (SPI_SAFETY_ENABLE == STD_ON)))
+    if ((RetVal == E_OK) &&
+        ((Length > TransferCount) ||(Length < (Spi_NumberOfDataType)1U)))
+ #else
+    if ((Length > TransferCount) ||(Length < (Spi_NumberOfDataType)1U))
  #endif
     {
-        /* Report to DET */
-        #if ( SPI_DEV_ERROR_DETECT == STD_ON )
-            Det_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID, SPI_SID_SETUPEB, SPI_E_PARAM_CHANNEL );
-        #endif
+      /* Report to DET */
+      #if (SPI_DEV_ERROR_DETECT == STD_ON)
+      Det_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID,
+        SPI_SID_SETUPEB, SPI_E_PARAM_LENGTH );
+      #endif
 
-        #if ( SPI_SAFETY_ENABLE == STD_ON )
-            SafeMcal_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID, SPI_SID_SETUPEB, SPI_E_PARAM_CHANNEL );
-            /* [cover parentID=DS_MCAL_SPI_9841_07][/cover] */
-        #endif
+      #if (SPI_SAFETY_ENABLE == STD_ON)
+      SafeMcal_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID,
+        SPI_SID_SETUPEB, SPI_E_PARAM_LENGTH );
+     /* [cover parentID=DS_MCAL_SPI_9841_10][/cover] */
+      #endif
 
-        RetVal = E_NOT_OK;
+      RetVal = E_NOT_OK;
     }
-    /* Length of data shall be within the
-       specified buffer maximum values*/
-    else
+  }
+
+  /* DMA implements a Circular Buffer with a maximum width of 32KB.
+     So the Src/Des Ptrs should not span the 32KB Boundary if Sequential
+    data are to be transferred. This address alignment is checked */
+  #if (SPI_DMA_ADDR_SIZE_ALIGN_CHECK == STD_ON)
+  #if (SPI_DEV_ERROR_DETECT == STD_ON)
+  if (RetVal == E_OK)
+  {
+    RetVal= Spi_lCheckDmaAddress(DesDataBufferPtr,SrcDataBufferPtr,Length);
+  }
+  #endif
+  #endif
+ /* (SPI_DMA_ADDR_SIZE_ALIGN_CHECK == STD_ON) */
+
+  #if (SPI_SAFETY_ENABLE == STD_ON)
+  /* fix for AI00238516 Point.2*/
+  if ((RetVal == E_OK) && (SrcDataBufferPtr != ((Spi_DataType*)0)))
+  {
+    /*IFX_MISRA_RULE_17_04_STATUS="SrcDataBufferPtr" Pointer arithmetic used due
+      to BufferStructure and is within allowed range.*/
+    /*IFX_MISRA_RULE_17_04_STATUS="SpiChannelConfigPtr" Pointer arithmetic used
+      due to PBConfigStructure and is within allowed range.*/
+    if( SrcDataBufferPtr[BufferLength] !=
+          (&(Spi_kConfigPtr->SpiChannelConfigPtr[Channel]))->ChnlBufferMarker)
     {
-#if( !( ( SPI_DEV_ERROR_DETECT == STD_OFF ) && ( SPI_SAFETY_ENABLE == STD_ON ) ) )
-        if( RetVal == E_OK )
-        {
-#endif
-            /* IFX_MISRA_RULE_17_04_STATUS="SpiChannelConfigPtr" Pointer arithmetic used
-            due to PBConfigStructure and is within allowed range.*/
-            DataConfig = Spi_kConfigPtr->SpiChannelConfigPtr[ Channel ].DataConfig;
-
-            /* Data Width > 16 bits */
-            if( DataConfig & SPI_32BIT_DATAMASK )
-            {
-                /* Length/4U */
-                /* IFX_MISRA_RULE_17_04_STATUS="SpiChannelConfigPtr" Pointer arithmetic
-                   used due to PBConfigStructure and is within allowed range.*/
-                TransferCount = ( ( uint32 ) Spi_kConfigPtr->SpiChannelConfigPtr[ Channel ].NoOfBuffers >> SPI_TRANSFERCOUNT_SHIFT_32BIT );
-                #if ( SPI_SAFETY_ENABLE == STD_ON )
-                    BufferLength = Length << SPI_TRANSFERCOUNT_SHIFT_32BIT;
-                #endif
-            }
-            else if( DataConfig & SPI_16BIT_DATAMASK )
-            {
-                /* Length/2U */
-                /* IFX_MISRA_RULE_17_04_STATUS="SpiChannelConfigPtr" Pointer arithmetic
-                   used due to PBConfigStructure and is within allowed range.*/
-                TransferCount = ( ( uint32 ) Spi_kConfigPtr->SpiChannelConfigPtr[ Channel ].NoOfBuffers >> SPI_TRANSFERCOUNT_SHIFT_16BIT );
-                #if ( SPI_SAFETY_ENABLE == STD_ON )
-                    BufferLength = Length << SPI_TRANSFERCOUNT_SHIFT_16BIT;
-                #endif
-            }
-            else
-            {
-                /* IFX_MISRA_RULE_17_04_STATUS="SpiChannelConfigPtr" Pointer arithmetic
-                   used due to PBConfigStructure and is within allowed range.*/
-                TransferCount = ( uint32 ) Spi_kConfigPtr->SpiChannelConfigPtr[ Channel ].NoOfBuffers;
-                #if (SPI_SAFETY_ENABLE == STD_ON)
-                    BufferLength = Length;
-                #endif
-            }
-#if( !( ( SPI_DEV_ERROR_DETECT == STD_OFF ) && ( SPI_SAFETY_ENABLE == STD_ON ) ) )
-        }
-#endif
-
-#if( !( ( SPI_DEV_ERROR_DETECT == STD_OFF ) && ( SPI_SAFETY_ENABLE == STD_ON ) ) )
-        if( ( RetVal == E_OK ) 
-            && ( ( Length > TransferCount ) || ( Length < ( Spi_NumberOfDataType )1U ) ) )
-#else
-        if( ( Length > TransferCount ) || ( Length < ( Spi_NumberOfDataType ) 1U ) )
-#endif
-        {
-            /* Report to DET */
-            #if ( SPI_DEV_ERROR_DETECT == STD_ON )
-                Det_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID, SPI_SID_SETUPEB, SPI_E_PARAM_LENGTH );
-            #endif
-
-            #if ( SPI_SAFETY_ENABLE == STD_ON )
-                SafeMcal_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID, SPI_SID_SETUPEB, SPI_E_PARAM_LENGTH );
-                /* [cover parentID=DS_MCAL_SPI_9841_10][/cover] */
-            #endif
-
-            RetVal = E_NOT_OK;
-        }
-    }
-
-    /* DMA implements a Circular Buffer with a maximum width of 32KB.
-       So the Src/Des Ptrs should not span the 32KB Boundary if Sequential
-       data are to be transferred. This address alignment is checked */
-    #if ( SPI_DMA_ADDR_SIZE_ALIGN_CHECK == STD_ON )
-        #if ( SPI_DEV_ERROR_DETECT == STD_ON )
-            if( RetVal == E_OK )
-            {
-                RetVal= Spi_lCheckDmaAddress( DesDataBufferPtr, SrcDataBufferPtr, Length );
-            }
-        #endif
-    #endif /* ( SPI_DMA_ADDR_SIZE_ALIGN_CHECK == STD_ON ) */
-
-    #if ( SPI_SAFETY_ENABLE == STD_ON )
-    /* fix for AI00238516 Point.2*/
-    if( ( RetVal == E_OK ) && ( SrcDataBufferPtr != ( ( Spi_DataType *) 0 ) ) )
-    {
-        /* IFX_MISRA_RULE_17_04_STATUS="SrcDataBufferPtr" Pointer arithmetic used due
-           to BufferStructure and is within allowed range.*/
-        /* IFX_MISRA_RULE_17_04_STATUS="SpiChannelConfigPtr" Pointer arithmetic used
-           due to PBConfigStructure and is within allowed range.*/
-        if( SrcDataBufferPtr[ BufferLength ] != ( &( Spi_kConfigPtr->SpiChannelConfigPtr[ Channel ] ) )->ChnlBufferMarker )
-        {
-            /* report to upper layer */
-            SafeMcal_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID, SPI_SID_SETUPEB, SPI_E_PARAM_SRC_POINTER );
-            /* [cover parentID=DS_MCAL_SPI_9841_08][/cover] */
-            RetVal = E_NOT_OK;
-        }
-        else
-        {
-            /* do nothing */
-        }
-    }
-    /* IFX_MISRA_RULE_17_04_STATUS="DesDataBufferPtr" Pointer arithmetic used due
-       to BufferStructure and is within allowed range.*/
-    /* IFX_MISRA_RULE_17_04_STATUS="SpiChannelConfigPtr" Pointer arithmetic used
-       due to PBConfigStructure and is within allowed range.*/
-    else if( ( RetVal == E_OK ) 
-             && ( DesDataBufferPtr != ( ( Spi_DataType *) 0 ) ) 
-             && ( DesDataBufferPtr[ BufferLength ] != ( &( Spi_kConfigPtr->SpiChannelConfigPtr[ Channel ] ) )->ChnlBufferMarker ) )
-    {
-        /* report to upper layer */
-        SafeMcal_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID, SPI_SID_SETUPEB, SPI_E_PARAM_DEST_POINTER );
-        /* [cover parentID=DS_MCAL_SPI_9841_09][/cover] */
-        RetVal = E_NOT_OK;
+      /* report to upper layer */
+      SafeMcal_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID,
+        SPI_SID_SETUPEB, SPI_E_PARAM_SRC_POINTER );
+       /* [cover parentID=DS_MCAL_SPI_9841_08][/cover] */
+     RetVal = E_NOT_OK;
     }
     else
     {
-        /* Do Nothing */
+      /* do nothing */
     }
-    #endif /* ( SPI_SAFETY_ENABLE == STD_ON ) */
+  }
+  /*IFX_MISRA_RULE_17_04_STATUS="DesDataBufferPtr" Pointer arithmetic used due
+    to BufferStructure and is within allowed range.*/
+  /*IFX_MISRA_RULE_17_04_STATUS="SpiChannelConfigPtr" Pointer arithmetic used
+    due to PBConfigStructure and is within allowed range.*/
+  else if ((RetVal == E_OK) && (DesDataBufferPtr != ((Spi_DataType*)0)) &&
+         (DesDataBufferPtr[BufferLength] !=
+           (&(Spi_kConfigPtr->SpiChannelConfigPtr[Channel]))->ChnlBufferMarker))
+  {
+    /* report to upper layer */
+    SafeMcal_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID,
+        SPI_SID_SETUPEB, SPI_E_PARAM_DEST_POINTER );
+     /* [cover parentID=DS_MCAL_SPI_9841_09][/cover] */
+    RetVal = E_NOT_OK;
+  }
+  else
+  {
+    /* Do Nothing */
+  }
+  #endif
+  /* (SPI_SAFETY_ENABLE == STD_ON) */
+
 #else
-/* else condition for
-( (SPI_DEV_ERROR_DETECT == STD_ON) || (SPI_SAFETY_ENABLE == STD_ON) )
-initialise parameters which are not initalised if error checks are OFF */
-    RetVal = E_OK;
-    /* IFX_MISRA_RULE_17_04_STATUS="SpiChannelConfigPtr" Pointer arithmetic used
-       due to PBConfigStructure and is within allowed range.*/
-    DataConfig = Spi_kConfigPtr->SpiChannelConfigPtr[ Channel ].DataConfig;
-#endif /* (SPI_DEV_ERROR_DETECT == STD_ON) || (SPI_SAFETY_ENABLE == STD_ON) )*/
+  /* else condition for
+   ( (SPI_DEV_ERROR_DETECT == STD_ON) || (SPI_SAFETY_ENABLE == STD_ON) )
+  initialise parameters which are not initalised if error checks are OFF */
+  RetVal = E_OK;
+  /*IFX_MISRA_RULE_17_04_STATUS="SpiChannelConfigPtr" Pointer arithmetic used
+    due to PBConfigStructure and is within allowed range.*/
+  DataConfig = Spi_kConfigPtr->SpiChannelConfigPtr[Channel].DataConfig ;
+#endif
+  /* (SPI_DEV_ERROR_DETECT == STD_ON) || (SPI_SAFETY_ENABLE == STD_ON) )*/
 
-#if( ( SPI_DEV_ERROR_DETECT == STD_ON ) || ( SPI_SAFETY_ENABLE == STD_ON ) )
-    if( RetVal == E_OK )
-#endif /* ( SPI_DEV_ERROR_DETECT == STD_ON ) || ( SPI_SAFETY_ENABLE == STD_ON ) )*/
-    {
-        /* Subtract the number of IB Channel from the Channel parameter to
-           get offset of EB Channel from 0 */
-        Channel = Channel - Spi_NoOfIBChannels;
+  #if( (SPI_DEV_ERROR_DETECT == STD_ON) || (SPI_SAFETY_ENABLE == STD_ON) )
+  if (RetVal == E_OK)
+  #endif
+  /* (SPI_DEV_ERROR_DETECT == STD_ON) || (SPI_SAFETY_ENABLE == STD_ON) )*/
+  {
+  /* Subtract the number of IB Channel from the Channel parameter to
+     get offset of EB Channel from 0 */
+  Channel = Channel - Spi_NoOfIBChannels;
 
-        EBBufferPtr = &( Spi_EBBuffer[ Channel ] ); /* Get EB Buffer Pointer */
+  EBBufferPtr = &(Spi_EBBuffer[Channel]); /* Get EB Buffer Pointer */
 
-        EBBufferPtr->SrcPtr  = SrcDataBufferPtr;
-        EBBufferPtr->DestPtr = DesDataBufferPtr;
+  EBBufferPtr->SrcPtr  = SrcDataBufferPtr;
+  EBBufferPtr->DestPtr = DesDataBufferPtr;
 
-        if( DataConfig & SPI_32BIT_DATAMASK )
-        {
-            /* Length/4U */
-            Length = ( Spi_NumberOfDataType )( ( uint32 ) Length << SPI_TRANSFERCOUNT_SHIFT_32BIT );
-        }
-        else if( DataConfig & SPI_16BIT_DATAMASK )
-        {
-            /* Length/2U */
-            Length = ( Spi_NumberOfDataType ) ( ( uint32 ) Length << SPI_TRANSFERCOUNT_SHIFT_16BIT );
-        }
-        else
-        {
-            /*Do Nothing*/
-        }
-        EBBufferPtr->Length  = Length;
-    }
-    return ( Std_ReturnType ) RetVal;
+  if (DataConfig & SPI_32BIT_DATAMASK)
+  {
+    /* Length/4U */
+    Length =
+    (Spi_NumberOfDataType)((uint32)Length << SPI_TRANSFERCOUNT_SHIFT_32BIT);
+  }
+  else if (DataConfig & SPI_16BIT_DATAMASK)
+  {
+    /* Length/2U */
+    Length =
+     (Spi_NumberOfDataType)((uint32)Length << SPI_TRANSFERCOUNT_SHIFT_16BIT);
+  }
+  else
+  {
+    /*Do Nothing*/
+  }
+
+  EBBufferPtr->Length  = Length;
+  }
+  return (Std_ReturnType)RetVal;
 
 } /* End of Function: Spi_SetUpEB */
-#endif /* SPI_CHANNEL_BUFFERS_ALLOWED == 1U ||SPI_CHANNEL_BUFFERS_ALLOWED == 2U */
+
+#endif
+/* SPI_CHANNEL_BUFFERS_ALLOWED == 1U ||SPI_CHANNEL_BUFFERS_ALLOWED == 2U */
 
 /*******************************************************************************
 ** Traceability : [cover parentID=DS_AS_SPI181_SPI319,
@@ -4107,54 +4154,57 @@ SPI_ASYNC_MODE_LEVEL1 == SPI_ASYNC_MODE_POLLING) ||
 **                                                                            **
 *******************************************************************************/
 #if ((SPI_LEVEL_DELIVERED == 1U) || (SPI_LEVEL_DELIVERED == 2U))
-void Spi_IsrDmaQspiTx( uint32 Module )
+void Spi_IsrDmaQspiTx(uint32 Module)
 {
-    Dma_ChannelType DmaTxChannel = DMA_CHANNEL_INVALID;
-    /*Update the DATAENTRY = last_word, BACON. LAST = 1.
-      (It will be called before the DMA RX channel ISR for the last channel.
-      It transfers [TX] the last word of Last Channel of job and puts the
-      Chipselect to inactive state)
-    */
-#if (SPI_SAFETY_ENABLE == STD_ON)
-    if( 0U == ( Spi_lModuleConfiguredAndAsync( ( uint8 ) Module ) ) )
+  Dma_ChannelType DmaTxChannel = DMA_CHANNEL_INVALID;
+  /*Update the DATAENTRY = last_word, BACON. LAST = 1.
+    (It will be called before the DMA RX channel ISR for the last channel.
+    It transfers [TX] the last word of Last Channel of job and puts the
+    Chipselect to inactive state)
+  */
+  #if (SPI_SAFETY_ENABLE == STD_ON)
+  if ( 0U == (Spi_lModuleConfiguredAndAsync( (uint8)Module )))
+  {
+    /* report to upper layer */
+    SafeMcal_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID,
+         SPI_SID_ISRHANDLERS, SPI_E_PARAM_MODULE );
+    /* [cover parentID=DS_MCAL_SPI_9841_17][/cover] */
+  }/* Spi_lModuleConfiguredAndAsync() */
+  else
+  #endif
+  /* (SPI_SAFETY_ENABLE == STD_ON) */
+  {
+    #if (SPI_SAFETY_ENABLE == STD_ON)
+    if(SPI_ASIL_MASTER == Spi_lGetModuleKind((uint8)Module))
     {
-        /* report to upper layer */
-        SafeMcal_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID, SPI_SID_ISRHANDLERS, SPI_E_PARAM_MODULE );
-        /* [cover parentID=DS_MCAL_SPI_9841_17][/cover] */
-    }/* Spi_lModuleConfiguredAndAsync() */
-    else
-#endif
-    /* (SPI_SAFETY_ENABLE == STD_ON) */
-    {
-#if (SPI_SAFETY_ENABLE == STD_ON)
-        if( SPI_ASIL_MASTER == Spi_lGetModuleKind( ( uint8 ) Module ) )
-        {
-            DmaTxChannel = Spi_AsilChnlAccess[ 0 ].DmaChannelIdx.TxDmaChannel;
-        }
-        else
-        {
-#if (SPI_QM_ASYNC_MASTER_MODULES_USED != 0U)
-            DmaTxChannel = Spi_QmChnlAccess[ Spi_lGetQmModuleVarIndex( Module ) ].DmaChannelIdx.TxDmaChannel;
-#endif
-        /* Do nothing if QM modules are NOT Used */
-        }
-#else
-        {
-            DmaTxChannel = Spi_QmChnlAccess[ Spi_lGetQmModuleVarIndex( Module ) ].DmaChannelIdx.TxDmaChannel;
-        }
-#endif
-
-        /* DISABLE TX-DMA intr */
-        Spi_lHwDisableDmaIntr( DmaTxChannel );
-        /* Disable QSPI TX Interrupt */
-        Spi_lHwDisableQspiTxIntr( Module );
-        /* Clear/Reset Channel Interrupt control register */
-        Mcal_DmaChClrIntctEtrlFlags( DmaTxChannel );
-        Mcal_DmaChClrIntrFlags( DmaTxChannel );
-        /* Update Bacon & data reg if status changes to expect */
-        /* SRE bit is enabled but BaconReg.B.UINT controls the service request */
-        Spi_lHwEnableQspiUsrIntr( Module );
+      DmaTxChannel = Spi_AsilChnlAccess[0].DmaChannelIdx.TxDmaChannel;
     }
+    else
+    {
+      #if (SPI_QM_ASYNC_MASTER_MODULES_USED != 0U)
+      DmaTxChannel = Spi_QmChnlAccess[Spi_lGetQmModuleVarIndex(Module)].\
+                                                   DmaChannelIdx.TxDmaChannel;
+      #endif
+      /* Do nothing if QM modules are NOT Used */
+    }
+    #else
+    {
+      DmaTxChannel = Spi_QmChnlAccess[Spi_lGetQmModuleVarIndex(Module)].\
+                                                   DmaChannelIdx.TxDmaChannel;
+    }
+    #endif
+
+    /* DISABLE TX-DMA intr */
+    Spi_lHwDisableDmaIntr(DmaTxChannel);
+    /* Disable QSPI TX Interrupt */
+    Spi_lHwDisableQspiTxIntr(Module);
+    /* Clear/Reset Channel Interrupt control register */
+    Mcal_DmaChClrIntctEtrlFlags(DmaTxChannel);
+    Mcal_DmaChClrIntrFlags(DmaTxChannel);
+    /* Update Bacon & data reg if status changes to expect */
+    /* SRE bit is enabled but BaconReg.B.UINT controls the service request */
+    Spi_lHwEnableQspiUsrIntr(Module);
+  }
 } /* end of  Spi_IsrDmaQspiTx */
 
 /*******************************************************************************
@@ -6705,21 +6755,24 @@ IFX_LOCAL_INLINE uint16 Spi_lAnyModuleConfigured(uint8 Module)
 **                                                                            **
 ** Description :  returns Non zero value if module configured as ASYNC Bus    **
 *******************************************************************************/
-IFX_LOCAL_INLINE uint16 Spi_lModuleConfiguredAndAsync( uint8 Module )
+IFX_LOCAL_INLINE uint16 Spi_lModuleConfiguredAndAsync(uint8 Module)
 {
-    uint16 RetVal = 0U;
+  uint16 RetVal = 0U;
 
-#if(SPI_SLAVE_ENABLE == STD_ON)
-    /* should skip for Slave module */
-    if( SPI_SLAVE_MODULE_INDEX != Module )
-#endif
+  #if(SPI_SLAVE_ENABLE == STD_ON)
+  /* should skip for Slave module */
+  if(SPI_SLAVE_MODULE_INDEX != Module)
+  #endif
+  {
+    if((Spi_kConfigPtr->HWModuleConfigPtr[Module])->HWClkSetting
+                                                   != SPI_NOT_CONFIGURED)
     {
-        if( ( Spi_kConfigPtr->HWModuleConfigPtr[ Module ] )->HWClkSetting != SPI_NOT_CONFIGURED )
-        {
-            RetVal = ( uint16 ) ( ( uint16 ) ( ( 1UL ) << (Module ) ) & ( ( uint16 ) SPI_ASYNC_MODULES ) );
-        }
+      RetVal = (uint16)((uint16)((1UL) << (Module))
+                                            & ((uint16)SPI_ASYNC_MODULES));
     }
-    return RetVal;
+  }
+
+  return RetVal;
 }
 
 /*******************************************************************************
@@ -7064,43 +7117,42 @@ const Spi_JobAndSeqAccessType *JobSeqDataPtr
 *******************************************************************************/
 Std_ReturnType Spi_lIsQueueAvailable
 (
-    uint16 Jobs, const Spi_JobAndSeqAccessType *JobSeqDataPtr
+  uint16 Jobs, const Spi_JobAndSeqAccessType *JobSeqDataPtr
 )
 {
-    uint16 StartIndex;
-    uint16 EndIndex;
-    uint16 Slots;
-    Std_ReturnType ReturnValue;
+  uint16 StartIndex;
+  uint16 EndIndex;
+  uint16 Slots;
+  Std_ReturnType ReturnValue;
+  /*Fix for AI00253040 */
+  SchM_Enter_Spi_AsyncTransmit();
+  StartIndex = JobSeqDataPtr->StartIndexExtractJobId;
+  EndIndex = JobSeqDataPtr->EndIndex;
+  SchM_Exit_Spi_AsyncTransmit();
 
-    /*Fix for AI00253040 */
-    SchM_Enter_Spi_AsyncTransmit();
-    StartIndex = JobSeqDataPtr->StartIndexExtractJobId;
-    EndIndex = JobSeqDataPtr->EndIndex;
-    SchM_Exit_Spi_AsyncTransmit();
+  if (StartIndex == EndIndex)
+  {
+    Slots = SPI_MAX_JOB_TRIG_Q_LENGTH;
+  }
+  else if (StartIndex < EndIndex)
+  {
+    Slots = (SPI_MAX_JOB_TRIG_Q_LENGTH - EndIndex) + (StartIndex - 1U);
+  }
+  else
+  {
+    Slots = StartIndex - EndIndex;
+    Slots = Slots - 1U;
+  }
 
-    if( StartIndex == EndIndex )
-    {
-        Slots = SPI_MAX_JOB_TRIG_Q_LENGTH;
-    }
-    else if (StartIndex < EndIndex)
-    {
-        Slots = ( SPI_MAX_JOB_TRIG_Q_LENGTH - EndIndex ) + ( StartIndex - 1U );
-    }
-    else
-    {
-        Slots = StartIndex - EndIndex;
-        Slots = Slots - 1U;
-    }
-
-    if( Slots >= Jobs )
-    {
-        ReturnValue = E_OK;
-    }
-    else
-    {
-        ReturnValue = E_NOT_OK;
-    }
-    return ReturnValue;
+  if (Slots >= Jobs)
+  {
+    ReturnValue = E_OK;
+  }
+  else
+  {
+    ReturnValue = E_NOT_OK;
+  }
+  return ReturnValue;
 }
 /*******************************************************************************
 ** Syntax           : void Spi_lHwDisableQspiErrIntr(uint32 Module)           **
@@ -7731,61 +7783,68 @@ IFX_LOCAL_INLINE void Spi_lIBCopy32BitData
 **                                                                            **
 ** Description : returns value 1, on finding the jobs shared by the sequences **
 *******************************************************************************/
-#if ( SPI_DEV_ERROR_DETECT == STD_ON )
-#if ( SPI_DMA_ADDR_SIZE_ALIGN_CHECK == STD_ON )
-#if ( ( SPI_CHANNEL_BUFFERS_ALLOWED == 1U ) || ( SPI_CHANNEL_BUFFERS_ALLOWED == 2U ) )
+#if (SPI_DEV_ERROR_DETECT == STD_ON)
+#if (SPI_DMA_ADDR_SIZE_ALIGN_CHECK == STD_ON)
+#if ((SPI_CHANNEL_BUFFERS_ALLOWED == 1U) || (SPI_CHANNEL_BUFFERS_ALLOWED == 2U))
 /*DMA Address range checking*/
 IFX_LOCAL_INLINE uint8 Spi_lCheckDmaAddress
 (
-    Spi_DataType* DestAddrPtr,
-    const Spi_DataType* SrcAddrPtr,
-    Spi_NumberOfDataType Length
+  Spi_DataType* DestAddrPtr,
+  const Spi_DataType* SrcAddrPtr,
+  Spi_NumberOfDataType Length
 )
 {
-    uint8 ErrFlag;
-    const Spi_DataType* DMAAddress;
+  uint8 ErrFlag;
+  const Spi_DataType* DMAAddress;
 
-    ErrFlag = 0U; /* Initialize error flag */
-    if( DestAddrPtr == NULL_PTR )        /* Read Mode */
-    {
-        DMAAddress = SrcAddrPtr;
-    }
-    else if( SrcAddrPtr == NULL_PTR )    /*  Write Mode  */
-    {
-        DMAAddress = DestAddrPtr;
-    }
-    else
-    {
-        /* IFX_MISRA_RULE_11_01_STATUS=Typecasting DestAddrPtr to uint32 is
-           unvoidable. DMAAddress is later used for SFR assignment.*/
-        /* IFX_MISRA_RULE_11_01_STATUS=Typecasting SrcAddrPtr to uint32 is
-           unvoidable. DMAAddress is later used for SFR assignment.*/
-        /* IFX_MISRA_RULE_11_03_STATUS=Type cast to uint32 is unavoidable*/
-        /* IFX_MISRA_RULE_11_03_STATUS=Type cast to uint32 is unavoidable*/
-        DMAAddress = ( ( ( uint32 ) DestAddrPtr & SPI_DMA_ADDRESS_MASK ) > ( ( uint32 ) SrcAddrPtr & SPI_DMA_ADDRESS_MASK ) ) ? DestAddrPtr : SrcAddrPtr;
-    }
-    /* IFX_MISRA_RULE_11_01_STATUS=Typecasting DMAAddress to uint32 is unvoidable.
-       DMAAddress is later used for SFR assignment.*/
-    /* IFX_MISRA_RULE_11_01_STATUS=Typecasting DMAAddress to Spi_DataType* is
-       unvoidable. DMAAddress is later used for SFR assignment.*/
-    /* IFX_MISRA_RULE_11_03_STATUS=Type cast to Spi_DataType* is unavoidable*/
-    /* IFX_MISRA_RULE_11_03_STATUS=Type cast to uint32 is unavoidable*/
-    DMAAddress = ( Spi_DataType * ) ( ( ( uint32 ) DMAAddress & SPI_DMA_ADDRESS_MASK ) + ( uint32 ) Length );
+  ErrFlag = 0U; /* Initialize error flag */
+  if (DestAddrPtr == NULL_PTR)        /* Read Mode */
+  {
+    DMAAddress = SrcAddrPtr;
+  }
+  else if (SrcAddrPtr == NULL_PTR)    /*  Write Mode  */
+  {
+    DMAAddress = DestAddrPtr;
+  }
+  else
+  {
+    /*IFX_MISRA_RULE_11_01_STATUS=Typecasting DestAddrPtr to uint32 is
+      unvoidable. DMAAddress is later used for SFR assignment.*/
+    /*IFX_MISRA_RULE_11_01_STATUS=Typecasting SrcAddrPtr to uint32 is
+      unvoidable. DMAAddress is later used for SFR assignment.*/
+    /*IFX_MISRA_RULE_11_03_STATUS=Type cast to uint32 is unavoidable*/
+    /*IFX_MISRA_RULE_11_03_STATUS=Type cast to uint32 is unavoidable*/
+    DMAAddress = (((uint32)DestAddrPtr & SPI_DMA_ADDRESS_MASK) > \
+      ((uint32)SrcAddrPtr & SPI_DMA_ADDRESS_MASK)) ? \
+      DestAddrPtr : SrcAddrPtr;
+  }
+  /*IFX_MISRA_RULE_11_01_STATUS=Typecasting DMAAddress to uint32 is unvoidable.
+    DMAAddress is later used for SFR assignment.*/
+  /*IFX_MISRA_RULE_11_01_STATUS=Typecasting DMAAddress to Spi_DataType* is
+    unvoidable. DMAAddress is later used for SFR assignment.*/
+  /*IFX_MISRA_RULE_11_03_STATUS=Type cast to Spi_DataType* is unavoidable*/
+  /*IFX_MISRA_RULE_11_03_STATUS=Type cast to uint32 is unavoidable*/
+  DMAAddress = (Spi_DataType*)(((uint32)DMAAddress & \
+                           SPI_DMA_ADDRESS_MASK) + (uint32)Length);
 
-    /* IFX_MISRA_RULE_11_01_STATUS=Typecasting DMAAddress to uint32 is unvoidable.
-      DMAAddress is later used for SFR assignment.*/
-    /* IFX_MISRA_RULE_11_03_STATUS=Type cast to uint32 is unavoidable*/
-    if( ( uint32 ) DMAAddress > SPI_DMA_ADDRESS_OVERFLOW )
-    {
-        /* Report to DET */
-        Det_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID, SPI_SID_SETUPEB, SPI_E_DMA_ADR_ALIGN_ERROR );
-        ErrFlag = 1U;
-    }
-    return ErrFlag;
+  /*IFX_MISRA_RULE_11_01_STATUS=Typecasting DMAAddress to uint32 is unvoidable.
+    DMAAddress is later used for SFR assignment.*/
+  /*IFX_MISRA_RULE_11_03_STATUS=Type cast to uint32 is unavoidable*/
+  if ((uint32)DMAAddress > SPI_DMA_ADDRESS_OVERFLOW)
+  {
+    /* Report to DET */
+    Det_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID,
+        SPI_SID_SETUPEB, SPI_E_DMA_ADR_ALIGN_ERROR );
+    ErrFlag = 1U;
+  }
+  return ErrFlag;
 }
-#endif /*( SPI_CHANNEL_BUFFERS_ALLOWED == 1U ) || ( SPI_CHANNEL_BUFFERS_ALLOWED == 2U )*/
-#endif /* SPI_DMA_ADDR_SIZE_ALIGN_CHECK */
-#endif /* SPI_DEV_ERROR_DETECT */
+#endif
+ /*(SPI_CHANNEL_BUFFERS_ALLOWED==1U)||(SPI_CHANNEL_BUFFERS_ALLOWED==2U)*/
+#endif
+ /* SPI_DMA_ADDR_SIZE_ALIGN_CHECK */
+#endif
+ /* SPI_DEV_ERROR_DETECT */
 
 /*******************************************************************************
 ** Syntax           : IFX_LOCAL_INLINE uint16 Spi_lCompletedJobId(            **
@@ -8608,34 +8667,38 @@ static void Spi_lSyncTransmit(Spi_SequenceType Sequence)
 **                                                                            **
 ** Description      : Function to check Init function called or not           **
 *******************************************************************************/
-#if ( SPI_DEV_ERROR_DETECT == STD_ON )
-IFX_LOCAL_INLINE Std_ReturnType Spi_lGetDetInitStatus( uint8 ApiId )
+#if (SPI_DEV_ERROR_DETECT == STD_ON)
+IFX_LOCAL_INLINE Std_ReturnType Spi_lGetDetInitStatus(uint8 ApiId)
 {
-    Std_ReturnType ReturnStatus;
-    ReturnStatus = E_OK;
+  Std_ReturnType ReturnStatus;
+  ReturnStatus = E_OK;
 
-    #if ( SPI_PB_FIXEDADDR == STD_OFF )
-        if (Spi_kConfigPtr == NULL_PTR)
-        {
-            /* Report to DET */
-            Det_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID, ApiId, SPI_E_UNINIT );
-            ReturnStatus = E_NOT_OK;
-        }
-    #endif /*(SPI_PB_FIXEDADDR == STD_OFF)*/
+  #if (SPI_PB_FIXEDADDR == STD_OFF)
+  if (Spi_kConfigPtr == NULL_PTR)
+  {
+    /* Report to DET */
+    Det_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID,
+        ApiId, SPI_E_UNINIT );
+    ReturnStatus = E_NOT_OK;
+  }
+  #endif
+ /*(SPI_PB_FIXEDADDR == STD_OFF)*/
 
-    #if (SPI_PB_FIXEDADDR == STD_ON)
-        if( Spi_InitStatus == SPI_DRIVER_DEINITIALIZED )
-        {
-            /* Report to DET */
-            Det_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID,
-            ApiId, SPI_E_UNINIT );
-            ReturnStatus = E_NOT_OK;
-        }
-    #endif /*(SPI_PB_FIXEDADDR == STD_OFF)*/
+  #if (SPI_PB_FIXEDADDR == STD_ON)
+  if (Spi_InitStatus == SPI_DRIVER_DEINITIALIZED)
+  {
+    /* Report to DET */
+    Det_ReportError( SPI_MODULE_ID, SPI_INSTANCE_ID,
+        ApiId, SPI_E_UNINIT );
+    ReturnStatus = E_NOT_OK;
+  }
+  #endif
+ /*(SPI_PB_FIXEDADDR == STD_OFF)*/
 
-    return ReturnStatus;
+  return ReturnStatus;
 }
-#endif /* (SPI_DEV_ERROR_DETECT == STD_ON) */
+#endif
+ /* (SPI_DEV_ERROR_DETECT == STD_ON) */
 
 /*******************************************************************************
 ** Syntax           : IFX_LOCAL_INLINE uint8 Spi_lGetSeqStatusInArray         **
@@ -8709,136 +8772,127 @@ IFX_LOCAL_INLINE uint8 Spi_lGetSeqStatusInArray(uint32 SeqArrayVal)
 **                                                                            **
 ** Description      : Function to initialise the QSPI Hw (Level 1 & 2)        **
 *******************************************************************************/
-static void Spi_lHwInit( const Spi_ConfigType* ConfigPtr )
+static void Spi_lHwInit(const Spi_ConfigType* ConfigPtr)
 {
-    volatile uint32 ReadBack;
-    uint32 ModLoopCtr;
-    const Spi_HWModuleConfigType* HWModuleConfigPtr;
-  #if ( SPI_QM_ASYNC_MASTER_MODULES_USED != 0U )
-  #if ( SPI_ASYNC_PARALLEL_TRANSMIT == STD_ON )
-    uint32 QmModIndex;
+  volatile uint32 ReadBack;
+  uint32 ModLoopCtr;
+  const Spi_HWModuleConfigType* HWModuleConfigPtr;
+
+  #if (SPI_QM_ASYNC_MASTER_MODULES_USED != 0U)
+  #if (SPI_ASYNC_PARALLEL_TRANSMIT == STD_ON)
+  uint32 QmModIndex;
   #endif
   #endif
 
 /*  ------------------------------------------------------------------ **
 **                 Spi Hw Module Initialization                        **
 **  ------------------------------------------------------------------ */
-#if ( SPI_SAFETY_ENABLE == STD_ON )
-    Spi_AsilJobAndSeqAccess.StartIndexExtractJobId = 0U;
-    Spi_AsilJobAndSeqAccess.EndIndex = 0U;
-#endif
 
-    #if (SPI_QM_ASYNC_MASTER_MODULES_USED != 0U)
+  #if (SPI_SAFETY_ENABLE == STD_ON)
+   Spi_AsilJobAndSeqAccess.StartIndexExtractJobId = 0U;
+   Spi_AsilJobAndSeqAccess.EndIndex = 0U;
+  #endif
+
+  #if (SPI_QM_ASYNC_MASTER_MODULES_USED != 0U)
+  #if (SPI_ASYNC_PARALLEL_TRANSMIT == STD_OFF)
+  Spi_QmJobAndSeqAccess.StartIndexExtractJobId = 0U;
+  Spi_QmJobAndSeqAccess.EndIndex = 0U;
+  #else
+  QmModIndex = 0U;
+  do
+  {
+    Spi_QmJobAndSeqAccess[QmModIndex].StartIndexExtractJobId = 0U;
+    Spi_QmJobAndSeqAccess[QmModIndex].EndIndex = 0U;
+    QmModIndex++;
+  }while(QmModIndex < SPI_NUM_QM_ASYNC_MASTERS);
+  #endif
+  #endif
+
+  /* Enter Critical Section */
+  SchM_Enter_Spi_Init();
+
+  /* Reset End Init Protection to access regsiters */
+  Mcal_ResetENDINIT();
+
+  ModLoopCtr = 0U;
+  do
+  {
+    if(Spi_lModuleConfigured((uint8)ModLoopCtr) != 0U)
     {
-        #if ( SPI_ASYNC_PARALLEL_TRANSMIT == STD_OFF )
-        {
-            Spi_QmJobAndSeqAccess.StartIndexExtractJobId = 0U;
-            Spi_QmJobAndSeqAccess.EndIndex = 0U;
-        }
-        #else
-        {
-            QmModIndex = 0U;
-            do
-            {
-                Spi_QmJobAndSeqAccess[ QmModIndex ].StartIndexExtractJobId = 0U;
-                Spi_QmJobAndSeqAccess[ QmModIndex ].EndIndex = 0U;
-                QmModIndex++;
-            }while( QmModIndex < SPI_NUM_QM_ASYNC_MASTERS );
-        }
-        #endif
+      /* Get QSPIx Configuration Pointer */
+      HWModuleConfigPtr = (ConfigPtr->HWModuleConfigPtr[ModLoopCtr]);
+      /* SPI QSPIx Module Initialisation within end init protection */
+      /* Initialize CLC Register - Enable QSPI Module, Set Sleep Settings */
+      /*IFX_MISRA_RULE_11_05_STATUS="SPI_HW_MODULE" attempt to cast away
+        volatile in terms of pointer access.*/
+      /*IFX_MISRA_RULE_17_04_STATUS="SPI_HW_MODULE" Pointer arithmetic is used
+        to efficiently access the SFRs of multiple QSPI Modules.*/
+      SPI_HW_MODULE[ModLoopCtr].CLC.U = HWModuleConfigPtr->HWClkSetting;
+
+      /* Fix for CPU Bug CPU_TC.H002 */
+      /*IFX_MISRA_RULE_11_05_STATUS="SPI_HW_MODULE" attempt to cast away
+        volatile in terms of pointer access.*/
+      /*IFX_MISRA_RULE_17_04_STATUS="SPI_HW_MODULE" Pointer arithmetic is used
+        to efficiently access the SFRs of multiple QSPI Modules.*/
+      ReadBack = (uint32)SPI_HW_MODULE[ModLoopCtr].CLC.U;
+      UNUSED_PARAMETER(ReadBack)
+
+#if(SPI_RESET_SFR_INIT == STD_ON)
+      Spi_lQSPIHwKernelReset(ModLoopCtr);
+#endif /* Reset at Init ON */
     }
-    #endif
+    ModLoopCtr++;
+  }while (ModLoopCtr < SPI_MAX_HW_UNIT);
 
-    /* Enter Critical Section */
-    SchM_Enter_Spi_Init();
+  /* Set End Init Protection */
+  Mcal_SetENDINIT();
 
-    /* Reset End Init Protection to access regsiters */
-    Mcal_ResetENDINIT();
-
-    ModLoopCtr = 0U;
-    do
+  /* SPI QSPIx Module Initialisation outside end init protection */
+  ModLoopCtr = 0U;
+  do
+  {
+    if(Spi_lModuleConfigured((uint8)ModLoopCtr) != 0U)
     {
-        if( Spi_lModuleConfigured( ( uint8 ) ModLoopCtr ) != 0U )
-        {
-            /* Get QSPIx Configuration Pointer */
-            HWModuleConfigPtr = ( ConfigPtr->HWModuleConfigPtr[ ModLoopCtr ] );
-            /* SPI QSPIx Module Initialisation within end init protection */
-            /* Initialize CLC Register - Enable QSPI Module, Set Sleep Settings */
-            /*IFX_MISRA_RULE_11_05_STATUS="SPI_HW_MODULE" attempt to cast away
-                volatile in terms of pointer access.*/
-            /*IFX_MISRA_RULE_17_04_STATUS="SPI_HW_MODULE" Pointer arithmetic is used
-                to efficiently access the SFRs of multiple QSPI Modules.*/
-            SPI_HW_MODULE[ ModLoopCtr ].CLC.U = HWModuleConfigPtr->HWClkSetting;
-
-            /* Fix for CPU Bug CPU_TC.H002 */
-            /*IFX_MISRA_RULE_11_05_STATUS="SPI_HW_MODULE" attempt to cast away
-                volatile in terms of pointer access.*/
-            /*IFX_MISRA_RULE_17_04_STATUS="SPI_HW_MODULE" Pointer arithmetic is used
-                to efficiently access the SFRs of multiple QSPI Modules.*/
-            ReadBack = ( uint32 )SPI_HW_MODULE[ ModLoopCtr ].CLC.U;
-            UNUSED_PARAMETER( ReadBack )
-
-            #if( SPI_RESET_SFR_INIT == STD_ON )
-            {
-                Spi_lQSPIHwKernelReset( ModLoopCtr );
-            }
-            #endif /* Reset at Init ON */
-        }
-        ModLoopCtr++;
-    }while( ModLoopCtr < SPI_MAX_HW_UNIT );
-
-    /* Set End Init Protection */
-    Mcal_SetENDINIT();
-
-    /* SPI QSPIx Module Initialisation outside end init protection */
-    ModLoopCtr = 0U;
-    do
-    {
-        if( Spi_lModuleConfigured( ( uint8 ) ModLoopCtr ) != 0U )
-        {
-            HWModuleConfigPtr = ConfigPtr->HWModuleConfigPtr[ ModLoopCtr ];
-            /*IFX_MISRA_RULE_11_05_STATUS="SPI_HW_MODULE" attempt to cast away
-            volatile in terms of pointer access.*/
-            /*IFX_MISRA_RULE_17_04_STATUS="SPI_HW_MODULE" Pointer arithmetic is used
-            to efficiently access the SFRs of multiple QSPI Modules.*/
-            SPI_HW_MODULE[ ModLoopCtr ].GLOBALCON.U = SPI_QSPI_RESET_MODULE;
-            /* Select Lines (A/B) for MISO */
-            /*IFX_MISRA_RULE_11_05_STATUS="SPI_HW_MODULE" attempt to cast away
-            volatile in terms of pointer access.*/
-            /*IFX_MISRA_RULE_17_04_STATUS="SPI_HW_MODULE" Pointer arithmetic is used
-            to efficiently access the SFRs of multiple QSPI Modules.*/
-            SPI_HW_MODULE[ ModLoopCtr ].PISEL.U = ( uint32 ) ( HWModuleConfigPtr->HWPinSetting );
-        }
-        ModLoopCtr++;
-    }while( ModLoopCtr < SPI_MAX_HW_UNIT );
-
-    #if(SPI_BAUDRATE_AT_RUNTIME == STD_OFF)
-    {
-        /*Set the ECON register values */
-        Spi_lHwSetConfigExtn( ConfigPtr );
+      HWModuleConfigPtr = ConfigPtr->HWModuleConfigPtr[ModLoopCtr];
+      /*IFX_MISRA_RULE_11_05_STATUS="SPI_HW_MODULE" attempt to cast away
+        volatile in terms of pointer access.*/
+      /*IFX_MISRA_RULE_17_04_STATUS="SPI_HW_MODULE" Pointer arithmetic is used
+        to efficiently access the SFRs of multiple QSPI Modules.*/
+      SPI_HW_MODULE[ModLoopCtr].GLOBALCON.U = SPI_QSPI_RESET_MODULE;
+      /* Select Lines (A/B) for MISO */
+      /*IFX_MISRA_RULE_11_05_STATUS="SPI_HW_MODULE" attempt to cast away
+        volatile in terms of pointer access.*/
+      /*IFX_MISRA_RULE_17_04_STATUS="SPI_HW_MODULE" Pointer arithmetic is used
+        to efficiently access the SFRs of multiple QSPI Modules.*/
+      SPI_HW_MODULE[ModLoopCtr].PISEL.U = \
+                                  (uint32)(HWModuleConfigPtr->HWPinSetting);
     }
-    #endif /* SPI_BAUDRATE_AT_RUNTIME == STD_OFF */
+    ModLoopCtr++;
+  }while (ModLoopCtr < SPI_MAX_HW_UNIT);
 
-    #if(SPI_RESET_SFR_INIT == STD_ON)
+#if(SPI_BAUDRATE_AT_RUNTIME == STD_OFF)
+  /*Set the ECON register values */
+  Spi_lHwSetConfigExtn(ConfigPtr);
+#endif /* SPI_BAUDRATE_AT_RUNTIME == STD_OFF */
+
+#if(SPI_RESET_SFR_INIT == STD_ON)
+  Spi_lHwDmaResetSfr();
+#endif /* Reset at Init ON */
+
+  Spi_lHwDmaInit();
+
+  ModLoopCtr = 0U;
+  do
+  {
+    if(Spi_lModuleConfiguredAndAsync((uint8)ModLoopCtr) != 0U)
     {
-        Spi_lHwDmaResetSfr();
+      Spi_lHwInitIntr(ModLoopCtr);
     }
-    #endif /* Reset at Init ON */
+    ModLoopCtr++;
+  }while (ModLoopCtr < SPI_MAX_HW_UNIT);
 
-    Spi_lHwDmaInit();
-
-    ModLoopCtr = 0U;
-    do
-    {
-        if( Spi_lModuleConfiguredAndAsync( ( uint8 ) ModLoopCtr ) != 0U )
-        {
-            Spi_lHwInitIntr( ModLoopCtr );
-        }
-        ModLoopCtr++;
-    }while( ModLoopCtr < SPI_MAX_HW_UNIT );
-
-    /* Exit Critical Section */
-    SchM_Exit_Spi_Init();
+  /* Exit Critical Section */
+  SchM_Exit_Spi_Init();
 }
 #endif
 
@@ -9515,7 +9569,7 @@ static void Spi_lHwSetJobConfig(volatile Ifx_QSPI* ModulePtr,
 ** Description      : Function to Set the ECON register Parameters            **
 *******************************************************************************/
 #if(SPI_BAUDRATE_AT_RUNTIME == STD_OFF)
-IFX_LOCAL_INLINE void Spi_lHwSetConfigExtn( const Spi_ConfigType* ConfigPtr )
+IFX_LOCAL_INLINE void Spi_lHwSetConfigExtn(const Spi_ConfigType* ConfigPtr)
 {
     Ifx_QSPI* ModulePtr;
     uint8 HwChannelno;
@@ -9525,25 +9579,29 @@ IFX_LOCAL_INLINE void Spi_lHwSetConfigExtn( const Spi_ConfigType* ConfigPtr )
     EconCntr = 0U;
     do
     {
-        /* IFX_MISRA_RULE_17_04_STATUS="SpiBaudrateEconPtr" Pointer arithmetic is used
-           to efficiently access the SFRs of multiple QSPI Modules.*/
-        Module = ( ( ConfigPtr->SpiBaudrateEconPtr )[ EconCntr ].QSPIHwUnit & SPI_HWUNIT_MASK );
-        /*IFX_MISRA_RULE_17_04_STATUS="SpiBaudrateEconPtr" Pointer arithmetic is used
-          to efficiently access the SFRs of multiple QSPI Modules.*/
-        HwChannelno = ( ( ( ( ConfigPtr->SpiBaudrateEconPtr )[ EconCntr ].QSPIHwUnit ) >> SPI_HWUNIT_CH_SHIFT ) & SPI_QSPI_HWCHANNELNO_MASK );
+ /*IFX_MISRA_RULE_17_04_STATUS="SpiBaudrateEconPtr" Pointer arithmetic is used
+      to efficiently access the SFRs of multiple QSPI Modules.*/
+      Module = ((ConfigPtr->SpiBaudrateEconPtr)[EconCntr].QSPIHwUnit
+                                                           & SPI_HWUNIT_MASK);
+/*IFX_MISRA_RULE_17_04_STATUS="SpiBaudrateEconPtr" Pointer arithmetic is used
+      to efficiently access the SFRs of multiple QSPI Modules.*/
+      HwChannelno = ((((ConfigPtr->SpiBaudrateEconPtr)[EconCntr].QSPIHwUnit)\
+                         >> SPI_HWUNIT_CH_SHIFT) & SPI_QSPI_HWCHANNELNO_MASK);
 
-        /*IFX_MISRA_RULE_11_05_STATUS="SPI_HW_MODULE" attempt to cast away
-        volatile in terms of pointer access.*/
-        /*IFX_MISRA_RULE_17_04_STATUS="SPI_HW_MODULE" Pointer arithmetic is used
-        to efficiently access the SFRs of multiple QSPI Modules.*/
-        ModulePtr = &( SPI_HW_MODULE[ Module ] );
-        
-        /* Write parameters to ECON register */
-        /* IFX_MISRA_RULE_17_04_STATUS="SpiBaudrateEconPtr" Pointer arithmetic is used
-           to efficiently access the SFRs of multiple QSPI Modules.*/
-        ModulePtr->ECON[ HwChannelno ].U = ( ConfigPtr->SpiBaudrateEconPtr )[ EconCntr ].EconVal;
-        EconCntr++;
-    }while( EconCntr < ConfigPtr->NoOfEconReg );
+     /*IFX_MISRA_RULE_11_05_STATUS="SPI_HW_MODULE" attempt to cast away
+      volatile in terms of pointer access.*/
+     /*IFX_MISRA_RULE_17_04_STATUS="SPI_HW_MODULE" Pointer arithmetic is used
+      to efficiently access the SFRs of multiple QSPI Modules.*/
+      ModulePtr =  &(SPI_HW_MODULE[Module]);
+
+
+      /* Write parameters to ECON register */
+/*IFX_MISRA_RULE_17_04_STATUS="SpiBaudrateEconPtr" Pointer arithmetic is used
+      to efficiently access the SFRs of multiple QSPI Modules.*/
+      ModulePtr->ECON[HwChannelno].U =
+                            (ConfigPtr->SpiBaudrateEconPtr)[EconCntr].EconVal;
+      EconCntr++;
+    }while(EconCntr < ConfigPtr->NoOfEconReg);
 }
 
 #if (SPI_SAFETY_ENABLE == STD_ON)
@@ -10206,55 +10264,62 @@ IFX_LOCAL_INLINE void Spi_lHwEnableQspiErrIntr(uint32 Module)
 *******************************************************************************/
 IFX_LOCAL_INLINE void Spi_lHwInitIntr(uint32 Module)
 {
-    Dma_ChannelType DmaTransmitChannel;
-    Dma_ChannelType DmaReceiveChannel;
+  Dma_ChannelType DmaTransmitChannel;
+  Dma_ChannelType DmaReceiveChannel;
 
-    #if ( ( SPI_SAFETY_ENABLE == STD_ON ) && ( SPI_QM_ASYNC_MASTER_MODULES_USED ==0U ) )
-    {
-        DmaTransmitChannel = DMA_CHANNEL_INVALID;
-        DmaReceiveChannel = DMA_CHANNEL_INVALID;
-    }
+  #if ((SPI_SAFETY_ENABLE == STD_ON) && (SPI_QM_ASYNC_MASTER_MODULES_USED ==0U))
+  DmaTransmitChannel = DMA_CHANNEL_INVALID;
+  DmaReceiveChannel = DMA_CHANNEL_INVALID;
+  #endif
+
+  #if (SPI_SAFETY_ENABLE == STD_ON)
+  if(SPI_ASIL_MASTER == Spi_lGetModuleKind((uint8)Module))
+  {
+     DmaTransmitChannel = Spi_AsilChnlAccess[0U].DmaChannelIdx.TxDmaChannel;
+     DmaReceiveChannel  = Spi_AsilChnlAccess[0U].DmaChannelIdx.RxDmaChannel;
+  }
+  else
+  {
+    #if (SPI_QM_ASYNC_MASTER_MODULES_USED != 0U)
+    DmaTransmitChannel = Spi_QmChnlAccess[Spi_lGetQmModuleVarIndex(Module)].\
+                                                    DmaChannelIdx.TxDmaChannel;
+    DmaReceiveChannel  = Spi_QmChnlAccess[Spi_lGetQmModuleVarIndex(Module)].\
+                                                    DmaChannelIdx.RxDmaChannel;
     #endif
+    /* Do nothing if QM modules are NOT Used */
+  }
+  #else
+  {
+    DmaTransmitChannel = Spi_QmChnlAccess[Spi_lGetQmModuleVarIndex(Module)].\
+                                                    DmaChannelIdx.TxDmaChannel;
+    DmaReceiveChannel  = Spi_QmChnlAccess[Spi_lGetQmModuleVarIndex(Module)].\
+                                                    DmaChannelIdx.RxDmaChannel;
+  }
+  #endif
 
-    #if ( SPI_SAFETY_ENABLE == STD_ON )
-        if( SPI_ASIL_MASTER == Spi_lGetModuleKind( ( uint8 ) Module ) )
-        {
-            DmaTransmitChannel = Spi_AsilChnlAccess[ 0U ].DmaChannelIdx.TxDmaChannel;
-            DmaReceiveChannel  = Spi_AsilChnlAccess[ 0U ].DmaChannelIdx.RxDmaChannel;
-        }
-        else
-        {
-            #if ( SPI_QM_ASYNC_MASTER_MODULES_USED != 0U )
-                DmaTransmitChannel = Spi_QmChnlAccess[ Spi_lGetQmModuleVarIndex( Module ) ].DmaChannelIdx.TxDmaChannel;
-                DmaReceiveChannel = Spi_QmChnlAccess[ Spi_lGetQmModuleVarIndex( Module ) ].DmaChannelIdx.RxDmaChannel;
-            #endif
-            /* Do nothing if QM modules are NOT Used */
-        }
-    #else
-    {
-        DmaTransmitChannel = Spi_QmChnlAccess[ Spi_lGetQmModuleVarIndex( Module ) ].DmaChannelIdx.TxDmaChannel;
-        DmaReceiveChannel = Spi_QmChnlAccess[ Spi_lGetQmModuleVarIndex( Module ) ].DmaChannelIdx.RxDmaChannel;
-    }
-    #endif
+  MODULE_SRC.QSPI.QSPI[Module].RX.B.CLRR   = 1U;
+  MODULE_SRC.QSPI.QSPI[Module].RX.B.SWSCLR = 1U;
+  MODULE_SRC.QSPI.QSPI[Module].RX.B.IOVCLR = 1U;
 
-    MODULE_SRC.QSPI.QSPI[ Module ].RX.B.CLRR   = 1U;
-    MODULE_SRC.QSPI.QSPI[ Module ].RX.B.SWSCLR = 1U;
-    MODULE_SRC.QSPI.QSPI[ Module ].RX.B.IOVCLR = 1U;
+  /* TOS is One bit in EP and 2 Bits in HE. delta managed using bitwise OR */
+  MODULE_SRC.QSPI.QSPI[Module].RX.B.TOS = MODULE_SRC.QSPI.QSPI[Module].RX.B.TOS
+                                                           | SPI_SRCREG_TOS_DMA;
+  MODULE_SRC.QSPI.QSPI[Module].RX.B.SRPN = \
+                                  (uint8)DmaReceiveChannel;
 
-    /* TOS is One bit in EP and 2 Bits in HE. delta managed using bitwise OR */
-    MODULE_SRC.QSPI.QSPI[ Module ].RX.B.TOS = MODULE_SRC.QSPI.QSPI[ Module ].RX.B.TOS | SPI_SRCREG_TOS_DMA;
-    MODULE_SRC.QSPI.QSPI[ Module ].RX.B.SRPN = ( uint8 ) DmaReceiveChannel;
-    MODULE_SRC.QSPI.QSPI[ Module ].RX.B.SRE  = 1U; /*  Enable intr */
+  MODULE_SRC.QSPI.QSPI[Module].RX.B.SRE  = 1U; /*  Enable intr */
 
-    /* QSPI Tx intr (i.e SRE bit) to DMA is not enabled at the beginning. */
-    MODULE_SRC.QSPI.QSPI[ Module ].TX.B.CLRR = 1U;
-    MODULE_SRC.QSPI.QSPI[ Module ].TX.B.SRE = 0U;
-    MODULE_SRC.QSPI.QSPI[ Module ].TX.B.SWSCLR = 1U;
-    MODULE_SRC.QSPI.QSPI[ Module ].TX.B.IOVCLR = 1U;
+  /* QSPI Tx intr (i.e SRE bit) to DMA is not enabled at the beginning. */
+  MODULE_SRC.QSPI.QSPI[Module].TX.B.CLRR   = 1U;
+  MODULE_SRC.QSPI.QSPI[Module].TX.B.SRE    = 0U;
+  MODULE_SRC.QSPI.QSPI[Module].TX.B.SWSCLR = 1U;
+  MODULE_SRC.QSPI.QSPI[Module].TX.B.IOVCLR = 1U;
 
-    /* TOS is One bit in EP and 2 Bits in HE. delta managed using bitwise OR */
-    MODULE_SRC.QSPI.QSPI[ Module ].TX.B.TOS = MODULE_SRC.QSPI.QSPI[ Module ].TX.B.TOS | SPI_SRCREG_TOS_DMA;
-    MODULE_SRC.QSPI.QSPI[ Module ].TX.B.SRPN = ( uint8 ) DmaTransmitChannel;
+  /* TOS is One bit in EP and 2 Bits in HE. delta managed using bitwise OR */
+  MODULE_SRC.QSPI.QSPI[Module].TX.B.TOS = MODULE_SRC.QSPI.QSPI[Module].TX.B.TOS
+                                                           | SPI_SRCREG_TOS_DMA;
+  MODULE_SRC.QSPI.QSPI[Module].TX.B.SRPN = \
+                                  (uint8)DmaTransmitChannel;
 }
 
 /*******************************************************************************
@@ -10316,107 +10381,104 @@ IFX_LOCAL_INLINE void Spi_lHwDeInitIntr(uint32 Module)
 ** Description      : Function to Initialise Dma Hw used for Spi during       **
 **                    Hw initialisation                                       **
 *******************************************************************************/
-static void Spi_lHwDmaInit( void )
+static void Spi_lHwDmaInit(void)
 {
-    uint32 ModLoopCtr;
-#if ( SPI_QM_ASYNC_MASTER_MODULES_USED != 0U )
-    uint32 QmModIndex;
-#endif
-    Dma_ChannelType DmaTransmitChannel;
-    Dma_ChannelType DmaReceiveChannel;
-    uint32 Address;
+  uint32 ModLoopCtr;
+  #if (SPI_QM_ASYNC_MASTER_MODULES_USED != 0U)
+  uint32 QmModIndex;
+  #endif
+  Dma_ChannelType DmaTransmitChannel;
+  Dma_ChannelType DmaReceiveChannel;
+  uint32 Address;
 
-    Mcal_DmaCfgMeErrIntr( 1U );
+  Mcal_DmaCfgMeErrIntr(1U);
+  #if ((SPI_SAFETY_ENABLE == STD_ON) && (SPI_QM_ASYNC_MASTER_MODULES_USED ==0U))
+  DmaReceiveChannel = DMA_CHANNEL_INVALID;
+  DmaTransmitChannel = DMA_CHANNEL_INVALID;
+  #endif
 
-    #if ( ( SPI_SAFETY_ENABLE == STD_ON ) && ( SPI_QM_ASYNC_MASTER_MODULES_USED ==0U ) )
+  ModLoopCtr = 0U;
+  #if (SPI_QM_ASYNC_MASTER_MODULES_USED != 0U)
+  QmModIndex = 0U;
+  #endif
+  do
+  {
+    if(Spi_lModuleConfiguredAndAsync((uint8)ModLoopCtr) != 0U)
     {
-        DmaReceiveChannel = DMA_CHANNEL_INVALID;
-        DmaTransmitChannel = DMA_CHANNEL_INVALID;
+      #if (SPI_SAFETY_ENABLE == STD_ON)
+      if(SPI_ASIL_MASTER == Spi_lGetModuleKind((uint8)ModLoopCtr))
+      {
+        DmaTransmitChannel = Spi_AsilChnlAccess[0U].DmaChannelIdx.TxDmaChannel;
+        DmaReceiveChannel  = Spi_AsilChnlAccess[0U].DmaChannelIdx.RxDmaChannel;
+      }
+      else
+      {
+        #if (SPI_QM_ASYNC_MASTER_MODULES_USED != 0U)
+        DmaTransmitChannel = \
+                        Spi_QmChnlAccess[QmModIndex].DmaChannelIdx.TxDmaChannel;
+        DmaReceiveChannel  = \
+                        Spi_QmChnlAccess[QmModIndex].DmaChannelIdx.RxDmaChannel;
+        /* Increment only if  QM master module is configured as ASYNC  */
+        QmModIndex++;
+        #endif
+      }
+      #else
+      {
+        DmaTransmitChannel = \
+                        Spi_QmChnlAccess[QmModIndex].DmaChannelIdx.TxDmaChannel;
+        DmaReceiveChannel  = \
+                        Spi_QmChnlAccess[QmModIndex].DmaChannelIdx.RxDmaChannel;
+        /* Increment only if  QM master module is configured as ASYNC  */
+        QmModIndex++;
+      }
+      #endif
+
+      /*IFX_MISRA_RULE_11_05_STATUS="SPI_HW_MODULE" attempt to cast away
+        volatile in terms of pointer access.*/
+      /*IFX_MISRA_RULE_17_04_STATUS="SPI_HW_MODULE" Pointer arithmetic is used
+        to efficiently access the SFRs of multiple QSPI Modules.*/
+      Address = ((uint32)&(SPI_HW_MODULE[ModLoopCtr].RXEXIT.U));
+
+      /* Set Source Address */
+      Mcal_DmaSetSourceAddr(DmaReceiveChannel, Address);
+
+      /* Init channel control register */
+      Mcal_DmaChClrCtlCfg(DmaReceiveChannel);
+      /* Set Destination Address */
+      /*IFX_MISRA_RULE_11_05_STATUS="SPI_HW_MODULE" attempt to cast away
+        volatile in terms of pointer access.*/
+      /*IFX_MISRA_RULE_17_04_STATUS="SPI_HW_MODULE" Pointer arithmetic is used
+        to efficiently access the SFRs of multiple QSPI Modules.*/
+      Mcal_DmaSetDestAddr(DmaTransmitChannel,
+                   (uint32)&(SPI_HW_MODULE[ModLoopCtr].DATAENTRY[0U]));
+      /* Init channel control register */
+      Mcal_DmaChClrCtlCfg(DmaTransmitChannel);
+
+      Mcal_DmaChClrIntrFlags(DmaTransmitChannel) ;
+      Mcal_DmaChClrIntrFlags(DmaReceiveChannel);
+
+      /* DMA Error Initialization */
+      Mcal_DmaEnTransReqLostIntr(DmaReceiveChannel);
+      Mcal_DmaEnTransReqLostIntr(DmaTransmitChannel);
+
+      /* Set Interrupt Control  */
+      Mcal_DmaCfgIntControl(DmaReceiveChannel, SPI_DMA_INTCT);
+
+      #if ((SPI_LEVEL_DELIVERED == 1U) && \
+                   (SPI_ASYNC_MODE_LEVEL1 == SPI_ASYNC_MODE_INTERRUPT))
+      /* Enable RX DMA Ch Interrupt Only
+      (TXDMA intr will be enabled for last channel only) */
+      Mcal_DmaEnableChIntrTrigger(DmaReceiveChannel);
+
+      Spi_lHwInitDmaIntr(ModLoopCtr);
+      #endif
     }
-    #endif
-
-    ModLoopCtr = 0U;
-    #if ( SPI_QM_ASYNC_MASTER_MODULES_USED != 0U )
+    else
     {
-        QmModIndex = 0U;
+      /* Do nothing if QSPI module is not configured */
     }
-    #endif
-
-    do
-    {
-        if( Spi_lModuleConfiguredAndAsync( ( uint8 ) ModLoopCtr ) != 0U )
-        {
-            #if ( SPI_SAFETY_ENABLE == STD_ON )
-                if( SPI_ASIL_MASTER == Spi_lGetModuleKind( ( uint8 ) ModLoopCtr ) )
-                {
-                    DmaTransmitChannel = Spi_AsilChnlAccess[ 0U ].DmaChannelIdx.TxDmaChannel;
-                    DmaReceiveChannel  = Spi_AsilChnlAccess[ 0U ].DmaChannelIdx.RxDmaChannel;
-                }
-                else
-                {
-                    #if ( SPI_QM_ASYNC_MASTER_MODULES_USED != 0U )
-                    {
-                        DmaTransmitChannel = Spi_QmChnlAccess[ QmModIndex ].DmaChannelIdx.TxDmaChannel;
-                        DmaReceiveChannel = Spi_QmChnlAccess[ QmModIndex ].DmaChannelIdx.RxDmaChannel;
-                        /* Increment only if  QM master module is configured as ASYNC  */
-                        QmModIndex++;
-                    }
-                    #endif
-                }
-            #else
-            {
-                DmaTransmitChannel = Spi_QmChnlAccess[ QmModIndex].DmaChannelIdx.TxDmaChannel;
-                DmaReceiveChannel = Spi_QmChnlAccess[ QmModIndex ].DmaChannelIdx.RxDmaChannel;
-                /* Increment only if  QM master module is configured as ASYNC  */
-                QmModIndex++;
-            }
-            #endif
-
-            /* IFX_MISRA_RULE_11_05_STATUS="SPI_HW_MODULE" attempt to cast away
-               volatile in terms of pointer access.*/
-            /* IFX_MISRA_RULE_17_04_STATUS="SPI_HW_MODULE" Pointer arithmetic is used
-               to efficiently access the SFRs of multiple QSPI Modules.*/
-            Address = ( ( uint32 )&( SPI_HW_MODULE[ ModLoopCtr ].RXEXIT.U ) );
-
-            /* Set Source Address */
-            Mcal_DmaSetSourceAddr( DmaReceiveChannel, Address );
-
-            /* Init channel control register */
-            Mcal_DmaChClrCtlCfg( DmaReceiveChannel );
-            /* Set Destination Address */
-            /* IFX_MISRA_RULE_11_05_STATUS="SPI_HW_MODULE" attempt to cast away
-               volatile in terms of pointer access.*/
-            /* IFX_MISRA_RULE_17_04_STATUS="SPI_HW_MODULE" Pointer arithmetic is used
-               to efficiently access the SFRs of multiple QSPI Modules.*/
-            Mcal_DmaSetDestAddr( DmaTransmitChannel, ( uint32 )&( SPI_HW_MODULE[ ModLoopCtr ].DATAENTRY[ 0U ] ) );
-            /* Init channel control register */
-            Mcal_DmaChClrCtlCfg( DmaTransmitChannel );
-
-            Mcal_DmaChClrIntrFlags( DmaTransmitChannel ) ;
-            Mcal_DmaChClrIntrFlags( DmaReceiveChannel );
-
-            /* DMA Error Initialization */
-            Mcal_DmaEnTransReqLostIntr( DmaReceiveChannel );
-            Mcal_DmaEnTransReqLostIntr( DmaTransmitChannel );
-
-            /* Set Interrupt Control  */
-            Mcal_DmaCfgIntControl( DmaReceiveChannel, SPI_DMA_INTCT );
-
-            #if ( ( SPI_LEVEL_DELIVERED == 1U ) && ( SPI_ASYNC_MODE_LEVEL1 == SPI_ASYNC_MODE_INTERRUPT ) )
-            {
-                /* Enable RX DMA Ch Interrupt Only
-                   (TXDMA intr will be enabled for last channel only) */
-                Mcal_DmaEnableChIntrTrigger( DmaReceiveChannel );
-                Spi_lHwInitDmaIntr( ModLoopCtr );
-            }
-            #endif
-            }
-            else
-            {
-            /* Do nothing if QSPI module is not configured */
-        }
-        ModLoopCtr++;
-    }while( ModLoopCtr < SPI_MAX_HW_UNIT );
+    ModLoopCtr++;
+  }while (ModLoopCtr < SPI_MAX_HW_UNIT);
 }
 
 /*******************************************************************************
@@ -10906,8 +10968,6 @@ const Spi_JobConfigType* JobConfigPtr
   /* Set Hardware Trigger Request on the Channels */
   Mcal_DmaEnableHwTransfer(DmaRxChannel);
 
-  
-
   if (isDmaTxReqd == 1U)
   {
     Mcal_DmaEnableHwTransfer(DmaTxChannel);
@@ -11002,74 +11062,80 @@ IFX_LOCAL_INLINE void Spi_lHwUpdateSourceReg(uint32 Module, uint16 DataWidth,
 **                                                                            **
 ** Description      : Function to Initialise Dma Hw Interrupts                **
 *******************************************************************************/
-IFX_LOCAL_INLINE void Spi_lHwInitDmaIntr( uint32 Module )
+IFX_LOCAL_INLINE void Spi_lHwInitDmaIntr(uint32 Module)
 {
-    Ifx_SRC_SRCR_Bits IntrSrc;
-    uint32 TxChannelOffset;
-    uint32 RxChannelOffset;
-    volatile Ifx_SRC_SRCR_Bits *MoveEngCh0BaseAddr;
+  Ifx_SRC_SRCR_Bits IntrSrc;
+  uint32 TxChannelOffset;
+  uint32 RxChannelOffset;
+  volatile Ifx_SRC_SRCR_Bits *MoveEngCh0BaseAddr;
 
-    #if ( ( SPI_SAFETY_ENABLE == STD_ON ) && ( SPI_QM_ASYNC_MASTER_MODULES_USED ==0U ) )
-    {
-        RxChannelOffset = ( uint32 ) DMA_CHANNEL_INVALID;
-        TxChannelOffset = ( uint32 ) DMA_CHANNEL_INVALID;
-    }
+  #if ((SPI_SAFETY_ENABLE == STD_ON) && (SPI_QM_ASYNC_MASTER_MODULES_USED ==0U))
+  RxChannelOffset = (uint32)DMA_CHANNEL_INVALID;
+  TxChannelOffset = (uint32)DMA_CHANNEL_INVALID;
+  #endif
+
+  #if (SPI_SAFETY_ENABLE == STD_ON)
+  if(SPI_ASIL_MASTER == Spi_lGetModuleKind((uint8)Module))
+  {
+    TxChannelOffset = (uint32)Spi_AsilChnlAccess[0U].DmaChannelIdx.TxDmaChannel;
+    RxChannelOffset = (uint32)Spi_AsilChnlAccess[0U].DmaChannelIdx.RxDmaChannel;
+  }
+  else
+  {
+    #if (SPI_QM_ASYNC_MASTER_MODULES_USED != 0U)
+    TxChannelOffset = (uint32)Spi_QmChnlAccess[\
+                   Spi_lGetQmModuleVarIndex(Module)].DmaChannelIdx.TxDmaChannel;
+    RxChannelOffset = (uint32)Spi_QmChnlAccess[\
+                   Spi_lGetQmModuleVarIndex(Module)].DmaChannelIdx.RxDmaChannel;
     #endif
+    /* Do nothing if QM modules are NOT Used */
+  }
+  #else
+  {
+    TxChannelOffset = (uint32)Spi_QmChnlAccess[\
+                   Spi_lGetQmModuleVarIndex(Module)].DmaChannelIdx.TxDmaChannel;
+    RxChannelOffset = (uint32)Spi_QmChnlAccess[\
+                   Spi_lGetQmModuleVarIndex(Module)].DmaChannelIdx.RxDmaChannel;
+  }
+  #endif
 
-    #if (SPI_SAFETY_ENABLE == STD_ON)
-        if( SPI_ASIL_MASTER == Spi_lGetModuleKind( ( uint8 ) Module ) )
-        {
-            TxChannelOffset = ( uint32 ) Spi_AsilChnlAccess[ 0U ].DmaChannelIdx.TxDmaChannel;
-            RxChannelOffset = ( uint32 ) Spi_AsilChnlAccess[ 0U ].DmaChannelIdx.RxDmaChannel;
-        }
-        else
-        {
-            #if ( SPI_QM_ASYNC_MASTER_MODULES_USED != 0U )
-                TxChannelOffset = ( uint32 )Spi_QmChnlAccess[ Spi_lGetQmModuleVarIndex( Module ) ].DmaChannelIdx.TxDmaChannel;
-                RxChannelOffset = ( uint32 )Spi_QmChnlAccess[ Spi_lGetQmModuleVarIndex( Module ) ].DmaChannelIdx.RxDmaChannel;
-            #endif
-        /* Do nothing if QM modules are NOT Used */
-        }
-    #else
-    {
-        TxChannelOffset = ( uint32 )Spi_QmChnlAccess[ Spi_lGetQmModuleVarIndex( Module ) ].DmaChannelIdx.TxDmaChannel;
-        RxChannelOffset = ( uint32 )Spi_QmChnlAccess[ Spi_lGetQmModuleVarIndex( Module ) ].DmaChannelIdx.RxDmaChannel;
-    }
-    #endif
+  MoveEngCh0BaseAddr = SRC_DMACH0ADDR;
 
-    MoveEngCh0BaseAddr = SRC_DMACH0ADDR;
+  /*IFX_MISRA_RULE_11_05_STATUS="MoveEngCh0BaseAddr" attempt to cast away
+    volatile in terms of pointer access.*/
+  /*IFX_MISRA_RULE_17_04_STATUS="MoveEngCh0BaseAddr" Pointer arithmetic is used
+    to efficiently access the SFRs of multiple QSPI Modules.*/
+  IntrSrc = *((volatile Ifx_SRC_SRCR_Bits *)(void *)MoveEngCh0BaseAddr +
+                                      RxChannelOffset);
+  IntrSrc.CLRR = 1U;
+  IntrSrc.SWSCLR = 1U;
+  IntrSrc.IOVCLR = 1U;
+  IntrSrc.SRE = 1U; /*  Enable intr */
 
-    /* IFX_MISRA_RULE_11_05_STATUS="MoveEngCh0BaseAddr" attempt to cast away
-       volatile in terms of pointer access.*/
-    /* IFX_MISRA_RULE_17_04_STATUS="MoveEngCh0BaseAddr" Pointer arithmetic is used
-       to efficiently access the SFRs of multiple QSPI Modules.*/
-    IntrSrc = *(( volatile Ifx_SRC_SRCR_Bits * )( void * )MoveEngCh0BaseAddr + RxChannelOffset );
-    IntrSrc.CLRR = 1U;
-    IntrSrc.SWSCLR = 1U;
-    IntrSrc.IOVCLR = 1U;
-    IntrSrc.SRE = 1U; /*  Enable intr */
+  /*IFX_MISRA_RULE_11_05_STATUS="MoveEngCh0BaseAddr" attempt to cast away
+    volatile in terms of pointer access.*/
+  /*IFX_MISRA_RULE_17_04_STATUS="MoveEngCh0BaseAddr" Pointer arithmetic is used
+    to efficiently access the SFRs of multiple QSPI Modules.*/
+  *((volatile Ifx_SRC_SRCR_Bits *)(void *)MoveEngCh0BaseAddr +
+                          RxChannelOffset) = IntrSrc;
 
-    /* IFX_MISRA_RULE_11_05_STATUS="MoveEngCh0BaseAddr" attempt to cast away
-       volatile in terms of pointer access.*/
-    /* IFX_MISRA_RULE_17_04_STATUS="MoveEngCh0BaseAddr" Pointer arithmetic is used
-       to efficiently access the SFRs of multiple QSPI Modules.*/
-    *( ( volatile Ifx_SRC_SRCR_Bits * ) ( void * ) MoveEngCh0BaseAddr + RxChannelOffset ) = IntrSrc;
+  /*IFX_MISRA_RULE_11_05_STATUS="MoveEngCh0BaseAddr" attempt to cast away
+    volatile in terms of pointer access.*/
+  /*IFX_MISRA_RULE_17_04_STATUS="MoveEngCh0BaseAddr" Pointer arithmetic is used
+    to efficiently access the SFRs of multiple QSPI Modules.*/
+  IntrSrc = *((volatile Ifx_SRC_SRCR_Bits *)(void *)MoveEngCh0BaseAddr +
+                                   TxChannelOffset);
+  IntrSrc.CLRR = 1U;
+  IntrSrc.SWSCLR = 1U;
+  IntrSrc.IOVCLR = 1U;
+  IntrSrc.SRE = 0U; /*  Disable intr */
 
-    /* IFX_MISRA_RULE_11_05_STATUS="MoveEngCh0BaseAddr" attempt to cast away
-       volatile in terms of pointer access.*/
-    /* IFX_MISRA_RULE_17_04_STATUS="MoveEngCh0BaseAddr" Pointer arithmetic is used
-       to efficiently access the SFRs of multiple QSPI Modules.*/
-    IntrSrc = *( ( volatile Ifx_SRC_SRCR_Bits * ) ( void * ) MoveEngCh0BaseAddr + TxChannelOffset );
-    IntrSrc.CLRR = 1U;
-    IntrSrc.SWSCLR = 1U;
-    IntrSrc.IOVCLR = 1U;
-    IntrSrc.SRE = 0U; /*  Disable intr */
-
-    /* IFX_MISRA_RULE_11_05_STATUS="MoveEngCh0BaseAddr" attempt to cast away
-       volatile in terms of pointer access.*/
-    /* IFX_MISRA_RULE_17_04_STATUS="MoveEngCh0BaseAddr" Pointer arithmetic is used
-       to efficiently access the SFRs of multiple QSPI Modules.*/
-    *( ( volatile Ifx_SRC_SRCR_Bits * ) ( void * ) MoveEngCh0BaseAddr + TxChannelOffset ) = IntrSrc;
+  /*IFX_MISRA_RULE_11_05_STATUS="MoveEngCh0BaseAddr" attempt to cast away
+    volatile in terms of pointer access.*/
+  /*IFX_MISRA_RULE_17_04_STATUS="MoveEngCh0BaseAddr" Pointer arithmetic is used
+    to efficiently access the SFRs of multiple QSPI Modules.*/
+  *((volatile Ifx_SRC_SRCR_Bits *)(void *)MoveEngCh0BaseAddr +
+                          TxChannelOffset) = IntrSrc;
 }
 
 /*******************************************************************************
@@ -12631,45 +12697,44 @@ Spi_SafetySeqType Spi_lGetSequenceKind (Spi_SequenceType SequenceId )
 **                           of the module                                    **
 **                                                                            **
 *******************************************************************************/
-IFX_INLINE uint8 Spi_lGetQmModuleVarIndex( uint32 Module )
+IFX_INLINE uint8 Spi_lGetQmModuleVarIndex(uint32 Module)
 {
-    uint8  Index,LowerQmModuleCnt;
-    uint32 QmMasterModulesUsed;
+  uint8  Index,LowerQmModuleCnt;
+  uint32 QmMasterModulesUsed;
 
-    LowerQmModuleCnt = 0U;
+  LowerQmModuleCnt = 0U;
+  /* Workaround for Misra rule 13.7 */
+  #if (SPI_LEVEL_DELIVERED != 0U)
+  if(Spi_lModuleConfiguredAndAsync((uint8)Module) != 0U)
+  {
+    #if (SPI_SAFETY_ENABLE == STD_ON)
+      /* Take only QM modules configured as ASYNC
+      SPI_QM_MASTER_MODULES_USED -> excludes Safety master of SYNC/ASYNC kind
+      SPI_ASYNC_MODULES -> excludes Sync modules
+      AND of both give ASYNC QM modules used */
+      QmMasterModulesUsed = SPI_QM_MASTER_MODULES_USED & SPI_ASYNC_MODULES;
+    #else
+      QmMasterModulesUsed = SPI_ASYNC_MODULES;
+    #endif
+  }
+  else
+  #endif
+  {
+    QmMasterModulesUsed = SPI_QM_MASTER_MODULES_USED;
+  }
 
-    /* Workaround for Misra rule 13.7 */
-#if (SPI_LEVEL_DELIVERED != 0U)
-    if( Spi_lModuleConfiguredAndAsync( ( uint8 ) Module ) != 0U )
+  /* count the number of bits which are SET below Module*/
+  for( Index = 0U; Index < Module; Index++ )
+  {
+    if((QmMasterModulesUsed >> Index) & 0x01U)
     {
-#if (SPI_SAFETY_ENABLE == STD_ON)
-        /* Take only QM modules configured as ASYNC
-           SPI_QM_MASTER_MODULES_USED -> excludes Safety master of SYNC/ASYNC kind
-           SPI_ASYNC_MODULES -> excludes Sync modules
-           AND of both give ASYNC QM modules used */
-        QmMasterModulesUsed = SPI_QM_MASTER_MODULES_USED & SPI_ASYNC_MODULES;
-#else
-        QmMasterModulesUsed = SPI_ASYNC_MODULES;
-#endif
+      if(Spi_lModuleConfigured((uint8)Index) != 0U)
+      {
+        LowerQmModuleCnt++;
+      }
     }
-    else
-#endif
-    {
-        QmMasterModulesUsed = SPI_QM_MASTER_MODULES_USED;
-    }
-
-    /* count the number of bits which are SET below Module*/
-    for( Index = 0U; Index < Module; Index++ )
-    {
-        if( ( QmMasterModulesUsed >> Index ) & 0x01U )
-        {
-            if( Spi_lModuleConfigured( ( uint8 ) Index ) != 0U )
-            {
-                LowerQmModuleCnt++;
-            }
-        }
-    }
-    return LowerQmModuleCnt;
+  }
+  return LowerQmModuleCnt;
 }
 
 #if (SPI_ASYNC_PARALLEL_TRANSMIT == STD_ON)

@@ -1109,13 +1109,13 @@ _IFXEXTERN_ IFX_INLINE void Mcal_DmaEnTransReqLostIntr(Dma_ChannelType Channel)
 *******************************************************************************/
 /*IFX_MISRA_RULE_08_05_STATUS=Allowed for inline functions defined in header
  files*/
-_IFXEXTERN_ IFX_INLINE void Mcal_DmaCfgMeErrIntr( uint8 Enable )
+_IFXEXTERN_ IFX_INLINE void Mcal_DmaCfgMeErrIntr(uint8 Enable)
 {
-    /* DMA ME Eror Intr enable/Disable  */
-    /* Errata fix,.. DMA_TC.016 in BC step
+  /* DMA ME Eror Intr enable/Disable  */
+  /* Errata fix,.. DMA_TC.016 in BC step
     Byte and Half-word Write Accesses to specific Registers not supported
-    */
-    MODULE_DMA.ERRINTR.U |=  Enable;
+  */
+  MODULE_DMA.ERRINTR.U |=  Enable;
 }
 
 /*******************************************************************************
